@@ -1,0 +1,1674 @@
+﻿<!--<!DOCTYPE html>-->
+@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+
+    <!--<meta charset="utf-8" content="utf-8">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2299c5">
+
+    <title>Verbal Ability Test 2 - Online Verbal Ability Test</title>
+    <meta name="keywords" content="online, verbal, english, ability, test, questions, answers, explanation, solutions, 1" />
+    <meta name="description" content="Take this &quot;Online Verbal Ability Test 1&quot; test and find out how much you score before you appear for your next interview and written test." />
+    <link href="~/wwwroot/css/verbal_test.css" type="text/css" rel="stylesheet" media="screen" />
+    <script src="~/wwwroot/js/verbal_test.js" type="text/javascript"></script>
+    <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+
+</head>
+
+<body>
+
+    <div class="whole-page">
+
+        <!--[if IE]><div class="inner-page-ie"><![endif]-->
+        <div class="inner-page">
+
+            <div>
+
+                <input id="hdnTitleID" type="hidden" value="7" />
+
+            </div>
+
+            <div class="pagehead"><h1>Verbal Ability Test - COMPREHENSION</h1></div>
+
+
+            <div class="breadcrumb">
+                @*<a href="/">Home</a> &raquo;
+                    <a href="/online-test/categories/">Online Test</a> &raquo;
+                    <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
+                <input type="hidden" id="hdnTestTitleID" value="3" />
+                <input type="hidden" id="hdnTestID" value="21" />
+                <input type="hidden" id="hdnInitialTimer" value="420" />
+                <input type="hidden" id="hdnTimer" value="420" />
+            </div>
+
+            <div class="main-left">
+
+                <script type="text/javascript" charset="utf-8">
+
+                    function LoadTestRunnerPage() {
+                        GeneralTestPageSpecificLoad();
+                        //$('#divLoading').remove();
+                        $('#divStartTestInstruction').show();
+                    }
+
+                    var _timerHandler = 0;
+                    var _txtTestStats = ''; /* Result Stats append with feedback text */
+
+                    function GeneralTestPageSpecificLoad() {
+                        //$(".result-option").click(function () { OptionClickHandler(this); });
+
+                        //$("a.jq-menu").click(function () { TestTabMenuClickHandler(this); });
+
+                        $('#btnStartTest').click(function () { StartTestButtonClickHandler(this); });
+
+                        $('#btnSubmitTest').click(function () { SubmitTestButtonClickHandler(this); });
+
+                        InitializeTestPage();
+                    }
+
+                    function InitializeTestPage() {
+                        //LoadOtherPageSpecificFunctions();
+                        $('#divTabContent').hide();                    /* Initially hides the Test questions, Shows 'Start Test' button.*/
+                        $('#btnSubmitTest').attr('disabled', 'disabled');
+                    }
+
+                    //function LoadOtherPageSpecificFunctions() {
+                    //    /* Invoke : Other Page Specific Functions  */
+                    //    var txtTestTitleID = $('#hdnTestTitleID').val();
+                    //    if (txtTestTitleID == '2' ||  /* C    */
+                    //        txtTestTitleID == '13' ||  /* Java */
+                    //        txtTestTitleID == '30' ||  /* C#   */
+                    //        txtTestTitleID == '37'     /* CPP  */
+                    //    )
+                    //        StartCodeHighlight();
+                    //}
+
+                    function SubmitTestButtonClickHandler(thisObj) {
+                        var txtMsg = '';
+                        var intUAC = $("input.jq-selected-answer[value='']").length;
+                        if (intUAC > 0) txtMsg = "Total number of unanswered questions = " + intUAC + ".\n\n";
+
+                        if (confirm(txtMsg + 'Are you sure you want to submit the Test now?'))  /* Check for Time limit also. */ {
+                            $(thisObj).attr('disabled', 'disabled');
+                            //PopulateResultStatics();
+                        }
+                    }
+
+                    function StartTestButtonClickHandler(thisObj) {
+                        /* 4 Lines - Firefox Combatability */
+                        //$('#divResult').html('');
+                        $('.result-option').removeAttr('disabled');
+                        $('.result-option').removeAttr('checked');
+                        $('#hdnTimer').val($('#hdnInitialTimer').val());
+
+                        $('#divInitiator').remove();
+                        $('#btnSubmitTest').removeAttr('disabled'); $('#divSubmitTest').show();
+                        $('#divTabContent').show();
+                        $('#idTimerSpan').show();
+                        $('#divFloatTimer').show();
+                        _timerHandler = setInterval("MyTimer()", 1000);
+                    }
+
+                    //function OptionClickHandler(thisObj) {
+                    //    var objID = thisObj.id;               //option_A_25     1 - A ; 2 - 25
+                    //    var optAns = objID.split('_')[1];
+                    //    var quesID = objID.split('_')[2];
+                    //    var preVal = $("#optionSelAns_" + quesID).val();
+
+                    //    if (preVal == "") {
+                    //        $("#optionSelAns_" + quesID).val(optAns);     // set current option as answer.
+                    //        $(thisObj).attr("checked", "checked");
+                    //        $('.jq-qno-' + quesID).addClass('ib-answered');
+                    //    }
+                    //    else if (preVal == optAns) {
+                    //        $("#optionSelAns_" + quesID).val("");
+                    //        $(thisObj).removeAttr("checked");              //remove cur. object option check mark.
+                    //        $('.jq-qno-' + quesID).removeClass('ib-answered');
+                    //    }
+                    //    else {
+                    //        $("#optionSelAns_" + quesID).val(optAns);
+                    //        $(".cls_" + quesID).removeAttr("checked");  // remove all check mark
+                    //        $(thisObj).attr("checked", "checked");        // set check mark to current one.
+                    //        $('.jq-qno-' + quesID).addClass('ib-answered');
+                    //    }
+                    //}
+
+
+
+                    function MyTimer() {
+                        var valueTimer = $('#hdnTimer').val();
+
+                        if (valueTimer > 0) {
+                            valueTimer = valueTimer - 1;
+
+                            hours = (valueTimer / 3600).toString().split('.')[0];
+                            mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
+                            secs = ((valueTimer % 3600) % 60).toString();
+
+                            if (hours.length == 1) hours = '0' + hours;
+                            if (mins.length == 1) mins = '0' + mins;
+                            if (secs.length == 1) secs = '0' + secs;
+
+                            $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
+                            $('#hdnTimer').val(valueTimer);
+
+                            document.title = $('#idTimerLCD').text();
+                            $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                        }
+                        else {
+                            $('#btnSubmitTest').attr('disabled', 'disabled');
+                            alert(" Your time is up ! \n\n Let's see the Result & Statistics of the Test.");
+                            //PopulateResultStatics();
+                        }
+                    }
+
+                    //function PopulateResultStatics() {
+                    //    clearInterval(_timerHandler);
+                    //    $('#idTimerSpan').hide();
+                    //    $('#divFloatTimer').hide();
+                    //    document.title = 'Test Result';
+                    //    $('.result-option').attr('disabled', 'disabled');
+                    //    $('.result-option').css('cursor', 'auto');
+
+                    //    /* Populate result tab.   */
+                    //    var txtHtml = $('#divTabContent').html();
+                    //    var objArrActualAnswer = $('#divTabContent input.jq-actual-answer');
+                    //    var objArrSelectedAnswer = $('#divTabContent input.jq-selected-answer');
+
+                    //    $('#divTabContent').remove();
+                    //    $('#divSubmitTest').remove();
+
+                    //    $('#divResult').html(txtHtml);
+                    //    $('#divResult .jq-workspace').remove();
+
+                    //    var intTotalQuestions = objArrActualAnswer.length;
+                    //    var intAnsweredCount = 0;
+                    //    var intUnAnsweredCount = 0;
+                    //    var intCorrectAnswerCount = 0;
+                    //    var intWrongAnswerCount = 0;
+                    //    var objArrUserAnswer = $('#divResult span.jq-user-answer');
+
+                    //    /* Iteration for All Ques Answers - Populates Result Info. */
+                    //    jQuery.each(objArrActualAnswer, function (i, obj) {
+
+                    //        var optionActual = $(obj).val();
+                    //        var optionSelected = $(objArrSelectedAnswer[i]).val();
+                    //        var quesID = obj.id.split('_')[1];              // optionAnswer_45 (hidden)
+
+                    //        if (optionSelected != '') {
+                    //            //Radio Option ID :  optionAns_C_741
+                    //            $('#divResult #optionAns_' + optionSelected + '_' + quesID).attr('checked', 'checked');
+                    //            $('#divResult #tdAnswerIMG_' + optionSelected + '_' + quesID).show();
+                    //            intAnsweredCount++;
+                    //            if (optionSelected == optionActual) intCorrectAnswerCount++; else intWrongAnswerCount++;
+
+                    //            /* To display value for "Your answer:" */
+                    //            $(objArrUserAnswer[i]).html(optionSelected);
+                    //        }
+
+
+
+                    //    });
+
+                    //    intUnAnsweredCount = intTotalQuestions - intAnsweredCount;
+
+                    //    /* Sets results Statistics info.  */
+                    //    var tmpResStat = $('#divResultStatistics').html();
+                    //    tmpResStat = tmpResStat.replace('[XX/XX]', intCorrectAnswerCount + '/' + intTotalQuestions);
+                    //    tmpResStat = tmpResStat.replace('[TQ]', intTotalQuestions);
+                    //    tmpResStat = tmpResStat.replace('[AQ]', intAnsweredCount);
+                    //    tmpResStat = tmpResStat.replace('[UQ]', intUnAnsweredCount);
+                    //    $('#divResultStatistics').html(tmpResStat);
+
+                    //    $('#divResult .bix-div-answer').show();        /* Makes visible all AnsDesc. divs.  */
+
+                    //    /* Initial Swap to Result Stat. Tab */
+                    //    $('#divResult').show(); $('#divResultStatistics').show(); $('#divFeedback').show();
+
+                    //    window.scroll(0, 0); /* Scrolls up the window. */
+
+                    //    AddGeneralTestViewCount(); /* Ajax call to server. */
+
+                    //    var totalTime = parseInt($('#hdnInitialTimer').val()) / 60;
+                    //    var timeTaken = (totalTime * 60) - parseInt($('#hdnTimer').val());
+
+                    //    _txtTestStats = " [ TotQ=" + intTotalQuestions +
+                    //        ", AnsQ=" + intAnsweredCount +
+                    //        ", UnAnsQ=" + intUnAnsweredCount +
+                    //        ", CorAns=" + intCorrectAnswerCount +
+                    //        ", WrongAns=" + intWrongAnswerCount +
+                    //        ", TotTime=" + totalTime +
+                    //        "min, TimeTaken=" + timeTaken + "sec]";
+
+                    //}
+
+                    //function AddGeneralTestViewCount() {
+                    //    var intTestID = $('#hdnTestID').val();
+
+                    //    var _paramData = "TestID=" + intTestID;
+
+                    //    $.ajax({
+                    //        type: "POST",
+                    //        url: "/_ajax/add-test-viewcount.php",
+                    //        data: _paramData,
+                    //        cache: false,
+                    //        success: function (msg) { /* DONE */ }
+                    //    });
+                    //}
+
+                    //function SendTestFeedback() {
+                    //    var txtFeedbackURL = window.location.href;
+                    //    var txtFeedbackText = escape($('#txtComments').val());
+                    //    var txtTestID = $('#hdnTestID').val();
+                    //    var txtQuality = $('#idQualityLevel').val();
+                    //    var txtDifficulty = $('#idDifficultyLevel').val();
+
+                    //    if (txtQuality == '0') {
+                    //        alert('Kindly select a Test Quality Level.');
+                    //        $('#idQualityLevel').focus();
+                    //        return false;
+                    //    }
+
+                    //    if (txtDifficulty == '0') {
+                    //        alert('Kindly select a Test Difficulty Level.');
+                    //        $('#idDifficultyLevel').focus();
+                    //        return false;
+                    //    }
+
+                    //    $('#btnSubmitFeedback').attr('disabled', 'disabled');
+                    //    $('#idQualityLevel').attr('disabled', 'disabled');
+                    //    $('#idDifficultyLevel').attr('disabled', 'disabled');
+                    //    $('#txtComments').attr('readonly', 'readonly');
+
+                    //    txtFeedbackText = txtFeedbackText.replace(/\+/g, '%2B');
+
+                    //    txtFeedbackText = txtFeedbackText + _txtTestStats;
+
+                    //    var _paramData = "FeedbackURL=" + txtFeedbackURL +
+                    //        "&FeedbackText=" + txtFeedbackText +
+                    //        "&TestID=" + txtTestID +
+                    //        "&QualityLevel=" + txtQuality +
+                    //        "&DifficultyLevel=" + txtDifficulty;
+
+                    //    $.ajax({
+                    //        type: "POST",
+                    //        url: "/_ajax/add-test-feedback.php",
+                    //        data: _paramData,
+                    //        cache: false,
+                    //        success: function (msg) { $('#btnSubmitFeedback').replaceWith(msg); }
+                    //    });
+
+                    //}
+
+                </script>
+
+                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; bottom:10px; left:1px; width:auto; background-color:#5eac1a; color:white; ">
+                    Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
+                </div>
+
+                <hr />
+
+                <div class="div-test-initiator" id="divInitiator">
+                    @*<div id="divLoading" align="center">
+                        <br /><img src="/_files/images/website/progress.gif" alt="Loading..." /><span class="mx-gray">&nbsp; Loading Test...</span>
+                    </div>*@
+                    <div class="mx-none" id="divStartTestInstruction">
+                        <div class="div-test-instruction">
+                            <p class="mx-green mx-bold mx-uline">Instruction:</p>
+
+                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                <span>In this section, you are asked what should be done or what is required in a given situation. You are to choose the best answer available, or what most generally applies to the question</span><br />
+                                            </div>
+                                            <div class="title-bar">
+                                                Look at these examples:
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td class="img-PA-pic-completion" valign="middle">1.	What should you do if you find Rs 100 in the elevator of the apartment building?</td>
+                                </tr>
+                                <tr>
+                                    <td class="bix-td-miscell" valign="top">
+                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">A.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">Say “that’s a stroke of luck”, and keep it</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">B.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">Leave it where it is and continue on your way</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">C.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">Keep it and leave your name and number with the superintendent in case the loss is reported</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">D.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">Spend it as soon as you can before somebody finds out</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">E.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">Share the good fortune with your neighbor</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                Answer C is the correct course of action since it is fair and just thing to do.
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                Here is the second example:
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td class="img-PA-pic-completion" valign="middle">
+                                        <div class="bix-div-direction">2.	Dictionaries are useful</div>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="bix-td-miscell" valign="top">
+                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">A.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">To look up origins of the world</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">B.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">To solve crossword puzzles</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">C.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">To look up opposites of words</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">D.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">To find word meanings</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">E.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">To look up for medical terms</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                The correct answer is D, to find word meanings. Answer A and B are true, but they are not the most important ways in which a dictionary can be used. Answer C is not generally true, and answer E is not the most general answer available.
+                                                <br />
+                                                <br />
+                                                In a similar manner, answer each of the following questions by indicating on the answer sheet which one of the five choices is the most appropriate. Remember, if more than one answer appears correct, choose the best answer.
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                Timer 7 minutes (Test 2: Comprehension)
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
+                    </div>
+                </div>
+
+                <div id="divTabContent" style="width:100%;" class="mx-none">
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">1.</td>
+                                            <td valign="middle">It is good to know how to read and write in order to</td>
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension1"></td>
+                                            <td class="bix-td-option" width="99%">Communicate better</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension1"></td>
+                                            <td class="bix-td-option" width="99%">Complete the necessary documents for taxes</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension1"></td>
+                                            <td class="bix-td-option" width="99%">Correspond by mail with friends and family</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension1"></td>
+                                            <td class="bix-td-option" width="99%">Be able to read articles in magazines</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension1"></td>
+                                            <td class="bix-td-option" width="99%">Perform better in tests</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">2.</td>
+
+                                            <td valign="middle">Why is wool warmer than cotton?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension2"></td>
+                                            <td class="bix-td-option" width="99%">It holds air which acts as an insulation</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension2"></td>
+                                            <td class="bix-td-option" width="99%">Wool costs more</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension2"></td>
+                                            <td class="bix-td-option" width="99%">Intricate designs can be made from wool</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension2"></td>
+                                            <td class="bix-td-option" width="99%">Wool comes from warm blooded animals while cotton comes from plants</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension2"></td>
+                                            <td class="bix-td-option" width="99%">Wool clothing is usually lined</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">3.</td>
+
+
+                                            <td valign="middle">It is wise to secure valuables because</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension3"></td>
+                                            <td class="bix-td-option" width="99%">It prevents deterioration</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension3"></td>
+                                            <td class="bix-td-option" width="99%">No one will be able to steal them</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension3"></td>
+                                            <td class="bix-td-option" width="99%">They cannot be identified</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension3"></td>
+                                            <td class="bix-td-option" width="99%">It increases their value</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension3"></td>
+                                            <td class="bix-td-option" width="99%">Their value can be replaced</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">4.</td>
+
+
+                                            <td valign="middle">What does it mean to say “To put one’s hand to plough”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension4"></td>
+                                            <td class="bix-td-option" width="99%">To take up agricultural farming</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension4"></td>
+                                            <td class="bix-td-option" width="99%">To take a difficult task</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension4"></td>
+                                            <td class="bix-td-option" width="99%">To get entangled into unnecessary things</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension4"></td>
+                                            <td class="bix-td-option" width="99%">Take interest in technical work</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension4"></td>
+                                            <td class="bix-td-option" width="99%">To work very hard</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">5.</td>
+
+
+                                            <td valign="middle">The government promotes the use of public transportation</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension5"></td>
+                                            <td class="bix-td-option" width="99%">To encourage citizens to spend more time together</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension5"></td>
+                                            <td class="bix-td-option" width="99%">To improve profits of private train and companies</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension5"></td>
+                                            <td class="bix-td-option" width="99%">To save energy</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension5"></td>
+                                            <td class="bix-td-option" width="99%">To encourage people to go out more</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension5"></td>
+                                            <td class="bix-td-option" width="99%">To provide employment for public transportation workers</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">6.</td>
+
+
+                                            <td valign="middle">Why people do not want to have mosquitoes in their home?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension6"></td>
+                                            <td class="bix-td-option" width="99%">Guests may think bad about the people</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension6"></td>
+                                            <td class="bix-td-option" width="99%">They may carry diseases</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension6"></td>
+                                            <td class="bix-td-option" width="99%">They make noise</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension6"></td>
+                                            <td class="bix-td-option" width="99%">They carry harmful germs</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension6"></td>
+                                            <td class="bix-td-option" width="99%">They fly around people</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">7.</td>
+
+
+                                            <td valign="middle">Postage stamps were originally developed in order to </td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension7"></td>
+                                            <td class="bix-td-option" width="99%">Show that the postal fee has been paid</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension7"></td>
+                                            <td class="bix-td-option" width="99%">Fasten the mail service</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension7"></td>
+                                            <td class="bix-td-option" width="99%">Provide commemorations of important events</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension7"></td>
+                                            <td class="bix-td-option" width="99%">Provide souvenirs of a country</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension7"></td>
+                                            <td class="bix-td-option" width="99%">Make sure that the letter arrived at the correct address</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">8.</td>
+
+
+                                            <td valign="middle">Why are knives made from steel?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension8"></td>
+                                            <td class="bix-td-option" width="99%">Steel rusts easily</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension8"></td>
+                                            <td class="bix-td-option" width="99%">Steel retains a cutting edge</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension8"></td>
+                                            <td class="bix-td-option" width="99%">Steel knives do not break</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension8"></td>
+                                            <td class="bix-td-option" width="99%">All other metals bend too easily</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension8"></td>
+                                            <td class="bix-td-option" width="99%">People will be afraid of copper poisoning</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">9.</td>
+
+
+                                            <td valign="middle">What does it mean to say “All that glitters is not gold”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension9"></td>
+                                            <td class="bix-td-option" width="99%">Everyone is not beautiful</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension9"></td>
+                                            <td class="bix-td-option" width="99%">Old is gold</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension9"></td>
+                                            <td class="bix-td-option" width="99%">Gold has lots of shine</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension9"></td>
+                                            <td class="bix-td-option" width="99%">A glossy article may not necessarily be valuable</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension9"></td>
+                                            <td class="bix-td-option" width="99%">The beauty of nature</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">10.</td>
+
+
+                                            <td valign="middle">What is the disorder called for fear of open spaces?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension10"></td>
+                                            <td class="bix-td-option" width="99%">Obsession</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension10"></td>
+                                            <td class="bix-td-option" width="99%">Agoraphobia</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension10"></td>
+                                            <td class="bix-td-option" width="99%">Hallucination</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension10"></td>
+                                            <td class="bix-td-option" width="99%">Somnambulism</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension10"></td>
+                                            <td class="bix-td-option" width="99%">Hydrophobia</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">11.</td>
+
+
+                                            <td valign="middle">The main reason behind the development labor unions is</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension11"></td>
+                                            <td class="bix-td-option" width="99%">To provide a means of getting even with organizations</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension11"></td>
+                                            <td class="bix-td-option" width="99%">To improve social interaction among workers</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension11"></td>
+                                            <td class="bix-td-option" width="99%">To increase productivity</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension11"></td>
+                                            <td class="bix-td-option" width="99%">To increase compensation</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension11"></td>
+                                            <td class="bix-td-option" width="99%">To provide a means of collective bargaining</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">12.</td>
+
+
+                                            <td valign="middle">What does the slang “LOL” means?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension12"></td>
+                                            <td class="bix-td-option" width="99%">Laugh out loud</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension12"></td>
+                                            <td class="bix-td-option" width="99%">Laugh on line</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension12"></td>
+                                            <td class="bix-td-option" width="99%">Lots of love</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension12"></td>
+                                            <td class="bix-td-option" width="99%">Love of laughs</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension12"></td>
+                                            <td class="bix-td-option" width="99%">Silly Laughter</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">13.</td>
+
+
+                                            <td valign="middle">The government keeps the track of birth in order to</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension13"></td>
+                                            <td class="bix-td-option" width="99%">Compare them with deaths of that year</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension13"></td>
+                                            <td class="bix-td-option" width="99%">Know how many males and females are born under each sign of zodiac</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension13"></td>
+                                            <td class="bix-td-option" width="99%">Keep an organized record of population and extend social benefits more efficiently</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension13"></td>
+                                            <td class="bix-td-option" width="99%">Pay a bonus to their parents</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension13"></td>
+                                            <td class="bix-td-option" width="99%">See if the birth rate is decreasing</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">14.</td>
+
+
+                                            <td valign="middle">What does it mean to say “don’t judge a book by its cover”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension14"></td>
+                                            <td class="bix-td-option" width="99%">So many books today do not contain what is suggested by their cover</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension14"></td>
+                                            <td class="bix-td-option" width="99%">Don’t believe everything you hear</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension14"></td>
+                                            <td class="bix-td-option" width="99%">Well bound books often have cheap covers</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension14"></td>
+                                            <td class="bix-td-option" width="99%">You should read it instead</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension14"></td>
+                                            <td class="bix-td-option" width="99%">In judging a person or an object, do not look at outward appearance alone</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">15.</td>
+
+
+                                            <td valign="middle">What does it mean to say “the grass is always greener on the other side of the fence”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension15"></td>
+                                            <td class="bix-td-option" width="99%">Grass always grows better on one side of the hill than the other</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension15"></td>
+                                            <td class="bix-td-option" width="99%">Those who saw wild oats will reap their just rewards</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension15"></td>
+                                            <td class="bix-td-option" width="99%">Sunlight makes grass look greener from a distance</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension15"></td>
+                                            <td class="bix-td-option" width="99%">Someone else’s situation always seems better than our own</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension15"></td>
+                                            <td class="bix-td-option" width="99%">People should be careful not to develop a “sour grapes” attitude</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">16.</td>
+
+
+                                            <td valign="middle">What does it mean to say “to have your nose in the book”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension16"></td>
+                                            <td class="bix-td-option" width="99%">To irritate someone</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension16"></td>
+                                            <td class="bix-td-option" width="99%">To get bored</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension16"></td>
+                                            <td class="bix-td-option" width="99%">To borrow a book</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension16"></td>
+                                            <td class="bix-td-option" width="99%">To read a book</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension16"></td>
+                                            <td class="bix-td-option" width="99%">To maintain your self esteem</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">17.</td>
+
+
+                                            <td valign="middle">What would you do if you were the first to arrive at a serious car accident?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension17"></td>
+                                            <td class="bix-td-option" width="99%">Be grateful that it wasn’t you and drive more carefully</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension17"></td>
+                                            <td class="bix-td-option" width="99%">Leave it behind and decide to report it from the phone booth that what happened across</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension17"></td>
+                                            <td class="bix-td-option" width="99%">Stay with the victims and hope someone else arrives soon to help</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension17"></td>
+                                            <td class="bix-td-option" width="99%">Do what you can for the victims and make sure that the police is called</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension17"></td>
+                                            <td class="bix-td-option" width="99%">Stop a little way down the road and direct traffic away from the accident</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">18.</td>
+
+
+                                            <td valign="middle">What would you do if you see someone steal an expensive watch in a departmental store?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension18"></td>
+                                            <td class="bix-td-option" width="99%">Yell “thief!” as loudly as possible</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension18"></td>
+                                            <td class="bix-td-option" width="99%">Run up to the person and grasp him/her</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension18"></td>
+                                            <td class="bix-td-option" width="99%">Call the police</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension18"></td>
+                                            <td class="bix-td-option" width="99%">Keep watching the thief and quietly tell a sales clerk</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension18"></td>
+                                            <td class="bix-td-option" width="99%">Ignore it completely in case someone may think you are involved</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">19.</td>
+
+
+                                            <td valign="middle">What does it mean to say “birds of a feather flock together”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension19"></td>
+                                            <td class="bix-td-option" width="99%">Birds of the same type tend to travel in flocks</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension19"></td>
+                                            <td class="bix-td-option" width="99%">People tend to live near other people</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension19"></td>
+                                            <td class="bix-td-option" width="99%">You can tell a bird by its color</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension19"></td>
+                                            <td class="bix-td-option" width="99%">It’s not a good idea to associate with bad company</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension19"></td>
+                                            <td class="bix-td-option" width="99%">People of the same type usually associate with each other</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">20.</td>
+
+
+                                            <td valign="middle">Why are the apartments in the center of the city usually more expensive to rent than those on the outskirts?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension20"></td>
+                                            <td class="bix-td-option" width="99%">Centrally located apartments are usually bigger and better</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension20"></td>
+                                            <td class="bix-td-option" width="99%">Taxes are lower in the center of the city</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension20"></td>
+                                            <td class="bix-td-option" width="99%">The demand for apartments in the center of the city is greater</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension20"></td>
+                                            <td class="bix-td-option" width="99%">They are cleaner downtown</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension20"></td>
+                                            <td class="bix-td-option" width="99%">They have a better view of the city</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">21.</td>
+
+
+                                            <td valign="middle">The reason that paper money has someone’s picture on it is</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension21"></td>
+                                            <td class="bix-td-option" width="99%">To distinguish bills of different value</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension21"></td>
+                                            <td class="bix-td-option" width="99%">To familiarize tourists with national heroes</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension21"></td>
+                                            <td class="bix-td-option" width="99%">Because it is printed that way</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension21"></td>
+                                            <td class="bix-td-option" width="99%">To encourage people to collect money</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension21"></td>
+                                            <td class="bix-td-option" width="99%">To provide work for engravers</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">22.</td>
+
+
+                                            <td valign="middle">Fire extinguisher should be installed in buildings</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension22"></td>
+                                            <td class="bix-td-option" width="99%">To measure electricity</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension22"></td>
+                                            <td class="bix-td-option" width="99%">To avoid noise</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension22"></td>
+                                            <td class="bix-td-option" width="99%">For safety purpose</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension22"></td>
+                                            <td class="bix-td-option" width="99%">For cleanliness and maintenance</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension22"></td>
+                                            <td class="bix-td-option" width="99%">To create more jobs</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="twelthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">23.</td>
+
+
+                                            <td valign="middle">What does it mean to say “prevention is better than cure”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension23"></td>
+                                            <td class="bix-td-option" width="99%">Preventive medicines are more effective as compared to those used for cures</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension23"></td>
+                                            <td class="bix-td-option" width="99%">Some people die from vaccinations</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension23"></td>
+                                            <td class="bix-td-option" width="99%">Preventive medicines are less expensive than treatment medicines</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension23"></td>
+                                            <td class="bix-td-option" width="99%">Diseases are much more costly and unpleasant than is prevention </td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension23"></td>
+                                            <td class="bix-td-option" width="99%">Preventive medicine will provide jobs for many people</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">24.</td>
+
+
+                                            <td valign="middle">What does it mean to say ”man does not live on bread alone”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension24"></td>
+                                            <td class="bix-td-option" width="99%">A bread alone is not a healthful diet for it does not contain all the nutrition a person needs</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension24"></td>
+                                            <td class="bix-td-option" width="99%">Having too much of any one food is not good</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension24"></td>
+                                            <td class="bix-td-option" width="99%">There are other important things in life other than material wealth</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension24"></td>
+                                            <td class="bix-td-option" width="99%">Variety is important in one’s life</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension24"></td>
+                                            <td class="bix-td-option" width="99%">Man should work in order to get his bread</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">25.</td>
+
+
+                                            <td valign="middle">What does it mean to say “early to bed, early to rise, makes a man healthy and wise”?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension25"></td>
+                                            <td class="bix-td-option" width="99%">Someone who gets enough sleep and starts working early in day will have a successful life</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension25"></td>
+                                            <td class="bix-td-option" width="99%">Helps in reducing weight</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension25"></td>
+                                            <td class="bix-td-option" width="99%">People behave properly</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension25"></td>
+                                            <td class="bix-td-option" width="99%">Creates more job</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension25"></td>
+                                            <td class="bix-td-option" width="99%">Helps in maintaining good health</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">26.</td>
+
+
+                                            <td valign="middle">Why are interest rates higher at the time of inflation?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension26"></td>
+                                            <td class="bix-td-option" width="99%">Many people are employed in inflationary times and demand is low</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension26"></td>
+                                            <td class="bix-td-option" width="99%">Prices are likely to decline later</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension26"></td>
+                                            <td class="bix-td-option" width="99%">The bankers want to make a lot of money while they can</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension26"></td>
+                                            <td class="bix-td-option" width="99%">Gold is more expensive to buy</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension26"></td>
+                                            <td class="bix-td-option" width="99%">Loans can be repaid with money which is worth less</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">27.</td>
+
+
+                                            <td valign="middle">On hot days, people close their windows and shut their curtains in order to </td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension27"></td>
+                                            <td class="bix-td-option" width="99%">Keep their house as warm inside as outside</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension27"></td>
+                                            <td class="bix-td-option" width="99%">Keep their house cooler inside than outside</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension27"></td>
+                                            <td class="bix-td-option" width="99%">Keep insects outside</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension27"></td>
+                                            <td class="bix-td-option" width="99%">Increase the humidity inside</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension27"></td>
+                                            <td class="bix-td-option" width="99%">Keep their house dark</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">28.</td>
+
+
+                                            <td valign="middle">A substitute for “one who likes to spend time with others” in one word can be</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAComprehension28"></td>
+                                            <td class="bix-td-option" width="99%">Introvert</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAComprehension28"></td>
+                                            <td class="bix-td-option" width="99%">Extraordinary</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAComprehension28"></td>
+                                            <td class="bix-td-option" width="99%">Extrovert</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAComprehension28"></td>
+                                            <td class="bix-td-option" width="99%">Commoner</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAComprehension28"></td>
+                                            <td class="bix-td-option" width="99%">Misologist</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="divSubmitTest" align="center" style="display:none; padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
+                        <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnSubmitTest" />
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div id="divFeedback" style="display:none; width:100%; padding:25px;">
+
+                    <p align="center"> <h4 align="center">*** END OF THE TEST ***</h4> </p>
+
+                    <table align="left" class="ib-dgray" cellspacing="0" cellpadding="5" style="border:2px solid #daf7f7; background-color:#fafafa;" width="100%">
+                        <tr><td align="left" bgcolor="#daf7f7" colspan="3"><b>Feedback</b></td></tr>
+                        <tr>
+                            <td nowrap="nowrap">Quality of the Test</td>
+                            <td>:</td>
+                            <td>
+                                <select id="idQualityLevel">
+                                    <option value="0"> -- Select -- </option>
+                                    <option value="5">Excellent</option>
+                                    <option value="3">Medium</option>
+                                    <option value="1">Poor</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap">Difficulty of the Test</td>
+                            <td>:</td>
+                            <td>
+                                <select id="idDifficultyLevel">
+                                    <option value="0"> -- Select -- </option>
+                                    <option value="1">Easy</option>
+                                    <option value="3">Normal</option>
+                                    <option value="5">Hard</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="100%">
+                                Comments:<br />
+                                <textarea id="txtComments" cols="40" rows="4" style="width:100%; padding:5px;">...</textarea>
+                            </td>
+                        </tr>
+                        @*<tr>
+                            <td colspan="3" align="center" width="100%" style="padding:15px;">
+                                <input type="button" onclick="SendTestFeedback()" id="btnSubmitFeedback" value="Submit Feedback">
+                            </td>
+                        </tr>*@
+                    </table>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!--[if IE]></div><![endif]-->
+
+    </div>
+
+
+</body>
+</html>

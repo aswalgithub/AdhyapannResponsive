@@ -1,0 +1,172 @@
+﻿@model DataAccessLayer.Package
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+
+    <!-- Icons font CSS-->
+    <link href="~/wwwroot/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/wwwroot/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <!-- Vendor CSS-->
+    <link href="~/wwwroot/css/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/wwwroot/css/daterangepicker.css" rel="stylesheet" media="all">
+
+
+    <!-- Main CSS-->
+    <link href="~/wwwroot/css/Register.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <section class="c-hero c-hero--test">
+        <div class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
+            <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
+                <h1 class="heading--xxl u-mt1">
+
+                    Adhyapaan Physchometric Tests
+
+                </h1>
+               
+                @*<ul class="list--feature hub">
+            <li>
+                186
+                tests
+            </li>
+            <li>
+                2700
+                questions
+            </li>
+        </ul>*@
+
+
+
+                @*<div class="c-hero__description">
+            <p>
+                Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
+            </p>
+        </div>*@
+            </div>
+
+            <div class="c-hero__image u-flex-1 u-align-right sm-only">
+
+
+
+
+                @*<img src="~/wwwroot/images/Physcho.jpg"
+                                         alt="
+                    Adhyapaan Physchometric Tests
+                    " class="eager" width="406" height="269">
+
+                                </div>*@
+            </div>
+        </div>
+    </section>
+    <div class="page-wrapper p-t-100 p-b-100 font-robo">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+
+                <div class="card-body">
+                    <h2 style="text-align:left">Package : @Model.Package_Name</h2>
+                    
+
+                    <form id="frmRegister" method="POST" action="~/Student/SaveStudentDetails">                     
+                        <div class="container" style="border: groove">
+                            <input type="hidden" id="Package_ID" name="Package_ID" value="@Model.Package_ID">
+                            <input type="hidden" id="Package_Name" name="Package_Name" value="@Model.Package_Name">
+                            <div class="box">
+                                <h2 class="title" style="text-align:left">Student Information</h2>
+                                <div class="box-row">
+
+                                    <div class="box-cell box1">
+                                        <div class="input-group">
+                                            <input class="input--style-1" type="text" placeholder="NAME" name="Name" required pattern="\S.*\S">
+                                        </div>
+
+
+                                        <div class="input-group">
+                                            <input class="input--style-1" type="text" placeholder="EMAIL ID" name="Email_ID" required pattern="\S.*\S">
+                                        </div>
+
+                                        <div class="input-group">
+                                            <div class="rs-select2 js-select-simple select--no-search">
+                                                <select name="Gender">
+                                                    <option disabled="disabled" selected="selected">GENDER</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+
+                                                </select>
+                                                <div class="select-dropdown"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="input-group">
+                                            <input class="input--style-1" type="text" placeholder="PASSWORD" name="Password" required pattern="\S.*\S">
+                                        </div>
+
+
+                                    </div>
+                                    <div class="box-cell box2">
+                                        <div class="input-group">
+                                            <input class="input--style-1" type="text" placeholder="SCHOOL NAME" name="School_Name" required pattern="\S.*\S">
+                                        </div>
+                                        <div class="input-group">
+                                            <input class="input--style-1 js-datepicker" type="text" placeholder="BIRTHDATE" name="DOB" required pattern="\S.*\S">
+                                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        </div>
+
+                                        <div class="input-group">
+                                            <div class="rs-select2 js-select-simple select--no-search">
+                                                <select name="Class">
+                                                    <option disabled="disabled" selected="selected">CLASS</option>
+                                                    <option>STANDARD 3 to 8</option>
+                                                    <option>STANDARD 9 to 12</option>
+
+                                                </select>
+                                                <div class="select-dropdown"></div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="p-t-20">
+                            <button class="btn btn--radius btn--green" id="btnRegisterStudent" type="button">Start Test</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Jquery JS-->
+    <script src="~/wwwroot/js/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="~/wwwroot/js/select2.min.js"></script>
+    <script src="~/wwwroot/js/moment.min.js"></script>
+    <script src="~/wwwroot/js/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="~/wwwroot/js/global.js"></script>
+    <script src="~/wwwroot/js/Student.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->

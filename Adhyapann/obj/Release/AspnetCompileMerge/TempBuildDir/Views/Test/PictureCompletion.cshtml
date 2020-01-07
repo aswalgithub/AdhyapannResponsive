@@ -1,0 +1,1698 @@
+﻿<!--<!DOCTYPE html>-->
+@{
+    Layout = null;
+}
+@model DataAccessLayer.Student
+<html lang="en">
+<head>
+
+    <!--<meta charset="utf-8" content="utf-8">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2299c5">
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+    <title>ONLINE PERFORMANCE APTITUDE TEST</title>
+
+    <meta name="keywords" content="online, verbal, english, ability, test, questions, answers, explanation, solutions, 1" />
+    <meta name="description" content="Take this &quot;Online Verbal Ability Test 1&quot; test and find out how much you score before you appear for your next interview and written test." />
+    <link href="~/wwwroot/css/Test.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="~/wwwroot/css/verbal_test.css" type="text/css" rel="stylesheet" media="screen" />
+    <script src="~/wwwroot/js/verbal_test.js" type="text/javascript"></script>
+
+    <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+    <script src="~/wwwroot/js/Test.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+    <div>
+
+        <!--[if IE]><div class="inner-page-ie"><![endif]-->
+        <div>
+
+            <div>
+                @*<div id="divHeader" class="pagehead" style="text-align:center"><h1>PERFORMANCE APTITUDE - PICTURE COMPLETION</h1></div>*@
+                <section class="c-hero c-hero--test">
+
+
+                    <div id="divHeader" class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
+                        <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
+                            <h1 class="heading--xxl u-mt1">
+
+                                Adhyapaan Physchometric Tests - PERFORMANCE APTITUDE - PICTURE COMPLETION
+
+                            </h1>
+
+
+                            @*<div class="c-hero__description">
+                        <p>
+                            Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
+                        </p>
+                    </div>*@
+                        </div>
+
+                        <div id="divUserDetails">
+                            <table align="left">
+                                <tr>
+                                    <td style="width:100%">
+                                        <label style="color:white"> Name: <b>@Model.Name</b></label>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:100%">
+                                        <label style="color:white"> Email: <b>@Model.Email_ID</b></label>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:100%">
+                                        <label style="color:white"> Reference Code: <b>@Model.Reference_Code</b></label>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:100%">
+                                        <label style="color:white"> Package: <b>@Model.Package_Name</b></label>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; bottom:10px; left:1px; width:auto; background-color:#5eac1a; color:white; ">
+                    Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
+                </div>
+                <div class="breadcrumb">
+                    @*<a href="/">Home</a> &raquo;
+            <a href="/online-test/categories/">Online Test</a> &raquo;
+            <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                    <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
+                    <input type="hidden" id="hdnTestTitleID" value="3" />
+                    <input type="hidden" id="hdnTestID" value="21" />
+                    <input type="hidden" id="hdnInitialTimer" value="420" />
+                    <input type="hidden" id="hdnTimer" value="420" />
+                </div>
+                <div class="main-left">
+
+                    <script type="text/javascript" charset="utf-8">
+
+                        function StartTestButtonClickHandler(thisObj) {
+                            /* 4 Lines - Firefox Combatability */
+                            //$('#divResult').html('');
+                            var _timerHandler = 0;
+                            $('#hdnTimer').val($('#hdnInitialTimer').val());
+
+                            $('#divInitiator').remove();
+
+                            $('#divTabContent').show();
+                            $('#idTimerSpan').show();
+                            $('#divFloatTimer').show();
+                            _timerHandler = setInterval("MyTimer()", 1000);
+                        }
+
+
+
+
+
+                        function MyTimer() {
+                            var valueTimer = $('#hdnTimer').val();
+
+                            if (valueTimer > 0) {
+                                valueTimer = valueTimer - 1;
+
+                                hours = (valueTimer / 3600).toString().split('.')[0];
+                                mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
+                                secs = ((valueTimer % 3600) % 60).toString();
+
+                                if (hours.length == 1) hours = '0' + hours;
+                                if (mins.length == 1) mins = '0' + mins;
+                                if (secs.length == 1) secs = '0' + secs;
+
+                                $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
+                                $('#hdnTimer').val(valueTimer);
+
+                                document.title = $('#idTimerLCD').text();
+                                $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                            }
+                            else {
+                                alert(" Your time is up for this test.You will be moved to Next Test.");
+                                $("#frmPictureCompletion").submit();
+
+                            }
+                        }
+
+                    </script>
+                    <div class="div-test-initiator" id="divInitiator">
+                        <div id="divStartTestInstruction">
+                            <div class="div-test-instruction">
+                                <p class="mx-green mx-bold mx-uline">Instruction:</p>
+
+                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="bix-div-direction">
+                                                <div class="title-bar">
+                                                    In each of the following pictures there is an important part missing. Below the picture the first letters of five possible missing parts are given. You have to look at the five choices, A, B, C, D and E, and mark the correct one on your answer sheet.
+
+                                                    Look at the following examples:
+                                                </div>
+
+
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td class="img-PA-pic-completion" valign="middle">
+                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion0.jpg" />
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bix-td-miscell" valign="top">
+                                            <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                <tr>
+
+                                                    <td class="bix-td-option" width="1%">A.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">L</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="bix-td-option" width="1%">B.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">T</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bix-td-option" width="1%">C.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">E</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="bix-td-option" width="1%">D.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">W</td>
+
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bix-td-option" width="1%">E.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">P</td>
+
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td colspan="2">
+                                            <div class="bix-div-direction">
+
+
+                                                <div class="title-bar">
+                                                    In this picture of a cat, the important missing part is EAR. The correct choice is C, because it gives an E, and the first letter in the word EAR is an E. You would therefore mark C on the answer sheet.
+                                                </div>
+
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <div class="bix-tbl-container bix-div-direction title-bar">
+                                    <div class="bix-div-direction">
+                                        <div class="title-bar">
+                                            Timer : 7 Minutes : PICTURE COMPLETION
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
+                        </div>
+                    </div>
+                    <form id="frmPictureCompletion" method="POST" action="~/Test/SavePictureCompletionTest">
+                        <div>
+                            <div id="divTabContent" style="width:100%;" class="mx-none">
+
+                                <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">1.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion1.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion1" id="PAPictureCompletion1Option1"></td>
+                                                        <td class="bix-td-option" width="99%">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion1" id="PAPictureCompletion1Option2"></td>
+                                                        <td class="bix-td-option" width="99%">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion1" id="PAPictureCompletion1Option3"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">M</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion1" id="PAPictureCompletion1Option4"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion1" id="PAPictureCompletion1Option5"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">2.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion2.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion2" id="PAPictureCompletion2Option1"></td>
+                                                        <td class="bix-td-option" width="99%">T</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion2" id="PAPictureCompletion2Option2"></td>
+                                                        <td class="bix-td-option" width="99%">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion2" id="PAPictureCompletion2Option3"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion2" id="PAPictureCompletion2Option4"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion2" id="PAPictureCompletion2Option5"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">A</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">3.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion3.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion3"></td>
+                                                        <td class="bix-td-option" width="99%">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion3"></td>
+                                                        <td class="bix-td-option" width="99%">N</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion3"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion3"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion3"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">M</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">4.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion4.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion4"></td>
+                                                        <td class="bix-td-option" width="99%">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion4"></td>
+                                                        <td class="bix-td-option" width="99%">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion4"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion4"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion4"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">A</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">5.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion5.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion5"></td>
+                                                        <td class="bix-td-option" width="99%">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion5"></td>
+                                                        <td class="bix-td-option" width="99%">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion5"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion5"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion5"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">6.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion6.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion6"></td>
+                                                        <td class="bix-td-option" width="99%">F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion6"></td>
+                                                        <td class="bix-td-option" width="99%">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion6"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">N</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion6"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion6"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">7.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion7.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion7"></td>
+                                                        <td class="bix-td-option" width="99%">T</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion7"></td>
+                                                        <td class="bix-td-option" width="99%">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion7"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion7"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion7"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">A</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">8.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion8.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion8"></td>
+                                                        <td class="bix-td-option" width="99%">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion8"></td>
+                                                        <td class="bix-td-option" width="99%">M</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion8"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion8"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion8"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">G</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">9.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion9.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%">T</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">10.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion10.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion10"></td>
+                                                        <td class="bix-td-option" width="99%">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion10"></td>
+                                                        <td class="bix-td-option" width="99%">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion10"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion10"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion10"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">C</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">11.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion11.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion11"></td>
+                                                        <td class="bix-td-option" width="99%">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion11"></td>
+                                                        <td class="bix-td-option" width="99%">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion11"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">N</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion11"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion11"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">T</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">12.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion12.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%">K</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion9"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">13.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion13.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion13"></td>
+                                                        <td class="bix-td-option" width="99%">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion13"></td>
+                                                        <td class="bix-td-option" width="99%">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion13"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion13"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">O</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion13"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">H</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">14.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion14.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion14"></td>
+                                                        <td class="bix-td-option" width="99%">J</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion14"></td>
+                                                        <td class="bix-td-option" width="99%">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion14"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion14"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion14"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">M</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">15.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion15.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion15"></td>
+                                                        <td class="bix-td-option" width="99%">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion15"></td>
+                                                        <td class="bix-td-option" width="99%">T</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion15"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion15"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion15"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">L</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">16.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion16.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion16"></td>
+                                                        <td class="bix-td-option" width="99%">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion16"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion16"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">N</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion16"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion16"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">L</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">17.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion17.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion17"></td>
+                                                        <td class="bix-td-option" width="99%">N</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion17"></td>
+                                                        <td class="bix-td-option" width="99%">G</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion17"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">J</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion17"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion17"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">18.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion18.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion18"></td>
+                                                        <td class="bix-td-option" width="99%">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion18"></td>
+                                                        <td class="bix-td-option" width="99%">G</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion18"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion18"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion18"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">F</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">19.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion19.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion19"></td>
+                                                        <td class="bix-td-option" width="99%">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion19"></td>
+                                                        <td class="bix-td-option" width="99%">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion19"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion19"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion19"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">L</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">20.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion20.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion20"></td>
+                                                        <td class="bix-td-option" width="99%">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion20"></td>
+                                                        <td class="bix-td-option" width="99%">M</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion20"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion20"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion20"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">R</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">21.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion21.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion21"></td>
+                                                        <td class="bix-td-option" width="99%">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion21"></td>
+                                                        <td class="bix-td-option" width="99%">M</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion21"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion21"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion21"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">R</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">22.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion22.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion22"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion22"></td>
+                                                        <td class="bix-td-option" width="99%">F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion22"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion22"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion22"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">T</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">23.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion23.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion23"></td>
+                                                        <td class="bix-td-option" width="99%">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion23"></td>
+                                                        <td class="bix-td-option" width="99%">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion23"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion23"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion23"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">G</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">24.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion24.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion24"></td>
+                                                        <td class="bix-td-option" width="99%">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion24"></td>
+                                                        <td class="bix-td-option" width="99%">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion24"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion24"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion24"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S1</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">25.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion25.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion25"></td>
+                                                        <td class="bix-td-option" width="99%">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion25"></td>
+                                                        <td class="bix-td-option" width="99%">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion25"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">T</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion25"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion25"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">H</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">26.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion26.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion26"></td>
+                                                        <td class="bix-td-option" width="99%">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion26"></td>
+                                                        <td class="bix-td-option" width="99%">M</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion26"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion26"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion26"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">27.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion27.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion27"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion27"></td>
+                                                        <td class="bix-td-option" width="99%">M</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion27"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion27"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion27"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">F</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">28.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion28.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion28"></td>
+                                                        <td class="bix-td-option" width="99%">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion28"></td>
+                                                        <td class="bix-td-option" width="99%">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion28"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion28"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion28"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">29.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion29.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion29"></td>
+                                                        <td class="bix-td-option" width="99%">H</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion29"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion29"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">T</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion29"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">N</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion29"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">B</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">30.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion30.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion30"></td>
+                                                        <td class="bix-td-option" width="99%">K</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion30"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion30"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion30"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion30"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">31.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion31.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion31"></td>
+                                                        <td class="bix-td-option" width="99%">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion31"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion31"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion31"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">F</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion31"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">A</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">32.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion32.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion32"></td>
+                                                        <td class="bix-td-option" width="99%">A</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion32"></td>
+                                                        <td class="bix-td-option" width="99%">D</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion32"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion32"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion32"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">33.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion33.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion33"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion33"></td>
+                                                        <td class="bix-td-option" width="99%">R</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion33"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion33"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion33"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">B</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="twelvethrowquestions">
+                                    <table width="100%">
+                                        <tr width="100%">
+
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">34.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion34.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion34"></td>
+                                                        <td class="bix-td-option" width="99%">S</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion34"></td>
+                                                        <td class="bix-td-option" width="99%">E</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion34"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion34"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">W</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion34"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">F</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td width="30%">
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+
+                                                    <tr>
+                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">35.</td>
+
+
+                                                        <td valign="middle">
+                                                            <img style="height:200px;" src="~/wwwroot/images/PA-PictureCompletion/PA-PictureCompletion35.png" />
+
+                                                        </td>
+
+                                                    </tr>
+                                                </table>
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPictureCompletion35"></td>
+                                                        <td class="bix-td-option" width="99%">P</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPictureCompletion35"></td>
+                                                        <td class="bix-td-option" width="99%">L</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPictureCompletion35"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">Z</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPictureCompletion35"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">B</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPictureCompletion35"></td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">S</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="divSubmitTest" align="center" padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
+                                    <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnSubmitPicturCompletionTest" />
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+            <!--[if IE]></div><![endif]-->
+
+        </div>
+
+    </div>
+</body>
+</html>

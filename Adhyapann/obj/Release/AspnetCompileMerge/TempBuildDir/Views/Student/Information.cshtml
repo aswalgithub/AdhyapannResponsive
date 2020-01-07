@@ -1,0 +1,2178 @@
+﻿<!--<!DOCTYPE html>-->
+@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+
+    <!--<meta charset="utf-8" content="utf-8">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2299c5">
+
+    <title>Verbal Ability Test 1 - Online Verbal Ability Test</title>
+    <meta name="keywords" content="online, verbal, english, ability, test, questions, answers, explanation, solutions, 1" />
+    <meta name="description" content="Take this &quot;Online Verbal Ability Test 1&quot; test and find out how much you score before you appear for your next interview and written test." />
+    <link href="~/wwwroot/css/verbal_test.css" type="text/css" rel="stylesheet" media="screen" />
+    <script src="~/wwwroot/js/verbal_test.js" type="text/javascript"></script>
+    <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+
+</head>
+
+<body>
+
+    <div class="whole-page">
+
+        <!--[if IE]><div class="inner-page-ie"><![endif]-->
+        <div class="inner-page">
+
+            <div>
+
+                <input id="hdnTitleID" type="hidden" value="7" />
+                
+                
+                
+            </div>
+
+            <div class="pagehead"><h1>Verbal Ability Test - INFORMATION</h1></div>
+
+
+            <div class="breadcrumb">
+                @*<a href="/">Home</a> &raquo; 
+                <a href="/online-test/categories/">Online Test</a> &raquo; 
+                <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
+                <input type="hidden" id="hdnTestTitleID" value="3" />
+                <input type="hidden" id="hdnTestID" value="21" />
+                <input type="hidden" id="hdnInitialTimer" value="420" />
+                <input type="hidden" id="hdnTimer" value="420" />
+            </div>
+
+            <div class="main-left">
+
+                <script type="text/javascript" charset="utf-8">
+
+                    function LoadTestRunnerPage() {
+                        GeneralTestPageSpecificLoad();
+                        $('#divLoading').remove();
+                        $('#divStartTestInstruction').show();
+                    }
+
+                    var _timerHandler = 0;
+                    var _txtTestStats = ''; /* Result Stats append with feedback text */
+
+                    function GeneralTestPageSpecificLoad() {
+                        //$(".result-option").click(function () { OptionClickHandler(this); });
+
+                        //$("a.jq-menu").click(function () { TestTabMenuClickHandler(this); });
+
+                        $('#btnStartTest').click(function () { StartTestButtonClickHandler(this); });
+
+                        $('#btnSubmitTest').click(function () { SubmitTestButtonClickHandler(this); });
+
+                        InitializeTestPage();
+                    }
+
+                    function InitializeTestPage() {
+                        LoadOtherPageSpecificFunctions();
+                        $('#divTabContent').hide();                    /* Initially hides the Test questions, Shows 'Start Test' button.*/
+                        $('#btnSubmitTest').attr('disabled', 'disabled');
+                    }
+
+                    function LoadOtherPageSpecificFunctions() {
+                        /* Invoke : Other Page Specific Functions  */
+                        var txtTestTitleID = $('#hdnTestTitleID').val();
+                        if (txtTestTitleID == '2' ||  /* C    */
+                            txtTestTitleID == '13' ||  /* Java */
+                            txtTestTitleID == '30' ||  /* C#   */
+                            txtTestTitleID == '37'     /* CPP  */
+                        )
+                            StartCodeHighlight();
+                    }
+
+                    function SubmitTestButtonClickHandler(thisObj) {
+                        var txtMsg = '';
+                        var intUAC = $("input.jq-selected-answer[value='']").length;
+                        if (intUAC > 0) txtMsg = "Total number of unanswered questions = " + intUAC + ".\n\n";
+
+                        if (confirm(txtMsg + 'Are you sure you want to submit the Test now?'))  /* Check for Time limit also. */ {
+                            $(thisObj).attr('disabled', 'disabled');
+                            //PopulateResultStatics();
+                        }
+                    }
+
+                    function StartTestButtonClickHandler(thisObj) {
+                        /* 4 Lines - Firefox Combatability */
+                        $('#divResult').html('');
+                        $('.result-option').removeAttr('disabled');
+                        $('.result-option').removeAttr('checked');
+                        $('#hdnTimer').val($('#hdnInitialTimer').val());
+
+                        $('#divInitiator').remove();
+                        $('#btnSubmitTest').removeAttr('disabled'); $('#divSubmitTest').show();
+                        $('#divTabContent').show();
+                        $('#idTimerSpan').show();
+                        $('#divFloatTimer').show();
+                        _timerHandler = setInterval("MyTimer()", 1000);
+                    }
+
+                    //function OptionClickHandler(thisObj) {
+                    //    var objID = thisObj.id;               //option_A_25     1 - A ; 2 - 25
+                    //    var optAns = objID.split('_')[1];
+                    //    var quesID = objID.split('_')[2];
+                    //    var preVal = $("#optionSelAns_" + quesID).val();
+
+                    //    if (preVal == "") {
+                    //        $("#optionSelAns_" + quesID).val(optAns);     // set current option as answer.
+                    //        $(thisObj).attr("checked", "checked");
+                    //        $('.jq-qno-' + quesID).addClass('ib-answered');
+                    //    }
+                    //    else if (preVal == optAns) {
+                    //        $("#optionSelAns_" + quesID).val("");
+                    //        $(thisObj).removeAttr("checked");              //remove cur. object option check mark.
+                    //        $('.jq-qno-' + quesID).removeClass('ib-answered');
+                    //    }
+                    //    else {
+                    //        $("#optionSelAns_" + quesID).val(optAns);
+                    //        $(".cls_" + quesID).removeAttr("checked");  // remove all check mark
+                    //        $(thisObj).attr("checked", "checked");        // set check mark to current one.
+                    //        $('.jq-qno-' + quesID).addClass('ib-answered');
+                    //    }
+                    //}
+
+
+
+                    function MyTimer() {
+                        var valueTimer = $('#hdnTimer').val();
+
+                        if (valueTimer > 0) {
+                            valueTimer = valueTimer - 1;
+
+                            hours = (valueTimer / 3600).toString().split('.')[0];
+                            mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
+                            secs = ((valueTimer % 3600) % 60).toString();
+
+                            if (hours.length == 1) hours = '0' + hours;
+                            if (mins.length == 1) mins = '0' + mins;
+                            if (secs.length == 1) secs = '0' + secs;
+
+                            $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
+                            $('#hdnTimer').val(valueTimer);
+
+                            document.title = $('#idTimerLCD').text();
+                            $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                        }
+                        else {
+                            $('#btnSubmitTest').attr('disabled', 'disabled');
+                            alert(" Your time is up ! \n\n Let's see the Result & Statistics of the Test.");
+                            //PopulateResultStatics();
+                        }
+                    }
+
+                    //function PopulateResultStatics() {
+                    //    clearInterval(_timerHandler);
+                    //    $('#idTimerSpan').hide();
+                    //    $('#divFloatTimer').hide();
+                    //    document.title = 'Test Result';
+                    //    $('.result-option').attr('disabled', 'disabled');
+                    //    $('.result-option').css('cursor', 'auto');
+
+                    //    /* Populate result tab.   */
+                    //    var txtHtml = $('#divTabContent').html();
+                    //    var objArrActualAnswer = $('#divTabContent input.jq-actual-answer');
+                    //    var objArrSelectedAnswer = $('#divTabContent input.jq-selected-answer');
+
+                    //    $('#divTabContent').remove();
+                    //    $('#divSubmitTest').remove();
+
+                    //    $('#divResult').html(txtHtml);
+                    //    $('#divResult .jq-workspace').remove();
+
+                    //    var intTotalQuestions = objArrActualAnswer.length;
+                    //    var intAnsweredCount = 0;
+                    //    var intUnAnsweredCount = 0;
+                    //    var intCorrectAnswerCount = 0;
+                    //    var intWrongAnswerCount = 0;
+                    //    var objArrUserAnswer = $('#divResult span.jq-user-answer');
+
+                    //    /* Iteration for All Ques Answers - Populates Result Info. */
+                    //    jQuery.each(objArrActualAnswer, function (i, obj) {
+
+                    //        var optionActual = $(obj).val();
+                    //        var optionSelected = $(objArrSelectedAnswer[i]).val();
+                    //        var quesID = obj.id.split('_')[1];              // optionAnswer_45 (hidden)
+
+                    //        if (optionSelected != '') {
+                    //            //Radio Option ID :  optionAns_C_741
+                    //            $('#divResult #optionAns_' + optionSelected + '_' + quesID).attr('checked', 'checked');
+                    //            $('#divResult #tdAnswerIMG_' + optionSelected + '_' + quesID).show();
+                    //            intAnsweredCount++;
+                    //            if (optionSelected == optionActual) intCorrectAnswerCount++; else intWrongAnswerCount++;
+
+                    //            /* To display value for "Your answer:" */
+                    //            $(objArrUserAnswer[i]).html(optionSelected);
+                    //        }
+
+
+
+                    //    });
+
+                    //    intUnAnsweredCount = intTotalQuestions - intAnsweredCount;
+
+                    //    /* Sets results Statistics info.  */
+                    //    var tmpResStat = $('#divResultStatistics').html();
+                    //    tmpResStat = tmpResStat.replace('[XX/XX]', intCorrectAnswerCount + '/' + intTotalQuestions);
+                    //    tmpResStat = tmpResStat.replace('[TQ]', intTotalQuestions);
+                    //    tmpResStat = tmpResStat.replace('[AQ]', intAnsweredCount);
+                    //    tmpResStat = tmpResStat.replace('[UQ]', intUnAnsweredCount);
+                    //    $('#divResultStatistics').html(tmpResStat);
+
+                    //    $('#divResult .bix-div-answer').show();        /* Makes visible all AnsDesc. divs.  */
+
+                    //    /* Initial Swap to Result Stat. Tab */
+                    //    $('#divResult').show(); $('#divResultStatistics').show(); $('#divFeedback').show();
+
+                    //    window.scroll(0, 0); /* Scrolls up the window. */
+
+                    //    AddGeneralTestViewCount(); /* Ajax call to server. */
+
+                    //    var totalTime = parseInt($('#hdnInitialTimer').val()) / 60;
+                    //    var timeTaken = (totalTime * 60) - parseInt($('#hdnTimer').val());
+
+                    //    _txtTestStats = " [ TotQ=" + intTotalQuestions +
+                    //        ", AnsQ=" + intAnsweredCount +
+                    //        ", UnAnsQ=" + intUnAnsweredCount +
+                    //        ", CorAns=" + intCorrectAnswerCount +
+                    //        ", WrongAns=" + intWrongAnswerCount +
+                    //        ", TotTime=" + totalTime +
+                    //        "min, TimeTaken=" + timeTaken + "sec]";
+
+                    //}
+
+                    //function AddGeneralTestViewCount() {
+                    //    var intTestID = $('#hdnTestID').val();
+
+                    //    var _paramData = "TestID=" + intTestID;
+
+                    //    $.ajax({
+                    //        type: "POST",
+                    //        url: "/_ajax/add-test-viewcount.php",
+                    //        data: _paramData,
+                    //        cache: false,
+                    //        success: function (msg) { /* DONE */ }
+                    //    });
+                    //}
+
+                    function SendTestFeedback() {
+                        var txtFeedbackURL = window.location.href;
+                        var txtFeedbackText = escape($('#txtComments').val());
+                        var txtTestID = $('#hdnTestID').val();
+                        var txtQuality = $('#idQualityLevel').val();
+                        var txtDifficulty = $('#idDifficultyLevel').val();
+
+                        if (txtQuality == '0') {
+                            alert('Kindly select a Test Quality Level.');
+                            $('#idQualityLevel').focus();
+                            return false;
+                        }
+
+                        if (txtDifficulty == '0') {
+                            alert('Kindly select a Test Difficulty Level.');
+                            $('#idDifficultyLevel').focus();
+                            return false;
+                        }
+
+                        $('#btnSubmitFeedback').attr('disabled', 'disabled');
+                        $('#idQualityLevel').attr('disabled', 'disabled');
+                        $('#idDifficultyLevel').attr('disabled', 'disabled');
+                        $('#txtComments').attr('readonly', 'readonly');
+
+                        txtFeedbackText = txtFeedbackText.replace(/\+/g, '%2B');
+
+                        txtFeedbackText = txtFeedbackText + _txtTestStats;
+
+                        var _paramData = "FeedbackURL=" + txtFeedbackURL +
+                            "&FeedbackText=" + txtFeedbackText +
+                            "&TestID=" + txtTestID +
+                            "&QualityLevel=" + txtQuality +
+                            "&DifficultyLevel=" + txtDifficulty;
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/_ajax/add-test-feedback.php",
+                            data: _paramData,
+                            cache: false,
+                            success: function (msg) { $('#btnSubmitFeedback').replaceWith(msg); }
+                        });
+
+                    }
+
+                </script>
+
+                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; bottom:10px; left:1px; width:auto; background-color:#5eac1a; color:white; ">
+                    Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
+                </div>
+
+                <hr />
+
+                <div id="divResultStatistics" style="display:none; width:100%; padding-top:5px;">
+
+                    <table class="ib-dgray" cellspacing="0" cellpadding="4" style="font-size:12px; border:2px solid #ddf8c2; background-color:#fafafa;" width="100%">
+                        <tr><td align="center" bgcolor="#ddf8c2" colspan="3"><b>Marks : [XX/XX] </b></td></tr>
+                        <tr>
+                            <td>Total number of questions</td>
+                            <td width="1%">:</td>
+                            <td width="10%" nowrap="nowrap" align="right" style="padding-right:40px"><b>[TQ]</b></td>
+                        </tr>
+                        <tr>
+                            <td>Number of answered questions</td>
+                            <td width="1%">:</td>
+                            <td align="right" style="padding-right:40px"><b>[AQ]</b></td>
+                        </tr>
+                        <tr>
+                            <td>Number of unanswered questions</td>
+                            <td width="1%">:</td>
+                            <td align="right" style="padding-right:40px"><b>[UQ]</b></td>
+                        </tr>
+                    </table>
+
+                    <br /><h3>Test Review : View answers and explanation for this test.</h3><hr />
+
+                </div>
+
+                <div class="div-test-initiator" id="divInitiator">
+                    <div id="divLoading" align="center">
+                        <br /><img src="/_files/images/website/progress.gif" alt="Loading..." /><span class="mx-gray">&nbsp; Loading Test...</span>
+                    </div>
+                    <div class="mx-none" id="divStartTestInstruction">
+                        <div class="div-test-instruction">
+                            <p class="mx-green mx-bold mx-uline">Instruction:</p>
+                            
+                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                <span>This test contains a number of different tasks. For each task there are given instructions.</span><br />
+                                                <span>These instructions will tell you what you are supposed to do.</span><br />
+                                                <span>There are also sample problems. When you have read the instructions and gone over the sample problems, you will have an opportunity to ask questions about anything that is not clear.</span><br />
+                                                <span>You are allowed seven minutes for each section. It is unlikely that you will be able to finish each test in the time allowed. You should work quickly and complete as many questions as you can. When seven minutes have passed the test will end.</span><br />
+                                                <span>Begin the next test. Work on the test only in the specified time. Do not go back and work on the previous tests at any time.</span><br />
+                                                <br />
+                                                <span>For accurate scoring of your answers, please pay close attention to the following directions.</span><br />
+                                                <ul>
+                                                    <li>Find the answer space around one of the five letters, A, B, C, D or E, that is the same as the answer you choose.</li>
+                                                    <li>If you wish to change your answer, click on the right answer box.</li>
+                                                </ul><br />
+                                                <span>Your score on each section will be the number of questions answered correctly. Answers in the wrong place or those left out will be counted as wrong. </span><br />
+                                            </div>
+                                            <div class="title-bar">
+                                                Each of the following 40 questions is followed by the five possible answers from A to E. choose the answer that is correct and darken the appropriate letter on the separate answer sheet.
+                                                <br />
+                                                Look at these examples:
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                <td class="img-PA-pic-completion" valign="middle">1. What is the capital of U.S.A?</td>
+                                </tr>
+                                <tr>
+                                    <td class="bix-td-miscell" valign="top">
+                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">A.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">A.	Rome</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">B.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">B.	London</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">C.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">C.	Washington</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">D.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">D.	Ottawa</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">E.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">E.	Paris</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                The correct answer is C Washington therefore one should mark C.
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                Here is the second example:
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td class="img-PA-pic-completion" valign="middle">
+                                        <div class="bix-div-direction">2. How many months are there in a year?</div>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="bix-td-miscell" valign="top">
+                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">A.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">A.	Sometimes 6</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">B.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">B.	Always 6</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">C.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">C.	Always 8</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">D.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">D.	Always 12</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">E.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">E.	Always 11</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                The correct answer is D always 12 therefore one should mark D.
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                Timer 7 minutes (Test 1: Information)
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
+                    </div>
+                </div>
+
+                <div id="divTabContent" style="width:100%;" class="mx-none">
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">1.</td>
+                                            <td valign="middle">Which state got its first woman chief minister in 2011?</td>
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation1"></td>
+                                            <td class="bix-td-option" width="99%">West Bengal</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation1"></td>
+                                            <td class="bix-td-option" width="99%">Uttar Pradesh</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation1"></td>
+                                            <td class="bix-td-option" width="99%">Jammu and Kashmir</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation1"></td>
+                                            <td class="bix-td-option" width="99%">Maharashtra</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation1"></td>
+                                            <td class="bix-td-option" width="99%">Andhra Pradesh</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">2.</td>
+
+                                            <td valign="middle">Gandhiji’s Dandi march was in</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation2"></td>
+                                            <td class="bix-td-option" width="99%">1920</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation2"></td>
+                                            <td class="bix-td-option" width="99%">1922</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation2"></td>
+                                            <td class="bix-td-option" width="99%">1919</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation2"></td>
+                                            <td class="bix-td-option" width="99%">1930</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation2"></td>
+                                            <td class="bix-td-option" width="99%">1940</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">3.</td>
+
+
+                                            <td valign="middle">In which of the following countries was the atom bomb invested?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation3"></td>
+                                            <td class="bix-td-option" width="99%">India</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation3"></td>
+                                            <td class="bix-td-option" width="99%">U.S.A</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation3"></td>
+                                            <td class="bix-td-option" width="99%">France</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation3"></td>
+                                            <td class="bix-td-option" width="99%">Germany</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation3"></td>
+                                            <td class="bix-td-option" width="99%">U.K</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">4.</td>
+
+
+                                            <td valign="middle">All India forward block was founded by:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation4"></td>
+                                            <td class="bix-td-option" width="99%">Bal Gangadhar tilak </td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation4"></td>
+                                            <td class="bix-td-option" width="99%">Sardar Vallabhbhai Patel</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation4"></td>
+                                            <td class="bix-td-option" width="99%">Lala Lajpat rai</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation4"></td>
+                                            <td class="bix-td-option" width="99%">Subhas Chandra Bose</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation4"></td>
+                                            <td class="bix-td-option" width="99%">Mahatma Gandhi</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">5.</td>
+
+
+                                            <td valign="middle">Which is the most densely populated country in the world?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation5"></td>
+                                            <td class="bix-td-option" width="99%">India</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation5"></td>
+                                            <td class="bix-td-option" width="99%">China</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation5"></td>
+                                            <td class="bix-td-option" width="99%">America</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation5"></td>
+                                            <td class="bix-td-option" width="99%">Russia</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation5"></td>
+                                            <td class="bix-td-option" width="99%">France</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">6.</td>
+
+
+                                            <td valign="middle">The full form of STD?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation6"></td>
+                                            <td class="bix-td-option" width="99%">Subscriber’s Trunk Dialing</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation6"></td>
+                                            <td class="bix-td-option" width="99%">State Telephone Directory</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation6"></td>
+                                            <td class="bix-td-option" width="99%">State Telephone Department</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation6"></td>
+                                            <td class="bix-td-option" width="99%">State Trunk Dialing</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation6"></td>
+                                            <td class="bix-td-option" width="99%">State Trunk Calling Department</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">7.</td>
+
+
+                                            <td valign="middle">Which is the oldest European fort in India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation7"></td>
+                                            <td class="bix-td-option" width="99%">Agra fort</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation7"></td>
+                                            <td class="bix-td-option" width="99%">Pallippuram fort</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation7"></td>
+                                            <td class="bix-td-option" width="99%">Fort St George</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation7"></td>
+                                            <td class="bix-td-option" width="99%">Fort William</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation7"></td>
+                                            <td class="bix-td-option" width="99%">Aligargh Fort</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">8.</td>
+
+
+                                            <td valign="middle">Which is the southernmost state in India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation8"></td>
+                                            <td class="bix-td-option" width="99%">Tamil Nadu</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation8"></td>
+                                            <td class="bix-td-option" width="99%">Great Nicobar</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation8"></td>
+                                            <td class="bix-td-option" width="99%">Kerala</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation8"></td>
+                                            <td class="bix-td-option" width="99%">Andhra Pradesh</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation8"></td>
+                                            <td class="bix-td-option" width="99%">Madhya Pradesh</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">9.</td>
+
+
+                                            <td valign="middle">Where does silk come from?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation9"></td>
+                                            <td class="bix-td-option" width="99%">Silk plant</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation9"></td>
+                                            <td class="bix-td-option" width="99%">Tree</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation9"></td>
+                                            <td class="bix-td-option" width="99%">Silk Worm</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation9"></td>
+                                            <td class="bix-td-option" width="99%">Glass</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation9"></td>
+                                            <td class="bix-td-option" width="99%">Cotton balls</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">10.</td>
+
+
+                                            <td valign="middle">The ingredient that causes bread to rise:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation10"></td>
+                                            <td class="bix-td-option" width="99%">Yeast</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation10"></td>
+                                            <td class="bix-td-option" width="99%">Flour</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation10"></td>
+                                            <td class="bix-td-option" width="99%">Malt</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation10"></td>
+                                            <td class="bix-td-option" width="99%">Salt</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation10"></td>
+                                            <td class="bix-td-option" width="99%">Grain</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">11.</td>
+
+
+                                            <td valign="middle">A solar eclipse occurs when:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation11"></td>
+                                            <td class="bix-td-option" width="99%">The earth is between the sun and moon</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation11"></td>
+                                            <td class="bix-td-option" width="99%">The sun is between the earth and moon</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation11"></td>
+                                            <td class="bix-td-option" width="99%">The moon is between the sun and the earth</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation11"></td>
+                                            <td class="bix-td-option" width="99%">The sun is on the opposite side of the earth</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation11"></td>
+                                            <td class="bix-td-option" width="99%">The moon is on the opposite side of the earth</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">12.</td>
+
+
+                                            <td valign="middle">The head quarters of Reserve Bank of India is at:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation12"></td>
+                                            <td class="bix-td-option" width="99%">Mumbai</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation12"></td>
+                                            <td class="bix-td-option" width="99%">Chennai</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation12"></td>
+                                            <td class="bix-td-option" width="99%">Delhi</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation12"></td>
+                                            <td class="bix-td-option" width="99%">Nasik</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation12"></td>
+                                            <td class="bix-td-option" width="99%">Ahmedabad</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">13.</td>
+
+
+                                            <td valign="middle">Election commission of India was constituted in the year</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation13"></td>
+                                            <td class="bix-td-option" width="99%">1935</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation13"></td>
+                                            <td class="bix-td-option" width="99%">1950</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation13"></td>
+                                            <td class="bix-td-option" width="99%">1965</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation13"></td>
+                                            <td class="bix-td-option" width="99%">1960</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation13"></td>
+                                            <td class="bix-td-option" width="99%">1940</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">14.</td>
+
+
+                                            <td valign="middle">Who was the founder of Fatehpur Sikri?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation14"></td>
+                                            <td class="bix-td-option" width="99%">Akbar</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation14"></td>
+                                            <td class="bix-td-option" width="99%">Shah Jahan</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation14"></td>
+                                            <td class="bix-td-option" width="99%">Humayun</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation14"></td>
+                                            <td class="bix-td-option" width="99%">Babur</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation14"></td>
+                                            <td class="bix-td-option" width="99%">Aurangzeb</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">15.</td>
+
+
+                                            <td valign="middle">Who was the only medal winner for India in Sydney Olympics 2000?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation15"></td>
+                                            <td class="bix-td-option" width="99%">Leander Paes</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation15"></td>
+                                            <td class="bix-td-option" width="99%">Karnam Malleswari</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation15"></td>
+                                            <td class="bix-td-option" width="99%">P.T.Usha</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation15"></td>
+                                            <td class="bix-td-option" width="99%">Mahesh Bhupathi</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation15"></td>
+                                            <td class="bix-td-option" width="99%">Sania mirza</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">16.</td>
+
+
+                                            <td valign="middle">Silver revolution is related with:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation16"></td>
+                                            <td class="bix-td-option" width="99%">Egg/Poultry production</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation16"></td>
+                                            <td class="bix-td-option" width="99%">Fish production</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation16"></td>
+                                            <td class="bix-td-option" width="99%">Potato production</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation16"></td>
+                                            <td class="bix-td-option" width="99%">Milk production</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation16"></td>
+                                            <td class="bix-td-option" width="99%">Meat production</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">17.</td>
+
+
+                                            <td valign="middle">The deepest part of the world’s oceans is:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation17"></td>
+                                            <td class="bix-td-option" width="99%">Mariana Trench</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation17"></td>
+                                            <td class="bix-td-option" width="99%">Kermadec trench </td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation17"></td>
+                                            <td class="bix-td-option" width="99%">South Sandwich Trench</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation17"></td>
+                                            <td class="bix-td-option" width="99%">Aleutian trench</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation17"></td>
+                                            <td class="bix-td-option" width="99%">Japan trench</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">18.</td>
+
+
+                                            <td valign="middle">In which country did the green revolution start?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation18"></td>
+                                            <td class="bix-td-option" width="99%">Mexico</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation18"></td>
+                                            <td class="bix-td-option" width="99%">Britain</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation18"></td>
+                                            <td class="bix-td-option" width="99%">India</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation18"></td>
+                                            <td class="bix-td-option" width="99%">Finland</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation18"></td>
+                                            <td class="bix-td-option" width="99%">U.K</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">19.</td>
+
+
+                                            <td valign="middle">The gas inside electric bulb is</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation19"></td>
+                                            <td class="bix-td-option" width="99%">Argon</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation19"></td>
+                                            <td class="bix-td-option" width="99%">Nitrogen</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation19"></td>
+                                            <td class="bix-td-option" width="99%">Oxygen</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation19"></td>
+                                            <td class="bix-td-option" width="99%">Carbon di-Oxide</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation19"></td>
+                                            <td class="bix-td-option" width="99%">Methane</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">20.</td>
+
+
+                                            <td valign="middle">Who was the winner of FIFA World Cup 2010?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation20"></td>
+                                            <td class="bix-td-option" width="99%">Netherlands</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation20"></td>
+                                            <td class="bix-td-option" width="99%">Spain</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation20"></td>
+                                            <td class="bix-td-option" width="99%">Italy</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation20"></td>
+                                            <td class="bix-td-option" width="99%">France</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation20"></td>
+                                            <td class="bix-td-option" width="99%">Japan</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">21.</td>
+
+
+                                            <td valign="middle">When did the First Five Year plan start in India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation21"></td>
+                                            <td class="bix-td-option" width="99%">1950</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation21"></td>
+                                            <td class="bix-td-option" width="99%">1951</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation21"></td>
+                                            <td class="bix-td-option" width="99%">1955</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation21"></td>
+                                            <td class="bix-td-option" width="99%">1969</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation21"></td>
+                                            <td class="bix-td-option" width="99%">1952</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">22.</td>
+
+
+                                            <td valign="middle">What was the total number of medals to be won in the Common Wealth Games 2010?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation22"></td>
+                                            <td class="bix-td-option" width="99%">271</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation22"></td>
+                                            <td class="bix-td-option" width="99%">127</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation22"></td>
+                                            <td class="bix-td-option" width="99%">120</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation22"></td>
+                                            <td class="bix-td-option" width="99%">115</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation22"></td>
+                                            <td class="bix-td-option" width="99%">217</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="twelthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">23.</td>
+
+
+                                            <td valign="middle">‘Booker Price’ is given in the field of:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation23"></td>
+                                            <td class="bix-td-option" width="99%">Literature</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation23"></td>
+                                            <td class="bix-td-option" width="99%">Social Service</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation23"></td>
+                                            <td class="bix-td-option" width="99%">Films</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation23"></td>
+                                            <td class="bix-td-option" width="99%">Science</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation23"></td>
+                                            <td class="bix-td-option" width="99%">Sports</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">24.</td>
+
+
+                                            <td valign="middle">On which day is the Hiroshima day observed?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation24"></td>
+                                            <td class="bix-td-option" width="99%">6th august</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation24"></td>
+                                            <td class="bix-td-option" width="99%">16th august</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation24"></td>
+                                            <td class="bix-td-option" width="99%">6th September</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation24"></td>
+                                            <td class="bix-td-option" width="99%">16th September</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation24"></td>
+                                            <td class="bix-td-option" width="99%">26th July</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">25.</td>
+
+
+                                            <td valign="middle">Which is the largest freshwater lake in India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation25"></td>
+                                            <td class="bix-td-option" width="99%">Dal lake</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation25"></td>
+                                            <td class="bix-td-option" width="99%">Powai lake</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation25"></td>
+                                            <td class="bix-td-option" width="99%">Wular lake</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation25"></td>
+                                            <td class="bix-td-option" width="99%">Chilka lake</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation25"></td>
+                                            <td class="bix-td-option" width="99%">Sukhana lake</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">26.</td>
+
+
+                                            <td valign="middle">Dilli Chalo and Jai Hind was coined by:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation26"></td>
+                                            <td class="bix-td-option" width="99%">Bhagat Singh </td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation26"></td>
+                                            <td class="bix-td-option" width="99%">Subhas Chandra Bose</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation26"></td>
+                                            <td class="bix-td-option" width="99%">Mahatma Gandhi</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation26"></td>
+                                            <td class="bix-td-option" width="99%">Bal Gangadhar Tilak</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation26"></td>
+                                            <td class="bix-td-option" width="99%">Rabindranath Tagore</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">27.</td>
+
+
+                                            <td valign="middle">State Bank of India was formed in:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation27"></td>
+                                            <td class="bix-td-option" width="99%">1955</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation27"></td>
+                                            <td class="bix-td-option" width="99%">1949</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation27"></td>
+                                            <td class="bix-td-option" width="99%">1959</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation27"></td>
+                                            <td class="bix-td-option" width="99%">1935</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation27"></td>
+                                            <td class="bix-td-option" width="99%">1940</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">28.</td>
+
+
+                                            <td valign="middle">Who became the Chief Minister for the longest period in India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation28"></td>
+                                            <td class="bix-td-option" width="99%">E.K Nayanar</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation28"></td>
+                                            <td class="bix-td-option" width="99%">Sheila Dikshit</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation28"></td>
+                                            <td class="bix-td-option" width="99%">Jyoti Basu</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation28"></td>
+                                            <td class="bix-td-option" width="99%">D.K Karunakaram</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation28"></td>
+                                            <td class="bix-td-option" width="99%">Kumari Myawati</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fifteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">29.</td>
+
+
+                                            <td valign="middle">Who was the first Internal Affair Minister of Independent India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation29"></td>
+                                            <td class="bix-td-option" width="99%">Sardar Vallabhbhai Patel</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation29"></td>
+                                            <td class="bix-td-option" width="99%">Lal Bhahadur Shastri</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation29"></td>
+                                            <td class="bix-td-option" width="99%">Jawaharlal Nehru</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation29"></td>
+                                            <td class="bix-td-option" width="99%">V. Krishna Menon</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation29"></td>
+                                            <td class="bix-td-option" width="99%">Kazuhiro Haraguchi</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">30.</td>
+
+
+                                            <td valign="middle">Fathometer is used to measure:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation30"></td>
+                                            <td class="bix-td-option" width="99%">Amount of rainfall</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation30"></td>
+                                            <td class="bix-td-option" width="99%">Intensity of sound</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation30"></td>
+                                            <td class="bix-td-option" width="99%">Depth of water bodies</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation30"></td>
+                                            <td class="bix-td-option" width="99%">Radiation level</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation30"></td>
+                                            <td class="bix-td-option" width="99%">Power of an earthquake</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="sixteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">31.</td>
+
+
+                                            <td valign="middle">Which is the largest National Highway in India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation31"></td>
+                                            <td class="bix-td-option" width="99%">NH-2</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation31"></td>
+                                            <td class="bix-td-option" width="99%">NH-8</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation31"></td>
+                                            <td class="bix-td-option" width="99%">NH-24</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation31"></td>
+                                            <td class="bix-td-option" width="99%">NH-7</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation31"></td>
+                                            <td class="bix-td-option" width="99%">NH-47</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">32.</td>
+
+
+                                            <td valign="middle">The headquarters of SAARC is located in:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation32"></td>
+                                            <td class="bix-td-option" width="99%">New Delhi</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation32"></td>
+                                            <td class="bix-td-option" width="99%">Dacca</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation32"></td>
+                                            <td class="bix-td-option" width="99%">Islamabad</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation32"></td>
+                                            <td class="bix-td-option" width="99%">Kathmandu</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation32"></td>
+                                            <td class="bix-td-option" width="99%">Pakistan</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="seventeenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">33.</td>
+
+
+                                            <td valign="middle">Indian Patent Act was formed in the year?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation33"></td>
+                                            <td class="bix-td-option" width="99%">1970</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation33"></td>
+                                            <td class="bix-td-option" width="99%">1975</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation33"></td>
+                                            <td class="bix-td-option" width="99%">1977</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation33"></td>
+                                            <td class="bix-td-option" width="99%">1980</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation33"></td>
+                                            <td class="bix-td-option" width="99%">1972</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">34.</td>
+
+                                            <td valign="middle">Which state is known as Indian Spice Garden?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation34"></td>
+                                            <td class="bix-td-option" width="99%">Kerala</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation34"></td>
+                                            <td class="bix-td-option" width="99%">Karnataka</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation34"></td>
+                                            <td class="bix-td-option" width="99%">Bihar</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation34"></td>
+                                            <td class="bix-td-option" width="99%">Uttaranchal</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation34"></td>
+                                            <td class="bix-td-option" width="99%">Punjab</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="eighteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">35.</td>
+
+
+                                            <td valign="middle">On which river bank is Goa located?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation35"></td>
+                                            <td class="bix-td-option" width="99%">Mandovi</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation35"></td>
+                                            <td class="bix-td-option" width="99%">Ganga</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation35"></td>
+                                            <td class="bix-td-option" width="99%">Gomti</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation35"></td>
+                                            <td class="bix-td-option" width="99%">Sabarmati</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation35"></td>
+                                            <td class="bix-td-option" width="99%">Satluj</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">36.</td>
+
+
+                                            <td valign="middle">Dhronacharya Award was given to A.K Bansal in July 2010. He is a:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation36"></td>
+                                            <td class="bix-td-option" width="99%">Cricket Coach</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation36"></td>
+                                            <td class="bix-td-option" width="99%">Badminton Coach</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation36"></td>
+                                            <td class="bix-td-option" width="99%">Hockey Coach</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation36"></td>
+                                            <td class="bix-td-option" width="99%">Kabaddi Coach</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation36"></td>
+                                            <td class="bix-td-option" width="99%">Table Tennis Coach</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="ninteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">37.</td>
+
+
+                                            <td valign="middle">The computer was invented by:</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation37"></td>
+                                            <td class="bix-td-option" width="99%">Newton</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation37"></td>
+                                            <td class="bix-td-option" width="99%">Charles Babbage</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation37"></td>
+                                            <td class="bix-td-option" width="99%">Blaise Pascal</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation37"></td>
+                                            <td class="bix-td-option" width="99%">Dugald</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation37"></td>
+                                            <td class="bix-td-option" width="99%">Albert Einstein</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">38.</td>
+
+
+                                            <td valign="middle">What is the capital of Kerala?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation38"></td>
+                                            <td class="bix-td-option" width="99%">Trichur</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation38"></td>
+                                            <td class="bix-td-option" width="99%">Kollam</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation38"></td>
+                                            <td class="bix-td-option" width="99%">Thrissur</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation38"></td>
+                                            <td class="bix-td-option" width="99%">Thirivantanapuram</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation38"></td>
+                                            <td class="bix-td-option" width="99%">Kottayam</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="twentiethrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">39.</td>
+
+
+                                            <td valign="middle">Who was the first Woman Governor of India?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation39"></td>
+                                            <td class="bix-td-option" width="99%">Annie Basant</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation39"></td>
+                                            <td class="bix-td-option" width="99%">Sarojini Naidu</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation39"></td>
+                                            <td class="bix-td-option" width="99%">Vijayalakshmi Pandit</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation39"></td>
+                                            <td class="bix-td-option" width="99%">Sujetha Kriplani</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation39"></td>
+                                            <td class="bix-td-option" width="99%">Kadambini Ganguly</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">40.</td>
+
+
+                                            <td valign="middle">Common Wealth Games 2010 was inaugurated by?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="85%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAInformation40"></td>
+                                            <td class="bix-td-option" width="99%">Manmohan Singh and Prince Charles</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAInformation40"></td>
+                                            <td class="bix-td-option" width="99%">Pratibha Patel and Prince Charles</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAInformation40"></td>
+                                            <td class="bix-td-option" width="99%">Sonia Gandhi</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAInformation40"></td>
+                                            <td class="bix-td-option" width="99%">Pratibha Patel and Sonia Gandhi</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAInformation40"></td>
+                                            <td class="bix-td-option" width="99%">Prince Charles</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="divSubmitTest" align="center" style="display:none; padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
+                        <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnSubmitTest" />
+                    </div>
+
+                </div>
+
+                <hr />
+                
+                <div id="divFeedback" style="display:none; width:100%; padding:25px;">
+
+                    <p align="center"> <h4 align="center">*** END OF THE TEST ***</h4> </p>
+
+                    <table align="left" class="ib-dgray" cellspacing="0" cellpadding="5" style="border:2px solid #daf7f7; background-color:#fafafa;" width="100%">
+                        <tr><td align="left" bgcolor="#daf7f7" colspan="3"><b>Feedback</b></td></tr>
+                        <tr>
+                            <td nowrap="nowrap">Quality of the Test</td>
+                            <td>:</td>
+                            <td>
+                                <select id="idQualityLevel">
+                                    <option value="0"> -- Select -- </option>
+                                    <option value="5">Excellent</option>
+                                    <option value="3">Medium</option>
+                                    <option value="1">Poor</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap">Difficulty of the Test</td>
+                            <td>:</td>
+                            <td>
+                                <select id="idDifficultyLevel">
+                                    <option value="0"> -- Select -- </option>
+                                    <option value="1">Easy</option>
+                                    <option value="3">Normal</option>
+                                    <option value="5">Hard</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="100%">
+                                Comments:<br />
+                                <textarea id="txtComments" cols="40" rows="4" style="width:100%; padding:5px;">...</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" align="center" width="100%" style="padding:15px;">
+                                <input type="button" onclick="SendTestFeedback()" id="btnSubmitFeedback" value="Submit Feedback">
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!--[if IE]></div><![endif]-->
+
+    </div>
+
+
+</body>
+</html>

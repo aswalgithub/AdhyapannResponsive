@@ -1,0 +1,549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9461D05A-B090-4F21-850A-FF6CF4904470}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Adhyapann</RootNamespace>
+    <AssemblyName>Adhyapann</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GemBox.Document, Version=31.0.35.1089, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
+      <HintPath>..\packages\GemBox.Document.31.0.0.1089\lib\net35\GemBox.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="GemBox.Spreadsheet, Version=45.0.35.1069, Culture=neutral, PublicKeyToken=b1b72c69714d4847, processorArchitecture=MSIL">
+      <HintPath>..\packages\GemBox.Spreadsheet.45.0.0.1069\lib\net35\GemBox.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="SendGrid, Version=9.12.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.9.12.0\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Common, Version=2.12.14.6046, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.9.12.20\lib\net46\Spire.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.8.46, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.9.12.20\lib\net46\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=5.12.16.18046, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.9.12.20\lib\net46\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=9.12.20.6046, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.9.12.20\lib\net46\Spire.XLS.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.5.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.AccessControl, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.5.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.5.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.5.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controller\AdminController.cs" />
+    <Compile Include="Controller\AuthController.cs" />
+    <Compile Include="Controller\HomeController.cs" />
+    <Compile Include="Controller\StudentController.cs" />
+    <Compile Include="Controller\TestController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DigitalSymbolnput.cs" />
+    <Compile Include="Models\EmotionaRegInput.cs" />
+    <Compile Include="Models\ErrorViewModel.cs" />
+    <Compile Include="Models\MasterData.cs" />
+    <Compile Include="Models\Packages.cs" />
+    <Compile Include="Models\PAPicArrInput.cs" />
+    <Compile Include="Models\PAPicAssemInput.cs" />
+    <Compile Include="Models\PAPictureCompletionInput.cs" />
+    <Compile Include="Models\PASpatialInput.cs" />
+    <Compile Include="Models\Questions.cs" />
+    <Compile Include="Models\VAArithmeticInput.cs" />
+    <Compile Include="Models\VAComprehensionInput.cs" />
+    <Compile Include="Models\VAInformationInput.cs" />
+    <Compile Include="Models\VASimilarityInput.cs" />
+    <Compile Include="Models\VAVocabInput.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Views\_ViewImports.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="wwwroot\css\create_edit.css" />
+    <Content Include="wwwroot\css\daterangepicker.css" />
+    <Content Include="wwwroot\css\font-awesome.css" />
+    <Content Include="wwwroot\css\font-awesome.min.css" />
+    <Content Include="wwwroot\css\login.css" />
+    <Content Include="wwwroot\css\main.css" />
+    <Content Include="wwwroot\css\material-design-iconic-font.css" />
+    <Content Include="wwwroot\css\material-design-iconic-font.min.css" />
+    <Content Include="wwwroot\css\pace.min.css" />
+    <Content Include="wwwroot\css\practice_set.css" />
+    <Content Include="wwwroot\css\Register.css" />
+    <Content Include="wwwroot\css\select2.min.css" />
+    <Content Include="wwwroot\css\site.css" />
+    <Content Include="wwwroot\css\site.min.css" />
+    <Content Include="wwwroot\css\style.css" />
+    <Content Include="wwwroot\css\sub_test.css" />
+    <Content Include="wwwroot\css\Test.css" />
+    <Content Include="wwwroot\css\verbal_test.css" />
+    <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\images\1-7Phycho.jpg" />
+    <Content Include="wwwroot\images\8-12Phycho.jpg" />
+    <Content Include="wwwroot\images\admin.jpg" />
+    <Content Include="wwwroot\images\avatars\1.jpg" />
+    <Content Include="wwwroot\images\avatars\2.jpg" />
+    <Content Include="wwwroot\images\avatars\3.jpg" />
+    <Content Include="wwwroot\images\avatars\4.jpg" />
+    <Content Include="wwwroot\images\avatars\5.jpg" />
+    <Content Include="wwwroot\images\avatars\6.jpg" />
+    <Content Include="wwwroot\images\avatars\7.jpg" />
+    <Content Include="wwwroot\images\avatars\8.jpg" />
+    <Content Include="wwwroot\images\banner1.svg" />
+    <Content Include="wwwroot\images\banner2.svg" />
+    <Content Include="wwwroot\images\banner3.svg" />
+    <Content Include="wwwroot\images\HomeHeader.png" />
+    <Content Include="wwwroot\images\HomeHeader1.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolPrac1.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolPrac2.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolPrac3.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ1.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ10.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ11.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ12.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ13.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ14.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ15.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ16.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ17.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ18.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ19.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ2.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ20.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ21.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ22.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ23.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ24.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ25.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ26.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ27.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ28.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ29.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ3.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ30.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ31.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ32.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ33.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ34.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ35.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ4.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ5.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ6.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ7.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ8.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolQ9.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolRef.png" />
+    <Content Include="wwwroot\images\PA-DigitalSymbol\PA-DigitalSymbolRef1.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrange00.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ1.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ10.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ11.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ12.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ13.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ14.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ15.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ16.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ17.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ18.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ19.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ2.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ20.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ21.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ3.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ4.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ5.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ6.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ7.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ8.png" />
+    <Content Include="wwwroot\images\PA-PictureArrangement\PA-PictureArrangeQ9.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ0.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ00.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ1.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ10.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ11.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ12.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ13.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ14.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ15.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ16.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ17.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ18.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ19.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ2.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ20.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ3.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ4.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ5.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ6.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ7.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ8.png" />
+    <Content Include="wwwroot\images\PA-PictureAssembly\PA-PictureAssemblyQ9.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion0.jpg" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion1.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion10.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion11.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion12.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion13.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion14.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion15.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion16.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion17.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion18.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion19.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion2.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion20.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion21.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion22.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion23.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion24.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion25.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion26.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion27.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion28.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion29.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion3.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion30.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion31.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion32.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion33.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion34.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion35.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion4.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion5.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion6.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion7.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion8.png" />
+    <Content Include="wwwroot\images\PA-PictureCompletion\PA-PictureCompletion9.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatial0.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatial00.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ1.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ10.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ11.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ12.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ13.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ14.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ15.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ16.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ17.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ18.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ19.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ2.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ20.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ21.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ22.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ23.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ24.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ25.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ26.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ27.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ28.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ29.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ3.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ30.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ31.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ32.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ33.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ34.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ35.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ36.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ37.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ38.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ39.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ4.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ40.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ41.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ42.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ43.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ44.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ45.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ46.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ47.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ48.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ49.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ5.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ50.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ6.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ7.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ8.png" />
+    <Content Include="wwwroot\images\PA-Spatial\PASpatialQ9.png" />
+    <Content Include="wwwroot\images\Physcho.jpg" />
+    <Content Include="wwwroot\images\Register\bg-head-01.jpg" />
+    <Content Include="wwwroot\images\Register\bg-head-02.jpg" />
+    <Content Include="wwwroot\images\Thumbsup.jpg" />
+    <Content Include="wwwroot\js\daterangepicker.js" />
+    <Content Include="wwwroot\js\global.js" />
+    <Content Include="wwwroot\js\jquery.js" />
+    <Content Include="wwwroot\js\moment.min.js" />
+    <Content Include="wwwroot\js\Package.js" />
+    <Content Include="wwwroot\js\Package.min.js" />
+    <Content Include="wwwroot\js\Student.js" />
+    <Content Include="wwwroot\js\SubTest.js" />
+    <Content Include="wwwroot\js\Test.js" />
+    <Content Include="wwwroot\js\verbal_test.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Scripts\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="wwwroot\lib\" />
+    <Folder Include="wwwroot\pdf\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+    <Content Include="wwwroot\New OpenDocument Spreadsheet.ods" />
+    <Content Include="wwwroot\ReportTemplate.xlsx" />
+    <Content Include="wwwroot\ReportTemplate_FreeVersion.xlsx" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Auth\Index.cshtml" />
+    <Content Include="Views\Student\Arithmetic.cshtml" />
+    <Content Include="Views\Student\Comprehension.cshtml" />
+    <Content Include="Views\Student\Home.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\Information.cshtml" />
+    <Content Include="Views\Student\PracticeSet.cshtml" />
+    <Content Include="Views\Student\Register.cshtml" />
+    <Content Include="Views\Student\Similarities.cshtml" />
+    <Content Include="Views\Student\SubTest.cshtml" />
+    <Content Include="Views\Student\Vocabulary.cshtml" />
+    <Content Include="Views\Student\_ViewStart.cshtml" />
+    <Content Include="Views\Test\Arithmetic.cshtml" />
+    <Content Include="Views\Test\Comprehension.cshtml" />
+    <Content Include="Views\Test\DigitalSymbol.cshtml" />
+    <Content Include="Views\Test\EmotionalRegulation9-12.cshtml" />
+    <Content Include="Views\Test\Information.cshtml" />
+    <Content Include="Views\Test\PictureArrangement.cshtml" />
+    <Content Include="Views\Test\PictureAssembly.cshtml" />
+    <Content Include="Views\Test\PictureCompletion.cshtml" />
+    <Content Include="Views\Test\Similarities.cshtml" />
+    <Content Include="Views\Test\Spatial.cshtml" />
+    <Content Include="Views\Test\Test.cshtml" />
+    <Content Include="Views\Test\ThankYou.cshtml" />
+    <Content Include="Views\Test\Verbalnformation.cshtml" />
+    <Content Include="Views\Test\Vocabulary.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_CookieConsentPartial.cshtml" />
+    <Content Include="Views\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutStudent.cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{576ffcb4-859d-4492-b3c4-5c0d97b4a068}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63466</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63466/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

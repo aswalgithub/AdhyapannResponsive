@@ -1,0 +1,1593 @@
+﻿<!--<!DOCTYPE html>-->
+@{
+    Layout = null;
+}
+<html lang="en">
+<head>
+
+    <!--<meta charset="utf-8" content="utf-8">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#2299c5">
+
+    <title>Verbal Ability Test 3 - Online Verbal Ability Test</title>
+    <meta name="keywords" content="online, verbal, english, ability, test, questions, answers, explanation, solutions, 1" />
+    <meta name="description" content="Take this &quot;Online Verbal Ability Test 1&quot; test and find out how much you score before you appear for your next interview and written test." />
+    <link href="~/wwwroot/css/verbal_test.css" type="text/css" rel="stylesheet" media="screen" />
+    <script src="~/wwwroot/js/verbal_test.js" type="text/javascript"></script>
+    <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+</head>
+
+<body>
+
+    <div class="whole-page">
+
+        <!--[if IE]><div class="inner-page-ie"><![endif]-->
+        <div class="inner-page">
+
+            <div>
+
+                <input id="hdnTitleID" type="hidden" value="7" />
+
+            </div>
+
+            <div class="pagehead"><h1>Verbal Ability Test - VAArithmetic</h1></div>
+
+
+            <div class="breadcrumb">
+                @*<a href="/">Home</a> &raquo;
+                    <a href="/online-test/categories/">Online Test</a> &raquo;
+                    <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
+                <input type="hidden" id="hdnTestTitleID" value="3" />
+                <input type="hidden" id="hdnTestID" value="21" />
+                <input type="hidden" id="hdnInitialTimer" value="420" />
+                <input type="hidden" id="hdnTimer" value="420" />
+            </div>
+
+            <div class="main-left">
+
+                <script type="text/javascript" charset="utf-8">
+
+                    function LoadTestRunnerPage() {
+                        GeneralTestPageSpecificLoad();
+                        //$('#divLoading').remove();
+                        $('#divStartTestInstruction').show();
+                    }
+
+                    var _timerHandler = 0;
+                    var _txtTestStats = ''; /* Result Stats append with feedback text */
+
+                    function GeneralTestPageSpecificLoad() {
+                        //$(".result-option").click(function () { OptionClickHandler(this); });
+
+                        //$("a.jq-menu").click(function () { TestTabMenuClickHandler(this); });
+
+                        $('#btnStartTest').click(function () { StartTestButtonClickHandler(this); });
+
+                        $('#btnSubmitTest').click(function () { SubmitTestButtonClickHandler(this); });
+
+                        InitializeTestPage();
+                    }
+
+                    function InitializeTestPage() {
+                        //LoadOtherPageSpecificFunctions();
+                        $('#divTabContent').hide();                    /* Initially hides the Test questions, Shows 'Start Test' button.*/
+                        $('#btnSubmitTest').attr('disabled', 'disabled');
+                    }
+
+                    //function LoadOtherPageSpecificFunctions() {
+                    //    /* Invoke : Other Page Specific Functions  */
+                    //    var txtTestTitleID = $('#hdnTestTitleID').val();
+                    //    if (txtTestTitleID == '2' ||  /* C    */
+                    //        txtTestTitleID == '13' ||  /* Java */
+                    //        txtTestTitleID == '30' ||  /* C#   */
+                    //        txtTestTitleID == '37'     /* CPP  */
+                    //    )
+                    //        StartCodeHighlight();
+                    //}
+
+                    function SubmitTestButtonClickHandler(thisObj) {
+                        var txtMsg = '';
+                        var intUAC = $("input.jq-selected-answer[value='']").length;
+                        if (intUAC > 0) txtMsg = "Total number of unanswered questions = " + intUAC + ".\n\n";
+
+                        if (confirm(txtMsg + 'Are you sure you want to submit the Test now?'))  /* Check for Time limit also. */ {
+                            $(thisObj).attr('disabled', 'disabled');
+                            //PopulateResultStatics();
+                        }
+                    }
+
+                    function StartTestButtonClickHandler(thisObj) {
+                        /* 4 Lines - Firefox Combatability */
+                        //$('#divResult').html('');
+                        $('.result-option').removeAttr('disabled');
+                        $('.result-option').removeAttr('checked');
+                        $('#hdnTimer').val($('#hdnInitialTimer').val());
+
+                        $('#divInitiator').remove();
+                        $('#btnSubmitTest').removeAttr('disabled'); $('#divSubmitTest').show();
+                        $('#divTabContent').show();
+                        $('#idTimerSpan').show();
+                        $('#divFloatTimer').show();
+                        _timerHandler = setInterval("MyTimer()", 1000);
+                    }
+
+                    //function OptionClickHandler(thisObj) {
+                    //    var objID = thisObj.id;               //option_A_25     1 - A ; 2 - 25
+                    //    var optAns = objID.split('_')[1];
+                    //    var quesID = objID.split('_')[2];
+                    //    var preVal = $("#optionSelAns_" + quesID).val();
+
+                    //    if (preVal == "") {
+                    //        $("#optionSelAns_" + quesID).val(optAns);     // set current option as answer.
+                    //        $(thisObj).attr("checked", "checked");
+                    //        $('.jq-qno-' + quesID).addClass('ib-answered');
+                    //    }
+                    //    else if (preVal == optAns) {
+                    //        $("#optionSelAns_" + quesID).val("");
+                    //        $(thisObj).removeAttr("checked");              //remove cur. object option check mark.
+                    //        $('.jq-qno-' + quesID).removeClass('ib-answered');
+                    //    }
+                    //    else {
+                    //        $("#optionSelAns_" + quesID).val(optAns);
+                    //        $(".cls_" + quesID).removeAttr("checked");  // remove all check mark
+                    //        $(thisObj).attr("checked", "checked");        // set check mark to current one.
+                    //        $('.jq-qno-' + quesID).addClass('ib-answered');
+                    //    }
+                    //}
+
+                    function MyTimer() {
+                        var valueTimer = $('#hdnTimer').val();
+
+                        if (valueTimer > 0) {
+                            valueTimer = valueTimer - 1;
+
+                            hours = (valueTimer / 3600).toString().split('.')[0];
+                            mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
+                            secs = ((valueTimer % 3600) % 60).toString();
+
+                            if (hours.length == 1) hours = '0' + hours;
+                            if (mins.length == 1) mins = '0' + mins;
+                            if (secs.length == 1) secs = '0' + secs;
+
+                            $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
+                            $('#hdnTimer').val(valueTimer);
+
+                            document.title = $('#idTimerLCD').text();
+                            $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                        }
+                        else {
+                            $('#btnSubmitTest').attr('disabled', 'disabled');
+                            alert(" Your time is up ! \n\n Let's see the Result & Statistics of the Test.");
+                            //PopulateResultStatics();
+                        }
+                    }
+
+                    //function PopulateResultStatics() {
+                    //    clearInterval(_timerHandler);
+                    //    $('#idTimerSpan').hide();
+                    //    $('#divFloatTimer').hide();
+                    //    document.title = 'Test Result';
+                    //    $('.result-option').attr('disabled', 'disabled');
+                    //    $('.result-option').css('cursor', 'auto');
+
+                    //    /* Populate result tab.   */
+                    //    var txtHtml = $('#divTabContent').html();
+                    //    var objArrActualAnswer = $('#divTabContent input.jq-actual-answer');
+                    //    var objArrSelectedAnswer = $('#divTabContent input.jq-selected-answer');
+
+                    //    $('#divTabContent').remove();
+                    //    $('#divSubmitTest').remove();
+
+                    //    $('#divResult').html(txtHtml);
+                    //    $('#divResult .jq-workspace').remove();
+
+                    //    var intTotalQuestions = objArrActualAnswer.length;
+                    //    var intAnsweredCount = 0;
+                    //    var intUnAnsweredCount = 0;
+                    //    var intCorrectAnswerCount = 0;
+                    //    var intWrongAnswerCount = 0;
+                    //    var objArrUserAnswer = $('#divResult span.jq-user-answer');
+
+                    //    /* Iteration for All Ques Answers - Populates Result Info. */
+                    //    jQuery.each(objArrActualAnswer, function (i, obj) {
+
+                    //        var optionActual = $(obj).val();
+                    //        var optionSelected = $(objArrSelectedAnswer[i]).val();
+                    //        var quesID = obj.id.split('_')[1];              // optionAnswer_45 (hidden)
+
+                    //        if (optionSelected != '') {
+                    //            //Radio Option ID :  optionAns_C_741
+                    //            $('#divResult #optionAns_' + optionSelected + '_' + quesID).attr('checked', 'checked');
+                    //            $('#divResult #tdAnswerIMG_' + optionSelected + '_' + quesID).show();
+                    //            intAnsweredCount++;
+                    //            if (optionSelected == optionActual) intCorrectAnswerCount++; else intWrongAnswerCount++;
+
+                    //            /* To display value for "Your answer:" */
+                    //            $(objArrUserAnswer[i]).html(optionSelected);
+                    //        }
+
+
+
+                    //    });
+
+                    //    intUnAnsweredCount = intTotalQuestions - intAnsweredCount;
+
+                    //    /* Sets results Statistics info.  */
+                    //    var tmpResStat = $('#divResultStatistics').html();
+                    //    tmpResStat = tmpResStat.replace('[XX/XX]', intCorrectAnswerCount + '/' + intTotalQuestions);
+                    //    tmpResStat = tmpResStat.replace('[TQ]', intTotalQuestions);
+                    //    tmpResStat = tmpResStat.replace('[AQ]', intAnsweredCount);
+                    //    tmpResStat = tmpResStat.replace('[UQ]', intUnAnsweredCount);
+                    //    $('#divResultStatistics').html(tmpResStat);
+
+                    //    $('#divResult .bix-div-answer').show();        /* Makes visible all AnsDesc. divs.  */
+
+                    //    /* Initial Swap to Result Stat. Tab */
+                    //    $('#divResult').show(); $('#divResultStatistics').show(); $('#divFeedback').show();
+
+                    //    window.scroll(0, 0); /* Scrolls up the window. */
+
+                    //    AddGeneralTestViewCount(); /* Ajax call to server. */
+
+                    //    var totalTime = parseInt($('#hdnInitialTimer').val()) / 60;
+                    //    var timeTaken = (totalTime * 60) - parseInt($('#hdnTimer').val());
+
+                    //    _txtTestStats = " [ TotQ=" + intTotalQuestions +
+                    //        ", AnsQ=" + intAnsweredCount +
+                    //        ", UnAnsQ=" + intUnAnsweredCount +
+                    //        ", CorAns=" + intCorrectAnswerCount +
+                    //        ", WrongAns=" + intWrongAnswerCount +
+                    //        ", TotTime=" + totalTime +
+                    //        "min, TimeTaken=" + timeTaken + "sec]";
+
+                    //}
+
+                    //function AddGeneralTestViewCount() {
+                    //    var intTestID = $('#hdnTestID').val();
+
+                    //    var _paramData = "TestID=" + intTestID;
+
+                    //    $.ajax({
+                    //        type: "POST",
+                    //        url: "/_ajax/add-test-viewcount.php",
+                    //        data: _paramData,
+                    //        cache: false,
+                    //        success: function (msg) { /* DONE */ }
+                    //    });
+                    //}
+
+                    //function SendTestFeedback() {
+                    //    var txtFeedbackURL = window.location.href;
+                    //    var txtFeedbackText = escape($('#txtComments').val());
+                    //    var txtTestID = $('#hdnTestID').val();
+                    //    var txtQuality = $('#idQualityLevel').val();
+                    //    var txtDifficulty = $('#idDifficultyLevel').val();
+
+                    //    if (txtQuality == '0') {
+                    //        alert('Kindly select a Test Quality Level.');
+                    //        $('#idQualityLevel').focus();
+                    //        return false;
+                    //    }
+
+                    //    if (txtDifficulty == '0') {
+                    //        alert('Kindly select a Test Difficulty Level.');
+                    //        $('#idDifficultyLevel').focus();
+                    //        return false;
+                    //    }
+
+                    //    $('#btnSubmitFeedback').attr('disabled', 'disabled');
+                    //    $('#idQualityLevel').attr('disabled', 'disabled');
+                    //    $('#idDifficultyLevel').attr('disabled', 'disabled');
+                    //    $('#txtComments').attr('readonly', 'readonly');
+
+                    //    txtFeedbackText = txtFeedbackText.replace(/\+/g, '%2B');
+
+                    //    txtFeedbackText = txtFeedbackText + _txtTestStats;
+
+                    //    var _paramData = "FeedbackURL=" + txtFeedbackURL +
+                    //        "&FeedbackText=" + txtFeedbackText +
+                    //        "&TestID=" + txtTestID +
+                    //        "&QualityLevel=" + txtQuality +
+                    //        "&DifficultyLevel=" + txtDifficulty;
+
+                    //    $.ajax({
+                    //        type: "POST",
+                    //        url: "/_ajax/add-test-feedback.php",
+                    //        data: _paramData,
+                    //        cache: false,
+                    //        success: function (msg) { $('#btnSubmitFeedback').replaceWith(msg); }
+                    //    });
+
+                    //}
+
+                </script>
+
+                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; bottom:10px; left:1px; width:auto; background-color:#5eac1a; color:white; ">
+                    Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
+                </div>
+
+                <hr />
+
+                <div class="div-test-initiator" id="divInitiator">
+                    @*<div id="divLoading" align="center">
+                        <br /><img src="/_files/images/website/progress.gif" alt="Loading..." /><span class="mx-gray">&nbsp; Loading Test...</span>
+                    </div>*@
+                    <div class="mx-none" id="divStartTestInstruction">
+                        <div class="div-test-instruction">
+                            <p class="mx-green mx-bold mx-uline">Instruction:</p>
+
+                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                <span>In this section, you would be required to solve Arithmetic Problems for each question. Five options are given. Fill in the correct answer</span><br />
+                                            </div>
+                                            <div class="title-bar">
+                                                Look at these examples:
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td class="img-PA-pic-completion" valign="middle">1.	If an apple costs Rs 10. What is the cost of two apples?</td>
+                                </tr>
+                                <tr>
+                                    <td class="bix-td-miscell" valign="top">
+                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">A.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">15</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">B.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">10</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">C.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">90</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">D.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">20</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">E.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">5</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                The correct answer is D, Rs 20.
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                Here is the second example:
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td class="img-PA-pic-completion" valign="middle">
+                                        <div class="bix-div-direction">2.	Ram has 6 times as much money as Shyam. If Ram has Rs 24, how much money does Shyam have?</div>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td class="bix-td-miscell" valign="top">
+                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">A.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">4</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">B.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">7</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">C.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">6</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+
+                                                <td class="bix-td-option" width="1%">D.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">12</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="bix-td-option" width="1%">E.</td>
+                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td class="bix-inner-td-option">3</td>
+
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                The correct answer is A, Rs 4.
+                                                <br />
+                                                <br />
+                                                In a similar manner, answer each of the following questions by indicating on the answer sheet which one of the five choices is correct.
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction">
+                                            <div class="title-bar">
+                                                Timer 7 minutes (Test 3: Arithmetic)
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
+                    </div>
+                </div>
+
+                <div id="divTabContent" style="width:100%;" class="mx-none">
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">1.</td>
+                                            <td valign="middle">Smita’s mother gave her Rs 50 and her father gave her Rs 25. How much money did she get?</td>
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic1"></td>
+                                            <td class="bix-td-option" width="99%">15</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic1"></td>
+                                            <td class="bix-td-option" width="99%">150</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic1"></td>
+                                            <td class="bix-td-option" width="99%">75</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic1"></td>
+                                            <td class="bix-td-option" width="99%">50</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic1"></td>
+                                            <td class="bix-td-option" width="99%">100</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">2.</td>
+
+                                            <td valign="middle">How much do three books costs, if they are Rs 4 each?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic2"></td>
+                                            <td class="bix-td-option" width="99%">7</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic2"></td>
+                                            <td class="bix-td-option" width="99%">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic2"></td>
+                                            <td class="bix-td-option" width="99%">6</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic2"></td>
+                                            <td class="bix-td-option" width="99%">4</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic2"></td>
+                                            <td class="bix-td-option" width="99%">12</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">3.</td>
+
+
+                                            <td valign="middle">A man earned Rs 25 and spent Rs 15. How much money is remaining with him?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic3"></td>
+                                            <td class="bix-td-option" width="99%">10</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic3"></td>
+                                            <td class="bix-td-option" width="99%">40</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic3"></td>
+                                            <td class="bix-td-option" width="99%">15</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic3"></td>
+                                            <td class="bix-td-option" width="99%">5</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic3"></td>
+                                            <td class="bix-td-option" width="99%">30</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">4.</td>
+
+
+                                            <td valign="middle">If you have 8 pens and buy three more, how many pens do you have in total?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic4"></td>
+                                            <td class="bix-td-option" width="99%">12</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic4"></td>
+                                            <td class="bix-td-option" width="99%">24</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic4"></td>
+                                            <td class="bix-td-option" width="99%">11</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic4"></td>
+                                            <td class="bix-td-option" width="99%">8</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic4"></td>
+                                            <td class="bix-td-option" width="99%">5</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">5.</td>
+
+
+                                            <td valign="middle">A landlord collected Rs 600 from each of four tenants. How much did he collect?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic5"></td>
+                                            <td class="bix-td-option" width="99%">1200</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic5"></td>
+                                            <td class="bix-td-option" width="99%">2400</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic5"></td>
+                                            <td class="bix-td-option" width="99%">1100</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic5"></td>
+                                            <td class="bix-td-option" width="99%">800</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic5"></td>
+                                            <td class="bix-td-option" width="99%">500</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">6.</td>
+
+
+                                            <td valign="middle">A boy bought five apples and paid Rs 60. What was the cost of one apple?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic6"></td>
+                                            <td class="bix-td-option" width="99%">12</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic6"></td>
+                                            <td class="bix-td-option" width="99%">330</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic6"></td>
+                                            <td class="bix-td-option" width="99%">65</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic6"></td>
+                                            <td class="bix-td-option" width="99%">300</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic6"></td>
+                                            <td class="bix-td-option" width="99%">60</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">7.</td>
+
+
+                                            <td valign="middle">A cookie recipe for six dozen cookies requires 3 cups of flour. How many cups of flour will be required to make 3 dozen cookies?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic7"></td>
+                                            <td class="bix-td-option" width="99%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic7"></td>
+                                            <td class="bix-td-option" width="99%">1.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic7"></td>
+                                            <td class="bix-td-option" width="99%">1/2</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic7"></td>
+                                            <td class="bix-td-option" width="99%">9</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic7"></td>
+                                            <td class="bix-td-option" width="99%">3</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">8.</td>
+
+
+                                            <td valign="middle">How many postcards can be purchased for Rs 50 at the rate of 3 for Rs 10?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic8"></td>
+                                            <td class="bix-td-option" width="99%">30</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic8"></td>
+                                            <td class="bix-td-option" width="99%">15</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic8"></td>
+                                            <td class="bix-td-option" width="99%">50</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic8"></td>
+                                            <td class="bix-td-option" width="99%">85</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic8"></td>
+                                            <td class="bix-td-option" width="99%">20</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">9.</td>
+
+
+                                            <td valign="middle">In order to make Rs 250 a week, the number of hours that a man making Rs 8 per hour should work each week is?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic9"></td>
+                                            <td class="bix-td-option" width="99%">30</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic9"></td>
+                                            <td class="bix-td-option" width="99%">32</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic9"></td>
+                                            <td class="bix-td-option" width="99%">40</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic9"></td>
+                                            <td class="bix-td-option" width="99%">60</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic9"></td>
+                                            <td class="bix-td-option" width="99%">72</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">10.</td>
+
+
+                                            <td valign="middle">A family on vacation drove 180 kms in 4 hours. At the same time, how many hours would it take them to travel 270 kms?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic10"></td>
+                                            <td class="bix-td-option" width="99%">6</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic10"></td>
+                                            <td class="bix-td-option" width="99%">8</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic10"></td>
+                                            <td class="bix-td-option" width="99%">12</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic10"></td>
+                                            <td class="bix-td-option" width="99%">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic10"></td>
+                                            <td class="bix-td-option" width="99%">22.5</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">11.</td>
+
+
+                                            <td valign="middle">If a tool rent is Rs 80 for an hour, how much would it cost from 8:30 am-11:00 am?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic11"></td>
+                                            <td class="bix-td-option" width="99%">240</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic11"></td>
+                                            <td class="bix-td-option" width="99%">30</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic11"></td>
+                                            <td class="bix-td-option" width="99%">150</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic11"></td>
+                                            <td class="bix-td-option" width="99%">15</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic11"></td>
+                                            <td class="bix-td-option" width="99%">350</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">12.</td>
+
+
+                                            <td valign="middle">In a long jump competition Ravi jumped 14ft.5in and Shyam jumped 11ft.9in. how much further did Ravi jumped than Shyam?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="50%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic12"></td>
+                                            <td class="bix-td-option" width="99%">3ft.4in</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic12"></td>
+                                            <td class="bix-td-option" width="99%">2ft.14in</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic12"></td>
+                                            <td class="bix-td-option" width="99%">2ft.6in</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic12"></td>
+                                            <td class="bix-td-option" width="99%">3ft.8in</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic12"></td>
+                                            <td class="bix-td-option" width="99%">26ft.2in</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">13.</td>
+
+
+                                            <td valign="middle">If 2.5 kg of sugar costs Rs 75, how many kgs if sugar can be purchased for Rs 225?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic13"></td>
+                                            <td class="bix-td-option" width="99%">4</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic13"></td>
+                                            <td class="bix-td-option" width="99%">3</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic13"></td>
+                                            <td class="bix-td-option" width="99%">7.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic13"></td>
+                                            <td class="bix-td-option" width="99%">6.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic13"></td>
+                                            <td class="bix-td-option" width="99%">12.5</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">14.</td>
+
+
+                                            <td valign="middle">A clerk has a monthly income of Rs 12500. Of these Rs 5000 is budgeted for food. What % does the clerk budget for food?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic14"></td>
+                                            <td class="bix-td-option" width="99%">30%</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic14"></td>
+                                            <td class="bix-td-option" width="99%">50%</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic14"></td>
+                                            <td class="bix-td-option" width="99%">25%</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic14"></td>
+                                            <td class="bix-td-option" width="99%">40%</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic14"></td>
+                                            <td class="bix-td-option" width="99%">75%</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">15.</td>
+
+
+                                            <td valign="middle">A number missing in the series 2, 5, 10, 17, __, 37, 50, 65 is?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic15"></td>
+                                            <td class="bix-td-option" width="99%">27</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic15"></td>
+                                            <td class="bix-td-option" width="99%">22</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic15"></td>
+                                            <td class="bix-td-option" width="99%">24</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic15"></td>
+                                            <td class="bix-td-option" width="99%">26</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic15"></td>
+                                            <td class="bix-td-option" width="99%">21</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">16.</td>
+
+
+                                            <td valign="middle">The day after tomorrow is my birthday. Next week, the same day is the day of ‘Holi’. If yesterday was Sunday, what day would be the day after ‘Holi’?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic16"></td>
+                                            <td class="bix-td-option" width="99%">Monday</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic16"></td>
+                                            <td class="bix-td-option" width="99%">Thursday</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic16"></td>
+                                            <td class="bix-td-option" width="99%">Wednesday</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic16"></td>
+                                            <td class="bix-td-option" width="99%">Friday </td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic16"></td>
+                                            <td class="bix-td-option" width="99%">Saturday</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">17.</td>
+
+
+                                            <td valign="middle">A train travels 90kms in 270 mins. What is its avg speed in kms per/hour?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic17"></td>
+                                            <td class="bix-td-option" width="99%">25</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic17"></td>
+                                            <td class="bix-td-option" width="99%">35</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic17"></td>
+                                            <td class="bix-td-option" width="99%">30</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic17"></td>
+                                            <td class="bix-td-option" width="99%">40</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic17"></td>
+                                            <td class="bix-td-option" width="99%">20</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">18.</td>
+
+
+                                            <td valign="middle">A thief is running at 8kms per hour is chased by a policeman whose speed is 10 kms per hour. If the thief is 100 m ahead of the policemen when the chase started, then the time required for the policemen to catch the thief will be?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic18"></td>
+                                            <td class="bix-td-option" width="99%">2 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic18"></td>
+                                            <td class="bix-td-option" width="99%">6 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic18"></td>
+                                            <td class="bix-td-option" width="99%">3 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic18"></td>
+                                            <td class="bix-td-option" width="99%">10 minutes</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic18"></td>
+                                            <td class="bix-td-option" width="99%">5 minutes</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">19.</td>
+
+
+                                            <td valign="middle">A man bought a car four years ago for Rs 4,50,000. Each year the value of the car has decreased 15% of its original cost. What is the car worth today?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic19"></td>
+                                            <td class="bix-td-option" width="99%">2,70,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic19"></td>
+                                            <td class="bix-td-option" width="99%">1,50,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic19"></td>
+                                            <td class="bix-td-option" width="99%">1,80,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic19"></td>
+                                            <td class="bix-td-option" width="99%">3,28,100</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic19"></td>
+                                            <td class="bix-td-option" width="99%">3,82,500</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">20.</td>
+
+
+                                            <td valign="middle">A dealer discounted the price of his furniture by 20% during a sale. What was the original price of a sofa for which the customer paid him Rs2000?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic20"></td>
+                                            <td class="bix-td-option" width="99%">3000</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic20"></td>
+                                            <td class="bix-td-option" width="99%">2500</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic20"></td>
+                                            <td class="bix-td-option" width="99%">400</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic20"></td>
+                                            <td class="bix-td-option" width="99%">1800</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic20"></td>
+                                            <td class="bix-td-option" width="99%">2400</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">21.</td>
+
+
+                                            <td valign="middle">A person can plough a field in 25 days. In how many days with 15 people be able to complete the job?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic21"></td>
+                                            <td class="bix-td-option" width="99%">11</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic21"></td>
+                                            <td class="bix-td-option" width="99%">14</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic21"></td>
+                                            <td class="bix-td-option" width="99%">15</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic21"></td>
+                                            <td class="bix-td-option" width="99%">18</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic21"></td>
+                                            <td class="bix-td-option" width="99%">22</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">22.</td>
+
+
+                                            <td valign="middle">A piece of rope 36 ft long is to be cut into 2 pieces so that one piece is 1/3 as long is the other piece. How many ft long will the shorter piece be?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic22"></td>
+                                            <td class="bix-td-option" width="99%">24</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic22"></td>
+                                            <td class="bix-td-option" width="99%">12</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic22"></td>
+                                            <td class="bix-td-option" width="99%">27</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic22"></td>
+                                            <td class="bix-td-option" width="99%">18</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic22"></td>
+                                            <td class="bix-td-option" width="99%">09</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="twelthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">23.</td>
+
+
+                                            <td valign="middle">Half of 1 percent is equal to __</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic23"></td>
+                                            <td class="bix-td-option" width="99%">.0005</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic23"></td>
+                                            <td class="bix-td-option" width="99%">0.005</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic23"></td>
+                                            <td class="bix-td-option" width="99%">0.002</td>
+                                        </tr>A.	
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic23"></td>
+                                            <td class="bix-td-option" width="99%">0.02</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic23"></td>
+                                            <td class="bix-td-option" width="99%">0.002</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">24.</td>
+
+
+                                            <td valign="middle">The age of two persons differ by 20 years. If 5 years ago the elder one is 5 times as old as the younger one, the present age of the younger one is __?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic24"></td>
+                                            <td class="bix-td-option" width="99%">5 years</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic24"></td>
+                                            <td class="bix-td-option" width="99%">9 years</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic24"></td>
+                                            <td class="bix-td-option" width="99%">10 years</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic24"></td>
+                                            <td class="bix-td-option" width="99%">12 years</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic24"></td>
+                                            <td class="bix-td-option" width="99%">8 years</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenthrowquestions">
+                        <table width="100%">
+                            <tr width="100%">
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">25.</td>
+
+
+                                            <td valign="middle">To bake two muffins it takes 3.5 cups of sugar at about 11 paisa per cup. How much would it cost to purchase the sugar necessary to make 16 muffins?</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+
+
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic25"></td>
+                                            <td class="bix-td-option" width="99%">2.42</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic25"></td>
+                                            <td class="bix-td-option" width="99%">3.60</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic25"></td>
+                                            <td class="bix-td-option" width="99%">5.40</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic25"></td>
+                                            <td class="bix-td-option" width="99%">2.92</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic25"></td>
+                                            <td class="bix-td-option" width="99%">3.08</td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td width="50%">
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
+
+                                        <tr>
+                                            <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">26.</td>
+
+
+                                            <td valign="middle">The next number in the following sequence would be 3, 5, 8, 13 ,21, 34, __.</td>
+
+                                        </tr>
+                                    </table>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="90%">
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="VAArithmetic26"></td>
+                                            <td class="bix-td-option" width="99%">22</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="VAArithmetic26"></td>
+                                            <td class="bix-td-option" width="99%">47</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="VAArithmetic26"></td>
+                                            <td class="bix-td-option" width="99%">53</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="VAArithmetic26"></td>
+                                            <td class="bix-td-option" width="99%">55</td>
+                                        </tr>
+                                        <tr>
+                                            <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="VAArithmetic26"></td>
+                                            <td class="bix-td-option" width="99%">60</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="divSubmitTest" align="center" style="display:none; padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
+                        <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnSubmitTest" />
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div id="divFeedback" style="display:none; width:100%; padding:25px;">
+
+                    <p align="center"> <h4 align="center">*** END OF THE TEST ***</h4> </p>
+
+                    <table align="left" class="ib-dgray" cellspacing="0" cellpadding="5" style="border:2px solid #daf7f7; background-color:#fafafa;" width="100%">
+                        <tr><td align="left" bgcolor="#daf7f7" colspan="3"><b>Feedback</b></td></tr>
+                        <tr>
+                            <td nowrap="nowrap">Quality of the Test</td>
+                            <td>:</td>
+                            <td>
+                                <select id="idQualityLevel">
+                                    <option value="0"> -- Select -- </option>
+                                    <option value="5">Excellent</option>
+                                    <option value="3">Medium</option>
+                                    <option value="1">Poor</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td nowrap="nowrap">Difficulty of the Test</td>
+                            <td>:</td>
+                            <td>
+                                <select id="idDifficultyLevel">
+                                    <option value="0"> -- Select -- </option>
+                                    <option value="1">Easy</option>
+                                    <option value="3">Normal</option>
+                                    <option value="5">Hard</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" width="100%">
+                                Comments:<br />
+                                <textarea id="txtComments" cols="40" rows="4" style="width:100%; padding:5px;">...</textarea>
+                            </td>
+                        </tr>
+                        @*<tr>
+                            <td colspan="3" align="center" width="100%" style="padding:15px;">
+                                <input type="button" onclick="SendTestFeedback()" id="btnSubmitFeedback" value="Submit Feedback">
+                            </td>
+                        </tr>*@
+                    </table>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!--[if IE]></div><![endif]-->
+
+    </div>
+
+
+</body>
+</html>

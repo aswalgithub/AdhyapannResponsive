@@ -1,0 +1,8 @@
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\bin\Release\DataAccessLayer.dll
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\bin\Release\MySql.Data.dll
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\bin\Release\MySql.Data.xml
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.dll
+C:\Adhyapann6Jan\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.pdb
