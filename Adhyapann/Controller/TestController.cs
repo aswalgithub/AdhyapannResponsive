@@ -41,17 +41,30 @@ namespace Adhyapann_Project.Controllers
         {
             try
             {
-                byte[] AsBytes = System.IO.File.ReadAllBytes("./wwwroot/pdf/Results" + ref_code.ToString() + ".pdf");
+                byte[] AsBytes = System.IO.File.ReadAllBytes(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Results" + studentTestInfo.Student_TestID + ".pdf"));
                 String AsBase64String = Convert.ToBase64String(AsBytes);
 
-                byte[] AsBytes_xls = System.IO.File.ReadAllBytes("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx");
-                String AsBase64String_xls = Convert.ToBase64String(AsBytes_xls);
-
-                var emails = new List<EmailAddress>
+                //byte[] AsBytes_xls = System.IO.File.ReadAllBytes("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx");
+                //String AsBase64String_xls = Convert.ToBase64String(AsBytes_xls);
+                List<Package> lstPackages = adhyapanDB.GetPackageDetails(studentTestInfo.Package_ID);
+                List<EmailAddress> emails = new List<EmailAddress>();
+                if (lstPackages[0].Email_Result_ToUser == true)
                 {
-                    new EmailAddress(studentTestInfo.Email_ID),
-                    new EmailAddress("aniketdepp@gmail.com"),
-                };
+                    emails.Add(new EmailAddress(studentTestInfo.Email_ID));
+                    emails.Add(new EmailAddress("aniketdepp@gmail.com"));
+                    emails.Add(new EmailAddress("manishc56@gmail.com"));
+                    //    var emails = new List<EmailAddress>
+                    //{
+                    //    new EmailAddress(studentTestInfo.Email_ID),
+                    //    new EmailAddress("aniketdepp@gmail.com"),
+                    //     new EmailAddress("manishc56@gmail.com")
+                    //};
+                }
+                else
+                {
+                    emails.Add(new EmailAddress("aniketdepp@gmail.com"));
+                    emails.Add(new EmailAddress("manishc56@gmail.com"));
+                }
                 var apiKey = ConfigurationManager.AppSettings["SENDGRID_API_KEY"].ToString();
                 
                 var client = new SendGridClient(apiKey);
@@ -78,7 +91,7 @@ namespace Adhyapann_Project.Controllers
 
                 msg.AddAttachment(pdfAttachment);
                 //msg.AddAttachment(attachment);
-                var response = await client.SendEmailAsync(msg);
+                var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
 
 
             }
@@ -92,8 +105,7 @@ namespace Adhyapann_Project.Controllers
 
         public void CreateExcel(string ref_code)
         {
-            try
-            {
+            
                 ////AdhyapanDB adhyapanDB = new AdhyapanDB();
                 StudentTestInfo studentTestScore = adhyapanDB.GetScores(ref_code);
 
@@ -101,11 +113,13 @@ namespace Adhyapann_Project.Controllers
                 SpreadsheetInfo.FreeLimitReached += (sender, e) => e.FreeLimitReachedAction = FreeLimitReachedAction.ContinueAsTrial;
 
                 //var workbook = new ExcelFile();
-
+                //string fileName = "ich_will.mp3";
+                //string path = Path.Combine(Environment.CurrentDirectory, @"wwwroot\", "ReportTemplate.xlsx");
                 //var worksheet = workbook.Worksheets.Add("Chart");
-                var workbook = ExcelFile.Load("..\\AdhyapannWeb\\wwwroot\\ReportTemplate.xlsx");
+                var workbook = ExcelFile.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/ReportTemplate.xlsx"));
+                //var workbook = ExcelFile.Load(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, @"wwwroot\", "ReportTemplate.xlsx"));
 
-
+                
                 var worksheet = workbook.Worksheets[0];
                 //Data for Emotional Regulation Score
                 worksheet.Cells["C10"].Value = studentTestScore.Name;
@@ -211,7 +225,7 @@ namespace Adhyapann_Project.Controllers
 
                 //chart for Performance Score
                 var perf_chart = worksheet.Charts.Add(GemBox.Spreadsheet.Charts.ChartType.Column, "B191", "H203");
-                perf_chart.SelectData(worksheet.Cells.GetSubrange("B191", "D195"), true);
+                perf_chart.SelectData(worksheet.Cells.GetSubrange("B191", "D196"), true);
                 perf_chart.DataLabels.Show();
                 perf_chart.Title.Text = "Performance Scores";
                 perf_chart.Legend.IsVisible = true;
@@ -248,34 +262,28 @@ namespace Adhyapann_Project.Controllers
 
                 // Make entire sheet print on a single page.
                 //worksheet.PrintOptions.FitWorksheetWidthToPages = 1;
+                workbook.Save(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Chart" + studentTestScore.Student_TestID + ".xlsx"));
+                //workbook.Save(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, @"wwwroot\pdf\", "Chart" + ref_code.ToString() + ".xlsx"));
+                //workbook.Save("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx");
 
-
-                workbook.Save("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx");
-
-
-
-
-
+                                             
                 Spire.Xls.Workbook pdfWorkbook = new Spire.Xls.Workbook();
-                pdfWorkbook.LoadFromFile("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx");
-                pdfWorkbook.SaveToFile("./wwwroot/pdf/Results" + ref_code.ToString() + ".pdf", Spire.Xls.FileFormat.PDF);
-
+                pdfWorkbook.LoadFromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Chart" + studentTestScore.Student_TestID + ".xlsx"));
+                
+                pdfWorkbook.SaveToFile(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Results" + studentTestScore.Student_TestID + ".pdf"), Spire.Xls.FileFormat.PDF);
+               
                 Execute(ref_code, studentTestScore).Wait();
-                if ((System.IO.File.Exists("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx")))
+                if ((System.IO.File.Exists(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Chart" + studentTestScore.Student_TestID + ".xlsx"))))
                 {
-                    System.IO.File.Delete("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx");
+                    System.IO.File.Delete(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Chart" + studentTestScore.Student_TestID + ".xlsx"));
                 }
-                if ((System.IO.File.Exists("./wwwroot/pdf/Results" + ref_code.ToString() + ".pdf")))
+                if ((System.IO.File.Exists(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Results" + studentTestScore.Student_TestID + ".pdf")))) 
                 {
-                    System.IO.File.Delete("./wwwroot/pdf/Results" + ref_code.ToString() + ".pdf");
+                    System.IO.File.Delete(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Results" + studentTestScore.Student_TestID + ".pdf"));
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.Message);
-            }
+          
         }
-
+            
 
 
 
@@ -289,16 +297,16 @@ namespace Adhyapann_Project.Controllers
             //AdhyapanDB adhyapanDB = new AdhyapanDB();
             StudentTestInfo studentTestScore = adhyapanDB.GetScores(ref_code);
             List<ScaledScoreMapping> scaledScoreMapping = adhyapanDB.GetScaledScoreMapping(studentTestScore.Age);
-            int Verbal_INF_Scaled = studentTestScore.Verbal_INF == 0 ? 0 : scaledScoreMapping.Where(x => x.Verbal_INF <= studentTestScore.Verbal_INF).OrderByDescending(y => y.Verbal_INF).FirstOrDefault().Verbal_Scaled_Score;
-            int Verbal_COM_Scaled = studentTestScore.Verbal_COM == 0 ? 0 : scaledScoreMapping.Where(x => x.Verbal_COM <= studentTestScore.Verbal_COM).OrderByDescending(y => y.Verbal_COM).FirstOrDefault().Verbal_Scaled_Score;
-            int Verbal_ARI_Scaled = studentTestScore.Verbal_ARI == 0 ? 0 : scaledScoreMapping.Where(x => x.Verbal_ARI <= studentTestScore.Verbal_ARI).OrderByDescending(y => y.Verbal_ARI).FirstOrDefault().Verbal_Scaled_Score;
-            int Verbal_SIM_Scaled = studentTestScore.Verbal_SIM == 0 ? 0 : scaledScoreMapping.Where(x => x.Verbal_SIM <= studentTestScore.Verbal_SIM).OrderByDescending(y => y.Verbal_SIM).FirstOrDefault().Verbal_Scaled_Score;
-            int Verbal_VOC_Scaled = studentTestScore.Verbal_VOC == 0 ? 0 : scaledScoreMapping.Where(x => x.Verbal_VOC <= studentTestScore.Verbal_VOC).OrderByDescending(y => y.Verbal_VOC).FirstOrDefault().Verbal_Scaled_Score;
-            int Performance_DS_Scaled = studentTestScore.Performance_DS == 0 ? 0 : scaledScoreMapping.Where(x => x.Performance_DS <= studentTestScore.Performance_DS).OrderByDescending(y => y.Performance_DS).FirstOrDefault().Performance_Scaled_Score;
-            int Performance_OA_Scaled = studentTestScore.Performance_OA == 0 ? 0 : scaledScoreMapping.Where(x => x.Performance_OA <= studentTestScore.Performance_OA).OrderByDescending(y => y.Performance_OA).FirstOrDefault().Performance_Scaled_Score;
-            int Performance_PA_Scaled = studentTestScore.Performance_PA == 0 ? 0 : scaledScoreMapping.Where(x => x.Performance_PA <= studentTestScore.Performance_PA).OrderByDescending(y => y.Performance_PA).FirstOrDefault().Performance_Scaled_Score;
-            int Performance_PC_Scaled = studentTestScore.Performance_PC == 0 ? 0 : scaledScoreMapping.Where(x => x.Performance_PC <= studentTestScore.Performance_PC).OrderByDescending(y => y.Performance_PC).FirstOrDefault().Performance_Scaled_Score;
-            int Performance_SPA_Scaled = studentTestScore.Performance_SPA == 0 ? 0 : scaledScoreMapping.Where(x => x.Performance_SPA <= studentTestScore.Performance_SPA).OrderByDescending(y => y.Performance_SPA).FirstOrDefault().Performance_Scaled_Score;
+            int Verbal_INF_Scaled = scaledScoreMapping.Where(x => x.Verbal_INF <= studentTestScore.Verbal_INF).OrderByDescending(y => y.Verbal_INF).FirstOrDefault().Verbal_Scaled_Score;
+            int Verbal_COM_Scaled = scaledScoreMapping.Where(x => x.Verbal_COM <= studentTestScore.Verbal_COM).OrderByDescending(y => y.Verbal_COM).FirstOrDefault().Verbal_Scaled_Score;
+            int Verbal_ARI_Scaled = scaledScoreMapping.Where(x => x.Verbal_ARI <= studentTestScore.Verbal_ARI).OrderByDescending(y => y.Verbal_ARI).FirstOrDefault().Verbal_Scaled_Score;
+            int Verbal_SIM_Scaled = scaledScoreMapping.Where(x => x.Verbal_SIM <= studentTestScore.Verbal_SIM).OrderByDescending(y => y.Verbal_SIM).FirstOrDefault().Verbal_Scaled_Score;
+            int Verbal_VOC_Scaled = scaledScoreMapping.Where(x => x.Verbal_VOC <= studentTestScore.Verbal_VOC).OrderByDescending(y => y.Verbal_VOC).FirstOrDefault().Verbal_Scaled_Score;
+            int Performance_DS_Scaled = scaledScoreMapping.Where(x => x.Performance_DS <= studentTestScore.Performance_DS).OrderByDescending(y => y.Performance_DS).FirstOrDefault().Performance_Scaled_Score;
+            int Performance_OA_Scaled = scaledScoreMapping.Where(x => x.Performance_OA <= studentTestScore.Performance_OA).OrderByDescending(y => y.Performance_OA).FirstOrDefault().Performance_Scaled_Score;
+            int Performance_PA_Scaled = scaledScoreMapping.Where(x => x.Performance_PA <= studentTestScore.Performance_PA).OrderByDescending(y => y.Performance_PA).FirstOrDefault().Performance_Scaled_Score;
+            int Performance_PC_Scaled =  scaledScoreMapping.Where(x => x.Performance_PC <= studentTestScore.Performance_PC).OrderByDescending(y => y.Performance_PC).FirstOrDefault().Performance_Scaled_Score;
+            int Performance_SPA_Scaled = scaledScoreMapping.Where(x => x.Performance_SPA <= studentTestScore.Performance_SPA).OrderByDescending(y => y.Performance_SPA).FirstOrDefault().Performance_Scaled_Score;
 
 
             verbal_total_score = Verbal_INF_Scaled + Verbal_COM_Scaled + Verbal_ARI_Scaled + Verbal_SIM_Scaled + Verbal_VOC_Scaled;
@@ -319,6 +327,22 @@ namespace Adhyapann_Project.Controllers
             status = adhyapanDB.SetScores(ref_code, Verbal_INF_Scaled, Verbal_COM_Scaled, Verbal_ARI_Scaled, Verbal_SIM_Scaled, Verbal_VOC_Scaled, Performance_DS_Scaled, Performance_PC_Scaled, Performance_SPA_Scaled, Performance_PA_Scaled, Performance_OA_Scaled, verbal_total_score, performance_total_score, total_score, Scaled_Verbal_Score_IQ, Scaled_Verbal_Score_Percentile, Scaled_Performance_Score_IQ, Scaled_Performance_Score_Percentile, Full_Score_IQ, Full_Score_Percentile);
 
             return status;
+        }
+
+        public ActionResult LoadVerbalnformationTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstInformation", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
 
         public ActionResult LoadVerbalnformationTest()
@@ -374,8 +398,8 @@ namespace Adhyapann_Project.Controllers
         public ActionResult EmotionalRegulation912()
         {
             //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            Student studentDetail = adhyapanDB.GetStudentDetails("YL6VUvotUkieaKzEeUoV8g==");
-
+            Student studentDetail = adhyapanDB.GetStudentDetails("7R9c6w28rUaUMEqUZsjYKA==");
+            Session["Reference_Code"] = "7R9c6w28rUaUMEqUZsjYKA==";
             return View("EmotionalRegulation9-12", studentDetail);
         }
 
@@ -387,158 +411,372 @@ namespace Adhyapann_Project.Controllers
 
         public ActionResult SaveInformationTest(VAInformationInput informationTestInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAInformation");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAInformation");
 
-            int testScore = GetTestScore(informationTestInput, lstTestAnswers, "VAInformation");
+                int testScore = GetTestScore(informationTestInput, lstTestAnswers, "VAInformation");
 
-            adhyapanDB.UpdateTestScore(testScore, "Verbal_INF", informationTestInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Verbal_INF", informationTestInput.Reference_Code);
 
-            //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);          
-            Student studentDetail = adhyapanDB.GetStudentDetails(informationTestInput.Reference_Code);
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);          
+                Student studentDetail = adhyapanDB.GetStudentDetails(informationTestInput.Reference_Code);
 
-            return View("Comprehension", studentDetail);
+                return View("InstComprehension", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
+        public ActionResult LoadComprehensionTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("Comprehension", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
 
         public ActionResult SaveComprehensionTest(VAComprehensionInput comprehensionTestInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAComprehension");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAComprehension");
 
-            int testScore = GetTestScore(comprehensionTestInput, lstTestAnswers, "VAComprehension");
+                int testScore = GetTestScore(comprehensionTestInput, lstTestAnswers, "VAComprehension");
 
-            adhyapanDB.UpdateTestScore(testScore, "Verbal_COM", comprehensionTestInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Verbal_COM", comprehensionTestInput.Reference_Code);
 
-            Student studentDetail = adhyapanDB.GetStudentDetails(comprehensionTestInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(comprehensionTestInput.Reference_Code);
 
-            return View("Arithmetic", studentDetail);
+                return View("InstArithmetic", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+        }
+
+        public ActionResult LoadArithmeticTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("Arithmetic", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
 
         public ActionResult SaveArithmaticTest(VAArithmeticInput arithmeticTestInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAArithmetic");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAArithmetic");
 
-            int testScore = GetTestScore(arithmeticTestInput, lstTestAnswers, "VAArithmetic");
+                int testScore = GetTestScore(arithmeticTestInput, lstTestAnswers, "VAArithmetic");
 
-            adhyapanDB.UpdateTestScore(testScore, "Verbal_ARI", arithmeticTestInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Verbal_ARI", arithmeticTestInput.Reference_Code);
 
-            Student studentDetail = adhyapanDB.GetStudentDetails(arithmeticTestInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(arithmeticTestInput.Reference_Code);
 
-            return View("Similarities", studentDetail);
+                return View("InstSimilarities", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+        }
+
+        public ActionResult LoadSimilaritiesTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("Similarities", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
 
         public ActionResult SaveSimilaritiesTest(VASimilarityInput similarityTestInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VASimilarity");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VASimilarity");
 
-            int testScore = GetTestScore(similarityTestInput, lstTestAnswers, "VASimilarity");
+                int testScore = GetTestScore(similarityTestInput, lstTestAnswers, "VASimilarity");
 
-            adhyapanDB.UpdateTestScore(testScore, "Verbal_SIM", similarityTestInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Verbal_SIM", similarityTestInput.Reference_Code);
 
-            Student studentDetail = adhyapanDB.GetStudentDetails(similarityTestInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(similarityTestInput.Reference_Code);
 
-            return View("Vocabulary", studentDetail);
+                return View("InstVocabulary", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+        }
+
+        public ActionResult LoadVocabularyTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("Vocabulary", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
 
         public ActionResult SaveVocabTest(VAVocabInput vocabTestInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAVocab");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("VAVocab");
 
-            int testScore = GetTestScore(vocabTestInput, lstTestAnswers, "VAVocab");
+                int testScore = GetTestScore(vocabTestInput, lstTestAnswers, "VAVocab");
 
-            adhyapanDB.UpdateTestScore(testScore, "Verbal_VOC", vocabTestInput.Reference_Code);
-            Student studentDetail = adhyapanDB.GetStudentDetails(vocabTestInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Verbal_VOC", vocabTestInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(vocabTestInput.Reference_Code);
 
-            return View("DigitalSymbol", studentDetail);
+                return View("InstDigitalSymbol", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+        }
+
+        public ActionResult LoadDigitalSymbolTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("DigitalSymbol", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
         public ActionResult SubmitDigitalSymbolTest(DigitalSymbolnput digitalSymbolnput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PADigitalSymbol");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PADigitalSymbol");
 
-            int testScore = GetTestScore(digitalSymbolnput, lstTestAnswers, "PADigitalSymbol");
+                int testScore = GetTestScore(digitalSymbolnput, lstTestAnswers, "PADigitalSymbol");
 
-            adhyapanDB.UpdateTestScore(testScore, "Performance_DS", digitalSymbolnput.Reference_Code);
-            Student studentDetail = adhyapanDB.GetStudentDetails(digitalSymbolnput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Performance_DS", digitalSymbolnput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(digitalSymbolnput.Reference_Code);
 
-            return View("PictureCompletion", studentDetail);
+                return View("InstPictureCompletion", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+        }
+
+        public ActionResult LoadPictureCompletionTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("PictureCompletion", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
 
         public ActionResult SavePictureCompletionTest(PAPictureCompletionInput pictureCompletionInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PAPictureCompletion");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PAPictureCompletion");
 
-            int testScore = GetTestScore(pictureCompletionInput, lstTestAnswers, "PAPictureCompletion");
+                int testScore = GetTestScore(pictureCompletionInput, lstTestAnswers, "PAPictureCompletion");
 
-            adhyapanDB.UpdateTestScore(testScore, "Performance_PC", pictureCompletionInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Performance_PC", pictureCompletionInput.Reference_Code);
 
-            Student studentDetail = adhyapanDB.GetStudentDetails(pictureCompletionInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(pictureCompletionInput.Reference_Code);
 
-            return View("Spatial", studentDetail);
+                return View("InstSpatial", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+        }
+
+        public ActionResult LoadSpatialTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("Spatial", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
         }
 
         public ActionResult SaveSpatialTest(PASpatialInput spatialInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PASpatial");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PASpatial");
 
-            int testScore = GetTestScore(spatialInput, lstTestAnswers, "PASpatial");
+                int testScore = GetTestScore(spatialInput, lstTestAnswers, "PASpatial");
 
-            adhyapanDB.UpdateTestScore(testScore, "Performance_SPA", spatialInput.Reference_Code);
-            Student studentDetail = adhyapanDB.GetStudentDetails(spatialInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Performance_SPA", spatialInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(spatialInput.Reference_Code);
 
-            return View("PictureArrangement", studentDetail);
+                return View("InstPictureArrangement", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
         }
+
+        public ActionResult LoadPictureArrangementTest()
+        {
+
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("PictureArrangement", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
+
 
         public ActionResult SavePictureArrangementTest(PAPicArrInput picArrInput)
         {
             //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PAPicArr");
+            if (Session["Reference_Code"] != null)
+            {
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PAPicArr");
 
-            int testScore = GetTestScore(picArrInput, lstTestAnswers, "PAPicArr");
+                int testScore = GetTestScore(picArrInput, lstTestAnswers, "PAPicArr");
 
-            adhyapanDB.UpdateTestScore(testScore, "Performance_PA", picArrInput.Reference_Code);
-            Student studentDetail = adhyapanDB.GetStudentDetails(picArrInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Performance_PA", picArrInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(picArrInput.Reference_Code);
 
-            return View("PictureAssembly", studentDetail);
+                return View("InstPictureAssembly", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
         }
 
+        public ActionResult LoadPictureAssemblyTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("PictureAssembly", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
         public ActionResult SavePictureAssemblyTest(PAPicAssemInput picAssemInput)
         {
-            //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PAPicAssem");
+            if (Session["Reference_Code"] != null)
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<TestAnswerMapping> lstTestAnswers = adhyapanDB.GetTestAnswersDetails("PAPicAssem");
 
-            int testScore = GetTestScore(picAssemInput, lstTestAnswers, "PAPicAssem");
+                int testScore = GetTestScore(picAssemInput, lstTestAnswers, "PAPicAssem");
 
-            adhyapanDB.UpdateTestScore(testScore, "Performance_OA", picAssemInput.Reference_Code);
-            Student studentDetail = adhyapanDB.GetStudentDetails(picAssemInput.Reference_Code);
+                adhyapanDB.UpdateTestScore(testScore, "Performance_OA", picAssemInput.Reference_Code);
+                Student studentDetail = adhyapanDB.GetStudentDetails(picAssemInput.Reference_Code);
 
-            return View("EmotionalRegulation9-12", studentDetail);
+                return View("InstEmotionalRegulation9to12", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
         }
 
+        public ActionResult LoadEmotionalRegulation9to12()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("EmotionalRegulation9-12", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
         public ActionResult SaveEmotionalRegulationSenior(EmotionaRegInput emotionaRegInput)
         {
             //AdhyapanDB adhyapanDB = new AdhyapanDB();
+            if (Session["Reference_Code"] != null)
+            {
+                int ER_Self_Blame = emotionaRegInput.SeniorER1 + emotionaRegInput.SeniorER10 + emotionaRegInput.SeniorER19 + emotionaRegInput.SeniorER28;
+                int ER_Acceptance = emotionaRegInput.SeniorER2 + emotionaRegInput.SeniorER11 + emotionaRegInput.SeniorER20 + emotionaRegInput.SeniorER29;
+                int ER_Rumination = emotionaRegInput.SeniorER3 + emotionaRegInput.SeniorER12 + emotionaRegInput.SeniorER21 + emotionaRegInput.SeniorER30;
+                int ER_PositiveRefocusing = emotionaRegInput.SeniorER4 + emotionaRegInput.SeniorER13 + emotionaRegInput.SeniorER22 + emotionaRegInput.SeniorER31;
+                int ER_RefocusonPlanning = emotionaRegInput.SeniorER5 + emotionaRegInput.SeniorER14 + emotionaRegInput.SeniorER23 + emotionaRegInput.SeniorER32;
+                int ER_PositiveReappraisal = emotionaRegInput.SeniorER6 + emotionaRegInput.SeniorER15 + emotionaRegInput.SeniorER24 + emotionaRegInput.SeniorER33;
+                int ER_PuttingintoPerspective = emotionaRegInput.SeniorER7 + emotionaRegInput.SeniorER16 + emotionaRegInput.SeniorER25 + emotionaRegInput.SeniorER34;
+                int ER_Catastrophizing = emotionaRegInput.SeniorER8 + emotionaRegInput.SeniorER17 + emotionaRegInput.SeniorER26 + emotionaRegInput.SeniorER35;
+                int ER_Other_blame = emotionaRegInput.SeniorER9 + emotionaRegInput.SeniorER18 + emotionaRegInput.SeniorER27 + emotionaRegInput.SeniorER36;
 
-            int ER_Self_Blame = emotionaRegInput.SeniorER1 + emotionaRegInput.SeniorER10 + emotionaRegInput.SeniorER19 + emotionaRegInput.SeniorER28;
-            int ER_Acceptance = emotionaRegInput.SeniorER2 + emotionaRegInput.SeniorER11 + emotionaRegInput.SeniorER20 + emotionaRegInput.SeniorER29;
-            int ER_Rumination = emotionaRegInput.SeniorER3 + emotionaRegInput.SeniorER12 + emotionaRegInput.SeniorER21 + emotionaRegInput.SeniorER30;
-            int ER_PositiveRefocusing = emotionaRegInput.SeniorER4 + emotionaRegInput.SeniorER13 + emotionaRegInput.SeniorER22 + emotionaRegInput.SeniorER31;
-            int ER_RefocusonPlanning = emotionaRegInput.SeniorER5 + emotionaRegInput.SeniorER14 + emotionaRegInput.SeniorER23 + emotionaRegInput.SeniorER32;
-            int ER_PositiveReappraisal = emotionaRegInput.SeniorER6 + emotionaRegInput.SeniorER15 + emotionaRegInput.SeniorER24 + emotionaRegInput.SeniorER33;
-            int ER_PuttingintoPerspective = emotionaRegInput.SeniorER7 + emotionaRegInput.SeniorER16 + emotionaRegInput.SeniorER25 + emotionaRegInput.SeniorER34;
-            int ER_Catastrophizing = emotionaRegInput.SeniorER8 + emotionaRegInput.SeniorER17 + emotionaRegInput.SeniorER26 + emotionaRegInput.SeniorER35;
-            int ER_Other_blame = emotionaRegInput.SeniorER9 + emotionaRegInput.SeniorER18 + emotionaRegInput.SeniorER27 + emotionaRegInput.SeniorER36;
+                adhyapanDB.UpdateTestScoreERSenior(emotionaRegInput.Reference_Code, ER_Self_Blame, ER_Acceptance, ER_Rumination, ER_PositiveRefocusing, ER_RefocusonPlanning, ER_PositiveReappraisal, ER_PuttingintoPerspective, ER_Catastrophizing, ER_Other_blame);
 
-            adhyapanDB.UpdateTestScoreERSenior(emotionaRegInput.Reference_Code, ER_Self_Blame, ER_Acceptance, ER_Rumination, ER_PositiveRefocusing, ER_RefocusonPlanning, ER_PositiveReappraisal, ER_PuttingintoPerspective, ER_Catastrophizing, ER_Other_blame);
-
-            SetIQPercentile(emotionaRegInput.Reference_Code);
-            CreateExcel(emotionaRegInput.Reference_Code);
-            return View("ThankYou");
+                SetIQPercentile(emotionaRegInput.Reference_Code);
+                CreateExcel(emotionaRegInput.Reference_Code);
+                return View("ThankYou");
+            }
+            else
+                return RedirectToAction("Home", "Student");
 
         }
 

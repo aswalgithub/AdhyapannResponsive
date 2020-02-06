@@ -228,6 +228,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="wwwroot\css\create_edit.css" />
     <Content Include="wwwroot\css\daterangepicker.css" />
+    <Content Include="wwwroot\css\Dummy.css" />
     <Content Include="wwwroot\css\font-awesome.css" />
     <Content Include="wwwroot\css\font-awesome.min.css" />
     <Content Include="wwwroot\css\login.css" />
@@ -245,6 +246,7 @@
     <Content Include="wwwroot\css\Test.css" />
     <Content Include="wwwroot\css\verbal_test.css" />
     <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\html\InformationTest.html" />
     <Content Include="wwwroot\images\1-7Phycho.jpg" />
     <Content Include="wwwroot\images\8-12Phycho.jpg" />
     <Content Include="wwwroot\images\admin.jpg" />
@@ -443,6 +445,7 @@
     <Content Include="wwwroot\js\moment.min.js" />
     <Content Include="wwwroot\js\Package.js" />
     <Content Include="wwwroot\js\Package.min.js" />
+    <Content Include="wwwroot\js\Spin.js" />
     <Content Include="wwwroot\js\Student.js" />
     <Content Include="wwwroot\js\SubTest.js" />
     <Content Include="wwwroot\js\Test.js" />
@@ -499,6 +502,17 @@
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="Views\Test\InstInformation.cshtml" />
+    <Content Include="Views\Test\InstComprehension.cshtml" />
+    <Content Include="Views\Test\InstArithmetic.cshtml" />
+    <Content Include="Views\Test\InstSimilarities.cshtml" />
+    <Content Include="Views\Test\InstVocabulary.cshtml" />
+    <Content Include="Views\Test\InstPictureArrangement.cshtml" />
+    <Content Include="Views\Test\InstPictureAssembly.cshtml" />
+    <Content Include="Views\Test\InstPictureCompletion.cshtml" />
+    <Content Include="Views\Test\InstSpatial.cshtml" />
+    <Content Include="Views\Test\InstDigitalSymbol.cshtml" />
+    <Content Include="Views\Test\InstEmotionalRegulation9to12.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">

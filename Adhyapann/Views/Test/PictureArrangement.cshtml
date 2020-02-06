@@ -43,62 +43,81 @@
                         <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
                             <h1 class="heading--xxl u-mt1">
 
-                                Adhyapaan Physchometric Tests - PERFORMANCE APTITUDE - PICTURE ARRANGEMENT
+                                PERFORMANCE APTITUDE TEST
 
                             </h1>
+                            <h2 class="heading--xxl u-mt1">
+
+                                PICTURE ARRANGEMENT (Total Questions: 21, Timeline: 8 Minutes)
+
+                            </h2>
 
 
                             @*<div class="c-hero__description">
-                    <p>
-                        Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
-                    </p>
-                </div>*@
+                        <p>
+                            Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
+                        </p>
+                    </div>*@
                         </div>
 
-                        <div id="divUserDetails">
-                            <table align="left">
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Name: <b>@Model.Name</b></label>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Email: <b>@Model.Email_ID</b></label>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Reference Code: <b>@Model.Reference_Code</b></label>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Package: <b>@Model.Package_Name</b></label>
-
-                                    </td>
-                                </tr>
-
-                            </table>
-                        </div>
                     </div>
 
                 </section>
-                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; bottom:10px; left:1px; width:auto; background-color:#5eac1a; color:white; ">
+                <div id="divUserDetails" style="margin-left:0px;margin-right:0px;">
+
+                    <fieldset style="border:2px solid skyblue; font:bold; -moz-border-radius:8px;  -webkit-border-radius:8px;  border-radius:8px; background-color:white;  width:100%;height:45px;">
+                        <legend align="left" style="color:#0394CE;"><b> Student Details:</b></legend>
+                        <table align="left" style="font:5px !important; color:#0394CE;">
+
+                            <tr>
+                                <td style="width:20%">
+                                    <label><b> Name: @Model.Name</b></label>
+
+                                </td>
+                                <td style="width:20%">
+                                    <label> <b>Email: @Model.Email_ID</b></label>
+
+                                </td>
+                                <td style="width:35%">
+                                    <label><b> Package: @Model.Package_Name</b></label>
+
+                                </td>
+                                <td style="width:25%">
+                                    <label><b> Reference Code: @Model.Reference_Code</b></label>
+
+                                </td>
+                            </tr>
+                            @*<tr>
+
+                    </tr>*@
+                            @*<tr>
+                        <td style="width:100%">
+                            <label> Reference Code: <b>@Model.Reference_Code</b></label>
+
+                        </td>
+                    </tr>*@
+
+                            @*<tr>
+
+                    </tr>*@
+
+
+                        </table>
+
+                    </fieldset>
+                </div>
+                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; Top:20px; right:80px; width:auto; background-color:#5eac1a; color:white; ">
                     Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
                 </div>
                 <div class="breadcrumb">
                     @*<a href="/">Home</a> &raquo;
-                        <a href="/online-test/categories/">Online Test</a> &raquo;
-                        <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
-                    <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
+            <a href="/online-test/categories/">Online Test</a> &raquo;
+            <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                    <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:08:00</b></span>
                     <input type="hidden" id="hdnTestTitleID" value="3" />
                     <input type="hidden" id="hdnTestID" value="21" />
-                    <input type="hidden" id="hdnInitialTimer" value="420" />
-                    <input type="hidden" id="hdnTimer" value="420" />
+                    <input type="hidden" id="hdnInitialTimer" value="480" />
+                    <input type="hidden" id="hdnTimer" value="480" />
                 </div>
                 <div class="main-left">
 
@@ -142,1158 +161,1160 @@
                                 document.title = $('#idTimerLCD').text();
                                 $('#idFloatTimerLCD').text($('#idTimerLCD').text());
                             }
-                            else {
-                               alert(" Your time is up for this test.You will be moved to Next Test.");
-                            $("#frmPictureArrangement").submit();
+                            //else {
+                            //    alert(" Your time is up for this test.You will be moved to Next Test.");
+                            //    $("#frmPictureArrangement").submit();
 
-                            }
+                            //}
                         }
 
                     </script>
-                    <div class="div-test-initiator" id="divInitiator">
-                        <div id="divStartTestInstruction">
-                            <div class="div-test-instruction">
-                                <p class="mx-green mx-bold mx-uline">Instruction:</p>
-                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="bix-div-direction">
-                                                <div class="title-bar">
-                                                    Here are some sets of pictures for you to arrange. In each case, they are mixed up and you are to put them in the right order so that they make the most sensible story.
+
+
+                    <a class="trigger_popup_fricc">Click here for Instruction</a>
+
+                    <div class="hover_bkgr_fricc">
+                        <span class="helper"></span>
+                        <div>
+                            <div class="popupCloseButton">&times;</div>
+                            <div id="divStartTestInstruction">
+                                <div class="div-test-instruction">
+                                    <p class="mx-green mx-bold mx-uline">Instruction:</p>
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="bix-div-direction">
+                                                    <div class="title-bar">
+                                                        Here are some sets of pictures for you to arrange. In each case, they are mixed up and you are to put them in the right order so that they make the most sensible story.
+                                                    </div>
+                                                    <div class="title-bar">
+                                                        Look at these pictures. Put them in the right order so that they will tell a story.
+                                                        Choose the correct one of the following possible orders:
+                                                    </div>
                                                 </div>
-                                                <div class="title-bar">
-                                                    Look at these pictures. Put them in the right order so that they will tell a story.
-                                                    Choose the correct one of the following possible orders:
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                            </td>
+                                        </tr>
+                                        <tr>
 
-                                        <td class="img-PA-pic-completion" valign="middle">
-                                            <img src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrange00.png" />
+                                            <td class="img-PA-pic-completion" valign="middle">
+                                                <img src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrange00.png" style="width:400px" />
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="bix-td-miscell" valign="top">
-                                            <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                <tr>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bix-td-miscell" valign="top">
+                                                <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                    <tr>
 
-                                                    <td class="bix-td-option" width="1%">A.</td>
-                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
-                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td class="bix-inner-td-option">1 2 4 3</td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
+                                                        <td class="bix-td-option" width="1%">A.</td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td class="bix-inner-td-option">1 2 4 3</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
 
-                                                    <td class="bix-td-option" width="1%">B.</td>
-                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
-                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td class="bix-inner-td-option">2 3 1 4</td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="bix-td-option" width="1%">C.</td>
-                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
-                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td class="bix-inner-td-option">1 4 3 2</td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
+                                                        <td class="bix-td-option" width="1%">B.</td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td class="bix-inner-td-option">2 3 1 4</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bix-td-option" width="1%">C.</td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td class="bix-inner-td-option">1 4 3 2</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
 
-                                                    <td class="bix-td-option" width="1%">D.</td>
-                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
-                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td class="bix-inner-td-option">4 1 3 2</td>
+                                                        <td class="bix-td-option" width="1%">D.</td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td class="bix-inner-td-option">4 1 3 2</td>
 
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="bix-td-option" width="1%">E.</td>
-                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
-                                                        <table border="0" cellpadding="0" cellspacing="0">
-                                                            <tr>
-                                                                <td class="bix-inner-td-option">4 3 2 1</td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="bix-td-option" width="1%">E.</td>
+                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td class="bix-inner-td-option">4 3 2 1</td>
 
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2">
-                                            <div class="bix-div-direction">
-                                                <div class="title-bar">
-                                                    The correct order is (C), 1 4 3 2. In the 1 frame, the mother puts her son’s pants in his boots. Second, in 4, the boy begins to take his pants out of his boots. In the third scene, frame 3, two girls from school admire his bell-bottoms, and in the final scene, frame 2, as he arrives home, his mother is upset because of his wet and dirty pants.
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="bix-div-direction">
+                                                    <div class="title-bar">
+                                                        The correct order is (C), 1 4 3 2. In the 1 frame, the mother puts her son’s pants in his boots. Second, in 4, the boy begins to take his pants out of his boots. In the third scene, frame 3, two girls from school admire his bell-bottoms, and in the final scene, frame 2, as he arrives home, his mother is upset because of his wet and dirty pants.
+
+                                                    </div>
 
                                                 </div>
+                                            </td>
+                                        </tr>
 
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    </table>
 
-                                </table>
-                                <div class="bix-tbl-container bix-div-direction title-bar">
-                                    <div class="bix-div-direction">
-                                        <div class="title-bar">
-                                            Timer : 7 Minutes : PICTURE ARRANGEMENT
-                                        </div>
 
-                                    </div>
+
                                 </div>
 
-
-
-
                             </div>
-                            <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
                         </div>
                     </div>
                     <form id="frmPictureArrangement" method="POST" action="~/Test/SavePictureArrangementTest">
-                        
-                            <div id="divTabContent" style="width:100%;" class="mx-none">
-
-                                <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">1.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ1.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr1"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 3 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr1"></td>
-                                                        <td class="bix-td-option" width="99%">B. 3 1 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr1"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr1"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 2 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr1"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 1 3</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">2.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ2.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr2"></td>
-                                                        <td class="bix-td-option" width="99%">A. 3 1 4 5 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr2"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 2 3 4 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr2"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 2 5 3 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr2"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 5 4 1 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr2"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 3 2 5 4</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">3.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ3.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr3"></td>
-                                                        <td class="bix-td-option" width="99%">A. 3 1 2 5 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr3"></td>
-                                                        <td class="bix-td-option" width="99%">B. 5 3 4 1 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr3"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 3 1 4 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr3"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 5 4 1 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr3"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4 5</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fouthrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">4.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ4.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr4"></td>
-                                                        <td class="bix-td-option" width="99%">A. 4 3 2 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr4"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 3 2 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr4"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 4 1 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr4"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 3 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr4"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">5.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ5.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr5"></td>
-                                                        <td class="bix-td-option" width="99%">A. 2 3 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr5"></td>
-                                                        <td class="bix-td-option" width="99%">B. 4 1 2 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr5"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 1 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr5"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr5"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 2 4 1</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">6.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ6.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr6"></td>
-                                                        <td class="bix-td-option" width="99%">A. 2 4 5 3 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr6"></td>
-                                                        <td class="bix-td-option" width="99%">B. 4 3 2 1 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr6"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 2 3 4 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr6"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 2 1 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr6"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 3 5 1 4</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">7.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ7.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr7"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 4 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr7"></td>
-                                                        <td class="bix-td-option" width="99%">B. 2 3 1 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr7"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 4 2 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr7"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 1 4 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr7"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">8.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ8.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr8"></td>
-                                                        <td class="bix-td-option" width="99%">A. 2 4 1 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr8"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 3 4 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr8"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr8"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 4 1 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr8"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 4 3 1</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">9.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ9.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr9"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr9"></td>
-                                                        <td class="bix-td-option" width="99%">B. 2 4 3 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr9"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 4 1 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr9"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 4 3 2 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr9"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 1 2 3</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">10.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ10.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr10"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr10"></td>
-                                                        <td class="bix-td-option" width="99%">B. 3 2 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr10"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 3 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr10"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 4 2 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr10"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 4 2 3</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">11.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ11.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr11"></td>
-                                                        <td class="bix-td-option" width="99%">A. 3 4 1 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr11"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr11"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 2 1 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr11"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 3 1 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr11"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 1 2 3</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twelverowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">12.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ12.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr12"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr12"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 3 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr12"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr12"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 3 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr12"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 1 2</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">13.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ13.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr13"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr13"></td>
-                                                        <td class="bix-td-option" width="99%">B. 4 1 3 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr13"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 4 3 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr13"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 1 2 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr13"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 1 3 4</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">14.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ14.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr14"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 4 3 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr14"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr14"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 1 4 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr14"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 4 2 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr14"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 1 3 2</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fifteenrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">15.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ15.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr15"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 3 4 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr15"></td>
-                                                        <td class="bix-td-option" width="99%">B. 2 3 5 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr15"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 5 4 2 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr15"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 4 5 3 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr15"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 5 4 3 2 1</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="sixteenrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">16.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ16.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr16"></td>
-                                                        <td class="bix-td-option" width="99%">A. 2 1 3 5 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr16"></td>
-                                                        <td class="bix-td-option" width="99%">B. 3 5 2 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr16"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 3 2 1 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr16"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 4 5 3 1 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr16"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4 5</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="seventeenrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">17.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ17.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr17"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 5 4 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr17"></td>
-                                                        <td class="bix-td-option" width="99%">B. 3 1 4 5 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr17"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 5 1 2 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr17"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 1 2 4 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr17"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 2 3 1 5</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eightteenrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">18.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ18.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr18"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 5 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr18"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 3 2 4 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr18"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 3 5 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr18"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 3 2 1 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr18"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 5 1 2 4</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="nineteenrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">19.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ19.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr19"></td>
-                                                        <td class="bix-td-option" width="99%">A. 5 6 1 3 4 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr19"></td>
-                                                        <td class="bix-td-option" width="99%">B. 1 5 6 2 4 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr19"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 1 5 4 6 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr19"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 5 3 6 2 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr19"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 6 2 1 3 5</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyrowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">20.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ20.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr20"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 4 3 2</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr20"></td>
-                                                        <td class="bix-td-option" width="99%">B. 4 3 2 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr20"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 1 2 3</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr20"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 2 3 4</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr20"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 2 4 1</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyonerowquestions">
-                                    <table width="100%">
-                                        <tr width="100%">
-                                            <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-                                                    <tr>
-                                                        <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">21.</td>
-
-
-                                                        <td valign="middle">
-                                                            <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ21.png" />
-
-                                                        </td>
-
-                                                    </tr>
-                                                </table>
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr21"></td>
-                                                        <td class="bix-td-option" width="99%">A. 1 2 3 4 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr21"></td>
-                                                        <td class="bix-td-option" width="99%">B. 4 1 2 3 5</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr21"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 5 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr21"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 2 3 4 1</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr21"></td>
-                                                        <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 2 1 5 4</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-
-
-                                        </tr>
-                                    </table>
-                                </div>
-                               
-
-                                <div id="divSubmitTest" align="center" padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
-                                    <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnSubmitPictureArrangementTest" />
-                                </div>
-
-
-
-
-
-
+                        <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
+                        <div id="divTabContent" style="width:100%; text-align: center;" class="mydivs">
+
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">1.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ1.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr1"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 3 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr1"></td>
+                                                    <td class="bix-td-option" width="99%">B. 3 1 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr1"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr1"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 2 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr1"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 1 3</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
                             </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">2.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ2.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr2"></td>
+                                                    <td class="bix-td-option" width="99%">A. 3 1 4 5 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr2"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 2 3 4 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr2"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 2 5 3 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr2"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 5 4 1 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr2"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 3 2 5 4</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">3.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ3.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr3"></td>
+                                                    <td class="bix-td-option" width="99%">A. 3 1 2 5 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr3"></td>
+                                                    <td class="bix-td-option" width="99%">B. 5 3 4 1 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr3"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 3 1 4 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr3"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 5 4 1 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr3"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4 5</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fouthrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">4.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ4.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr4"></td>
+                                                    <td class="bix-td-option" width="99%">A. 4 3 2 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr4"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 3 2 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr4"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 4 1 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr4"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 3 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr4"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">5.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ5.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr5"></td>
+                                                    <td class="bix-td-option" width="99%">A. 2 3 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr5"></td>
+                                                    <td class="bix-td-option" width="99%">B. 4 1 2 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr5"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 1 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr5"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr5"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 2 4 1</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">6.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ6.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr6"></td>
+                                                    <td class="bix-td-option" width="99%">A. 2 4 5 3 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr6"></td>
+                                                    <td class="bix-td-option" width="99%">B. 4 3 2 1 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr6"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 2 3 4 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr6"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 2 1 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr6"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 3 5 1 4</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">7.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ7.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr7"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 4 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr7"></td>
+                                                    <td class="bix-td-option" width="99%">B. 2 3 1 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr7"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 4 2 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr7"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 1 4 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr7"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">8.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ8.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr8"></td>
+                                                    <td class="bix-td-option" width="99%">A. 2 4 1 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr8"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 3 4 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr8"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr8"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 4 1 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr8"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 4 3 1</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">9.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ9.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr9"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr9"></td>
+                                                    <td class="bix-td-option" width="99%">B. 2 4 3 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr9"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 4 1 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr9"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 4 3 2 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr9"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 1 2 3</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">10.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ10.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr10"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr10"></td>
+                                                    <td class="bix-td-option" width="99%">B. 3 2 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr10"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 3 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr10"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 4 2 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr10"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 4 2 3</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">11.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ11.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr11"></td>
+                                                    <td class="bix-td-option" width="99%">A. 3 4 1 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr11"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr11"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 2 1 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr11"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 3 1 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr11"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 1 2 3</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="twelverowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">12.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ12.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr12"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr12"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 3 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr12"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr12"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 3 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr12"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 1 2</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">13.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ13.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr13"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr13"></td>
+                                                    <td class="bix-td-option" width="99%">B. 4 1 3 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr13"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 4 3 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr13"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 1 2 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr13"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 2 1 3 4</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">14.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ14.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr14"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 4 3 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr14"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr14"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 1 4 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr14"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 3 4 2 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr14"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 1 3 2</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fifteenrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">15.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ15.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr15"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 3 4 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr15"></td>
+                                                    <td class="bix-td-option" width="99%">B. 2 3 5 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr15"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 1 5 4 2 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr15"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 2 4 5 3 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr15"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 5 4 3 2 1</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="sixteenrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">16.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ16.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr16"></td>
+                                                    <td class="bix-td-option" width="99%">A. 2 1 3 5 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr16"></td>
+                                                    <td class="bix-td-option" width="99%">B. 3 5 2 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr16"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 3 2 1 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr16"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 4 5 3 1 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr16"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 1 2 3 4 5</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="seventeenrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">17.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ17.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr17"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 5 4 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr17"></td>
+                                                    <td class="bix-td-option" width="99%">B. 3 1 4 5 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr17"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 5 1 2 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr17"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 1 2 4 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr17"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 2 3 1 5</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="eightteenrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">18.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ18.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr18"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 5 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr18"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 3 2 4 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr18"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 2 3 5 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr18"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 3 2 1 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr18"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 5 1 2 4</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="nineteenrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">19.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ19.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr19"></td>
+                                                    <td class="bix-td-option" width="99%">A. 5 6 1 3 4 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr19"></td>
+                                                    <td class="bix-td-option" width="99%">B. 1 5 6 2 4 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr19"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 1 5 4 6 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr19"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 5 3 6 2 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr19"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 4 6 2 1 3 5</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="twentyrowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">20.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ20.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr20"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 4 3 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr20"></td>
+                                                    <td class="bix-td-option" width="99%">B. 4 3 2 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr20"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 4 1 2 3</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr20"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 1 2 3 4</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr20"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 2 4 1</td>
+                                                </tr>
+
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="twentyonerowquestions" style="display: inline-block;width:1200px; background-color: lightblue;  border: 15px;  padding: 50px;  margin: 20px;">
+                                <table width="100%">
+                                    <tr width="100%">
+                                        <td width="100%">
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+                                                <tr>
+                                                    <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">21.</td>
+
+
+                                                    <td valign="middle">
+                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ21.png" />
+
+                                                    </td>
+
+                                                </tr>
+                                            </table>
+                                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+
+
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="A" name="PAPicArr21"></td>
+                                                    <td class="bix-td-option" width="99%">A. 1 2 3 4 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="B" name="PAPicArr21"></td>
+                                                    <td class="bix-td-option" width="99%">B. 4 1 2 3 5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="C" name="PAPicArr21"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_142">C. 3 2 5 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="D" name="PAPicArr21"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">D. 5 2 3 4 1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="E" name="PAPicArr21"></td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_142">E. 3 2 1 5 4</td>
+                                                </tr>
+                                            </table>
+                                        </td>
+
+
+                                    </tr>
+                                </table>
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                        <input style="height:30px; font-size:14px; text-align:center; padding:20px; margin-top:20px; margin-left:320px; margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Prev" name="Prev" id="btnPrev" />
+                        <input style="height:30px; font-size:14px; text-align:center; padding:20px; margin-top:20px; margin-left:380px; margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Next" name="Next" id="btnNext" />
+
+                        <div id="divSubmitTest" align="center" hidden="hidden" style="padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
+                            <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnSubmitPictureArrangementTest" />
+                        </div>
 
 
 

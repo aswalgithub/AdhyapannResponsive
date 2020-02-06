@@ -20,13 +20,6 @@
     </script>
 
 
-
-
-
-
-
-
-
 </head>
 
 
@@ -34,44 +27,35 @@
 
 
 
-    <header class="c-global-header">
+  
         @*<div style="text-align:right">
 
-                <a href="@Url.Action("Index", "Auth")" target="_blank" class="clickme">ADMIN</a>
-            </div>*@
-        <div style="text-align:right">
+            <a href="@Url.Action("Index", "Auth")" target="_blank" class="clickme">ADMIN</a>
+        </div>*@
+        @*<div style="text-align:right">
             <a href="@Url.Action("Index", "Auth")" target="_blank">
                 <img src="~/wwwroot/images/admin.jpg" class="lazy" alt="" width="150" height="75">
 
             </a>
-        </div>
+        </div>*@
+      
         @*<div class="c-global-header__top">
-                <div class="c-hero__image u-flex-1 u-align-right sm-only">
+            <div class="c-hero__image u-flex-1 u-align-right sm-only">
 
 
-                    <img src="~/wwwroot/images/HomeHeader1.png" alt="Adhyapaan Physchometric Tests" class="eager" width="1706" height="100">
+                <img src="~/images/HomeHeader1.png" alt="Adhyapaan Physchometric Tests" class="eager" width="1706" height="100">
 
-                </div>
+            </div>
 
-            </div>*@
+        </div>*@
 
-    </header>
+  
 
 
     <main id="app" class="content" aria-label="Content">
 
-
-
-
-
-
-
-
-
-
-
-
         <section class="c-hero c-hero--test">
+
             <div class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
                 <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
                     <h1 class="heading--xxl u-mt1">
@@ -79,17 +63,6 @@
                         Adhyapaan Physchometric Tests
 
                     </h1>
-                    @*<ul class="list--feature hub">
-                            <li>
-                                186
-                                tests
-                            </li>
-                            <li>
-                                2700
-                                questions
-                            </li>
-                        </ul>*@
-
 
 
                     <div class="c-hero__description">
@@ -97,6 +70,15 @@
                             Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
                         </p>
                     </div>
+                    <div class="btn-holder" style="color:white !important; font-size:12px !important;">
+                        <a href="@Url.Action("Index", "Auth")" target="_blank">
+                            <input style="text-align:center; padding:20px;  margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Login as Admin" name="Next" id="btnNext" />
+                            <img src="~/images/admin.jpg" class="lazy" alt="" width="150" height="75">
+
+                        </a>
+                       
+                    </div>
+                   
                 </div>
 
                 <div class="c-hero__image u-flex-1 u-align-right sm-only">
@@ -110,53 +92,48 @@ Adhyapaan Physchometric Tests
 " class="eager" width="406" height="269">
 
                 </div>
+
+                @*<div class="boxRegister" style="padding:25px 0 20px;">
+                <div class="text-holder" style="margin-bottom: 10px;">
+
+                    <h2 style="padding-top: 10px;font-size: 1.8em;"><span class="icon-practice">For Practice</span></h2>
+                    <p style="margin: 0 10%;">Practice psychometric tests</p>
+                </div>
+                <div class="btn-holder">
+                    <a href="buy/aptitudetest_buy.htm" class="btn btn-buy btn-primary btn-lg btn-block">Buy Now</a>
+                </div>
+            </div>*@
             </div>
+            
         </section>
 
-
-        <section class="l-container l-container--padded l-container--expanded">
-
-            <!-- <form class="hub__form c-form">
-                <div class="c-form__search">
-                    <label for="search" class="visually-hidden">Search a company name</label>
-                    <input type="search" id="search" placeholder="Search a company name">
-                </div>
-            </form> -->
+        <section class=" l-container--padded ">
             <ul class="c-programme-list">
+
                 @foreach (DataAccessLayer.Package package in Model.lstPackages)
                 {
                     if (@package.Shared == true)
                     {
-                    <li class="c-programme-card">
-                        <a href="@Url.Action("Register", "Student",new { packageID = @package.Package_ID })">
-                            <img src="@Url.Content(@package.ImagePath)" class="lazy" alt="">
-                            <div >
-                                <div>@package.Package_Name</div>
-                               
+                        <li class="c-programme-card" style=" position: relative; min-height: 1px;padding-right: 15px; padding-left: 15px;margin-left: 8.33333333%">
+                            <div class="boxRegister" style="text-align:center;background-color:lightseagreen;color:whitesmoke">
+                                <div class="text-holder" style="margin-bottom: 10px;">
+                                    <!--<span class="btn-icon" style="padding-bottom: 20px;">
+                                        <img src="temp/resume.png" alt="psychometric for personal use">
+                                    </span>-->
+                                    <h2 style="padding-top: 10px;font-size: 1.4em;"><span>@package.Package_Name</span></h2>
 
-                            </div>
-                        </a>
-                    </li>
-                    }
-
-                    @*<li class="c-programme-card">
-                        <a href="/verbal-reasoning-tests/">
-                            <img src="~/wwwroot/images/1-7Phycho.jpg" class="lazy" alt="">
-                            <div class="c-programme__content">
-                                <div class="c-programme__name">ER and Aptitude - Class Group 1-7</div>
-                                <div class="c-programme__features">
-                                    3 tests | 132 questions
                                 </div>
-
+                                <div class="btn-holder">
+                                    <a href="@Url.Action("Register", "Student",new { packageID = @package.Package_ID })" class="btn btn-buy btn-primary btn-lg btn-block">Take Test</a>
+                                </div>
                             </div>
-                        </a>
-                    </li>*@
+                        </li>
+                    }
 
                 }
 
-                </ul>
+            </ul>
         </section>
-
     </main>
 
 

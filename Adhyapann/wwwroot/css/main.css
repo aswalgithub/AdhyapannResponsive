@@ -1378,13 +1378,13 @@ button.swiper-pagination-bullet {
 }
 
 .l-container--padded {
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 2rem
 }
 
 @media (min-width: 769px) {
     .l-container--padded {
-        padding-top: 6.4rem;
+        padding-top: 3.2rem;
         padding-bottom: 6.4rem
     }
 }
@@ -3338,9 +3338,9 @@ a {
         color: inherit
     }
 
-.package-list__intro a, .c-accordion__body a, .l-article a, .link--primary {
+/*.package-list__intro a, .c-accordion__body a, .l-article a, .link--primary {
     color: #0394CE
-}
+}*/
 
     .package-list__intro a:hover, .package-list__intro a:focus, .c-accordion__body a:hover, .c-accordion__body a:focus, .l-article a:hover, .l-article a:focus, .link--primary:hover, .link--primary:focus {
         color: #026790
@@ -5436,3 +5436,61 @@ p {
         top: 0;
         width: 100%
     }
+
+.herobar-pricing {
+    padding-top: 10px
+}
+
+    .herobar-pricing .box {
+        margin-bottom: 15px;
+        border: 0;
+        border-radius: 4px;
+        position: relative;
+        padding-bottom: 40px
+    }
+
+        .herobar-pricing .box .btn {
+            max-width: 285px;
+            font-weight: 700
+        }
+
+        .herobar-pricing .box .select-holder {
+            padding: 0 10px
+        }
+
+        .herobar-pricing .box h2 {
+            font-weight: 400;
+            margin-bottom: 6px
+        }
+
+        .herobar-pricing .box .price {
+            font-size: 24px;
+            display: block;
+            line-height: normal;
+            font-weight: 400;
+            padding: 20px 0 25px
+        }
+
+
+.boxRegister {
+    box-shadow: 1px 2px 0 0 #999;
+    border: 1px solid #ccc;
+    box-shadow: 1px 2px 4px rgba(0,0,0,.25)
+}
+
+    .boxRegister .text-holder {
+        margin-bottom: 15px
+    }
+
+        .boxRegister .text-holder:last-child {
+            margin-bottom: 15px
+        }
+
+    .boxRegister .btn-holder {
+        padding: 17px 0;
+        margin-bottom: 15px
+    }
+
+        .boxRegister .btn-holder:last-child {
+            margin-bottom: 0
+        }
