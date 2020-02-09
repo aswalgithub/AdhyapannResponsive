@@ -43,16 +43,16 @@
             <div class="card card-1">
 
                 <div class="card-body">
-                    <h2 style="text-align:center;font-size:25px">Package : @Model.Package_Name</h2>
+                    <h2 style="text-align:center;font-size:25px;color:white !important;">Package : @Model.Package_Name</h2>
 
-
+                    
                     <form id="frmRegister" method="POST" action="~/Student/SaveStudentDetails">
                         <div class="container" style="border: groove">
                             <input type="hidden" id="Package_ID" name="Package_ID" value="@Model.Package_ID">
                             <input type="hidden" id="Package_Name" name="Package_Name" value="@Model.Package_Name">
-
+                            <fieldset><legend style="color:white !important">Student Information</legend></fieldset>
                             <div class="box">
-                                <h2 class="title" style="text-align:left ;font-size:20px">Student Information</h2>
+                                @*<h2 class="title" style="text-align:left ;font-size:20px">Student Information</h2>*@
                                 <div class="box-row">
 
                                     <div class="box-cell box1">
@@ -65,7 +65,7 @@
                                             <input class="input--style-1" type="text" placeholder="EMAIL ID" name="Email_ID" id="Email_ID" required pattern=".*\S+.*" title="This field is required">
                                         </div>
 
-                                        <div class="input-group" style="border:solid groove">
+                                        <div class="input-group">
                                             <div class="rs-select2 js-select-simple select--no-search">
                                                 <select name="Gender" id="Gender" required>
                                                     <option value="" disabled="disabled" selected="selected">GENDER</option>
@@ -95,7 +95,7 @@
                                         </div>
 
                                         <div class="input-group" style="border:solid groove">
-                                            <div class="rs-select2 js-select-simple select--no-search">
+                                            <div class="rs-select2 js-select-simple select--no-search" >
                                                 <select name="Class" id="Class" required>
                                                     <option value="" disabled="disabled" selected="selected">CLASS</option>
                                                     <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>1</option>
@@ -123,11 +123,47 @@
                                 </div>
                             </div>
                             <p align="center">
-                                <button class="btn btn--radius btn--green" id="btnRegisterStudent" type="button" style="text-align:center;margin:5px">Start Test</button>
-                                <button class="btn btn--radius btn--green" id="btnBack" type="button" style="text-align:right;margin:5px" onclick="location.href='@Url.Action("Home", "Student")'" >Back</button>
+                                <button class="btn btn--radius btn--green" id="btnRegisterStudent" name="initiateTest" type="button" style="text-align:center;margin:5px">Start Test</button>
+                                <button class="btn btn--radius btn--green" id="btnBack" type="button" style="text-align:right;margin:5px" onclick="location.href='@Url.Action("Home", "Student")'">Back</button>
                             </p>
                         </div>
-                       
+
+                        <div class="container" style="border: groove">
+                            <fieldset><legend style="color:white !important">Enter the details to resume Test</legend></fieldset>
+                            <div class="box">
+                                @*<h2 class="title" style="text-align:left ;font-size:20px">Enter the details to resume the Test</h2>*@
+                                <div class="box-row">
+
+                                    <div class="box-cell box1">
+                                        <div class="input-group" style="border:solid">
+                                            <input class="input--style-1" type="text" placeholder="REFERENCE ID" name="referenceID" id="referenceID" required pattern=".*\S+.*" title="This field is required" autofocus>
+                                        </div>
+
+
+
+
+
+
+                                    </div>
+                                    <div class="box-cell box2">
+                                        <div class="input-group" style="border:solid">
+                                            <input class="input--style-1" type="password" data-type="password" placeholder="PASSWORD" name="Password_resume" id="password1_resume" required pattern=".*\S+.*" title="This field is required">
+                                            <input type="hidden" id="password2_resume" value="@Model.Package_Password" />
+
+                                        </div>
+                                        <p id="validate-status"></p>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <p align="center">
+                                <button class="btn btn--radius btn--green" id="btnResumeTest" name="initiateTest" type="button" style="text-align:center;margin:5px">Resume Test</button>
+
+                            </p>
+                        </div>
 
                     </form>
 

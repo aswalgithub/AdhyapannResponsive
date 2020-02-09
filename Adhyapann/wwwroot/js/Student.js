@@ -1,6 +1,94 @@
 ﻿$(document).ready(function () {
     $('.hover_bkgr_fricc').hide();
 
+    
+  
+
+    $('#btnResumeTest').click(function (event) {
+
+        var input = new Object();
+       
+        input.referenceID = $.trim($('#referenceID').val());
+        input.password1_resume = $.trim($('#password1_resume').val());
+        var password2_resume = $.trim($("#password2_resume").val());
+
+        if (input.referenceID == '') {
+            $('#ValidationMessage').html("ReferenceID cannot be blank");
+            $('.hover_bkgr_fricc').show();
+            return false;
+        }
+        else if (input.password1_resume == '') {
+            $('#ValidationMessage').html("Password cannot be empty");
+            $('.hover_bkgr_fricc').show();
+            return false;
+        }
+        else if (input.password1_resume != password2_resume) {
+            $('#ValidationMessage').html("Password entered to resume test is Invalid");
+            $('.hover_bkgr_fricc').show();
+            return false;
+        }
+        else {
+
+            $.ajax({
+                type: 'POST',
+                url: '../Student/ResumeTest',
+                data: JSON.stringify(input),
+                contentType: 'application/json; charset=utf-8',
+                //data: JSON.stringify({ PackageName: 1, PackageCode: 1 }),
+                dataType: 'json',
+                async: true,
+                processData: false,
+                success: function (result) {
+
+                    //var trHTML = '';
+                    if (result.RefIDExists == '0') {
+                        $('#ValidationMessage').html("ReferenceID provided is not valid");
+                        $('.hover_bkgr_fricc').show();
+                    }
+                    else if (result.RefIDExists == '1') {
+                        window.location.href = '../Test/LoadVerbalnformationTestInstruction'
+                    }
+                    else if (result.RefIDExists == '2') {
+                        window.location.href = '../Test/LoadComprehensionTestInstruction'
+                    }
+                    else if (result.RefIDExists == '3') {
+                        window.location.href = '../Test/LoadArithmeticTestInstruction'
+                    }
+                    else if (result.RefIDExists == '4') {
+                        window.location.href = '../Test/LoadSimilaritiesTestInstruction'
+                    }
+                    else if (result.RefIDExists == '5') {
+                        window.location.href = '../Test/LoadVocabularyTestInstruction'
+                    }
+                    else if (result.RefIDExists == '6') {
+                        window.location.href = '../Test/LoadDigitalSymbolTestInstruction'
+                    }
+                    else if (result.RefIDExists == '7') {
+                        window.location.href = '../Test/LoadPictureCompletionTestInstruction'
+                    }
+                    else if (result.RefIDExists == '8') {
+                        window.location.href = '../Test/LoadSpatialTestInstruction'
+                    }
+                    else if (result.RefIDExists == '9') {
+                        window.location.href = '../Test/LoadPictureArrangementTestInstruction'
+                    }
+                    else if (result.RefIDExists == '10') {
+                        window.location.href = '../Test/LoadPictureAssemblyTestInstruction'
+                    }
+                    else if (result.RefIDExists == '11') {
+                        window.location.href = '../Test/LoadEmotionalRegulationTestInstruction'
+                    }
+                   
+                },
+
+                error: function (msg) {
+
+                    alert(msg.responseText);
+                }
+            });
+        }
+          });
+
     $('#btnRegisterStudent').click(function (event) {
 
         
@@ -12,7 +100,7 @@
         var DOB = $.trim($('#DOB').val());
         var Class = $.trim($('#Class').val());       
       
-        var password2 = $("#password2").val();
+        var password2 = $.trim($("#password2").val());
 
         var Age = myCustomAge(DOB);
         if (Name =='') {

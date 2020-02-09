@@ -104,10 +104,13 @@ namespace DataAccessLayer
 
 
             // Query to be executed
-            string query = "Select School_Name, Gender, Email_ID,Name, Reference_Code,Package_ID,Package_Name from student_testinfo where Reference_Code= @Reference_Code";
+            string query = "Select School_Name, Gender, Email_ID,Name, Reference_Code,Package_ID,Package_Name, Completed,Verbal_INF_Completed,Verbal_COM_Completed,Verbal_ARI_Completed,Verbal_VOC_Completed,Verbal_SIM_Completed,Performance_DS_Completed,Performance_PC_Completed,Performance_SPA_Completed,Performance_PA_Completed,Performance_OA_Completed,ER_Completed" +
+                " from student_testinfo where Reference_Code= @Reference_Code";
 
-            // instance connection and command
-            Student student = new Student();
+           
+
+        // instance connection and command
+        Student student = new Student();
             using (MySqlConnection cn = GetConnection())
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
@@ -127,6 +130,18 @@ namespace DataAccessLayer
                     student.School_Name = reader["School_Name"].ToString();
                     student.Package_ID = Convert.ToInt32(reader["Package_ID"].ToString());
                     student.Package_Name = reader["Package_Name"].ToString();
+                    student.Completed = Convert.ToBoolean(reader["Completed"]);
+                    student.Verbal_ARI_Completed = Convert.ToBoolean(reader["Verbal_ARI_Completed"]);
+                    student.Verbal_COM_Completed = Convert.ToBoolean(reader["Verbal_COM_Completed"]);
+                    student.Verbal_INF_Completed = Convert.ToBoolean(reader["Verbal_INF_Completed"]);
+                    student.Verbal_SIM_Completed = Convert.ToBoolean(reader["Verbal_SIM_Completed"]);
+                    student.Verbal_VOC_Completed = Convert.ToBoolean(reader["Verbal_VOC_Completed"]);
+                    student.Performance_DS_Completed = Convert.ToBoolean(reader["Performance_DS_Completed"]);
+                    student.Performance_OA_Completed = Convert.ToBoolean(reader["Performance_OA_Completed"]);
+                    student.Performance_PA_Completed = Convert.ToBoolean(reader["Performance_PA_Completed"]);
+                    student.Performance_PC_Completed = Convert.ToBoolean(reader["Performance_PC_Completed"]);
+                    student.Performance_SPA_Completed = Convert.ToBoolean(reader["Performance_SPA_Completed"]);
+                    student.ER_Completed = Convert.ToBoolean(reader["ER_Completed"]);
                 }
 
                 cn.Close();
@@ -548,9 +563,9 @@ namespace DataAccessLayer
 
             // Collecting Values
 
-
+            string statusField = testName + "_Completed";
             // Query to be executed
-            string query = "Update student_testinfo Set " + testName + " = " + "@score where  reference_code =@reference_code";
+            string query = "Update student_testinfo Set " + testName + " = " + "@score," + statusField + " = " + "@Completed  where  reference_code =@reference_code";
 
 
             // instance connection and command
@@ -559,6 +574,7 @@ namespace DataAccessLayer
             {
                 // add parameters and their values
                 cmd.Parameters.Add("@score", MySql.Data.MySqlClient.MySqlDbType.UInt32, 255).Value = score;
+                cmd.Parameters.Add("@Completed", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = true;
                 cmd.Parameters.Add("@reference_code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = reference_code;
 
                 // open connection, execute command and close connection
@@ -576,7 +592,7 @@ namespace DataAccessLayer
 
 
             // Query to be executed
-            string query = "Update student_testinfo Set ER_Self_Blame=@ER_Self_Blame, ER_Acceptance=@ER_Acceptance, ER_Rumination=@ER_Rumination, ER_PositiveRefocusing=@ER_PositiveRefocusing,ER_RefocusonPlanning=@ER_RefocusonPlanning, ER_PositiveReappraisal=@ER_PositiveReappraisal, ER_PuttingintoPerspective=@ER_PuttingintoPerspective,ER_Catastrophizing=@ER_Catastrophizing, ER_Other_blame=@ER_Other_blame,CompletionDate =@Date_Completed, Completed= @Completed  where  reference_code =@reference_code";
+            string query = "Update student_testinfo Set ER_Self_Blame=@ER_Self_Blame, ER_Acceptance=@ER_Acceptance, ER_Rumination=@ER_Rumination, ER_PositiveRefocusing=@ER_PositiveRefocusing,ER_RefocusonPlanning=@ER_RefocusonPlanning, ER_PositiveReappraisal=@ER_PositiveReappraisal, ER_PuttingintoPerspective=@ER_PuttingintoPerspective,ER_Catastrophizing=@ER_Catastrophizing, ER_Other_blame=@ER_Other_blame,CompletionDate =@Date_Completed, Completed= @Completed,ER_Completed= @ER_Completed  where  reference_code =@reference_code";
 
 
             // instance connection and command
@@ -597,6 +613,7 @@ namespace DataAccessLayer
                 cmd.Parameters.Add("@reference_code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = reference_code;
                 cmd.Parameters.Add("@Date_Completed", MySql.Data.MySqlClient.MySqlDbType.DateTime).Value = DateTime.Now;
                 cmd.Parameters.Add("@Completed", MySql.Data.MySqlClient.MySqlDbType.Bit).Value =true;
+                cmd.Parameters.Add("@ER_Completed", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = true;
 
                 // open connection, execute command and close connection
                 cn.Open();

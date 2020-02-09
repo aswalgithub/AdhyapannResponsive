@@ -524,7 +524,7 @@ input {
     .card-1 .card-body {
         padding-top: 55px;
         padding-bottom: 65px;
-        background-color: lightseagreen;
+        background-color: #0394CE;
     }
 
 @media (max-width: 1000px) {
@@ -702,6 +702,7 @@ input {
     width: 800px;
     margin: 50px;
     display: table;
+    
    
 }
 

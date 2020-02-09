@@ -408,7 +408,21 @@ namespace Adhyapann_Project.Controllers
             CreateExcel("1MOjrR1wbkuVSBmCe4xNag==");
             return View("PictureAssembly");
         }
+        public ActionResult LoadComprehensionTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstComprehension", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
 
+        }
         public ActionResult SaveInformationTest(VAInformationInput informationTestInput)
         {
             if (Session["Reference_Code"] != null)
@@ -445,6 +459,22 @@ namespace Adhyapann_Project.Controllers
 
         }
 
+        public ActionResult LoadArithmeticTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstArithmetic", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
+
         public ActionResult SaveComprehensionTest(VAComprehensionInput comprehensionTestInput)
         {
             if (Session["Reference_Code"] != null)
@@ -474,6 +504,21 @@ namespace Adhyapann_Project.Controllers
                 //AdhyapanDB adhyapanDB = new AdhyapanDB();
                 Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
                 return View("Arithmetic", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
+        public ActionResult LoadSimilaritiesTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstSimilarities", studentDetail);
             }
             else
                 return RedirectToAction("Home", "Student");
@@ -515,6 +560,21 @@ namespace Adhyapann_Project.Controllers
 
         }
 
+        public ActionResult LoadVocabularyTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstVocabulary", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
         public ActionResult SaveSimilaritiesTest(VASimilarityInput similarityTestInput)
         {
             if (Session["Reference_Code"] != null)
@@ -550,6 +610,21 @@ namespace Adhyapann_Project.Controllers
 
         }
 
+        public ActionResult LoadDigitalSymbolTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstDigitalSymbol", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
         public ActionResult SaveVocabTest(VAVocabInput vocabTestInput)
         {
             if (Session["Reference_Code"] != null)
@@ -578,6 +653,22 @@ namespace Adhyapann_Project.Controllers
                 //AdhyapanDB adhyapanDB = new AdhyapanDB();
                 Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
                 return View("DigitalSymbol", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
+
+        public ActionResult LoadPictureCompletionTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstPictureCompletion", studentDetail);
             }
             else
                 return RedirectToAction("Home", "Student");
@@ -617,6 +708,21 @@ namespace Adhyapann_Project.Controllers
 
         }
 
+        public ActionResult LoadSpatialTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstSpatial", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
         public ActionResult SavePictureCompletionTest(PAPictureCompletionInput pictureCompletionInput)
         {
             if (Session["Reference_Code"] != null)
@@ -652,6 +758,21 @@ namespace Adhyapann_Project.Controllers
 
         }
 
+        public ActionResult LoadPictureArrangementTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstPictureArrangement", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
         public ActionResult SaveSpatialTest(PASpatialInput spatialInput)
         {
             if (Session["Reference_Code"] != null)
@@ -687,6 +808,21 @@ namespace Adhyapann_Project.Controllers
 
         }
 
+        public ActionResult LoadPictureAssemblyTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstPictureAssembly", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
 
         public ActionResult SavePictureArrangementTest(PAPicArrInput picArrInput)
         {
@@ -716,6 +852,22 @@ namespace Adhyapann_Project.Controllers
                 //AdhyapanDB adhyapanDB = new AdhyapanDB();
                 Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
                 return View("PictureAssembly", studentDetail);
+            }
+            else
+                return RedirectToAction("Home", "Student");
+
+        }
+
+        public ActionResult LoadEmotionalRegulationTestInstruction()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            if (Session["Reference_Code"] != null)
+            {
+                string reference_Code = Session["Reference_Code"].ToString();
+                //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstEmotionalRegulation9to12", studentDetail);
             }
             else
                 return RedirectToAction("Home", "Student");

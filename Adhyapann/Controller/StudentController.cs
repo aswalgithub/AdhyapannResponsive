@@ -79,52 +79,169 @@ namespace Adhyapan_Project.Controllers
             Student studentUpdated = adhyapanDB.InsertStudentDetails(student);
             Session["Reference_Code"] = studentUpdated.Reference_Code;
             //HttpContext.Session.Set("Reference_Code", Encoding.UTF8.GetBytes((studentUpdated.Reference_Code)));  
-           
+
             return RedirectToAction("LoadVerbalnformationTestInstruction", "Test");
 
         }
 
-
-        public ActionResult Home()
+        [HttpPost]
+        public ActionResult ResumeTest(string referenceID, string password1_resume)
         {
+                       
+            //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
             //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            List<Package> lstPackages = adhyapanDB.GetPackageDetails();
-            Packages packages = new Packages();
-            packages.lstPackages = lstPackages;
+            Student studentDetail = adhyapanDB.GetStudentDetails(referenceID);
+            if (studentDetail.Reference_Code != null)
+            {
+                if (studentDetail.Completed == false)
+                {
+
+                    Session["Reference_Code"] = studentDetail.Reference_Code;
+                    if (studentDetail.Verbal_INF_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "1"
+                        });
+                    }
+                   
+                    else if (studentDetail.Verbal_COM_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "2"
+                        });
+                    }
+                  
+                    else if (studentDetail.Verbal_ARI_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "3"
+                        });
+                    }
+                    else if (studentDetail.Verbal_SIM_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "4"
+                        });
+
+                    }
+                    else if (studentDetail.Verbal_VOC_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "5"
+                        });
+                    }
+                    else if (studentDetail.Performance_DS_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "6"
+                        });
+                    }
+                    else if (studentDetail.Performance_PC_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "7"
+                        });
+                    }
+                    else if (studentDetail.Performance_SPA_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "8"
+                        });
+                    }
+                    else if (studentDetail.Performance_PA_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "9"
+                        });
+                    }
+                    else if (studentDetail.Performance_OA_Completed == false)
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "10"
+                        });
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            RefIDExists = "11"
+                        });
+                    }
+
+                }
+                else
+                {
+                    return Json(new
+                    {
+                        RefIDExists = "0"
+                    });
+
+                }
+            }
+            else
+            {
+                return Json(new
+                {
+                    RefIDExists = "0"
+                    });
+    
+            }
 
 
-            return View("Home", packages);
+
         }
 
-        public ActionResult Comprehension()
-        {
-            return View();
-        }
 
-        public ActionResult Arithmetic()
-        {
-            return View();
-        }
+            public ActionResult Home()
+            {
+                //AdhyapanDB adhyapanDB = new AdhyapanDB();
+                List<Package> lstPackages = adhyapanDB.GetPackageDetails();
+                Packages packages = new Packages();
+                packages.lstPackages = lstPackages;
 
-        public ActionResult Similarities()
-        {
-            return View();
-        }
 
-        public ActionResult Information()
-        {
-            return View();
-        }
+                return View("Home", packages);
+            }
 
-        public ActionResult Vocabulary()
-        {
-            return View();
-        }
+            public ActionResult Comprehension()
+            {
+                return View();
+            }
 
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public ActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
+            public ActionResult Arithmetic()
+            {
+                return View();
+            }
+
+            public ActionResult Similarities()
+            {
+                return View();
+            }
+
+            public ActionResult Information()
+            {
+                return View();
+            }
+
+            public ActionResult Vocabulary()
+            {
+                return View();
+            }
+
+            //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+            //public ActionResult Error()
+            //{
+            //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            //}
+        }
     }
-}
