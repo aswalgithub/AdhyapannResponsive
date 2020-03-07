@@ -39,9 +39,9 @@ namespace Adhyapann_Project.Controllers
 
         public async Task Execute(string ref_code, StudentTestInfo studentTestInfo)
         {
-            try
+            try 
             {
-                byte[] AsBytes = System.IO.File.ReadAllBytes(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/Results" + studentTestInfo.Student_TestID + ".pdf"));
+                byte[] AsBytes = System.IO.File.ReadAllBytes(System.Web.Hosting.HostingEnvironment.MapPath("~/wwwroot/pdf/" + studentTestInfo.Name + "_" + studentTestInfo.TestDate + "_Test_Results" + ".pdf"));
                 String AsBase64String = Convert.ToBase64String(AsBytes);
 
                 //byte[] AsBytes_xls = System.IO.File.ReadAllBytes("./wwwroot/pdf/Chart" + ref_code.ToString() + ".xlsx");
@@ -69,7 +69,7 @@ namespace Adhyapann_Project.Controllers
                 
                 var client = new SendGridClient(apiKey);
                 var from = new EmailAddress("aniketdepp@outlook.com", "Adhyapann Quiz");
-                var subject = "Quiz Results for " + studentTestInfo.Name;
+                var subject = " Testing Results For " + studentTestInfo.Name;
                 //var to = new EmailAddress("aniketdepp@gmail.com", "Example User");
                 var plainTextContent = "Please find attached the file with Quiz Results";
                 var htmlContent = "<strong>Please find attached the file with Quiz Results</strong>";
@@ -398,9 +398,23 @@ namespace Adhyapann_Project.Controllers
         public ActionResult EmotionalRegulation912()
         {
             //AdhyapanDB adhyapanDB = new AdhyapanDB();
-            Student studentDetail = adhyapanDB.GetStudentDetails("7R9c6w28rUaUMEqUZsjYKA==");
-            Session["Reference_Code"] = "7R9c6w28rUaUMEqUZsjYKA==";
+            Student studentDetail = adhyapanDB.GetStudentDetails("bYGsJHDLXES78woyYA25kg==");
+            Session["Reference_Code"] = "bYGsJHDLXES78woyYA25kg==";
             return View("EmotionalRegulation9-12", studentDetail);
+        }
+
+        public ActionResult LoadEmotionalRegulationTestInstructionTest()
+        {
+            //HttpContext.Session.TryGetValue("Reference_Code", out byte[] Reference_Code_Byte);
+            
+                string reference_Code = "bYGsJHDLXES78woyYA25kg==";
+            //string reference_Code = Encoding.UTF8.GetString(Reference_Code_Byte);
+            //AdhyapanDB adhyapanDB = new AdhyapanDB();
+            Student studentDetail = adhyapanDB.GetStudentDetails(reference_Code);
+                return View("InstEmotionalRegulation9to12", studentDetail);
+           
+           
+
         }
 
         public ActionResult PDFTest()

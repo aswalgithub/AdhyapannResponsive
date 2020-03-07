@@ -63,6 +63,10 @@
                 document.title = $('#idTimerLCD').text();
                 $('#idFloatTimerLCD').text($('#idTimerLCD').text());
             }
+            else {
+                $("#btnStartTest").show();
+
+            }
 
         }
 
@@ -79,11 +83,11 @@
 
             @*<div>
 
-            <input id="hdnTitleID" type="hidden" value="7" />
+                    <input id="hdnTitleID" type="hidden" value="7" />
 
 
 
-        </div>*@
+                </div>*@
 
             @*<div id="divHeader" class="pagehead" style="text-align:center"><h1>VERBAL APTITUDE TEST - INFORMATION</h1></div>*@
             <section class="c-hero c-hero--test">
@@ -104,21 +108,21 @@
 
 
                         @*<div class="c-hero__description">
-                        <p>
-                            Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
-                        </p>
-                    </div>*@
+                                <p>
+                                    Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
+                                </p>
+                            </div>*@
                     </div>
 
                     @*<div id="divStartTestInstruction" style="text-align:left !important">
-                    <div class="div-test-instruction">
+                            <div class="div-test-instruction">
 
-                        <div style="color:white">
-                            <p class="mx-bold mx-uline" style="color:white">Instruction:</p>
-                            Each of the following 40 questions is followed by the five possible answers from A to E. choose the answer that is correct and darken the appropriate letter on the separate answer sheet.
-                        </div>
-                    </div>
-                </div>*@
+                                <div style="color:white">
+                                    <p class="mx-bold mx-uline" style="color:white">Instruction:</p>
+                                    Each of the following 40 questions is followed by the five possible answers from A to E. choose the answer that is correct and darken the appropriate letter on the separate answer sheet.
+                                </div>
+                            </div>
+                        </div>*@
 
 
                 </div>
@@ -150,17 +154,17 @@
                         </tr>
                         @*<tr>
 
-                    </tr>*@
+                            </tr>*@
                         @*<tr>
-                        <td style="width:100%">
-                            <label> Reference Code: <b>@Model.Reference_Code</b></label>
+                                <td style="width:100%">
+                                    <label> Reference Code: <b>@Model.Reference_Code</b></label>
 
-                        </td>
-                    </tr>*@
+                                </td>
+                            </tr>*@
 
                         @*<tr>
 
-                    </tr>*@
+                            </tr>*@
 
 
                     </table>
@@ -176,8 +180,8 @@
 
             <div class="breadcrumb">
                 @*<a href="/">Home</a> &raquo;
-            <a href="/online-test/categories/">Online Test</a> &raquo;
-            <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                    <a href="/online-test/categories/">Online Test</a> &raquo;
+                    <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
                 <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:01:30</b></span>
                 <input type="hidden" id="hdnTestTitleID" value="3" />
                 <input type="hidden" id="hdnTestID" value="21" />
@@ -189,18 +193,65 @@
                 <div class="div-test-initiator">
                     <div id="divStartTestInstruction">
                         <div class="div-test-instruction">
-                            <p class="mx-green mx-bold mx-uline">Instruction:</p>
+                            <p class="mx-green mx-bold mx-uline" style="text-align:left;font-size:20px;">EMOTIONAL REGULATION TEST INSTRUCTION:</p>
 
-                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="80%" height="15%" align="center" style="text-align:center" >
                                 <tr>
                                     <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                Think Of a Recent Incident You Have peronally Encountered. Keeping this incident in mind and other instances you face , answer the below questions on basis what you feel
+                                        <div class="bix-div-direction" style="height:80px !important;">
+                                            <div class="title-bar" style="height:80px !important;font-size:20px; background-color: #0394CE; color: #fff;">
+                                                Think Of a Recent Incident You Have personally Encountered.
                                             </div>
-                                            <div class="title-bar">
-                                                Now  : Each question has 5 choices. Choose the answer you feel is correct.
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                           
+
+
+
+
+
+                        </div>
+                        <div class="div-test-instruction">
+                            
+
+                          
+                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="80%" height="15%" align="center" style="text-align:center">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction" style="height:80px !important ">
+                                            <div class="title-bar" style="height:80px !important;font-size:20px; background-color: #0394CE; color: #fff;">
+                                                Answer the following questions on basis what you feel
                                             </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                         
+
+
+
+
+
+                        </div>
+                        <div class="div-test-instruction">
+                           
+
+                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="80%" height="15%" align="center" style="text-align:center">
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="bix-div-direction" style="height:80px !important ">
+                                            <div class="title-bar" style="height:80px !important;font-size:20px; background-color: #0394CE; color: #fff;">
+                                                Each question has 5 choices. Choose the answer you feel is correct.
+                                            </div>
+
                                         </div>
                                     </td>
                                 </tr>
@@ -209,8 +260,11 @@
                             </table>
 
 
+
+
+
                         </div>
-                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadEmotionalRegulation9to12", "Test")'"/></p>
+                        <p align="center"><br /><input style="height:25px" type="button" hidden="hidden" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadEmotionalRegulation9to12", "Test")'" /></p>
                     </div>
                 </div>
             </div>

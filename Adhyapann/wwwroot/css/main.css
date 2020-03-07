@@ -1444,7 +1444,7 @@ button.swiper-pagination-bullet {
 @supports (display: grid) {
     @media (min-width: 769px) {
         .l-grid-2 {
-            display: grid;
+          
             grid-template-columns: 3fr 3fr
         }
     }
@@ -4372,7 +4372,7 @@ p {
 .c-hero {
     background-color: #0394CE;
     color: #fff;
-    height: 400px
+    height: 250px
 }
 
 
@@ -4529,7 +4529,7 @@ p {
 
 @media (min-width: 769px) {
     .c-hero-test {
-        min-height: 500px;
+      
         padding: 0
     }
 }
@@ -5483,6 +5483,15 @@ p {
     }
 
         .boxRegister .text-holder:last-child {
+            margin-bottom: 15px
+        }
+
+    .boxRegister .text-holder-Age {
+        margin-bottom: 15px
+
+    }
+
+        .boxRegister .text-holder-Age:last-child {
             margin-bottom: 15px
         }
 

@@ -58,10 +58,10 @@
 
 
                         @*<div class="c-hero__description">
-                        <p>
-                            Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
-                        </p>
-                    </div>*@
+                                <p>
+                                    Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
+                                </p>
+                            </div>*@
                     </div>
 
 
@@ -94,17 +94,17 @@
                         </tr>
                         @*<tr>
 
-                    </tr>*@
+                            </tr>*@
                         @*<tr>
-                        <td style="width:100%">
-                            <label> Reference Code: <b>@Model.Reference_Code</b></label>
+                                <td style="width:100%">
+                                    <label> Reference Code: <b>@Model.Reference_Code</b></label>
 
-                        </td>
-                    </tr>*@
+                                </td>
+                            </tr>*@
 
                         @*<tr>
 
-                    </tr>*@
+                            </tr>*@
 
 
                     </table>
@@ -117,8 +117,8 @@
 
             <div class="breadcrumb">
                 @*<a href="/">Home</a> &raquo;
-            <a href="/online-test/categories/">Online Test</a> &raquo;
-            <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                    <a href="/online-test/categories/">Online Test</a> &raquo;
+                    <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
                 <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:01:30</b></span>
                 <input type="hidden" id="hdnTestTitleID" value="3" />
                 <input type="hidden" id="hdnTestID" value="21" />
@@ -167,6 +167,10 @@
 
                             document.title = $('#idTimerLCD').text();
                             $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                        }
+                        else {
+                            $("#btnStartTest").show();
+
                         }
                         //else {
                         //    alert(" Your time is up for this test.You will be moved to Next Test.");
@@ -276,7 +280,7 @@
                             </table>
 
                         </div>
-                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadSimilaritiesTest", "Test")'" /></p>
+                        <p align="center"><br /><input style="height:25px" type="button" hidden="hidden" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadSimilaritiesTest", "Test")'" /></p>
                     </div>
                 </div>
 

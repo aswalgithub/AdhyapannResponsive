@@ -60,10 +60,10 @@
 
 
                         @*<div class="c-hero__description">
-                        <p>
-                            Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
-                        </p>
-                    </div>*@
+                                <p>
+                                    Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
+                                </p>
+                            </div>*@
                     </div>
 
 
@@ -96,17 +96,17 @@
                         </tr>
                         @*<tr>
 
-                    </tr>*@
+                            </tr>*@
                         @*<tr>
-                        <td style="width:100%">
-                            <label> Reference Code: <b>@Model.Reference_Code</b></label>
+                                <td style="width:100%">
+                                    <label> Reference Code: <b>@Model.Reference_Code</b></label>
 
-                        </td>
-                    </tr>*@
+                                </td>
+                            </tr>*@
 
                         @*<tr>
 
-                    </tr>*@
+                            </tr>*@
 
 
                     </table>
@@ -168,6 +168,10 @@
                             document.title = $('#idTimerLCD').text();
                             $('#idFloatTimerLCD').text($('#idTimerLCD').text());
                         }
+                        else {
+                            $("#btnStartTest").show();
+
+                        }
                         //else {
 
                         //    alert(" Your time is up for this test.You will be moved to Next Test.");
@@ -179,7 +183,7 @@
 
                 </script>
 
-              
+
 
                 <hr />
 
@@ -376,7 +380,7 @@
                             </table>
 
                         </div>
-                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadComprehensionTest", "Test")'" /></p>
+                        <p align="center"><br /><input style="height:25px" hidden="hidden" type="button" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadComprehensionTest", "Test")'" /></p>
                     </div>
                 </div>
 

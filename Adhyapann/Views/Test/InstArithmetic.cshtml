@@ -166,11 +166,10 @@
                             document.title = $('#idTimerLCD').text();
                             $('#idFloatTimerLCD').text($('#idTimerLCD').text());
                         }
-                        //else {
-                        //    alert(" Your time is up for this test.You will be moved to Next Test.");
-                        //    $("#frmArithmetic").submit();
+                        else {
+                           $("#btnStartTest").show();
 
-                        //}
+                        }
                     }
 
                 </script>
@@ -378,7 +377,7 @@
                             </table>
 
                         </div>
-                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadArithmeticTest", "Test")'" /></p>
+                        <p align="center"><br /><input style="height:25px" hidden="hidden" type="button" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadArithmeticTest", "Test")'" /></p>
                     </div>
                 </div>
 

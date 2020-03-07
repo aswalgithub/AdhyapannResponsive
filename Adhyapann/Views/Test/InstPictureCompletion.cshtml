@@ -63,6 +63,10 @@
                 document.title = $('#idTimerLCD').text();
                 $('#idFloatTimerLCD').text($('#idTimerLCD').text());
             }
+             else {
+                $("#btnStartTest").show();
+
+            }
 
         }
 
@@ -300,7 +304,7 @@
 
 
                         </div>
-                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadPictureCompletionTest", "Test")'" /></p>
+                        <p align="center"><br /><input style="height:25px" type="button" hidden="hidden" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadPictureCompletionTest", "Test")'" /></p>
                     </div>
                 </div>
 

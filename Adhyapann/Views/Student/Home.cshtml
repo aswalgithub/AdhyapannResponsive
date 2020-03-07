@@ -27,19 +27,19 @@
 
 
 
-  
-        @*<div style="text-align:right">
+
+    @*<div style="text-align:right">
 
             <a href="@Url.Action("Index", "Auth")" target="_blank" class="clickme">ADMIN</a>
         </div>*@
-        @*<div style="text-align:right">
+    @*<div style="text-align:right">
             <a href="@Url.Action("Index", "Auth")" target="_blank">
                 <img src="~/wwwroot/images/admin.jpg" class="lazy" alt="" width="150" height="75">
 
             </a>
         </div>*@
-      
-        @*<div class="c-global-header__top">
+
+    @*<div class="c-global-header__top">
             <div class="c-hero__image u-flex-1 u-align-right sm-only">
 
 
@@ -49,65 +49,86 @@
 
         </div>*@
 
-  
+
 
 
     <main id="app" class="content" aria-label="Content">
+        <div class="btn-holder" style="color:white !important; font-size:12px !important;text-align:right">
+            <a href="@Url.Action("Index", "Auth")" target="_blank">
+                <input style="text-align:center;  border:1px dashed #ccc; background-color:#57b846;" type="button" value="Login as Admin" name="Next" id="btnNext" />
+                <img src="~/images/admin.jpg" class="lazy" alt="" width="150" height="75">
+
+            </a>
+
+        </div>
 
         <section class="c-hero c-hero--test">
 
-            <div class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
-                <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
-                    <h1 class="heading--xxl u-mt1">
 
-                        Adhyapaan Physchometric Tests
-
-                    </h1>
-
-
-                    <div class="c-hero__description">
-                        <p>
-                            Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
-                        </p>
-                    </div>
-                    <div class="btn-holder" style="color:white !important; font-size:12px !important;">
-                        <a href="@Url.Action("Index", "Auth")" target="_blank">
-                            <input style="text-align:center; padding:20px;  margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Login as Admin" name="Next" id="btnNext" />
-                            <img src="~/images/admin.jpg" class="lazy" alt="" width="150" height="75">
-
-                        </a>
-                       
-                    </div>
-                   
-                </div>
-
-                <div class="c-hero__image u-flex-1 u-align-right sm-only">
+            @*<div class="c-hero__image u-flex-1">
 
 
 
 
-                    <img src="~/wwwroot/images/Physcho.jpg"
-                         alt="
-Adhyapaan Physchometric Tests
-" class="eager" width="406" height="269">
+                                <img src="~/wwwroot/images/AdhyapanSkillHub.png"
+                                     alt="
+            Adhyapaan Physchometric Tests
+            " class="eager" width="206" height="169">
 
-                </div>
+                            </div>*@
 
-                @*<div class="boxRegister" style="padding:25px 0 20px;">
-                <div class="text-holder" style="margin-bottom: 10px;">
+            <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests" >
 
-                    <h2 style="padding-top: 10px;font-size: 1.8em;"><span class="icon-practice">For Practice</span></h2>
-                    <p style="margin: 0 10%;">Practice psychometric tests</p>
-                </div>
-                <div class="btn-holder">
-                    <a href="buy/aptitudetest_buy.htm" class="btn btn-buy btn-primary btn-lg btn-block">Buy Now</a>
-                </div>
-            </div>*@
+                <h1 class="heading--xxl u-mt1" style="text-align:center">
+
+                    Adhyapaan Physchometric Testing And career counselling
+
+                </h1>
+
+
+
+
+
             </div>
-            
+            <div class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
+                <img src="~/wwwroot/images/AdhyapanSkillHub.png"
+                     alt="
+Adhyapaan Physchometric Tests
+" class="eager" width="206" height="169">
+                @*<div class="c-hero__image u-flex-1 u-align-right sm-only">
+
+
+
+
+                                    <img src="~/wwwroot/images/Physcho.jpg"
+                                         alt="
+                Adhyapaan Physchometric Tests
+                " class="eager" width="206" height="169">
+
+                                </div>*@
+                @*<div class="btn-holder" style="color:white !important; font-size:12px !important;text-align:right">
+                    <a href="@Url.Action("Index", "Auth")" target="_blank">
+                        <input style="text-align:center; padding:20px;  margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Login as Admin" name="Next" id="btnNext" />
+                        <img src="~/images/admin.jpg" class="lazy" alt="" width="150" height="75">
+
+                    </a>
+
+                </div>*@
+                @*<div class="boxRegister" style="padding:25px 0 20px;">
+                    <div class="text-holder" style="margin-bottom: 10px;">
+
+                        <h2 style="padding-top: 10px;font-size: 1.8em;"><span class="icon-practice">For Practice</span></h2>
+                        <p style="margin: 0 10%;">Practice psychometric tests</p>
+                    </div>
+                    <div class="btn-holder">
+                        <a href="buy/aptitudetest_buy.htm" class="btn btn-buy btn-primary btn-lg btn-block">Buy Now</a>
+                    </div>
+                </div>*@
+            </div>
+
         </section>
 
-        <section class=" l-container--padded ">
+        <section class=" l-container--padded " style="background-image: url(/wwwroot/images/Apptpuzzle.jpg);">
             <ul class="c-programme-list">
 
                 @foreach (DataAccessLayer.Package package in Model.lstPackages)
@@ -118,9 +139,19 @@ Adhyapaan Physchometric Tests
                             <div class="boxRegister" style="text-align:center;background-color:lightseagreen;color:whitesmoke">
                                 <div class="text-holder" style="margin-bottom: 10px;">
                                     <!--<span class="btn-icon" style="padding-bottom: 20px;">
-                                        <img src="temp/resume.png" alt="psychometric for personal use">
-                                    </span>-->
-                                    <h2 style="padding-top: 10px;font-size: 1.4em;"><span>@package.Package_Name</span></h2>
+                                    <img src="temp/resume.png" alt="psychometric for personal use">
+                                </span>-->
+
+                                    <h2 style="padding-top: 10px;font-size: 1.2em;background-color:black;color:whitesmoke"><span>Age Group- @package.Package_Code</span></h2>
+
+                                </div>
+                                <div class="text-holder" style="margin-bottom: 10px;">
+                                    <!--<span class="btn-icon" style="padding-bottom: 20px;">
+                                    <img src="temp/resume.png" alt="psychometric for personal use">
+                                </span>-->
+                                    <h2 style="padding-top: 10px;font-size: 1.0em"><span>1.EMOTIONAL REGULATION</span></h2>
+                                    <h2 style="padding-top: 10px;font-size: 1.0em"><span>2.PERFORMANCE APTITUDE IQ</span></h2>
+                                    <h2 style="padding-top: 10px;font-size: 1.0em"><span>3.VERBAL APTITUDE IQ</span></h2>
 
                                 </div>
                                 <div class="btn-holder">
