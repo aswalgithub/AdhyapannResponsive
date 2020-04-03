@@ -65,7 +65,7 @@ namespace Adhyapann_Project.Controllers
 
                 var apiKey = ConfigurationManager.AppSettings["SENDGRID_API_KEY"].ToString();
                 var client = new SendGridClient(apiKey);
-                var from = new EmailAddress("aniketdepp@outlook.com", "Adhyapann Quiz");
+                var from = new EmailAddress("info@adhyapann.co.in", "Adhyapann Quiz");
                 var subject = " Testing Results For " + studentTestInfo.Name;
                 //var to = new EmailAddress("aniketdepp@gmail.com", "Example User");
                 var plainTextContent = "Please find attached the file with Quiz Results";

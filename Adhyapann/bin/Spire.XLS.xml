@@ -69,8 +69,8 @@
         <member name="M:Spire.Xls.Calculation.CalcuateEngine.comb(System.Int32,System.Int32)">
             n things taken k at the time.
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Calculation.CalcuateEngine.ComputeConcatenate(System.String)" -->
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Calculation.CalcuateEngine.ComputeIndirect(System.String)" -->
+        <!-- 对于成员“M:Spire.Xls.Calculation.CalcuateEngine.ComputeConcatenate(System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“M:Spire.Xls.Calculation.CalcuateEngine.ComputeIndirect(System.String)”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Calculation.CalcuateEngine.GetSheetTokenFromReference(System.String)">
             returns the sheet reference if any from the passed in cell or range.
         </member>
@@ -82,9 +82,6 @@
         </member>
         <member name="M:Spire.Xls.Calculation.CalcWorkbook.#ctor(Spire.Xls.Calculation.CalcWorksheet[],System.Collections.Generic.Dictionary{System.String,System.String})">
             NameRanges keys must be upper case...
-        </member>
-        <member name="M:Spire.Xls.Compound.MemoryStorage.ContainsStorage(System.String)">
-            <returns></returns>
         </member>
         <member name="F:Spire.Xls.Core.Converter.Exporting.EMF.ArabicLigaturizer.DIGITS_EN2AN">
             Digit shaping option: Replace European digits (U+0030...U+0039) by Arabic-Indic digits.
@@ -307,16 +304,52 @@
         <member name="M:Spire.Xls.Core.Converter.Exporting.EMF.BidiOrder.ValidateLineBreaks(System.Int32[],System.Int32)">
             Throw exception if line breaks array is invalid.
         </member>
+        <member name="T:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting">
+            <summary>
+            Convert Setting
+            </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting.PrintPageEventHandler">
+            <summary>
+            Print each page using this EventHandler
+            </summary>  
+        </member>
+        <member name="P:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting.XDpi">
+            <summary>
+            Gets or sets the horizontal resolution, in dots per inch (DPI). Default value is 96.
+            </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting.YDpi">
+            <summary>
+            Gets or sets the vertical resolution, in dots per inch (DPI). Default value is 96.
+            </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting.JPEGQuality">
+            <summary>
+            Gets or sets a value determining the quality.
+            </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting.SheetFitToPage">
+            <summary>
+            One sheet context render to only one page. 
+            </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting.ChartImageType">
+            
+             <summary>
+             Indicate the chart render image type.
+             </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Converter.Exporting.EMF.ConverterSetting.IsRegionClip">
+            <summary>
+            Enables or disables clipping the image to the region
+            </summary>
+        </member>
         <member name="M:Spire.Xls.Core.Converter.Exporting.EMF.VisualRender.AddDocumentProperties(Spire.Xls.Core.Converter.Spreadsheet.DocumentProperties.BuiltInDocumentPropertyCollection)">
             <summary>
             Adds the document properties.
             </summary>
             <param name="docProperties">The doc properties.</param>
-        </member>
-        <member name="F:Spire.Xls.Core.Converter.Exporting.SaveFormat.PCL">
-            <summary>
-            Printer Command Language (PCL) format.
-            </summary>
         </member>
         <member name="M:Spire.Xls.Core.Converter.Exporting.Xls.XlsCellsDataWriter.WriteRKValues(Spire.Xls.Core.Converter.Exporting.Xls.DataOutStream,System.Collections.ArrayList,Spire.Xls.Core.Converter.Collections.IntArrayList,System.Collections.ArrayList,System.Int32,System.Int32)">
             
@@ -784,11 +817,6 @@
             Represents serie trend lines collection. Read only.
             </summary>
         </member>
-        <member name="P:Spire.Xls.Core.IChartTextArea.Text">
-            <summary>
-            Area's text.Some items(such as legend,axis...) maybe invalid
-            </summary>
-        </member>
         <member name="P:Spire.Xls.Core.IChartTrendLine.Formula">
             <summary>
             Return trendline formula. Read only.
@@ -887,7 +915,7 @@
             Returns the calculated value of a formula using the most current inputs.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.IWorkbook.CreateTemplateMarkersProcessor" -->
+        <!-- 对于成员“M:Spire.Xls.Core.IWorkbook.CreateTemplateMarkersProcessor”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Core.IWorkbook.SaveAs(System.IO.Stream)">
             <summary>
             Saves changes to the specified stream.
@@ -1085,42 +1113,7 @@
             <param name="width">Width in pixels of the new item.</param>
             <returns>Newly added item.</returns>
         </member>
-        <member name="P:Spire.Xls.Core.IShape.Height">
-            <summary>
-            The height of the object. Read/write Integer
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.IShape.Left">
-            <summary>
-            The distance from the left edge of the object to the left edge of column A (on a worksheet) or the left edge of the chart area (on a chart). Read/write Integer.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.IShape.Top">
-            <summary>
-            The distance from the top edge of the topmost shape in the shape range to the top edge of the worksheet. Read/write Integer.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.IShape.Width">
-            <summary>
-            The width of the object. Read/write Integer.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.IShape.ShapeType">
-            <summary>
-            The shape type of the object.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.IShape.AlternativeText">
-            <summary>
-            Returns or sets the descriptive (alternative) text string for a Shape object. 
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.IShape.OnAction" -->
-        <member name="P:Spire.Xls.Core.IShape.Rotation">
-            <summary>
-            Returns or sets the rotation of the shape, in degrees.
-            </summary>   
-        </member>
+        <!-- 对于成员“P:Spire.Xls.Core.IShape.OnAction”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Core.IShape.ResizeBehave">
             <summary>
             Specifies all possible settings for how drawing object shall be resized when the rows and columns between its start and ending anchor are resized or inserted(ComboBoxShape and CheckBoxShape and RadioButtonShape set MoveAndResize type value is invalid)
@@ -1510,7 +1503,7 @@
         <member name="M:Spire.Xls.Core.Spreadsheet.Charts.XlsChartTrendLine.CheckOrder(System.Int32)">
             <param name="value">Represents order value.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.Charts.ChartLegendEntriesColl.m_hashEntries" -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.Charts.ChartLegendEntriesColl.m_hashEntries”忽略有格式错误的 XML 注释 -->
         <member name="T:Spire.Xls.Core.Spreadsheet.Charts.XlsChart">
             <summary>
             Represents the Excel Chart object.
@@ -1556,7 +1549,7 @@
             Gets or sets a value indicating whether [show value field buttons].
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.Charts.XlsChart.DisplayAxisFieldButtons" -->
+        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.Charts.XlsChart.DisplayAxisFieldButtons”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChart.DisplayLegendFieldButtons">
             <summary>
             Gets or sets a value indicating whether [show legend field buttons].
@@ -2424,7 +2417,7 @@
             Gets value indicating whether TextRotation was changed. Read-only.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartDataLabels.NumberFormat" -->
+        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartDataLabels.NumberFormat”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartDataLabels.HasFormula">
             <summary>
             Gets or sets a value indicating whether this instance has formula.
@@ -3298,8 +3291,8 @@
             Indicates wheter to invert its colors if the value is negative.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_3D" -->
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_fill" -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_3D”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_fill”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.HasLineProperties">
             <summary>
             Indicating whether line properites are created.
@@ -3318,11 +3311,6 @@
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.BarTopType">
             <summary>
             Represents the top data format type.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.MarkerBorderWidth">
-            <summary>
-            Marker border width(unit pt).
             </summary>
         </member>
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.IsAutoMarker">
@@ -4477,7 +4465,7 @@
             Indicates whehter prompt box has fixed position..
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.Collections.XlsDataValidationTable.Remove(System.Drawing.Rectangle[])" -->
+        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.Collections.XlsDataValidationTable.Remove(System.Drawing.Rectangle[])”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Core.Spreadsheet.Collections.XlsExternBookCollection.ContainsExternName(System.String,System.Int32@,System.Int32@)">
             <summary>
             Checks whether any of books in this collection contains extern name.
@@ -5521,11 +5509,6 @@
             <param name="itemValue">the value of the pivotItem in the pivotField.</param>
             <param name="isHidden">whether the specific PivotItem is hidden</param>
         </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.PivotTables.XlsPivotField.Sort(System.Boolean,Spire.Xls.Core.Spreadsheet.PivotTables.PivotDataField)">
-            <summary>
-            Sort row fildes or col fields by data field.
-            </summary>
-        </member>
         <member name="F:Spire.Xls.Core.Spreadsheet.PivotTables.XlsPivotTable.m_colReportFilter">
             <summary>
             Represents the report filter.
@@ -5841,31 +5824,6 @@
         <member name="T:Spire.Xls.Core.Spreadsheet.Shapes.XlsPrstGeomShape">
             <summary>
             Worksheet preset shape
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase.IsWrapText">
-            <summary>
-            Whether the text of textbox shape is wrapped or not.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase.InnerLeftMargin">
-            <summary>
-            TextBox's inner left margin.(unit: cm)
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase.InnerRightMargin">
-            <summary>
-            TextBox's inner right margin.(unit: cm)
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase.InnerTopMargin">
-            <summary>
-            TextBox's inner top margin.(unit: cm)
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase.InnerBottomMargin">
-            <summary>
-            TextBox's inner bottom margin.(unit: cm)
             </summary>
         </member>
         <member name="F:Spire.Xls.Core.Spreadsheet.Shapes.XlsTextBoxShape.m_2007Coordinates">
@@ -6422,7 +6380,7 @@
             <param name="forClipboard">Indicates whether we are serializing data
             for saving into file or into clipboard.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XlsWorkbook.m_version" -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XlsWorkbook.m_version”忽略有格式错误的 XML 注释 -->
         <member name="F:Spire.Xls.Core.Spreadsheet.XlsWorkbook.m_customTableStyles">
             <summary>
             Represents a collection of Table style definitions for PivotTable styles.
@@ -6480,12 +6438,6 @@
             <param name="Filename">
             File name in which workbook will be saved if SaveChanges is true.
             </param>
-        </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorkbook.SetWriteProtectionPassword(System.String)">
-            <summary>
-            This method sets write protection password.
-            </summary>
-            <param name="password">Password to set.</param>
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorkbook.UpdateXFIndexes(System.Int32)">
             <summary>
@@ -7055,7 +7007,7 @@
             </summary>
             <returns>A new object that is a copy of this instance.</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.TemplateMarkers.XlsTemplateMarkers.IsDataView(System.Object)" -->
+        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.TemplateMarkers.XlsTemplateMarkers.IsDataView(System.Object)”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Core.Spreadsheet.WorksheetCustomProperty.Clone">
             <summary>
             Creates a copy of the current object.
@@ -7499,7 +7451,7 @@
             </summary>
             <param name="sheet">Sheet to add.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XlsFont.characterRanges" -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XlsFont.characterRanges”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsFont.IsBold">
             <summary>
             True if the font is bold. Read/write Boolean.
@@ -7748,7 +7700,7 @@
             For example: "$1:$1" will repeate the first row and "$1:$3" will repeate row 1, row 2 and row 3.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.XlsPageSetup.IsFitToPage" -->
+        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.XlsPageSetup.IsFitToPage”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsPageSetup.IsSummaryRowBelow">
             <summary>
             Indicates whether summary rows will appear below detail in outlines.
@@ -8014,7 +7966,7 @@
         </member>
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsPageSetupBase.TopMargin">
             <summary>
-            Returns or sets the size of the top margin, in inches.
+            Returns or sets the size of the top margin, in points.
             Read/write Double.
             </summary>
         </member>
@@ -8023,7 +7975,7 @@
             Returns or sets a percentage (between 10 and 400 percent) by which Microsoft Excel will scale the worksheet for printing. Applies only to worksheets
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.XlsPageSetupBase.BackgoundImage" -->
+        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.XlsPageSetupBase.BackgoundImage”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsPageSetupBase.PageWidth">
             <summary>
             Returns page width in points. Read-only.
@@ -8457,7 +8409,7 @@
         </member>
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsRange.HasExternalFormula">
             <summary>
-            Check if the formula in the range has external links. Read-only.
+            Indicates is current range has external formula. Read-only.
             </summary>
         </member>
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsRange.IsStringsPreserved">
@@ -8660,18 +8612,6 @@
             <param name="oldValue">Value to search for.</param>
             <param name="newValues">The replacement value.</param>
             <param name="isVertical">Indicates whether to insert values vertically or horizontally.</param>
-        </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsRange.TextPartReplace(System.String,System.String)">
-            <summary>
-            Replaces cell's part text and reserve text's format.
-            </summary>
-            <param name="oldPartValue">Part value of cell's text to search for.</param>
-            <param name="newPartValue">The replacement value.</param>
-        </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsRange.ConvertToNumber">
-            <summary>
-            Convert number that stored as text to number
-            </summary>
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsRange.Replace(System.String,System.Data.DataTable,System.Boolean)">
             <summary>
@@ -9086,18 +9026,6 @@
             False otherwise.
             </summary>
         </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.XlsWorksheet.RulerVisible">
-            <summary>
-            True if the ruler is visible. Only apply for page break preview.
-            False otherwise.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.Core.Spreadsheet.XlsWorksheet.OutlineShownVisible">
-            <summary>
-            True if outline are visible;
-            False otherwise.
-            </summary>
-        </member>
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsWorksheet.RowColumnHeadersVisible">
             <summary>
             True if row and column headers are visible.
@@ -9154,31 +9082,17 @@
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitRow(System.Int32)">
             <summary>
-            Autofits the row height.
+            Autofits the column width.
             </summary>
             <param name="rowIndex">Row index</param>
-        </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitRow(System.Int32,System.Boolean)">
-            <summary>
-            Autofits the row height.
-            </summary>
-            <param name="rowIndex">Row index</param>
-            <param name="onlyAuto">Whether only auto.</param>
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitColumn(System.Int32)">
             <summary>
             Autofits the column width.
             </summary>
-            <param name="columnIndex">Column index.</param>
+            <param name="colIndex">Column index.</param>
         </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitColumn(System.Int32,Spire.Xls.Core.Spreadsheet.AutoFilter.AutoFitterOptions)">
-            <summary>
-            Autofits the column width.
-            </summary>
-            <param name="columnIndex">Column index.</param>
-            <param name="options">The auto fitting setting</param>
-        </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitColumn(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutofitColumn(System.Int32,System.Int32,System.Int32)">
             <summary>
             Autofits column.
             </summary>
@@ -9751,14 +9665,6 @@
             <param name="Count">count</param>
             <param name="value">Value</param>
         </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.SaveToFile(System.String,System.String,System.Boolean)">
-            <summary>
-            Save worksheet to file.
-            </summary>
-            <param name="fileName">File name.</param>
-            <param name="separator">Seperator.</param>
-            <param name="retainHiddenData">retain hidden data</param>
-        </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.SaveToFile(System.String,System.String)">
             <summary>
             Save worksheet to file.
@@ -9773,14 +9679,6 @@
             <param name="fileName">File name.</param>
             <param name="separator">Seperator.</param>
             <param name="encoding">Encoding to use.</param>
-        </member>
-        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.SaveToStream(System.IO.Stream,System.String,System.Boolean)">
-            <summary>
-            Save worksheet to stream.
-            </summary>
-            <param name="stream">Stream object.</param>
-            <param name="separator">Seperator.</param>
-            <param name="retainHiddenData">retain hidden data</param>
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.SaveToStream(System.IO.Stream,System.String)">
             <summary>
@@ -9846,7 +9744,15 @@
             <param name="fileName">file name</param>
             <param name="format">file format</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.ToEMFStream(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.Imaging.EmfType)" -->
+        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.ToImage(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="firstRow">One-based index of the first row to convert.</param>
+            <param name="firstColumn">One-based index of the first column to convert.</param>
+            <param name="lastRow">One-based index of the last row to convert.</param>
+            <param name="lastColumn">One-based index of the last column to convert.</param>
+        </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.ToEMFStream(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             
@@ -10400,7 +10306,7 @@
             <param name="reader">reader</param>
             <param name="sheet">sheet</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XmlReaders.Excel2007Parser.ConvertColorByTint(System.Drawing.Color,System.Double)" -->
+        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.XmlReaders.Excel2007Parser.ConvertColorByTint(System.Drawing.Color,System.Double)”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Core.Spreadsheet.XmlReaders.Excel2007Parser.ParseCFRuleTag(System.Xml.XmlReader,Spire.Xls.Core.Spreadsheet.Collections.XlsConditionalFormats,System.Collections.Generic.List{Spire.Xls.Core.Spreadsheet.XmlReaders.DxfImpl},System.Boolean,System.Boolean)">
             <summary>
             Parses conditional formatting rule tag.
@@ -10464,7 +10370,7 @@
             <param name="cellValue">String representation of the formula value.</param>
             <param name="cellType">Type of the formula value.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XmlReaders.Shapes.CommentShapeParser.RegisterShape(Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase)" -->
+        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.XmlReaders.Shapes.CommentShapeParser.RegisterShape(Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase)”忽略有格式错误的 XML 注释 -->
         <member name="T:Spire.Xls.Core.Spreadsheet.XmlReaders.Shapes.TextBoxShapeParser">
             <summary>
             This class is used to parse text box shape.
@@ -10556,7 +10462,7 @@
             <param name="range">Range to serialize values for.</param>
             <param name="tagName">Name of the xml tag to use.</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Charts.ChartSerializatorCommon.SerializeMaterial(System.Xml.XmlWriter,System.Int32)" -->
+        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Charts.ChartSerializatorCommon.SerializeMaterial(System.Xml.XmlWriter,System.Int32)”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Charts.ChartSerializatorCommon.SerializeDefaultTextFormatting(System.Xml.XmlWriter,Spire.Xls.Core.IChartTextArea,Spire.Xls.Core.IWorkbook,System.Double)">
             <param name="textFormatting">Text formatting to serialize.</param>
         </member>
@@ -10590,8 +10496,8 @@
             Content type for pivot cache records.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.CompoundLineTypeAttribute" -->
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.AnchorAttribute" -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.CompoundLineTypeAttribute”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.AnchorAttribute”忽略有格式错误的 XML 注释 -->
         <member name="F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.TextBoxRotationAttribute">
             <summary>
             Determines if the text within the given text body should be displayed vertically.
@@ -10651,8 +10557,8 @@
             Vertical alignment attribute.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.AlwaysCalculateArray" -->
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.NamedStyleXFsTagName" -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.AlwaysCalculateArray”忽略有格式错误的 XML 注释 -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.NamedStyleXFsTagName”忽略有格式错误的 XML 注释 -->
         <member name="F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.TableStyleTagName">
             <summary>
             Name of a single table style definition.
@@ -10673,7 +10579,7 @@
             Name of the default table style to apply to new PivotTables attribute
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.WorkbookViewIdAttribute" -->
+        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.WorkbookViewIdAttribute”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.SerializeProtectedRanges(System.Xml.XmlWriter,Spire.Xls.Core.Spreadsheet.XlsWorksheet)">
             <summary>
             Serializes ProtectedRanges 
@@ -10803,47 +10709,6 @@
             <param name="newValue">New property value.</param>
             <param name="objectName">Unique Identifier of object whose value changed.</param>
             <param name="next">Next property which must be changed.</param>
-        </member>
-        <member name="T:Spire.Xls.ConverterSetting">
-            <summary>
-            Convert Setting
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.ConverterSetting.PrintPageEventHandler">
-            <summary>
-            Print each page using this EventHandler
-            </summary>  
-        </member>
-        <member name="P:Spire.Xls.ConverterSetting.XDpi">
-            <summary>
-            Gets or sets the horizontal resolution, in dots per inch (DPI). Default value is 96.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.ConverterSetting.YDpi">
-            <summary>
-            Gets or sets the vertical resolution, in dots per inch (DPI). Default value is 96.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.ConverterSetting.JPEGQuality">
-            <summary>
-            Gets or sets a value determining the quality.
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.ConverterSetting.SheetFitToPage">
-            <summary>
-            One sheet context render to only one page. 
-            </summary>
-        </member>
-        <member name="P:Spire.Xls.ConverterSetting.ChartImageType">
-            
-             <summary>
-             Indicate the chart render image type.
-             </summary>
-        </member>
-        <member name="P:Spire.Xls.ConverterSetting.IsRegionClip">
-            <summary>
-            Enables or disables clipping the image to the region
-            </summary>
         </member>
         <member name="T:Spire.Xls.ExcelSheetType">
             <summary>
@@ -11504,251 +11369,6 @@
             <summary>
             Represents A3 extra transverse paper (322 mm by 445 mm).
             </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.A6Paper">
-            <summary>
-            Represents A6 paper (105 x 148 mm)
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeKaku2">
-            <summary>
-            Japanese Envelope Kaku #2
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeKaku3">
-            <summary>
-            Japanese Envelope Kaku #3
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeChou3">
-            <summary>
-            Japanese Envelope Chou #3
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeChou4">
-            <summary>
-            Japanese Envelope Chou #4
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperLetterRotated">
-            <summary>
-            11in × 8.5in
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperA3Rotated">
-            <summary>
-            420mm × 297mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperA4Rotated">
-            <summary>
-            297mm × 210mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperA5Rotated">
-            <summary>
-            210mm × 148mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJISB4Rotated">
-            <summary>
-            B4 (JIS) Rotated 364 x 257 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJISB5Rotated">
-            <summary>
-            B5 (JIS) Rotated 257 x 182 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapanesePostcardRotated">
-            <summary>
-            Japanese Postcard Rotated 148 x 100 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseDoublePostcardRotated">
-            <summary>
-            Double Japanese Postcard Rotated 148 x 200 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperA6Rotated">
-            <summary>
-            A6 Rotated 148 x 105 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeKaku2Rotated">
-            <summary>
-            Japanese Envelope Kaku #2 Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeKaku3Rotated">
-            <summary>
-            Japanese Envelope Kaku #3 Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeChou3Rotated">
-            <summary>
-            Japanese Envelope Chou #3 Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeChou4Rotated">
-            <summary>
-            Japanese Envelope Chou #4 Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJISB6">
-            <summary>
-            B6 (JIS) 128 x 182 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJISB6Rotated">
-            <summary>
-            B6 (JIS) Rotated 182 x 128 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.Paper12x11">
-            <summary>
-            12 x 11 in
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeYou4">
-            <summary>
-            Japanese Envelope You #4
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperJapaneseEnvelopeYou4Rotated">
-            <summary>
-            Japanese Envelope You #4 Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRC16K">
-            <summary>
-            PRC 16K 146 x 215 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRC32K">
-            <summary>
-            PRC 32K 97 x 151 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCBig32K">
-            <summary>
-            PRC 32K(Big) 97 x 151 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope1">
-            <summary>
-            PRC Envelope #1 102 x 165 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope2">
-            <summary>
-            PRC Envelope #2 102 x 176 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope3">
-            <summary>
-            PRC Envelope #3 125 x 176 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope4">
-            <summary>
-            PRC Envelope #4 110 x 208 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope5">
-            <summary>
-            PRC Envelope #5 110 x 220 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope6">
-            <summary>
-            PRC Envelope #6 120 x 230 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope7">
-            <summary>
-            PRC Envelope #7 160 x 230 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope8">
-            <summary>
-            PRC Envelope #8 120 x 309 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope9">
-            <summary>
-            PRC Envelope #9 229 x 324 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope10">
-            <summary>
-            PRC Envelope #10 324 x 458 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRC16KRotated">
-            <summary>
-            PRC 16K Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRC32KRotated">
-            <summary>
-            PRC 32K Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCBig32KRotated">
-            <summary>
-            PRC 32K(Big) Rotated
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope1Rotated">
-            <summary>
-            PRC Envelope #1 Rotated 165 x 102 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope2Rotated">
-            <summary>
-            PRC Envelope #2 Rotated 176 x 102 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope3Rotated">
-            <summary>
-            PRC Envelope #3 Rotated 176 x 125 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope4Rotated">
-            <summary>
-            PRC Envelope #4 Rotated 208 x 110 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope5Rotated">
-            <summary>
-            PRC Envelope #5 Rotated 220 x 110 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope6Rotated">
-            <summary>
-            PRC Envelope #6 Rotated 230 x 120 mm
-            </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope7Rotated">
-             <summary>
-            PRC Envelope #7 Rotated 230 x 160 mm
-             </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope8Rotated">
-             <summary>
-            PRC Envelope #8 Rotated 309 x 120 mm
-             </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope9Rotated">
-             <summary>
-            PRC Envelope #9 Rotated 324 x 229 mm
-             </summary>
-        </member>
-        <member name="F:Spire.Xls.PaperSizeType.PaperPRCEnvelope10Rotated">
-             <summary>
-            PRC Envelope #10 Rotated 458 x 324 mm
-             </summary>
         </member>
         <member name="T:Spire.Xls.PrintCommentType">
             <summary>
@@ -16142,11 +15762,6 @@
             PostScript file
             </summary>
         </member>
-        <member name="F:Spire.Xls.FileFormat.PCL">
-            <summary>
-            Printer Command Language (PCL) format.
-            </summary>
-        </member>
         <member name="F:Spire.Xls.FileFormat.Version97to2003">
             <summary>
             Represents excel version 97-2003.
@@ -17906,7 +17521,7 @@
             Represents the SparklineCollection.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.SparklineCollection.Add" -->
+        <!-- 对于成员“M:Spire.Xls.SparklineCollection.Add”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.SparklineCollection.Add(Spire.Xls.CellRange,Spire.Xls.CellRange)">
             <summary>
             Adds the sparkline.
@@ -18229,13 +17844,6 @@
             <param name="updateReference">Indicates whether to update reference cells.</param>
             <param name="copyStyles">Indicates whether to copy styles.</param>
             <returns>Destination range</returns>
-        </member>
-        <member name="M:Spire.Xls.CellRange.Copy(Spire.Xls.CellRange,Spire.Xls.CopyRangeOptions)">
-            <summary>
-            Copies the range to the specified range.
-            </summary>
-            <param name="destRange">Destination range.</param>
-            <param name="copyOptions">Copy options.</param>
         </member>
         <member name="M:Spire.Xls.CellRange.FindAllNumber(System.Double,System.Boolean)">
             <summary>
@@ -19543,12 +19151,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Spire.Xls.Collections.WorksheetChartsCollection.Add(Spire.Xls.ExcelChartType,Spire.Xls.Core.IPivotTable)">
-            <summary>
-            Add a new pivot chart.
-            </summary>
-            <returns></returns>
-        </member>
         <member name="P:Spire.Xls.Collections.WorksheetChartsCollection.Item(System.Int32)">
             <summary>
             Get a object from collection.
@@ -20353,7 +19955,7 @@
             Returns or sets the cell (a Range object) that defines the page-break location.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Spire.Xls.Workbook" -->
+        <!-- 对于成员“T:Spire.Xls.Workbook”忽略有格式错误的 XML 注释 -->
         <member name="M:Spire.Xls.Workbook.#ctor">
             <summary>
             Create a new instance of workbook.
@@ -20395,6 +19997,13 @@
             <summary>
             Creates a font object and add it to the workbook.
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Spire.Xls.Workbook.CreateFont(System.Drawing.Font)">
+            <summary>
+            Creates a font object and add it to the workbook.
+            </summary>
+            <param name="font">Font to add</param>
             <returns></returns>
         </member>
         <member name="M:Spire.Xls.Workbook.CreateEmptySheet">
@@ -20488,26 +20097,6 @@
             <param name="row">Start row.</param>
             <param name="column">Start column.</param>
         </member>
-        <member name="M:Spire.Xls.Workbook.LoadFromFile(System.String,System.String,System.Int32,System.Int32,Spire.Xls.ExcelVersion)">
-            <summary>
-            Loads text files with user defined separator.
-            </summary>
-            <param name="fileName">File name.</param>
-            <param name="separator">Delimiter of text file.</param>
-            <param name="row">Start row.</param>
-            <param name="column">Start column.</param>
-            <param name="version">workbook version</param>
-        </member>
-        <member name="M:Spire.Xls.Workbook.LoadFromFile(System.String,System.String,System.Int32,System.Int32,Spire.Xls.ExcelVersion,System.Text.Encoding)">
-            <summary>
-            Loads text files with user defined separator.
-            </summary>
-            <param name="fileName">File name.</param>
-            <param name="separator">Delimiter of text file.</param>
-            <param name="row">Start row.</param>
-            <param name="column">Start column.</param>
-            <param name="encoding">Text Encoding</param>
-        </member>
         <member name="M:Spire.Xls.Workbook.LoadFromXml(System.String)">
             <summary>
             Loads a xml file and imports its data. 
@@ -20517,13 +20106,6 @@
         <member name="M:Spire.Xls.Workbook.LoadFromXml(System.IO.Stream)">
             <summary>
             Loads a xml file and imports its data. 
-            </summary>
-            <param name="stream">Stream contains data.</param>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Workbook.LoadFromHtml(System.String)" -->
-        <member name="M:Spire.Xls.Workbook.LoadFromHtml(System.IO.Stream)">
-            <summary>
-            Loads a html file and imports its data. 
             </summary>
             <param name="stream">Stream contains data.</param>
         </member>
@@ -20579,12 +20161,6 @@
             <param name="fileName">File name</param>
             <param name="loadStyles">Indicates whehter load styles.</param>
         </member>
-        <member name="M:Spire.Xls.Workbook.SaveToHtml(System.String)">
-            <summary>
-            Saves the workbook to html
-            </summary>
-            <param name="fileName">File name.</param>
-        </member>
         <member name="M:Spire.Xls.Workbook.SaveToFile(System.String)">
             <summary>
             Saves changes to the workbook in a different file
@@ -20607,14 +20183,6 @@
             <param name="dpiX">Dpi X</param>
             <param name="dpiY">Dpi Y</param>
             <returns></returns>
-        </member>
-        <member name="M:Spire.Xls.Workbook.SaveToFile(System.String,Spire.Xls.FileFormat,System.Boolean)">
-            <summary>
-            Saves changes to the workbook in a different file
-            </summary>
-            <param name="fileName">File name</param>
-            <param name="fileFormat">File format</param>
-            <param name="retainHiddenData">retain hidden data</param>
         </member>
         <member name="M:Spire.Xls.Workbook.SaveToFile(System.String,Spire.Xls.FileFormat)">
             <summary>
@@ -20820,7 +20388,7 @@
             Get or set calculation mode.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Workbook.NameRanges" -->
+        <!-- 对于成员“P:Spire.Xls.Workbook.NameRanges”忽略有格式错误的 XML 注释 -->
         <member name="P:Spire.Xls.Workbook.AddInFunctions">
             <summary>
             Returns collection of add-in functions. 
@@ -20911,16 +20479,6 @@
             Returns or sets the default font size.
             </summary>
         </member>
-        <member name="P:Spire.Xls.Workbook.CustomFontFilePaths">
-            <summary>
-            Returns or sets the custom path of font files.
-            </summary>
-        </member>
-        <member name="M:Spire.Xls.Workbook.GetCustomFontParsedResult">
-            <summary>
-            Get result that parse the custom path of font files 
-            </summary>
-        </member>
         <member name="M:Spire.Xls.Workbook.ColumnWidthToPixels(System.Double)">
             <summary>
             onverts column width in characters into column width in pixels.
@@ -20968,13 +20526,6 @@
             unprotect file
             also upprotect workbook window and structure
             </summary>
-        </member>
-        <member name="M:Spire.Xls.Workbook.UnProtect(System.String)">
-            <summary>
-            unprotect file
-            also upprotect workbook window and structure
-            </summary>
-            <param name="bookWindowAndStructurePassword">password for protect workbook window and structure</param>
         </member>
         <member name="M:Spire.Xls.Workbook.GetPaletteColor(Spire.Xls.ExcelColors)">
             <summary>
@@ -21166,33 +20717,6 @@
             Gets the PrintDocument
             </summary>
         </member>
-        <member name="M:Spire.Xls.Worksheet.FindAll(System.String,Spire.Xls.FindType,Spire.Xls.ExcelFindOptions)">
-            <summary>
-            Finds the all cells with specified string value.
-            </summary>
-            <param name="findValue">Value to search.</param>
-            <param name="flags">Type of value to search.</param>
-            <param name="findOptions">Way to search.</param>
-            <returns>All found cells, or Null if value was not found.</returns>
-        </member>
-        <member name="M:Spire.Xls.Worksheet.FindAll(System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Finds the all cells with specified value.
-            </summary>
-            <param name="findValue">Value to search.</param>
-            <param name="isFindFormulaRange">Whether the find range is formula.</param>
-            <param name="isMatchCase">Whether match case.</param>
-            <returns>All found cells, or Null if value was not found.</returns>
-        </member>
-        <member name="M:Spire.Xls.Worksheet.ReplaceAll(System.String,System.String,System.Boolean)">
-            <summary>
-            Replaces cells' values with new data.
-            </summary>
-            <param name="oldValue">Value to replace.</param>
-            <param name="newValue">New value for the range with specified string.</param>
-            <param name="isMatchCase">Whether match case.</param>
-            <returns>Replace count.</returns>
-        </member>
         <member name="M:Spire.Xls.Worksheet.FindAllNumber(System.Double,System.Boolean)">
             <summary>
             Finds the cell with the input number.
@@ -21299,32 +20823,6 @@
             <param name="copyStyle">Indicates whether copy styles.</param>
             <param name="updateReference">Indicates whether update reference ranges.</param>
             <param name="ignoreSize">Indicates whether check range sizes.</param>
-        </member>
-        <member name="M:Spire.Xls.Worksheet.Copy(Spire.Xls.CellRange,Spire.Xls.CellRange,Spire.Xls.CopyRangeOptions)">
-            <summary>
-            Copys data from a source range to a destination range. 
-            </summary>
-            <param name="sourceRange">Source range.</param>
-            <param name="destRange">Destination range</param>
-            <param name="copyOptions">Copy options.</param>
-        </member>
-        <member name="M:Spire.Xls.Worksheet.CopyRow(Spire.Xls.CellRange,Spire.Xls.Worksheet,System.Int32,Spire.Xls.CopyRangeOptions)">
-            <summary>
-            Copys data from a source row to a destination row. 
-            </summary>
-            <param name="sourceRow">Source row.</param>
-            <param name="destSheet">Destination sheet</param>
-            <param name="destRowIndex">Destination row index</param>
-            <param name="copyOptions">Copy options.</param>
-        </member>
-        <member name="M:Spire.Xls.Worksheet.CopyColumn(Spire.Xls.CellRange,Spire.Xls.Worksheet,System.Int32,Spire.Xls.CopyRangeOptions)">
-            <summary>
-            Copys data from a source column to a destination column. 
-            </summary>
-            <param name="sourceColumn">Source column.</param>
-            <param name="destSheet">Destination sheet</param>
-            <param name="destColIndex">Destination column index</param>
-            <param name="copyOptions">Copy options.</param>
         </member>
         <member name="M:Spire.Xls.Worksheet.Copy(Spire.Xls.CellRange,Spire.Xls.CellRange,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
@@ -21592,12 +21090,6 @@
             </summary>
             <param name="picture">A pictureshape</param>
         </member>
-        <member name="M:Spire.Xls.Worksheet.ApplyStyle(Spire.Xls.CellStyle)">
-            <summary>
-            Apply style to whole sheet.
-            </summary>
-            <param name="style">style to apply</param>
-        </member>
         <member name="T:Spire.Xls.CellBorderWrapper">
             <summary>
             Represents the border of an object.
@@ -21677,7 +21169,7 @@
             
             </summary>
         </member>
-        <member name="P:Spire.CompoundFile.XLS.Net.FAT.SectorShift">
+        <member name="M:Spire.CompoundFile.XLS.Net.FAT.#ctor(System.IO.Stream,System.UInt16,System.Int32)">
             <summary>
             Sector size.
             </summary>

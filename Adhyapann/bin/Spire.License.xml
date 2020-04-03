@@ -27,13 +27,7 @@
             Sets the license file name, which will be used for loading license.
             </summary>
             <param name="licenseFileName">License file name.</param>
-        </member>
-        <member name="M:Spire.License.LicenseProvider.GetLicenseFileName">
-            <summary>
-            Gets the current license file name.
-            </summary>
-            <returns>The license file name, the default license file name is [license.elic.xml].</returns>
-        </member>
+        </member> 
         <member name="M:Spire.License.LicenseProvider.SetLicenseFile(System.IO.FileInfo)">
             <summary>
             Provides a license by a license file object, which will be used for loading license.
