@@ -53,13 +53,13 @@ namespace Adhyapann_Project.Controllers
                 if (lstPackages[0].Email_Result_ToUser == true)
                 {
                     emails.Add(new EmailAddress(studentTestInfo.Email_ID));
-                    emails.Add(new EmailAddress("manishc56@gmail.com"));
+                    emails.Add(new EmailAddress("info@adhyapann.co.in"));
 
                 }
                 else
                 {
 
-                    emails.Add(new EmailAddress("manishc56@gmail.com"));
+                    emails.Add(new EmailAddress("info@adhyapann.co.in"));
                 }
                 //var apiKey = "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";
 
