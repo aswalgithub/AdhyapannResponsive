@@ -5,144 +5,146 @@
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
+
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
     </script>
 
     <!-- Icons font CSS-->
-    <link href="~/wwwroot/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="~/wwwroot/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <!-- Vendor CSS-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <link href="~/wwwroot/css/select2.min.css" rel="stylesheet" media="all">
     <link href="~/wwwroot/css/daterangepicker.css" rel="stylesheet" media="all">
-
+    <script src="~/wwwroot/js/Student.js" type="text/javascript"></script>
 
     <!-- Main CSS-->
     <link href="~/wwwroot/css/Register.css" rel="stylesheet" media="all">
 </head>
 
 <body>
-    <section class="c-hero c-hero--test">
-        <div class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
-            <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
-                <h1 class="heading--xxl u-mt1">
 
-                    Adhyapaan Physchometric Tests
+    <div class="hover_bkgr_fricc">
+        <span class="helper"></span>
+        <div style="border-style: solid;  border-color: coral;">
+            <div class="popupCloseButton">&times;</div>
+            <div id="divValidation">
+                <span id="ValidationMessage"></span>
 
-                </h1>
-               
-                @*<ul class="list--feature hub">
-            <li>
-                186
-                tests
-            </li>
-            <li>
-                2700
-                questions
-            </li>
-        </ul>*@
-
-
-
-                @*<div class="c-hero__description">
-            <p>
-                Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
-            </p>
-        </div>*@
-            </div>
-
-            <div class="c-hero__image u-flex-1 u-align-right sm-only">
-
-
-
-
-                @*<img src="~/wwwroot/images/Physcho.jpg"
-                                         alt="
-                    Adhyapaan Physchometric Tests
-                    " class="eager" width="406" height="269">
-
-                                </div>*@
             </div>
         </div>
-    </section>
-    <div class="page-wrapper p-t-100 p-b-100 font-robo">
+    </div>
+    <div class="page-wrapper p-t-100 p-b-100 font-robo" style="background-image: url(/wwwroot/images/Apptpuzzle.jpg);">
         <div class="wrapper wrapper--w680">
-            <div class="card card-1">
+            <div class="card card-1" style="background-image: url(/wwwroot/images/Apptpuzzle.jpg);">
 
                 <div class="card-body">
-                    <h2 style="text-align:left">Package : @Model.Package_Name</h2>
-                    
-
-                    <form id="frmRegister" method="POST" action="~/Student/SaveStudentDetails">                     
-                        <div class="container" style="border: groove">
-                            <input type="hidden" id="Package_ID" name="Package_ID" value="@Model.Package_ID">
-                            <input type="hidden" id="Package_Name" name="Package_Name" value="@Model.Package_Name">
-                            <div class="box">
-                                <h2 class="title" style="text-align:left">Student Information</h2>
-                                <div class="box-row">
-
-                                    <div class="box-cell box1">
-                                        <div class="input-group">
-                                            <input class="input--style-1" type="text" placeholder="NAME" name="Name" required pattern="\S.*\S">
-                                        </div>
+                    <h2 style="text-align:center;font-size:25px;color:white !important;">Package : @Model.Package_Name</h2>
 
 
-                                        <div class="input-group">
-                                            <input class="input--style-1" type="text" placeholder="EMAIL ID" name="Email_ID" required pattern="\S.*\S">
-                                        </div>
-
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="Gender">
-                                                    <option disabled="disabled" selected="selected">GENDER</option>
-                                                    <option>Male</option>
-                                                    <option>Female</option>
-
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="input-group">
-                                            <input class="input--style-1" type="text" placeholder="PASSWORD" name="Password" required pattern="\S.*\S">
-                                        </div>
+                    <form id="frmRegister" class="" method="POST" action="~/Student/SaveStudentDetails">
+                        <input type="hidden" id="Package_ID" name="Package_ID" value="@Model.Package_ID">
+                        <input type="hidden" id="Package_Name" name="Package_Name" value="@Model.Package_Name">
+                        <fieldset><legend style="color:white !important">Student Information</legend></fieldset>
+                        <div class="container"  style="margin:auto">
 
 
-                                    </div>
-                                    <div class="box-cell box2">
-                                        <div class="input-group">
-                                            <input class="input--style-1" type="text" placeholder="SCHOOL NAME" name="School_Name" required pattern="\S.*\S">
-                                        </div>
-                                        <div class="input-group">
-                                            <input class="input--style-1 js-datepicker" type="text" placeholder="BIRTHDATE" name="DOB" required pattern="\S.*\S">
-                                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                        </div>
+                            <div class="form-group">
 
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="Class">
-                                                    <option disabled="disabled" selected="selected">CLASS</option>
-                                                    <option>STANDARD 3 to 8</option>
-                                                    <option>STANDARD 9 to 12</option>
+                                <input class="input--style-1" type="text" placeholder="NAME" name="Name" id="Name" required pattern=".*\S+.*" title="This field is required" autofocus>
+                            </div>
+                            <div class="form-group">
 
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
+                                <input class="input--style-1" type="text" placeholder="EMAIL ID" name="Email_ID" id="Email_ID" required pattern=".*\S+.*" title="This field is required">
+                            </div>
+                            <div class="form-group">
+
+                                <select name="Gender" id="Gender" style="margin:10px !important" required>
+                                    <option value="" disabled="disabled" selected="selected">GENDER</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+
+                                <input class="input--style-1" type="password" data-type="password" placeholder="PASSWORD" name="Password" id="password1" required pattern=".*\S+.*" title="This field is required">
+                                <input type="hidden" id="password2" value="@Model.Package_Password" />
+                            </div>
+                            <div class="form-group">
+
+                                <input class="input--style-1" type="text" placeholder="SCHOOL NAME" name="School_Name" id="school_Name" required pattern=".*\S+.*" title="This field is required">
+                            </div>
+                            <div class="form-group">
+
+                                <input class="input--style-1 js-datepicker" type="text" placeholder="BIRTHDATE" name="DOB" id="DOB" required pattern=".*\S+.*" title="This field is required">
+                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                            </div>
+                            <div class="form-group">
+
+                                <select name="Class" id="Class" style="margin:10px !important" required>
+                                    <option value="" disabled="disabled" selected="selected">CLASS</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>1</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>2</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>3</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>4</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>5</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>6</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>7</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>8</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>9</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>10</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>11</option>
+                                    <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>12</option>
 
 
-                                    </div>
-                                </div>
+
+                                </select>
+                            </div>
+                            <p align="center">
+                                <button class="btn btn--radius btn--green" id="btnRegisterStudent" name="initiateTest" type="button" style="text-align:center;margin:5px">Start Test</button>
+                                <button class="btn btn--radius btn--green" id="btnBack" type="button" style="text-align:right;margin:5px" onclick="location.href='@Url.Action("Home", "Student")'">Back</button>
+                            </p>
+
+                        </div>
+
+                        <fieldset><legend style="color:white !important">Enter the details to resume Test</legend></fieldset>
+                        <div class="container" style="margin:auto;">
+
+
+                            @*<h2 class="title" style="text-align:left ;font-size:20px">Enter the details to resume the Test</h2>*@
+                            <div class="form-group">
+                                <input class="input--style-1" type="text" placeholder="REFERENCE ID" name="referenceID" id="referenceID" required pattern=".*\S+.*" title="This field is required" autofocus>
                             </div>
 
+
+
+
+                            <div class="form-group">
+                                <input class="input--style-1" type="password" data-type="password" placeholder="PASSWORD" name="Password_resume" id="password1_resume" required pattern=".*\S+.*" title="This field is required">
+                                <input type="hidden" id="password2_resume" value="@Model.Package_Password" />
+
+                            </div>
+                            <p id="validate-status"></p>
+
+
+
+                            <p align="center">
+                            <p align="center">
+                                <button class="btn btn--radius btn--green" id="btnResumeTest" name="initiateTest" type="button" style="text-align:center;margin:5px">Resume Test</button>
+
+                            </p>
                         </div>
-                        <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" id="btnRegisterStudent" type="button">Start Test</button>
-                        </div>
+
+
+
+
 
 
                     </form>

@@ -555,9 +555,7 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Microsoft.Extension
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Microsoft.Web.Infrastructure.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Newtonsoft.Json.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\SendGrid.dll
-C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Common.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.License.dll
-C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Pdf.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.XLS.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\System.Configuration.ConfigurationManager.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\System.Security.AccessControl.dll
@@ -572,7 +570,6 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\System.Web.WebPages
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\System.Web.WebPages.Razor.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\WebGrease.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\MySql.Data.dll
-C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Microsoft.mshtml.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\DataAccessLayer.pdb
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\DataAccessLayer.dll.config
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\GemBox.Document.xml
@@ -581,9 +578,6 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Microsoft.Extension
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\SendGrid.pdb
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\SendGrid.xml
-C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Common.xml
-C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.License.xml
-C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Pdf.xml
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.XLS.xml
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\System.Web.Helpers.xml
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\System.Web.Mvc.xml
@@ -601,3 +595,9 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\obj\Debug\Adhyapann.csp
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\obj\Debug\Adhyapann.csproj.CopyComplete
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\obj\Debug\Adhyapann.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\obj\Debug\Adhyapann.pdb
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Common.dll
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Pdf.dll
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Microsoft.mshtml.dll
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Common.xml
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.License.xml
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\Adhyapann\bin\Spire.Pdf.xml

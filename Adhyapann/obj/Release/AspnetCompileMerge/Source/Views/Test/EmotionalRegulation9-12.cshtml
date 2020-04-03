@@ -14,21 +14,27 @@
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
     </script>
-    <title>EMOTIONAL REGULATION TEST - CLASS 9-12</title>
+    <title>EMOTIONAL REGULATION TEST - CLASS 8-12</title>
 
     <meta name="keywords" content="online, verbal, english, ability, test, questions, answers, explanation, solutions, 1" />
     <meta name="description" content="Take this &quot;Online Verbal Ability Test 1&quot; test and find out how much you score before you appear for your next interview and written test." />
     <link href="~/wwwroot/css/Test.css" type="text/css" rel="stylesheet" media="screen" />
     <link href="~/wwwroot/css/verbal_test.css" type="text/css" rel="stylesheet" media="screen" />
     <script src="~/wwwroot/js/verbal_test.js" type="text/javascript"></script>
-
+    <script src="~/wwwroot/js/Spin.js" type="text/javascript"></script>
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <script src="~/wwwroot/js/Test.js" type="text/javascript"></script>
 
 </head>
 
 <body>
-
+    <div id="loading">
+        <div id="loadingcontent">
+            <p id="loadingspinner">
+                Please wait. Your Test is being Submitted...
+            </p>
+        </div>
+    </div>
     <div>
 
         <!--[if IE]><div class="inner-page-ie"><![endif]-->
@@ -40,63 +46,86 @@
 
 
                     <div id="divHeader" class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
+
+
                         <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
                             <h1 class="heading--xxl u-mt1">
 
-                                Adhyapaan Physchometric Tests - EMOTIONAL REGULATION TEST (9th -12th Class )
+                                EMOTIONAL REGULATION TEST
 
                             </h1>
+                            <h2 class="heading--xxl u-mt1">
+
+                                For CLASS 8-12 (Total Questions: 36, Timeline: 7 Minutes)
+
+                            </h2>
 
 
                             @*<div class="c-hero__description">
-                        <p>
-                            Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
-                        </p>
-                    </div>*@
+                                    <p>
+                                        Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
+                                    </p>
+                                </div>*@
                         </div>
 
-                        <div id="divUserDetails">
-                            <table align="left">
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Name: <b>@Model.Name</b></label>
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Email: <b>@Model.Email_ID</b></label>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Reference Code: <b>@Model.Reference_Code</b></label>
-
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td style="width:100%">
-                                        <label style="color:white"> Package: <b>@Model.Package_Name</b></label>
-
-                                    </td>
-                                </tr>
-
-                            </table>
-                        </div>
                     </div>
 
                 </section>
+                <div id="divUserDetails" style="margin-left:0px;margin-right:0px;">
+
+                    <fieldset style="border:2px solid black; font:bold; -moz-border-radius:8px;  -webkit-border-radius:8px;  border-radius:8px; background-color:white;  width:100%;height:45px;">
+                        <legend align="left" style="color: black;"><b> Student Details:</b></legend>
+                        <table align="left" style="font:5px !important; color: black;">
+
+                            <tr>
+                                <td style="width:20%">
+                                    <label><b> Name: @Model.Name</b></label>
+
+                                </td>
+                                <td style="width:20%">
+                                    <label> <b>Email: @Model.Email_ID</b></label>
+
+                                </td>
+                                <td style="width:35%">
+                                    <label><b> Package: @Model.Package_Name</b></label>
+
+                                </td>
+                                <td style="width:25%">
+                                    <label><b> Reference Code: @Model.Reference_Code</b></label>
+
+                                </td>
+                            </tr>
+                            @*<tr>
+
+                                </tr>*@
+                            @*<tr>
+                                    <td style="width:100%">
+                                        <label> Reference Code: <b>@Model.Reference_Code</b></label>
+
+                                    </td>
+                                </tr>*@
+
+                            @*<tr>
+
+                                </tr>*@
+
+
+                        </table>
+
+                    </fieldset>
+                </div>
+                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; Top:20px; right:80px; width:auto; background-color:#5eac1a; color:white; ">
+                    Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
+                </div>
                 <div>
 
-                    <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; bottom:10px; left:1px; width:auto; background-color:#5eac1a; color:white; ">
-                        Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
-                    </div>
+
                     <div class="breadcrumb">
                         @*<a href="/">Home</a> &raquo;
-                <a href="/online-test/categories/">Online Test</a> &raquo;
-                <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
-                        <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
+                            <a href="/online-test/categories/">Online Test</a> &raquo;
+                            <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
+                        <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:18:00</b></span>
                         <input type="hidden" id="hdnTestTitleID" value="3" />
                         <input type="hidden" id="hdnTestID" value="21" />
                         <input type="hidden" id="hdnInitialTimer" value="420" />
@@ -115,7 +144,7 @@
                                 $('#divInitiator').remove();
 
                                 $('#divTabContent').show();
-                                $('#idTimerSpan').show();
+                                // $('#idTimerSpan').show();
                                 $('#divFloatTimer').show();
                                 _timerHandler = setInterval("MyTimer()", 1000);
                             }
@@ -144,54 +173,56 @@
                                     document.title = $('#idTimerLCD').text();
                                     $('#idFloatTimerLCD').text($('#idTimerLCD').text());
                                 }
-                                else {
-                                    alert(" Your time is up for this test.You will be moved to Next Test.");
-                                    $("#frmEmotionalRegulationSenior").submit();
+                                //else {
+                                //    alert(" Your time is up for this test.You will be moved to Next Test.");
+                                //    $("#frmEmotionalRegulationSenior").submit();
 
-                                }
+                                //}
                             }
 
                         </script>
-                        <div class="div-test-initiator" id="divInitiator">
-                            <div id="divStartTestInstruction">
-                                <div class="div-test-instruction">
-                                    <p class="mx-green mx-bold mx-uline">Instruction:</p>
 
-                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
-                                        <tr>
-                                            <td colspan="2">
-                                                <div class="bix-div-direction">
-                                                    <div class="title-bar">
-                                                        Think Of a Recent Incident You Have peronally Encountered. Keeping this incident in mind and other instances you face , answer the below questions on basis what you feel
+
+                        <a class="trigger_popup_fricc mx-green">Click here for Instruction</a>
+
+                        <div class="hover_bkgr_fricc">
+                            <span class="helper"></span>
+                            <div>
+                                <div class="popupCloseButton">&times;</div>
+                                <div id="divStartTestInstruction">
+                                    <div class="div-test-instruction">
+                                        <p class="mx-green mx-bold mx-uline">Instruction:</p>
+
+                                        <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div class="bix-div-direction">
+                                                        <div class="title-bar">
+                                                            Think Of a Recent Incident You Have peronally Encountered. Keeping this incident in mind and other instances you face , answer the below questions on basis what you feel
+                                                        </div>
+                                                        <div class="title-bar">
+                                                            Now  : Each question has 5 choices. Choose the answer you feel is correct.
+                                                        </div>
                                                     </div>
-                                                    <div class="title-bar">
-                                                        Now  : Each question has 5 choices. Choose the answer you feel is correct.
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
 
 
-                                    </table>
-                                    <div class="bix-tbl-container bix-div-direction title-bar">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                Timer : 7 Minutes : EMOTIONAL REGULATION
-                                            </div>
+                                        </table>
 
-                                        </div>
+
                                     </div>
 
                                 </div>
-                                <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
                             </div>
                         </div>
                         <form id="frmEmotionalRegulationSenior" method="POST" action="~/Test/SaveEmotionalRegulationSenior">
-                            <div id="divTabContent" style="width:100%;" class="mx-none">
-                                <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
+                            <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
+                            <div id="divTabContent" style="width:100%; text-align: center;background-image: url(/wwwroot/images/Apptpuzzle.jpg);" class="mydivs">
 
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions">
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -228,11 +259,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -268,12 +294,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -312,8 +332,7 @@
                                     </table>
                                 </div>
 
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions">
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -350,11 +369,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -390,12 +405,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
 
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -434,7 +444,8 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions">
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -471,11 +482,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eigthrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -511,11 +517,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -554,7 +555,8 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions">
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -591,11 +593,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -631,11 +628,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twelvthrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -674,7 +666,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenrowquestions">
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -711,12 +703,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -752,11 +738,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fifteenrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -795,7 +776,8 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="sixteenrowquestions">
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -832,12 +814,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
 
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="seventeenrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -873,11 +850,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eighteenrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -913,10 +885,11 @@
 
 
                                         </tr>
+
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="nineteenrowquestions">
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -953,11 +926,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -993,11 +961,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyonerowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1033,10 +997,11 @@
 
 
                                         </tr>
+
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentytworowquestions">
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="eigthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1073,12 +1038,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentythreerowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1114,12 +1073,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyfourrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1158,8 +1111,7 @@
                                     </table>
                                 </div>
 
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyfiverowquestions">
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1196,12 +1148,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
 
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentysixrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1237,11 +1184,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentysevenrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1280,7 +1223,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyeightrowquestions">
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1317,10 +1260,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twentyninerowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1356,10 +1295,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirtyrowquestions">
-                                    <table width="100%">
+
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1397,7 +1333,8 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirtyonerowquestions">
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1434,11 +1371,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirtytworowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1474,10 +1406,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirtythreerowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1515,7 +1443,8 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirtyfourrowquestions">
+
+                                <div class="bix-tbl-container bix-div-direction title-bar" id="twelvthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1552,10 +1481,7 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirtyfiverowquestions">
-                                    <table width="100%">
+
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1591,11 +1517,6 @@
 
 
                                         </tr>
-                                    </table>
-                                </div>
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirtysixrowquestions">
-                                    <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
@@ -1633,9 +1554,8 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div id="divSubmitTest" align="center" padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
-                                    <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnEmoRegCompletionTest" />
-                                </div>
+
+
 
 
 
@@ -1643,6 +1563,12 @@
 
 
                             </div>
+                            <input style="height:30px; font-size:14px; text-align:center; padding:20px; margin-top:20px; margin-left:320px; margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Prev" name="Prev" id="btnPrev" />
+                            <input style="height:30px; font-size:14px; text-align:center; padding:20px; margin-top:20px; margin-left:380px; margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Next" name="Next" id="btnNext" />
+                            <div id="divSubmitTest" align="center" hidden="hidden" style="padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
+                                <input style="height:30px; font-size:14px" align="center" type="submit" value="   Submit Test   " id="btnEmoRegCompletionTest" />
+                            </div>
+
                         </form>
                     </div>
 

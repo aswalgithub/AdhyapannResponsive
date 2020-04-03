@@ -520,7 +520,7 @@ input {
     .card-1 .card-body {
         padding-top: 55px;
         padding-bottom: 65px;
-        background-color: #0394CE;
+        background-color: darkgrey;
     }
 
 @media (max-width: 1000px) {
@@ -535,7 +535,7 @@ input {
 
 
 .c-hero {
-    background-color: #0394CE;
+    background-color: darkgrey;
     color: #fff;
     height: 120px;
     text-align: center;

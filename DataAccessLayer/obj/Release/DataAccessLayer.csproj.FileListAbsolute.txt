@@ -51,7 +51,6 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\bin\Release\MySql
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\bin\Release\Newtonsoft.Json.xml
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\bin\Release\SendGrid.pdb
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\bin\Release\SendGrid.xml
-C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csprojAssemblyReference.cache
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CoreCompileInputs.cache
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.dll

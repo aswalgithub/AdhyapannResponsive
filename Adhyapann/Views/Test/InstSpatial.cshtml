@@ -130,9 +130,9 @@
             </section>
             <div id="divUserDetails" style="margin-left:0px;margin-right:0px;">
 
-                <fieldset style="border:2px solid skyblue; font:bold; -moz-border-radius:8px;  -webkit-border-radius:8px;  border-radius:8px; background-color:white; width: 100% ;height:45px;">
-                    <legend align="left" style="color:#0394CE;"><b> Student Details:</b></legend>
-                    <table align="left" style="font:5px !important; color:#0394CE;">
+                <fieldset style="border:2px solid black; font:bold; -moz-border-radius:8px;  -webkit-border-radius:8px;  border-radius:8px; background-color:white; width: 100% ;height:45px;">
+                    <legend align="left" style="color: black;"><b> Student Details:</b></legend>
+                    <table align="left" style="font:5px !important; color: black;">
 
                         <tr>
                             <td style="width:20%">
@@ -190,67 +190,69 @@
             </div>
             <div class="main-left">
 
-                <div class="div-test-initiator">
+                <div class="div-test-initiator" style="background-image: url(/wwwroot/images/Apptpuzzle.jpg);">
                     <div id="divStartTestInstruction">
                         <div class="div-test-instruction">
                             <p class="mx-green mx-bold mx-uline">Instruction:</p>
+                            <div class="bix-div-direction">
+                                <div class="title-bar">
 
+                                    <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="bix-div-direction">
+                                                    <div class="title-bar">
+                                                        The purpose of the next test is to find out how well you can see the differences in figures. Each problem in this test consists of one figure on the left of a vertical line and five figures on the right. You are to decide which of the five figures on the right is the same as the figure on the left.
+                                                    </div>
+                                                    <div class="title-bar">
+                                                        Look at question Y.
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
 
-                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                The purpose of the next test is to find out how well you can see the differences in figures. Each problem in this test consists of one figure on the left of a vertical line and five figures on the right. You are to decide which of the five figures on the right is the same as the figure on the left.
-                                            </div>
-                                            <div class="title-bar">
-                                                Look at question Y.
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
+                                            <td class="img-PA-pic-completion" valign="middle">
+                                                <img style="height:200px;" src="~/wwwroot/images/PA-Spatial/PASpatial0.png" />
 
-                                    <td class="img-PA-pic-completion" valign="middle">
-                                        <img style="height:200px;" src="~/wwwroot/images/PA-Spatial/PASpatial0.png" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="bix-div-direction">
+                                                    <div class="title-bar">
+                                                        Figure B is the same as the figure on the left, so you would black out the space next to B on your answer sheet. Figure B can be made to look like the figure on the left by turning it into a different position. Figures A, C, D and E are not the same. They cannot be made to look like the figure on the left by turning them on the page. They would have to be flipped over.
+                                                    </div>
 
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                Figure B is the same as the figure on the left, so you would black out the space next to B on your answer sheet. Figure B can be made to look like the figure on the left by turning it into a different position. Figures A, C, D and E are not the same. They cannot be made to look like the figure on the left by turning them on the page. They would have to be flipped over.
-                                            </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <div class="bix-div-direction">
+                                                    <div class="title-bar">
+                                                        Practice on the following sample problems. The correct answer is indicated to the right of each problem.
+                                                    </div>
 
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                Practice on the following sample problems. The correct answer is indicated to the right of each problem.
-                                            </div>
+                                                </div>
+                                            </td>
+                                        </tr>
 
-                                        </div>
-                                    </td>
-                                </tr>
+                                        <tr>
 
-                                <tr>
+                                            <td class="img-PA-pic-completion" valign="middle">
+                                                <div class="bix-div-direction">
+                                                    <img style="height:400px;" src="~/wwwroot/images/PA-Spatial/PASpatial00.png" />
+                                                </div>
+                                            </td>
 
-                                    <td class="img-PA-pic-completion" valign="middle">
-                                        <div class="bix-div-direction">
-                                            <img style="height:400px;" src="~/wwwroot/images/PA-Spatial/PASpatial00.png" />
-                                        </div>
-                                    </td>
-
-                                </tr>
-                            </table>
-
-
+                                        </tr>
+                                    </table>
+                                    <p align="center"><br /><input style="height:40px;width:150px; font-size:16px; text-align:center; color:white; border:1px dashed #ccc; background-color:#57b846;" type="button" hidden="hidden" value="Start Test" id="btnStartTest" onclick="location.href='@Url.Action("LoadSpatialTest", "Test")'" /></p>
+                                </div>
+                            </div>
                         </div>
-                        <p align="center"><br /><input style="height:25px" type="button" hidden="hidden" value="    Start Test ...   " id="btnStartTest" onclick="location.href='@Url.Action("LoadSpatialTest", "Test")'" /></p>
+                        
                     </div>
                 </div>
 

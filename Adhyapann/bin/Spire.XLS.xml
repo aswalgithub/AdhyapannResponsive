@@ -69,8 +69,8 @@
         <member name="M:Spire.Xls.Calculation.CalcuateEngine.comb(System.Int32,System.Int32)">
             n things taken k at the time.
         </member>
-        <!-- 对于成员“M:Spire.Xls.Calculation.CalcuateEngine.ComputeConcatenate(System.String)”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“M:Spire.Xls.Calculation.CalcuateEngine.ComputeIndirect(System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Calculation.CalcuateEngine.ComputeConcatenate(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Calculation.CalcuateEngine.ComputeIndirect(System.String)" -->
         <member name="M:Spire.Xls.Calculation.CalcuateEngine.GetSheetTokenFromReference(System.String)">
             returns the sheet reference if any from the passed in cell or range.
         </member>
@@ -887,7 +887,7 @@
             Returns the calculated value of a formula using the most current inputs.
             </summary>
         </member>
-        <!-- 对于成员“M:Spire.Xls.Core.IWorkbook.CreateTemplateMarkersProcessor”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.IWorkbook.CreateTemplateMarkersProcessor" -->
         <member name="M:Spire.Xls.Core.IWorkbook.SaveAs(System.IO.Stream)">
             <summary>
             Saves changes to the specified stream.
@@ -1115,7 +1115,7 @@
             Returns or sets the descriptive (alternative) text string for a Shape object. 
             </summary>
         </member>
-        <!-- 对于成员“P:Spire.Xls.Core.IShape.OnAction”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.IShape.OnAction" -->
         <member name="P:Spire.Xls.Core.IShape.Rotation">
             <summary>
             Returns or sets the rotation of the shape, in degrees.
@@ -1510,7 +1510,7 @@
         <member name="M:Spire.Xls.Core.Spreadsheet.Charts.XlsChartTrendLine.CheckOrder(System.Int32)">
             <param name="value">Represents order value.</param>
         </member>
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.Charts.ChartLegendEntriesColl.m_hashEntries”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.Charts.ChartLegendEntriesColl.m_hashEntries" -->
         <member name="T:Spire.Xls.Core.Spreadsheet.Charts.XlsChart">
             <summary>
             Represents the Excel Chart object.
@@ -1556,7 +1556,7 @@
             Gets or sets a value indicating whether [show value field buttons].
             </summary>
         </member>
-        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.Charts.XlsChart.DisplayAxisFieldButtons”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.Charts.XlsChart.DisplayAxisFieldButtons" -->
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChart.DisplayLegendFieldButtons">
             <summary>
             Gets or sets a value indicating whether [show legend field buttons].
@@ -2424,7 +2424,7 @@
             Gets value indicating whether TextRotation was changed. Read-only.
             </summary>
         </member>
-        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartDataLabels.NumberFormat”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartDataLabels.NumberFormat" -->
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartDataLabels.HasFormula">
             <summary>
             Gets or sets a value indicating whether this instance has formula.
@@ -3298,8 +3298,8 @@
             Indicates wheter to invert its colors if the value is negative.
             </summary>
         </member>
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_3D”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_fill”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_3D" -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.m_fill" -->
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.HasLineProperties">
             <summary>
             Indicating whether line properites are created.
@@ -3318,6 +3318,11 @@
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.BarTopType">
             <summary>
             Represents the top data format type.
+            </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.MarkerBorderWidth">
+            <summary>
+            Marker border width(unit pt).
             </summary>
         </member>
         <member name="P:Spire.Xls.Core.Spreadsheet.Charts.XlsChartSerieDataFormat.IsAutoMarker">
@@ -4472,7 +4477,7 @@
             Indicates whehter prompt box has fixed position..
             </summary>
         </member>
-        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.Collections.XlsDataValidationTable.Remove(System.Drawing.Rectangle[])”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.Collections.XlsDataValidationTable.Remove(System.Drawing.Rectangle[])" -->
         <member name="M:Spire.Xls.Core.Spreadsheet.Collections.XlsExternBookCollection.ContainsExternName(System.String,System.Int32@,System.Int32@)">
             <summary>
             Checks whether any of books in this collection contains extern name.
@@ -6417,7 +6422,7 @@
             <param name="forClipboard">Indicates whether we are serializing data
             for saving into file or into clipboard.</param>
         </member>
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XlsWorkbook.m_version”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XlsWorkbook.m_version" -->
         <member name="F:Spire.Xls.Core.Spreadsheet.XlsWorkbook.m_customTableStyles">
             <summary>
             Represents a collection of Table style definitions for PivotTable styles.
@@ -6475,6 +6480,12 @@
             <param name="Filename">
             File name in which workbook will be saved if SaveChanges is true.
             </param>
+        </member>
+        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorkbook.SetWriteProtectionPassword(System.String)">
+            <summary>
+            This method sets write protection password.
+            </summary>
+            <param name="password">Password to set.</param>
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorkbook.UpdateXFIndexes(System.Int32)">
             <summary>
@@ -7044,7 +7055,7 @@
             </summary>
             <returns>A new object that is a copy of this instance.</returns>
         </member>
-        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.TemplateMarkers.XlsTemplateMarkers.IsDataView(System.Object)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.TemplateMarkers.XlsTemplateMarkers.IsDataView(System.Object)" -->
         <member name="M:Spire.Xls.Core.Spreadsheet.WorksheetCustomProperty.Clone">
             <summary>
             Creates a copy of the current object.
@@ -7488,7 +7499,7 @@
             </summary>
             <param name="sheet">Sheet to add.</param>
         </member>
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XlsFont.characterRanges”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XlsFont.characterRanges" -->
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsFont.IsBold">
             <summary>
             True if the font is bold. Read/write Boolean.
@@ -7737,7 +7748,7 @@
             For example: "$1:$1" will repeate the first row and "$1:$3" will repeate row 1, row 2 and row 3.
             </summary>
         </member>
-        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.XlsPageSetup.IsFitToPage”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.XlsPageSetup.IsFitToPage" -->
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsPageSetup.IsSummaryRowBelow">
             <summary>
             Indicates whether summary rows will appear below detail in outlines.
@@ -8012,7 +8023,7 @@
             Returns or sets a percentage (between 10 and 400 percent) by which Microsoft Excel will scale the worksheet for printing. Applies only to worksheets
             </summary>
         </member>
-        <!-- 对于成员“P:Spire.Xls.Core.Spreadsheet.XlsPageSetupBase.BackgoundImage”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Core.Spreadsheet.XlsPageSetupBase.BackgoundImage" -->
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsPageSetupBase.PageWidth">
             <summary>
             Returns page width in points. Read-only.
@@ -9075,6 +9086,18 @@
             False otherwise.
             </summary>
         </member>
+        <member name="P:Spire.Xls.Core.Spreadsheet.XlsWorksheet.RulerVisible">
+            <summary>
+            True if the ruler is visible. Only apply for page break preview.
+            False otherwise.
+            </summary>
+        </member>
+        <member name="P:Spire.Xls.Core.Spreadsheet.XlsWorksheet.OutlineShownVisible">
+            <summary>
+            True if outline are visible;
+            False otherwise.
+            </summary>
+        </member>
         <member name="P:Spire.Xls.Core.Spreadsheet.XlsWorksheet.RowColumnHeadersVisible">
             <summary>
             True if row and column headers are visible.
@@ -9131,15 +9154,29 @@
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitRow(System.Int32)">
             <summary>
-            Autofits the column width.
+            Autofits the row height.
             </summary>
             <param name="rowIndex">Row index</param>
+        </member>
+        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitRow(System.Int32,System.Boolean)">
+            <summary>
+            Autofits the row height.
+            </summary>
+            <param name="rowIndex">Row index</param>
+            <param name="onlyAuto">Whether only auto.</param>
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitColumn(System.Int32)">
             <summary>
             Autofits the column width.
             </summary>
-            <param name="colIndex">Column index.</param>
+            <param name="columnIndex">Column index.</param>
+        </member>
+        <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitColumn(System.Int32,Spire.Xls.Core.Spreadsheet.AutoFilter.AutoFitterOptions)">
+            <summary>
+            Autofits the column width.
+            </summary>
+            <param name="columnIndex">Column index.</param>
+            <param name="options">The auto fitting setting</param>
         </member>
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.AutoFitColumn(System.Int32,System.Int32,System.Int32)">
             <summary>
@@ -9809,7 +9846,7 @@
             <param name="fileName">file name</param>
             <param name="format">file format</param>
         </member>
-        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.ToEMFStream(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.Imaging.EmfType)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.ToEMFStream(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.Imaging.EmfType)" -->
         <member name="M:Spire.Xls.Core.Spreadsheet.XlsWorksheet.ToEMFStream(System.IO.Stream,System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             
@@ -10363,7 +10400,7 @@
             <param name="reader">reader</param>
             <param name="sheet">sheet</param>
         </member>
-        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.XmlReaders.Excel2007Parser.ConvertColorByTint(System.Drawing.Color,System.Double)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XmlReaders.Excel2007Parser.ConvertColorByTint(System.Drawing.Color,System.Double)" -->
         <member name="M:Spire.Xls.Core.Spreadsheet.XmlReaders.Excel2007Parser.ParseCFRuleTag(System.Xml.XmlReader,Spire.Xls.Core.Spreadsheet.Collections.XlsConditionalFormats,System.Collections.Generic.List{Spire.Xls.Core.Spreadsheet.XmlReaders.DxfImpl},System.Boolean,System.Boolean)">
             <summary>
             Parses conditional formatting rule tag.
@@ -10427,7 +10464,7 @@
             <param name="cellValue">String representation of the formula value.</param>
             <param name="cellType">Type of the formula value.</param>
         </member>
-        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.XmlReaders.Shapes.CommentShapeParser.RegisterShape(Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XmlReaders.Shapes.CommentShapeParser.RegisterShape(Spire.Xls.Core.Spreadsheet.Shapes.TextBoxShapeBase)" -->
         <member name="T:Spire.Xls.Core.Spreadsheet.XmlReaders.Shapes.TextBoxShapeParser">
             <summary>
             This class is used to parse text box shape.
@@ -10519,7 +10556,7 @@
             <param name="range">Range to serialize values for.</param>
             <param name="tagName">Name of the xml tag to use.</param>
         </member>
-        <!-- 对于成员“M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Charts.ChartSerializatorCommon.SerializeMaterial(System.Xml.XmlWriter,System.Int32)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Charts.ChartSerializatorCommon.SerializeMaterial(System.Xml.XmlWriter,System.Int32)" -->
         <member name="M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Charts.ChartSerializatorCommon.SerializeDefaultTextFormatting(System.Xml.XmlWriter,Spire.Xls.Core.IChartTextArea,Spire.Xls.Core.IWorkbook,System.Double)">
             <param name="textFormatting">Text formatting to serialize.</param>
         </member>
@@ -10553,8 +10590,8 @@
             Content type for pivot cache records.
             </summary>
         </member>
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.CompoundLineTypeAttribute”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.AnchorAttribute”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.CompoundLineTypeAttribute" -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.AnchorAttribute" -->
         <member name="F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Drawings.TextBoxRotationAttribute">
             <summary>
             Determines if the text within the given text body should be displayed vertically.
@@ -10614,8 +10651,8 @@
             Vertical alignment attribute.
             </summary>
         </member>
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.AlwaysCalculateArray”忽略有格式错误的 XML 注释 -->
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.NamedStyleXFsTagName”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.AlwaysCalculateArray" -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.NamedStyleXFsTagName" -->
         <member name="F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.TableStyleTagName">
             <summary>
             Name of a single table style definition.
@@ -10636,7 +10673,7 @@
             Name of the default table style to apply to new PivotTables attribute
             </summary>
         </member>
-        <!-- 对于成员“F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.WorkbookViewIdAttribute”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.WorkbookViewIdAttribute" -->
         <member name="M:Spire.Xls.Core.Spreadsheet.XmlSerialization.Excel2007Serializator.SerializeProtectedRanges(System.Xml.XmlWriter,Spire.Xls.Core.Spreadsheet.XlsWorksheet)">
             <summary>
             Serializes ProtectedRanges 
@@ -17869,7 +17906,7 @@
             Represents the SparklineCollection.
             </summary>
         </member>
-        <!-- 对于成员“M:Spire.Xls.SparklineCollection.Add”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.SparklineCollection.Add" -->
         <member name="M:Spire.Xls.SparklineCollection.Add(Spire.Xls.CellRange,Spire.Xls.CellRange)">
             <summary>
             Adds the sparkline.
@@ -18192,6 +18229,13 @@
             <param name="updateReference">Indicates whether to update reference cells.</param>
             <param name="copyStyles">Indicates whether to copy styles.</param>
             <returns>Destination range</returns>
+        </member>
+        <member name="M:Spire.Xls.CellRange.Copy(Spire.Xls.CellRange,Spire.Xls.CopyRangeOptions)">
+            <summary>
+            Copies the range to the specified range.
+            </summary>
+            <param name="destRange">Destination range.</param>
+            <param name="copyOptions">Copy options.</param>
         </member>
         <member name="M:Spire.Xls.CellRange.FindAllNumber(System.Double,System.Boolean)">
             <summary>
@@ -20309,7 +20353,7 @@
             Returns or sets the cell (a Range object) that defines the page-break location.
             </summary>
         </member>
-        <!-- 对于成员“T:Spire.Xls.Workbook”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "T:Spire.Xls.Workbook" -->
         <member name="M:Spire.Xls.Workbook.#ctor">
             <summary>
             Create a new instance of workbook.
@@ -20476,6 +20520,13 @@
             </summary>
             <param name="stream">Stream contains data.</param>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Spire.Xls.Workbook.LoadFromHtml(System.String)" -->
+        <member name="M:Spire.Xls.Workbook.LoadFromHtml(System.IO.Stream)">
+            <summary>
+            Loads a html file and imports its data. 
+            </summary>
+            <param name="stream">Stream contains data.</param>
+        </member>
         <member name="M:Spire.Xls.Workbook.LoadFromStream(System.IO.Stream)">
             <summary>
             Load workbook from the stream.
@@ -20527,6 +20578,12 @@
             </summary>
             <param name="fileName">File name</param>
             <param name="loadStyles">Indicates whehter load styles.</param>
+        </member>
+        <member name="M:Spire.Xls.Workbook.SaveToHtml(System.String)">
+            <summary>
+            Saves the workbook to html
+            </summary>
+            <param name="fileName">File name.</param>
         </member>
         <member name="M:Spire.Xls.Workbook.SaveToFile(System.String)">
             <summary>
@@ -20763,7 +20820,7 @@
             Get or set calculation mode.
             </summary>
         </member>
-        <!-- 对于成员“P:Spire.Xls.Workbook.NameRanges”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Xls.Workbook.NameRanges" -->
         <member name="P:Spire.Xls.Workbook.AddInFunctions">
             <summary>
             Returns collection of add-in functions. 
@@ -21118,6 +21175,24 @@
             <param name="findOptions">Way to search.</param>
             <returns>All found cells, or Null if value was not found.</returns>
         </member>
+        <member name="M:Spire.Xls.Worksheet.FindAll(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Finds the all cells with specified value.
+            </summary>
+            <param name="findValue">Value to search.</param>
+            <param name="isFindFormulaRange">Whether the find range is formula.</param>
+            <param name="isMatchCase">Whether match case.</param>
+            <returns>All found cells, or Null if value was not found.</returns>
+        </member>
+        <member name="M:Spire.Xls.Worksheet.ReplaceAll(System.String,System.String,System.Boolean)">
+            <summary>
+            Replaces cells' values with new data.
+            </summary>
+            <param name="oldValue">Value to replace.</param>
+            <param name="newValue">New value for the range with specified string.</param>
+            <param name="isMatchCase">Whether match case.</param>
+            <returns>Replace count.</returns>
+        </member>
         <member name="M:Spire.Xls.Worksheet.FindAllNumber(System.Double,System.Boolean)">
             <summary>
             Finds the cell with the input number.
@@ -21224,6 +21299,32 @@
             <param name="copyStyle">Indicates whether copy styles.</param>
             <param name="updateReference">Indicates whether update reference ranges.</param>
             <param name="ignoreSize">Indicates whether check range sizes.</param>
+        </member>
+        <member name="M:Spire.Xls.Worksheet.Copy(Spire.Xls.CellRange,Spire.Xls.CellRange,Spire.Xls.CopyRangeOptions)">
+            <summary>
+            Copys data from a source range to a destination range. 
+            </summary>
+            <param name="sourceRange">Source range.</param>
+            <param name="destRange">Destination range</param>
+            <param name="copyOptions">Copy options.</param>
+        </member>
+        <member name="M:Spire.Xls.Worksheet.CopyRow(Spire.Xls.CellRange,Spire.Xls.Worksheet,System.Int32,Spire.Xls.CopyRangeOptions)">
+            <summary>
+            Copys data from a source row to a destination row. 
+            </summary>
+            <param name="sourceRow">Source row.</param>
+            <param name="destSheet">Destination sheet</param>
+            <param name="destRowIndex">Destination row index</param>
+            <param name="copyOptions">Copy options.</param>
+        </member>
+        <member name="M:Spire.Xls.Worksheet.CopyColumn(Spire.Xls.CellRange,Spire.Xls.Worksheet,System.Int32,Spire.Xls.CopyRangeOptions)">
+            <summary>
+            Copys data from a source column to a destination column. 
+            </summary>
+            <param name="sourceColumn">Source column.</param>
+            <param name="destSheet">Destination sheet</param>
+            <param name="destColIndex">Destination column index</param>
+            <param name="copyOptions">Copy options.</param>
         </member>
         <member name="M:Spire.Xls.Worksheet.Copy(Spire.Xls.CellRange,Spire.Xls.CellRange,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>

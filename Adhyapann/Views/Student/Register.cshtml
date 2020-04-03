@@ -45,13 +45,13 @@
             <div class="card card-1" style="background-image: url(/wwwroot/images/Apptpuzzle.jpg);">
 
                 <div class="card-body">
-                    <h2 style="text-align:center;font-size:25px;color:white !important;">Package : @Model.Package_Name</h2>
+                    <h2 style="text-align:center;font-size:25px;">Package : @Model.Package_Name</h2>
 
 
                     <form id="frmRegister" class="" method="POST" action="~/Student/SaveStudentDetails">
                         <input type="hidden" id="Package_ID" name="Package_ID" value="@Model.Package_ID">
                         <input type="hidden" id="Package_Name" name="Package_Name" value="@Model.Package_Name">
-                        <fieldset><legend style="color:white !important">Student Information</legend></fieldset>
+                        <fieldset><legend>Student Information</legend></fieldset>
                         <div class="container"  style="margin:auto">
 
 
@@ -114,7 +114,7 @@
 
                         </div>
 
-                        <fieldset><legend style="color:white !important">Enter the details to resume Test</legend></fieldset>
+                        <fieldset><legend>Enter the details to resume Test</legend></fieldset>
                         <div class="container" style="margin:auto;">
 
 

@@ -30,7 +30,7 @@
 
 <body>
 
-    <div >
+    <div>
 
         <!--[if IE]><div class="inner-page-ie"><![endif]-->
         <div>
@@ -49,9 +49,14 @@
                     <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
                         <h1 class="heading--xxl u-mt1">
 
-                            Adhyapaan Physchometric Tests - VERBAL APTITUDE TEST - COMPREHENSION
+                            VERBAL APTITUDE TEST
 
                         </h1>
+                        <h2 class="heading--xxl u-mt1">
+
+                            COMPREHENSION (Total Questions: 28, Timeline: 7 Minutes)
+
+                        </h2>
 
 
                         @*<div class="c-hero__description">
@@ -61,42 +66,59 @@
                     </div>*@
                     </div>
 
-                    <div id="divUserDetails">
-                        <table align="left">
-                            <tr>
-                                <td style="width:100%">
-                                    <label style="color:white"> Name: <b>@Model.Name</b></label>
 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:100%">
-                                    <label style="color:white"> Email: <b>@Model.Email_ID</b></label>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:100%">
-                                    <label style="color:white"> Reference Code: <b>@Model.Reference_Code</b></label>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width:100%">
-                                    <label style="color:white"> Package: <b>@Model.Package_Name</b></label>
-
-                                </td>
-                            </tr>
-
-
-                        </table>
-                    </div>
                 </div>
 
             </section>
+            <div id="divUserDetails" style="margin-left:0px;margin-right:0px;">
+
+                <fieldset style="border:2px solid black; font:bold; -moz-border-radius:8px;  -webkit-border-radius:8px;  border-radius:8px; background-color:white;  width:100%;height:45px;">
+                    <legend align="left" style="color: black;"><b> Student Details:</b></legend>
+                    <table align="left" style="font:5px !important; color: black;">
+
+                        <tr>
+                            <td style="width:20%">
+                                <label><b> Name: @Model.Name</b></label>
+
+                            </td>
+                            <td style="width:20%">
+                                <label> <b>Email: @Model.Email_ID</b></label>
+
+                            </td>
+                            <td style="width:35%">
+                                <label><b> Package: @Model.Package_Name</b></label>
+
+                            </td>
+                            <td style="width:25%">
+                                <label><b> Reference Code: @Model.Reference_Code</b></label>
+
+                            </td>
+                        </tr>
+                        @*<tr>
+
+                    </tr>*@
+                        @*<tr>
+                        <td style="width:100%">
+                            <label> Reference Code: <b>@Model.Reference_Code</b></label>
+
+                        </td>
+                    </tr>*@
+
+                        @*<tr>
+
+                    </tr>*@
+
+
+                    </table>
+
+                </fieldset>
+            </div>
+            <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; Top:20px; right:80px; width:auto; background-color:#5eac1a; color:white; ">
+                Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
+            </div>
             <div class="breadcrumb">
 
-                <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
+                <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:08:00</b></span>
                 <input type="hidden" id="hdnTestTitleID" value="3" />
                 <input type="hidden" id="hdnTestID" value="21" />
                 <input type="hidden" id="hdnInitialTimer" value="420" />
@@ -116,7 +138,7 @@
                         $('#divInitiator').remove();
 
                         $('#divTabContent').show();
-                        $('#idTimerSpan').show();
+                        //$('#idTimerSpan').show();
                         $('#divFloatTimer').show();
                         _timerHandler = setInterval("MyTimer()", 1000);
                     }
@@ -145,236 +167,339 @@
                             document.title = $('#idTimerLCD').text();
                             $('#idFloatTimerLCD').text($('#idTimerLCD').text());
                         }
-                        else {
+                        //else {
 
-                            alert(" Your time is up for this test.You will be moved to Next Test.");
-                            $("#frmComprehension").submit();
+                        //    alert(" Your time is up for this test.You will be moved to Next Test.");
+                        //    $("#frmComprehension").submit();
 
-                        }
+                        //}
                     }
 
 
                 </script>
 
-                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; bottom:10px; left:1px; width:auto; background-color:#5eac1a; color:white; ">
-                    Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
-                </div>
+
 
                 <hr />
 
-                <div class="div-test-initiator" id="divInitiator">
-                    @*<div id="divLoading" align="center">
-                    <br /><img src="/_files/images/website/progress.gif" alt="Loading..." /><span class="mx-gray">&nbsp; Loading Test...</span>
-                </div>*@
-                    <div id="divStartTestInstruction">
-                        <div class="div-test-instruction">
-                            <p class="mx-green mx-bold mx-uline">Instruction:</p>
+                @*<div class="div-test-initiator" id="divInitiator">
 
-                            <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                <span>In this section, you are asked what should be done or what is required in a given situation. You are to choose the best answer available, or what most generally applies to the question</span><br />
-                                            </div>
-                                            <div class="title-bar">
-                                                Look at these examples:
-                                            </div>
+
+                <div id="divStartTestInstruction">
+                    <div class="div-test-instruction">
+                        <p class="mx-green mx-bold mx-uline">Instruction:</p>
+
+                        <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td colspan="2">
+                                    <div class="bix-div-direction">
+                                        <div class="title-bar">
+                                            <span>In this section, you are asked what should be done or what is required in a given situation. You are to choose the best answer available, or what most generally applies to the question</span><br />
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                    <td class="img-PA-pic-completion" valign="middle">1.	What should you do if you find Rs 100 in the elevator of the apartment building?</td>
-                                </tr>
-                                <tr>
-                                    <td class="bix-td-miscell" valign="top">
-                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                            <tr>
-
-                                                <td class="bix-td-option" width="1%">A.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">Say “that’s a stroke of luck”, and keep it</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td class="bix-td-option" width="1%">B.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">Leave it where it is and continue on your way</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bix-td-option" width="1%">C.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">Keep it and leave your name and number with the superintendent in case the loss is reported</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td class="bix-td-option" width="1%">D.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">Spend it as soon as you can before somebody finds out</td>
-
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bix-td-option" width="1%">E.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">Share the good fortune with your neighbor</td>
-
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                Answer C is the correct course of action since it is fair and just thing to do.
-                                            </div>
-
+                                        <div class="title-bar">
+                                            Look at these examples:
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                Here is the second example:
-                                            </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
 
+                                <td class="img-PA-pic-completion" valign="middle">1.	What should you do if you find Rs 100 in the elevator of the apartment building?</td>
+                            </tr>
+                            <tr>
+                                <td class="bix-td-miscell" valign="top">
+                                    <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+
+                                            <td class="bix-td-option" width="1%">A.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">Say “that’s a stroke of luck”, and keep it</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td class="bix-td-option" width="1%">B.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">Leave it where it is and continue on your way</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bix-td-option" width="1%">C.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">Keep it and leave your name and number with the superintendent in case the loss is reported</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td class="bix-td-option" width="1%">D.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">Spend it as soon as you can before somebody finds out</td>
+
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bix-td-option" width="1%">E.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">Share the good fortune with your neighbor</td>
+
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="bix-div-direction">
+                                        <div class="title-bar">
+                                            Answer C is the correct course of action since it is fair and just thing to do.
                                         </div>
-                                    </td>
-                                </tr>
 
-                                <tr>
-
-                                    <td class="img-PA-pic-completion" valign="middle">
-                                        <div class="bix-div-direction">2.	Dictionaries are useful</div>
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td class="bix-td-miscell" valign="top">
-                                        <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
-                                            <tr>
-
-                                                <td class="bix-td-option" width="1%">A.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">To look up origins of the world</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td class="bix-td-option" width="1%">B.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">To solve crossword puzzles</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bix-td-option" width="1%">C.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">To look up opposites of words</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-
-                                                <td class="bix-td-option" width="1%">D.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">To find word meanings</td>
-
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="bix-td-option" width="1%">E.</td>
-                                                <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
-                                                    <table border="0" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td class="bix-inner-td-option">To look up for medical terms</td>
-
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                The correct answer is D, to find word meanings. Answer A and B are true, but they are not the most important ways in which a dictionary can be used. Answer C is not generally true, and answer E is not the most general answer available.
-                                                <br />
-                                                <br />
-                                                In a similar manner, answer each of the following questions by indicating on the answer sheet which one of the five choices is the most appropriate. Remember, if more than one answer appears correct, choose the best answer.
-                                            </div>
-
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="bix-div-direction">
+                                        <div class="title-bar">
+                                            Here is the second example:
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="bix-div-direction">
-                                            <div class="title-bar">
-                                                Timer 7 minutes (Test 2: Comprehension)
-                                            </div>
 
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td class="img-PA-pic-completion" valign="middle">
+                                    <div class="bix-div-direction">2.	Dictionaries are useful</div>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td class="bix-td-miscell" valign="top">
+                                    <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                        <tr>
+
+                                            <td class="bix-td-option" width="1%">A.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">To look up origins of the world</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td class="bix-td-option" width="1%">B.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">To solve crossword puzzles</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bix-td-option" width="1%">C.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">To look up opposites of words</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+
+                                            <td class="bix-td-option" width="1%">D.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">To find word meanings</td>
+
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="bix-td-option" width="1%">E.</td>
+                                            <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                <table border="0" cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="bix-inner-td-option">To look up for medical terms</td>
+
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <div class="bix-div-direction">
+                                        <div class="title-bar">
+                                            The correct answer is D, to find word meanings. Answer A and B are true, but they are not the most important ways in which a dictionary can be used. Answer C is not generally true, and answer E is not the most general answer available.
+                                            <br />
+                                            <br />
+                                            In a similar manner, answer each of the following questions by indicating on the answer sheet which one of the five choices is the most appropriate. Remember, if more than one answer appears correct, choose the best answer.
                                         </div>
-                                    </td>
-                                </tr>
-                            </table>
 
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="bix-div-direction">
+                                        <div class="title-bar">
+                                            Timer 7 minutes (Test 2: Comprehension)
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
+                </div>
+            </div>*@
+            <a class="trigger_popup_fricc mx-green">Click here for Instruction</a>
+
+                <div class="hover_bkgr_fricc">
+                    <span class="helper"></span>
+                    <div>
+                        <div class="popupCloseButton">&times;</div>
+                        <div id="divStartTestInstruction">
+                            <div class="div-test-instruction">
+                                <p class="mx-green mx-bold mx-uline">Instruction:</p>
+
+                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="bix-div-direction">
+                                                <div class="title-bar">
+                                                    <span>In this section, you are asked what should be done or what is required in a given situation. You are to choose the best answer available, or what most generally applies to the question</span><br />
+                                                </div>
+                                                <div class="title-bar">
+                                                    Look at the example:
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+
+                                        <td class="img-PA-pic-completion" valign="middle">1.	What should you do if you find Rs 100 in the elevator of the apartment building?</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="bix-td-miscell" valign="top">
+                                            <table class="bix-tbl-options" id="tblOption_177" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                <tr>
+
+                                                    <td class="bix-td-option" width="1%">A.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_A_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">Say “that’s a stroke of luck”, and keep it</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="bix-td-option" width="1%">B.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_B_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">Leave it where it is and continue on your way</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bix-td-option" width="1%">C.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_C_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">Keep it and leave your name and number with the superintendent in case the loss is reported</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+
+                                                    <td class="bix-td-option" width="1%">D.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">Spend it as soon as you can before somebody finds out</td>
+
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="bix-td-option" width="1%">E.</td>
+                                                    <td class="bix-td-option" width="99%" id="tdOptionDt_D_177">
+                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td class="bix-inner-td-option">Share the good fortune with your neighbor</td>
+
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="bix-div-direction">
+                                                <div class="title-bar">
+                                                    Answer C is the correct course of action since it is fair and just thing to do.
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+                            </div>
                         </div>
-                        <p align="center"><br /><input style="height:25px" type="button" value="    Start Test ...   " id="btnStartTest" /></p>
                     </div>
                 </div>
                 <form id="frmComprehension" method="POST" action="~/Test/SaveComprehensionTest">
-                    <div id="divTabContent" style="width:100%;" class="mx-none">
-                        <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions">
+                    <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
+                    <div id="divTabContent" style="width:100%; text-align: center;background-image: url(/wwwroot/images/Apptpuzzle.jpg);" class="mydivs">
+
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="firstPagequestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
                             <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -406,8 +531,9 @@
                                             </tr>
                                         </table>
                                     </td>
-
-                                    <td width="50%">
+                                </tr>
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -441,13 +567,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -483,8 +604,15 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                            </table>
+                        </div>
 
-                                    <td width="50%">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
+                            <table width="100%">
+                                <tr width="100%">
+
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -519,13 +647,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -561,8 +684,10 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                                <tr width="100%">
 
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -596,14 +721,15 @@
                                             </tr>
                                         </table>
                                     </td>
+
                                 </tr>
                             </table>
                         </div>
 
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
                             <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -639,8 +765,10 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                                <tr width="100%">
 
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -675,13 +803,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -717,8 +840,14 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                            </table>
+                        </div>
 
-                                    <td width="50%">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
+                            <table width="100%">
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -753,13 +882,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -796,7 +920,9 @@
                                         </table>
                                     </td>
 
-                                    <td width="50%">
+                                </tr>
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -834,10 +960,10 @@
                             </table>
                         </div>
 
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
                             <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -873,8 +999,9 @@
                                             </tr>
                                         </table>
                                     </td>
-
-                                    <td width="50%">
+                                </tr>
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -909,13 +1036,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -950,8 +1072,14 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                            </table>
+                        </div>
 
-                                    <td width="50%">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
+                            <table width="100%">
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -986,13 +1114,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1028,8 +1151,9 @@
                                             </tr>
                                         </table>
                                     </td>
-
-                                    <td width="50%">
+                                </tr>
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1067,10 +1191,10 @@
                             </table>
                         </div>
 
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
                             <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1106,8 +1230,9 @@
                                             </tr>
                                         </table>
                                     </td>
-
-                                    <td width="50%">
+                                </tr>
+                                <tr>
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1142,13 +1267,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1184,8 +1304,14 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                            </table>
+                        </div>
 
-                                    <td width="50%">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
+                            <table width="100%">
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1220,13 +1346,8 @@
                                         </table>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="twelthrowquestions">
-                            <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1262,8 +1383,10 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                                <tr width="100%">
 
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1301,10 +1424,10 @@
                             </table>
                         </div>
 
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenthrowquestions">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
                             <table width="100%">
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1340,8 +1463,9 @@
                                             </tr>
                                         </table>
                                     </td>
-
-                                    <td width="50%">
+                                </tr>
+                                <tr width="100%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1375,14 +1499,10 @@
                                             </tr>
                                         </table>
                                     </td>
-                                </tr>
-                            </table>
-                        </div>
 
-                        <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenthrowquestions">
-                            <table width="100%">
+                                </tr>
                                 <tr width="100%">
-                                    <td width="50%">
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1418,8 +1538,16 @@
                                             </tr>
                                         </table>
                                     </td>
+                                </tr>
+                            </table>
+                        </div>
 
-                                    <td width="50%">
+                        <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;" ">
+                            <table width="100%">
+                                <tr width="100%">
+
+
+                                    <td width="100%">
                                         <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="95%">
 
                                             <tr>
@@ -1453,15 +1581,20 @@
                                             </tr>
                                         </table>
                                     </td>
+
                                 </tr>
+
                             </table>
                         </div>
-
-                        <div id="divSubmitTest" align="center" style="padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
-                            <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnComprehensionTest" />
-                        </div>
-
                     </div>
+                    <input style="height:30px; font-size:14px; text-align:center; padding:20px; margin-top:20px; margin-left:320px; margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Prev" name="Prev" id="btnPrev" />
+                    <input style="height:30px; font-size:14px; text-align:center; padding:20px; margin-top:20px; margin-left:380px; margin-bottom:20px; border:1px dashed #ccc; background-color:#57b846;" type="button" value="Next" name="Next" id="btnNext" />
+
+                    <div id="divSubmitTest" align="center" hidden="hidden" style="padding:20px; margin-top:20px; margin-bottom:20px; border:1px dashed #ccc; background-color:#fdfdfd;">
+                        <input style="height:30px; font-size:14px" align="center" type="button" value="   Submit Test   " id="btnComprehensionTest" />
+                    </div>
+
+
                 </form>
                 <hr />
 

@@ -2656,6 +2656,11 @@
             Gets or sets the user who created the annotation.
             </summary>
         </member>
+        <member name="P:Spire.Pdf.Annotations.PdfFreeTextAnnotation.Subject">
+            <summary>
+            Gets or sets the annotation's subject.
+            </summary>
+        </member>
         <member name="T:Spire.Pdf.Annotations.PdfLineAnnotation">
             <summary>
             Represents a line annotation. 
@@ -2884,6 +2889,31 @@
             Represents the Rubber Stamp annotation for a PDF document.
             </summary>
         </member>
+        <member name="F:Spire.Pdf.Annotations.PdfRubberStampAnnotation.m_rubberStampAnnotaionIcon">
+            <summary>
+            internal varable for the rubberstamp annotation icon
+            </summary>
+        </member>
+        <member name="F:Spire.Pdf.Annotations.PdfRubberStampAnnotation.m_appearance">
+            <summary>
+            Annotation's appearance.
+            </summary>
+        </member>
+        <member name="F:Spire.Pdf.Annotations.PdfRubberStampAnnotation.m_author">
+            <summary>
+            The annotation`s creater
+            </summary>
+        </member>
+        <member name="F:Spire.Pdf.Annotations.PdfRubberStampAnnotation.m_createTime">
+            <summary>
+            The annotation`s creat time
+            </summary>
+        </member>
+        <member name="F:Spire.Pdf.Annotations.PdfRubberStampAnnotation.m_subject">
+            <summary>
+            The annotation`s subject.
+            </summary>
+        </member>
         <member name="P:Spire.Pdf.Annotations.PdfRubberStampAnnotation.Icon">
             <summary>
             Gets or sets the annotation's icon. 
@@ -2893,6 +2923,22 @@
         <member name="P:Spire.Pdf.Annotations.PdfRubberStampAnnotation.Appearance">
             <summary>
             Gets or sets appearance of the annotation.
+            </summary>
+        </member>
+        <member name="P:Spire.Pdf.Annotations.PdfRubberStampAnnotation.Author">
+            <summary>
+            Gets or set the name of the annotation,the entry is deleted by default when the 
+            input value is an empty string
+            </summary>
+        </member>
+        <member name="P:Spire.Pdf.Annotations.PdfRubberStampAnnotation.Subject">
+            <summary>
+            Gets or sets the annotation's subject.
+            </summary>
+        </member>
+        <member name="P:Spire.Pdf.Annotations.PdfRubberStampAnnotation.CreationDate">
+            <summary>
+            Gets or sets the creation date.
             </summary>
         </member>
         <member name="M:Spire.Pdf.Annotations.PdfRubberStampAnnotation.#ctor">
@@ -2912,6 +2958,16 @@
             </summary>
             <param name="rectangle">RectangleF structure that specifies the bounds of the annotation.</param>
             <param name="text">Text of the rubber stamp annotation.</param>
+        </member>
+        <member name="M:Spire.Pdf.Annotations.PdfRubberStampAnnotation.Initialize">
+            <summary>
+            Initializes annotation object.
+            </summary>
+        </member>
+        <member name="M:Spire.Pdf.Annotations.PdfRubberStampAnnotation.Save">
+            <summary>
+            Saves an annotation.
+            </summary>
         </member>
         <member name="T:Spire.Pdf.Annotations.PdfTextWebLink">
             <summary>
@@ -3113,7 +3169,7 @@
         </member>
         <member name="P:Spire.Pdf.Annotations.PdfDocumentLinkAnnotationWidget.Destination">
             <summary>
-            Sets the destination of the annotation.
+            Gets or Sets the destination of the annotation.
             </summary>
         </member>
         <member name="T:Spire.Pdf.Annotations.PdfFileLinkAnnotationWidget">
@@ -3599,7 +3655,7 @@
             </summary>
             <value>The text.</value>
         </member>
-        <!-- 对于成员“P:Spire.Pdf.Annotations.PdfStyledAnnotationWidget.Bounds”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Pdf.Annotations.PdfStyledAnnotationWidget.Bounds" -->
         <member name="P:Spire.Pdf.Annotations.PdfStyledAnnotationWidget.Border">
             <summary>
             Gets or sets the annotation's border.
@@ -4298,7 +4354,7 @@
             Gets or sets annotation's border.
             </summary>
         </member>
-        <!-- 对于成员“P:Spire.Pdf.Annotations.PdfAnnotation.Rectangle”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "P:Spire.Pdf.Annotations.PdfAnnotation.Rectangle" -->
         <member name="P:Spire.Pdf.Annotations.PdfAnnotation.Location">
             <summary>
             Gets or sets location of the annotation.
@@ -6208,7 +6264,7 @@
             <param name="title">The title of the new outline.</param>
             <returns>The new outline.</returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.Bookmarks.PdfBookmarkCollection.System#Collections#IEnumerable#GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.Bookmarks.PdfBookmarkCollection.System#Collections#IEnumerable#GetEnumerator" -->
         <member name="P:Spire.Pdf.Bookmarks.PdfBookmarkCollection.Spire#Pdf#Interfaces#IPdfWrapper#Element">
             <summary>
             Gets the element.
@@ -6993,11 +7049,6 @@
         <member name="P:Spire.Pdf.PdfDocument.PrintPageMode">
             <summary>
             Get or Set PdfDocument pages Print Mode
-            </summary>
-        </member>
-        <member name="P:Spire.Pdf.PdfDocument.ZoomFator">
-            <summary>
-            
             </summary>
         </member>
         <member name="P:Spire.Pdf.PdfDocument.PrintFromPage">
@@ -8170,7 +8221,7 @@
             <param name="position">Reader position</param>
             <returns>Matrix</returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.Exporting.XPS.Reader.XPSDocumentReader.GetAttributeFromXmlHeader(System.String,System.String)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.Exporting.XPS.Reader.XPSDocumentReader.GetAttributeFromXmlHeader(System.String,System.String)" -->
         <member name="M:Spire.Pdf.Exporting.XPS.Reader.XPSDocumentReader.FindItemFromRels(System.String)">
             <summary>
             Find item by searching in the .rels file
@@ -9332,6 +9383,12 @@
             apply hight light of the seached text
             </summary>
         </member>
+        <member name="M:Spire.Pdf.General.Find.PdfTextFind.ApplyHighLight(System.Drawing.Color)">
+            <summary>
+            Apply hight light of the seached text
+            </summary>
+            <param name="highlightColor">Hight light color</param>
+        </member>
         <member name="M:Spire.Pdf.General.Find.PdfTextFind.ApplyRecoverString(System.String)">
             <summary>
             apply hight light of the seached text
@@ -9388,6 +9445,11 @@
             It will be remove in the future because it will be set as default ;
             </summary>
         </member>
+        <member name="F:Spire.Pdf.General.Find.TextFindParameter.Regex">
+            <summary>
+            Regular expression matching.
+            </summary>
+        </member>
         <member name="T:Spire.Pdf.General.Find.PdfTextFinder">
             <summary>
             Representing the way how to find text which a target text.
@@ -9416,6 +9478,12 @@
             </summary>
             <param name="page">The page</param>
             <returns>All text find in the page.</returns>
+        </member>
+        <member name="M:Spire.Pdf.General.Find.PdfTextFinder.EscapeString(System.String)">
+            <summary>
+            Escapes the target string
+            </summary>
+            <param name="text">The text</param>
         </member>
         <member name="T:Spire.Pdf.General.AbstractCodePointMapping">
             Abstract base class for code point mapping classes (1-byte character encodings).
@@ -10325,7 +10393,7 @@
             Summary description for DeflaterOutputStream.
             </summary>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.General.Render.Font.FontSupport.#cctor”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.General.Render.Font.FontSupport.#cctor" -->
         <member name="M:Spire.Pdf.General.Render.Font.FontSupport.GetCharFromAdobeGlyphListByName(System.String)">
             <summary>
             
@@ -11739,7 +11807,7 @@
             <param name="layerType">The presenter type</param>
             <returns></returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.General.Render.ViewLayer.PresentationFactory.CreateLinearGradientBrush(Spire.Pdf.General.Render.ViewLayer.LayerType,System.Drawing.Drawing2D.LinearGradientBrush)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.General.Render.ViewLayer.PresentationFactory.CreateLinearGradientBrush(Spire.Pdf.General.Render.ViewLayer.LayerType,System.Drawing.Drawing2D.LinearGradientBrush)" -->
         <member name="M:Spire.Pdf.General.Render.ViewLayer.PresentationFactory.CreateHatchBrush(System.Drawing.Drawing2D.HatchStyle,Spire.Pdf.General.Paper.Drawing.PsColor,Spire.Pdf.General.Paper.Drawing.PsColor,Spire.Pdf.General.Render.ViewLayer.LayerType)">
             <summary>
             Create the brush.
@@ -13760,7 +13828,7 @@
             <param name="localIndex"></param>
             <returns></returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.Widget.PdfPageCollection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.Widget.PdfPageCollection.GetEnumerator" -->
         <member name="T:Spire.Pdf.Widget.PdfPageWidgetEnumerator">
             <summary>
             Implements enumerator to the loaded page collection.
@@ -14314,6 +14382,14 @@
             Gets or sets a value indicating whether need appearances.
             </summary>
         </member>
+        <member name="M:Spire.Pdf.Widget.PdfFormWidget.IsEqualsFields(Spire.Pdf.Interfaces.IPdfPrimitive,System.Collections.Generic.List{System.String})">
+            <summary>
+             Compare the two fields to see if they are the same
+            </summary>
+            <param name="referenceHolder">The primitive field</param>
+            <param name="tempList">The temp list</param>
+            <returns>if equals return true</returns>
+        </member>
         <member name="M:Spire.Pdf.Widget.PdfFormWidget.ExportData(System.String,Spire.Pdf.Widget.DataFormat,System.String)">
             <summary>
             Export the form data to a file.
@@ -14622,6 +14698,11 @@
             </summary>
             <value>Return the item as PdfLoadedRadioButtonItem class</value>
         </member>
+        <member name="P:Spire.Pdf.Widget.PdfRadioButtonListFieldWidget.ButtonStyle">
+            <summary>
+            Gets the button style.
+            </summary>
+        </member>
         <member name="P:Spire.Pdf.Widget.PdfRadioButtonListFieldWidget.Value">
             <summary>
             Gets or sets the value of specified item.
@@ -14743,6 +14824,13 @@
             Gets the font.
             </summary>
             <value>The font.</value>
+        </member>
+        <member name="M:Spire.Pdf.Widget.PdfStyledFieldWidget.GetFontSizeFromDA(System.String[])">
+            <summary>
+            Get font size from DA
+            </summary>
+            <param name="fontParameters">The font parameters</param>
+            <returns>The font size</returns>
         </member>
         <member name="P:Spire.Pdf.Widget.PdfStyledFieldWidget.DefaultIndex">
             <summary>
@@ -14885,6 +14973,31 @@
             <summary>
             Gets the collection of text box field items. 
             </summary>
+        </member>
+        <member name="M:Spire.Pdf.Widget.PdfTextBoxFieldWidget.CalculateTextLine(System.Single,System.Drawing.RectangleF,System.String)">
+            <summary>
+            Calculate how many lines of text
+            </summary>
+            <param name="fontSize"></param>
+            <param name="rect"></param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Spire.Pdf.Widget.PdfTextBoxFieldWidget.CalculateFontSize(System.Single,System.Single,System.Drawing.RectangleF,System.String)">
+            <summary>
+            Calculate font size
+            </summary>
+            <param name="fontSize"></param>
+            <param name="fontHeight"></param>
+            <param name="rect"></param>
+            <param name="text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Spire.Pdf.Widget.PdfTextBoxFieldWidget.GetDaFontSize">
+            <summary>
+            Get font size from da string 
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Spire.Pdf.Widget.PdfTextBoxFieldWidget.SaveFieldAppearance(System.String)">
             <summary>
@@ -16195,7 +16308,7 @@
             </summary>
             <returns>rect</returns>
         </member>
-        <!-- 对于成员“F:Spire.Pdf.Graphics.ShapeLayouter.splitDiff”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Pdf.Graphics.ShapeLayouter.splitDiff" -->
         <member name="T:Spire.Pdf.Graphics.PdfHTMLTextElement">
             <summary>
             Class that represent HTML text area with the ability to span several pages.
@@ -18752,7 +18865,7 @@
             Creates a byte buffer with a certain capacity.
             @param size the initial capacity
         </member>
-        <!-- 对于成员“M:Spire.Pdf.Graphics.ByteBuffer.SetCacheSize(System.Int32)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.Graphics.ByteBuffer.SetCacheSize(System.Int32)" -->
         <member name="M:Spire.Pdf.Graphics.ByteBuffer.FillCache(System.Int32)">
              You can fill the cache in advance if you want to.
             
@@ -24363,19 +24476,6 @@
             <param name="height">The height.</param>
             <param name="isPdfAppearance">Indicates if the template is used for PdfAppearance.</param>
         </member>
-        <member name="M:Spire.Pdf.Graphics.PdfTemplate.#ctor(System.Drawing.RectangleF)">
-            <summary>
-            Initializes a new instance of the  class.
-            </summary>
-            <param name="cropBox">RectangleF cropBox</param>
-        </member>
-        <member name="M:Spire.Pdf.Graphics.PdfTemplate.#ctor(System.Drawing.RectangleF,System.Drawing.RectangleF)">
-            <summary>
-            Initializes a new instance of the  class.
-            </summary>
-            <param name="cropBox">RectangleF cropBox</param>
-            <param name="cropBox">RectangleF mediaBox</param>
-        </member>
         <member name="P:Spire.Pdf.Graphics.PdfTemplate.Graphics">
             <summary>
             Gets graphics context of the template.
@@ -25000,7 +25100,7 @@
             load URL whether Waiting 
             </summary>
         </member>
-        <!-- 对于成员“F:Spire.Pdf.HtmlConverter.HtmlConverter.m_HtmlType”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Pdf.HtmlConverter.HtmlConverter.m_HtmlType" -->
         <member name="F:Spire.Pdf.HtmlConverter.HtmlConverter.m_LoadComplete">
             <summary>
             WebBrowser load Complete
@@ -25568,7 +25668,7 @@
             The reprocess object infomation
             </summary>
         </member>
-        <!-- 对于成员“F:Spire.Pdf.IO.CrossTable.m_initialNumberOfSubsection”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "F:Spire.Pdf.IO.CrossTable.m_initialNumberOfSubsection" -->
         <member name="F:Spire.Pdf.IO.CrossTable.m_loadState">
             <summary>
             The current load state
@@ -26528,7 +26628,7 @@
             <param name="ignoreCase"></param>
             <returns></returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.PdfPageBase.FindText(System.String,Spire.Pdf.General.Find.TextFindParameter)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.PdfPageBase.FindText(System.String,Spire.Pdf.General.Find.TextFindParameter)" -->
         <member name="M:Spire.Pdf.PdfPageBase.FindAllText">
             <summary>
             Find all text and position.
@@ -26861,7 +26961,7 @@
             Clears this collection.
             </summary>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.PdfSectionPageCollection.System#Collections#IEnumerable#GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.PdfSectionPageCollection.System#Collections#IEnumerable#GetEnumerator" -->
         <member name="T:Spire.Pdf.PdfSectionTemplate">
             <summary>
             Encapsulates a page template for all the pages in the section.
@@ -26961,7 +27061,7 @@
             Cleares the collection.
             </summary>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.PdfStampCollection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.PdfStampCollection.GetEnumerator" -->
         <member name="P:Spire.Pdf.PdfStampCollection.PdfPageTemplateEnumerator.Current">
             <summary>
             Gets the current section.
@@ -26989,18 +27089,6 @@
             </summary>
             <returns>float array</returns>
         </member>
-        <member name="F:Spire.Pdf.Primitives.PdfName.m_originalvalue">
-            <summary>
-            Value of the element.By Bug735
-            </summary>
-        </member>
-        <member name="M:Spire.Pdf.Primitives.PdfName.ProcessNumberSignChar(System.String)">
-            <summary>
-            Process the number sign character to make the string more correct
-            </summary>
-            <param name="name">The string as PDF name</param>
-            <returns>A correct form string</returns>
-        </member>
         <member name="P:Spire.Pdf.Primitives.PdfStream.ImageFormat">
             <summary>
             Image Format
@@ -27016,6 +27104,12 @@
             <summary>
             Gets or sets the integer value of the specified object.
             </summary>
+        </member>
+        <member name="M:Spire.Pdf.Primitives.PdfString.DecodeTextStringTypeString">
+            <summary>
+            Decode text string type string.
+            </summary>
+            <returns>The decode string</returns>
         </member>
         <member name="T:Spire.Pdf.Print.PdfBookletLayout">
             <summary>
@@ -27906,7 +28000,7 @@
         </member>
         <member name="P:Spire.Pdf.Print.PdfPrintSettings.PrinterResolutionKind">
             <summary>
-             Set the printer resolution kind of the printed document.
+             Get or set the printer resolution kind.
             </summary>
         </member>
         <member name="P:Spire.Pdf.Print.PdfPrintSettings.PrintFromPage">
@@ -29417,7 +29511,7 @@
             <param name="page">The current page.</param>
             <returns>Index of the page in the document if exists, -1 otherwise.</returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.PdfDocumentPageCollection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.PdfDocumentPageCollection.GetEnumerator" -->
         <member name="P:Spire.Pdf.PdfDocumentPageCollection.PdfPageEnumerator.Current">
             <summary>
             Gets the current section.
@@ -29909,7 +30003,7 @@
             Event rises when the new page has been added
             </summary>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.PdfSection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.PdfSection.GetEnumerator" -->
         <member name="P:Spire.Pdf.PdfSection.Spire#Pdf#Interfaces#IPdfWrapper#Element">
             <summary>
             Gets the wrapped element.
@@ -30033,7 +30127,7 @@
             <param name="section">The section object.</param>
             <returns>True - if the sections belongs to the collection, False otherwise.</returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.PdfSectionCollection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.PdfSectionCollection.GetEnumerator" -->
         <member name="P:Spire.Pdf.PdfSectionCollection.Spire#Pdf#Interfaces#IPdfWrapper#Element">
             <summary>
             Gets the wrapped element.
@@ -30282,7 +30376,7 @@
             <param name="cell">The cell.</param>
             <returns></returns>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.Grid.PdfGridCellCollection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.Grid.PdfGridCellCollection.GetEnumerator" -->
         <member name="P:Spire.Pdf.Grid.PdfGridCellCollection.PdfGridCellEnumerator.Current">
             <summary>
             Gets the current.
@@ -30376,7 +30470,7 @@
             </summary>
             <param name="index">The zero-based index of the element to remove.</param>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.Grid.PdfGridColumnCollection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.Grid.PdfGridColumnCollection.GetEnumerator" -->
         <member name="P:Spire.Pdf.Grid.PdfGridColumnCollection.PdfGridColumnEnumerator.Current">
             <summary>
             Gets the current.
@@ -30482,7 +30576,7 @@
             </summary>
             <param name="style">The style.</param>
         </member>
-        <!-- 对于成员“M:Spire.Pdf.Grid.PdfGridHeaderCollection.GetEnumerator”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:Spire.Pdf.Grid.PdfGridHeaderCollection.GetEnumerator" -->
         <member name="P:Spire.Pdf.Grid.PdfGridHeaderCollection.PdfGridHeaderRowEnumerator.Current">
             <summary>
             Gets the current.

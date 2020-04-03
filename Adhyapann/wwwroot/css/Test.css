@@ -147,7 +147,7 @@ h3.home {
     .div-home-module ul {
         margin: auto;
         padding-left: 80px;
-        color: gray;
+        
         list-style-image: url(/_files/images/website/zarrow.gif)
     }
 
@@ -199,7 +199,7 @@ div.div-topics-index {
         margin: 0;
         padding: 0 0 0 20px;
         border: 0;
-        color: gray;
+        
         list-style-image: url(/_files/images/website/folder.png)
     }
 
@@ -462,7 +462,7 @@ h3.h3-read-more {
 
     .bix-div-direction .title-bar {
         font-weight: 700;
-        color: gray;
+        
         background-color: #fdfdfd;
         border-bottom: 1px solid #f0f0f0;
         padding: 10px
@@ -1018,7 +1018,7 @@ i.vr-var {
 }
 
 .div-gd-instruction ul, .div-hr-instruction ul {
-    color: gray;
+    
     margin: auto;
     list-style: square
 }
@@ -1814,7 +1814,7 @@ div.inner-footer {
     }
 }
 .c-hero {
-    background-color: #0394CE;
+    background-color: darkgrey;
     color: #fff;
     height: 130px;
     text-align: center;

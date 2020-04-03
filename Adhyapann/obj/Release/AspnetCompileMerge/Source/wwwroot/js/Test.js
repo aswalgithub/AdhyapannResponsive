@@ -10,16 +10,80 @@
 
 /* ## Final Touch */
 $(document).ready(function () {
+
+    StartTestButtonClickHandler(this);
+
+    $(".mydivs div").each(function (e) {
+        if (e != 0)
+            $(this).hide();
+    });
+
+    $(".trigger_popup_fricc").click(function () {
+        $('.hover_bkgr_fricc').show();
+    });
+    $('.hover_bkgr_fricc').click(function () {
+        $('.hover_bkgr_fricc').hide();
+    });
+    $('.popupCloseButton').click(function () {
+        $('.hover_bkgr_fricc').hide();
+    });
+    $('.popupCloseButtonConfirmation').click(function () {
+        $('.hover_bkgr_fricc_confirmation').hide();
+    });
+
+    
+    $("#btnPrev").hide();
+    $("#btnNext").click(function () {
+        if ($(".mydivs div:visible").next().length != 0)
+        {
+            $("#btnPrev").show();
+            $("#btnNext").show();
+            $(".mydivs div:visible").next().show().prev().hide();
+
+            if ($(".mydivs div:visible").is(':last-child')) {
+                // i am last child
+                $("#divSubmitTest").show();
+                $("#btnNext").hide();
+            }
+            
+        }
+        else {
+            
+            $(".mydivs div:visible").hide();
+            //$(".mydivs div:first").show();
+        }
+        return false;
+    });
+
+    $("#btnPrev").click(function () {
+        if ($(".mydivs div:visible").prev().length != 0)
+        {
+            $("#btnPrev").show();
+            $("#btnNext").show();
+            $(".mydivs div:visible").prev().show().next().hide();
+            if ($(".mydivs div:visible").is(':first-child')) {
+                // i am last child
+               
+                $("#btnPrev").hide();
+            }
+        }
+        else {
+            $(".mydivs div:visible").hide();
+            //$(".mydivs div:last").show();
+        }
+        return false;
+    });
+
     $('#btnSubmitPicturCompletionTest').click(function (event) {
         var radioValue = $("input[name='PAPictureCompletion1']:checked").val();
     });
 
-    $('#btnStartTest').click(function (event) {
+    //$('#btnStartTest').click(function (event) {
 
-        StartTestButtonClickHandler(this);
-        window.location.hash = '#divHeader';
+        
+        //window.location.hash = '#divHeader';
 
-    });
+    //});
 
     $('#btnSubmitDigitalSymbolTest').click(function (event) {
 
@@ -44,11 +108,28 @@ $(document).ready(function () {
 
     });
 
-    $('#btnEmoRegCompletionTest').click(function (event) {
-
-        $("#frmEmotionalRegulationSenior").submit()
-
+    $("#btnEmoRegCompletionTest").click(function () {
+        $("#loading").fadeIn();
+        var opts = {
+            lines: 12, // The number of lines to draw
+            length: 7, // The length of each line
+            width: 4, // The line thickness
+            radius: 10, // The radius of the inner circle
+            color: '#000', // #rgb or #rrggbb
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false // Whether to use hardware acceleration
+        };
+        var target = document.getElementById('loading');
+        var spinner = new Spinner(opts).spin(target);
     });
+
+    //$('#btnEmoRegCompletionTest').click(function (event) {
+
+    //    $("#frmEmotionalRegulationSenior").submit()
+
+    //});
 
     $('#btnSubmitPicturCompletionTest').click(function (event) {
 
@@ -80,7 +161,7 @@ $(document).ready(function () {
 
         $("#frmSimilarities").submit()
     });
-    
+
 
 });
 
