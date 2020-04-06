@@ -55,3 +55,4 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataA
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csprojAssemblyReference.cache

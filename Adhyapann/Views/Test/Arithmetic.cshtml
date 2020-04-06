@@ -117,7 +117,7 @@
                 @*<a href="/">Home</a> &raquo;
             <a href="/online-test/categories/">Online Test</a> &raquo;
             <a href="/online-test/verbal-ability-test/">Online Verbal Ability Test</a> &raquo; Verbal Ability Test 1*@
-                <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:08:00</b></span>
+                <span id="idTimerSpan" style="color:red; display:none; padding-left:15px">Time Left: <b id="idTimerLCD">00:07:00</b></span>
                 <input type="hidden" id="hdnTestTitleID" value="3" />
                 <input type="hidden" id="hdnTestID" value="21" />
                 <input type="hidden" id="hdnInitialTimer" value="420" />
@@ -128,7 +128,7 @@
 
                 <script type="text/javascript" charset="utf-8">
 
-                    function StartTestButtonClickHandler(thisObj) {
+                     function StartTestButtonClickHandler(thisObj) {
                         /* 4 Lines - Firefox Combatability */
                         //$('#divResult').html('');
                         var _timerHandler = 0;
@@ -137,41 +137,47 @@
                         $('#divInitiator').remove();
 
                         $('#divTabContent').show();
-                       // $('#idTimerSpan').show();
+                        //$('#idTimerSpan').show();
                         $('#divFloatTimer').show();
-                        _timerHandler = setInterval("MyTimer()", 1000);
+
+                        _timerHandler = setInterval(function () {
+
+                            var valueTimer = $('#hdnTimer').val();
+
+                            if (valueTimer > 0) {
+                                valueTimer = valueTimer - 1;
+
+                                hours = (valueTimer / 3600).toString().split('.')[0];
+                                mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
+                                secs = ((valueTimer % 3600) % 60).toString();
+
+                                if (hours.length == 1) hours = '0' + hours;
+                                if (mins.length == 1) mins = '0' + mins;
+                                if (secs.length == 1) secs = '0' + secs;
+
+                                $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
+                                $('#hdnTimer').val(valueTimer);
+
+                                document.title = $('#idTimerLCD').text();
+                                $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                            }
+                            else {
+
+                                clearInterval(_timerHandler);
+                                $("#frmArithmetic").submit();
+
+                            }
+
+
+                        }, 1000);
+                     
+
                     }
 
 
 
 
 
-                    function MyTimer() {
-                        var valueTimer = $('#hdnTimer').val();
-
-                        if (valueTimer > 0) {
-                            valueTimer = valueTimer - 1;
-
-                            hours = (valueTimer / 3600).toString().split('.')[0];
-                            mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
-                            secs = ((valueTimer % 3600) % 60).toString();
-
-                            if (hours.length == 1) hours = '0' + hours;
-                            if (mins.length == 1) mins = '0' + mins;
-                            if (secs.length == 1) secs = '0' + secs;
-
-                            $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
-                            $('#hdnTimer').val(valueTimer);
-
-                            document.title = $('#idTimerLCD').text();
-                            $('#idFloatTimerLCD').text($('#idTimerLCD').text());
-                        }
-                        //else {
-                        //    alert(" Your time is up for this test.You will be moved to Next Test.");
-                        //    $("#frmArithmetic").submit();
-
-                        //}
-                    }
 
                 </script>
 

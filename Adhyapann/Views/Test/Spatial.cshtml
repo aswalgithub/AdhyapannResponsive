@@ -121,26 +121,20 @@
                 <div class="main-left">
 
                     <script type="text/javascript" charset="utf-8">
+                         function StartTestButtonClickHandler(thisObj) {
+                        /* 4 Lines - Firefox Combatability */
+                        //$('#divResult').html('');
+                        var _timerHandler = 0;
+                        $('#hdnTimer').val($('#hdnInitialTimer').val());
 
-                        function StartTestButtonClickHandler(thisObj) {
-                            /* 4 Lines - Firefox Combatability */
-                            //$('#divResult').html('');
-                            var _timerHandler = 0;
-                            $('#hdnTimer').val($('#hdnInitialTimer').val());
+                        $('#divInitiator').remove();
 
-                            $('#divInitiator').remove();
+                        $('#divTabContent').show();
+                        //$('#idTimerSpan').show();
+                        $('#divFloatTimer').show();
 
-                            $('#divTabContent').show();
-                           // $('#idTimerSpan').show();
-                            $('#divFloatTimer').show();
-                            _timerHandler = setInterval("MyTimer()", 1000);
-                        }
+                        _timerHandler = setInterval(function () {
 
-
-
-
-
-                        function MyTimer() {
                             var valueTimer = $('#hdnTimer').val();
 
                             if (valueTimer > 0) {
@@ -160,13 +154,20 @@
                                 document.title = $('#idTimerLCD').text();
                                 $('#idFloatTimerLCD').text($('#idTimerLCD').text());
                             }
-                            //else {
-                            //    alert(" Your time is up for this test.You will be moved to Next Test.");
-                            //    $("#frmSpatial").submit();
+                            else {
+
+                                clearInterval(_timerHandler);
+                                $("#frmSpatial").submit();
+
+                            }
 
 
-                            //}
-                        }
+                        }, 1000);
+                     
+
+                    }
+
+                        
 
                     </script>
                    
