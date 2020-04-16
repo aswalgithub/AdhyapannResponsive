@@ -11,10 +11,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="~/wwwroot/js/Package.js"></script>
 
-
 <style type="text/css">
-
-
 
     .bs-example {
         margin: 20px;
@@ -55,7 +52,7 @@
 
     .container {
         margin: 5% 3%;
-        padding-top: 35px;
+        padding-top: 30px;
     }
 
     .s01 {
@@ -72,8 +69,6 @@
         padding-bottom: 15px;
     }
 
-
-
         .s01 legend {
             font-size: 72px;
             line-height: 1;
@@ -83,7 +78,7 @@
 
         .s01 .inner-form {
             background: rgba(0, 0, 0, 0.5);
-            padding: 50px 47px;
+            padding: 20px 32px;
             display: -ms-flexbox;
             display: flex;
             width: 100%;
@@ -95,7 +90,7 @@
 
             .s01 .inner-form .input-field {
                 margin-right: 30px;
-                height: 68px;
+                height: 50px;
             }
 
                 .s01 .inner-form .input-field input {
@@ -248,16 +243,15 @@
         }
     }
 
-    .responsive-table thead {
+    /*.responsive-table thead {
         position: absolute;
         clip: rect(1px 1px 1px 1px);
-        /* IE6, IE7 */
         padding: 0;
         border: 0;
         height: 1px;
         width: 1px;
         overflow: hidden;
-    }
+    }*/
 
     @@media (min-width: 48em) {
         .responsive-table thead {
@@ -285,7 +279,7 @@
     .responsive-table tr,
     .responsive-table th,
     .responsive-table td {
-        display: block;
+        /*display: block;*/
         padding: 0;
         text-align: left;
         white-space: normal;
@@ -445,8 +439,6 @@
     }
 </style>
 
-}
-
 <html lang="en">
 <head>
 
@@ -460,8 +452,8 @@
 
 </head>
 <body>
-    
-    <header class="app-header navbar">
+
+    <header class="app-header navbar admin-nav-bar">
         <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -469,11 +461,10 @@
         <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <ul class="nav navbar-nav d-md-down-none">
+        <ul class="nav navbar-nav d-md-down-none ">
             <li class="nav-item px-3 nav-item nav-link active">
-                <a class="nav-link" href="/admin">Home</a>
+                <a class="nav-link" href="/admin/index">Home</a>
             </li>
-
             <li class="nav-item px-3">
                 <a class="nav-link" href="/admin/create">Create Package</a>
             </li>
@@ -529,17 +520,16 @@
 
                 <thead>
                     <tr>
-                        <th scope="col" style="width:300px">Package Name</th>
+                        <th scope="col" width="450px">Package Name</th>
                         <th scope="col">Package Code</th>
-                        <th scope="col">Package Group</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Shared</th>
-                        <th scope="col">Price(INR)</th>
-                        <th scope="col">Email Result To User</th>
-                        <th scope="col">Associated Tests</th>
+                        <th class="mobile-ui-css" scope="col">Package Group</th>
+                        <th class="mobile-ui-css" scope="col">Password</th>
+                        <th class="mobile-ui-css" scope="col">Shared</th>
+                        <th class="mobile-ui-css" scope="col">Price(INR)</th>
+                        <th class=" ipad-ui-css" scope="col">Email Result To User</th>
+                        <th class=" ipad-ui-css" scope="col">Associated Tests</th>
                         @*<th scope="col">Completed</th>
-        <th scope="col">Attended</th>*@
-                        <th scope="col"></th>
+                            <th scope="col">Attended</th>*@
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -551,33 +541,27 @@
                 <tbody>
                     @foreach (DataAccessLayer.Package package in Model.lstPackages)
                     {
-                    <tr>
+                        <tr>
 
-                        <td style="width:400px">@package.Package_Name</td>
-                        <td>@package.Package_Code</td>
-                        <td>@package.Package_ClassGroup</td>
-                        <td>@package.Package_Password</td>
-                        <td>@package.Shared</td>
-                        <td>@package.Price</td>
-                        <td>@package.Email_Result_ToUser</td>
-                        <td style="width:400px">@Html.Raw(@package.AssociatedTests.Replace(",", "<br>"))</td>
-                        @*<td>@package.Completed</td>
-        <td>@package.Attended</td>*@
-                        @*<td><a href="admin/edit">Edit</a></td>*@
-                        <td><input style="color:red" type="button" value="Edit" name="EditPackage" Var1="@package.Package_ID"></td>
+                            <td width="450px">@package.Package_Name</td>
+                            <td>@package.Package_Code</td>
+                            <td class="mobile-ui-css">@package.Package_ClassGroup</td>
+                            <td class="mobile-ui-css">@package.Package_Password</td>
+                            <td class="mobile-ui-css">@package.Shared</td>
+                            <td class="mobile-ui-css">@package.Price</td>
+                            <td class=" ipad-ui-css">@package.Email_Result_ToUser</td>
+                            <td class=" ipad-ui-css" style="width:400px">@Html.Raw(@package.AssociatedTests.Replace(",", "<br>"))</td>
+                            @*<td>@package.Completed</td>
+                                <td>@package.Attended</td>*@
+                            @*<td><a href="admin/edit">Edit</a></td>*@
+                            <td>
+                                <input style="color:red; margin-bottom:4px;" type="button" value="Edit" name="EditPackage" Var1="@package.Package_ID">
+                                <input style="color:red" type="button" value="Delete" name="DeletePackage"
+                                       Var2="@package.Package_ID">
+                            </td>
 
-                        @*<td><a style="color:red" href="#">Delete</a></td>*@
-                        <td>
-                            @*<button style="color:red" type="button" class="deletePackage" value="Delete"
-            Var1="@package.Package_ID">Remove</button>*@
-                            <input style="color:red" type="button" value="Delete" name="DeletePackage"
-                                   Var2="@package.Package_ID">
-                        </td>
-
-                        @*<td><input type="button" value="Remove" onclick="Remove(this)" /></td>*@
-                    </tr>
+                        </tr>
                     }
-
                 </tbody>
             </table>
         </div>
@@ -586,14 +570,21 @@
 </body>
 </html>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="~/wwwroot/js/responsive-ui.js"></script>
 <script>
     $.noConflict();
     jQuery(document).ready(function ($) {
         $('#tblPackage').DataTable({
-
             "pageLength": 2
-
         });
     });
+    ApplyScreenwiseResolution();
+    jQuery(window).resize(function () {
+        ApplyScreenwiseResolution();
+    });
+    jQuery(window).click(function () {
+        ApplyScreenwiseResolution();
+    });
+    
 </script>
 @*</div>*@
