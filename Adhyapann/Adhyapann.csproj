@@ -67,17 +67,21 @@
     <Reference Include="SendGrid, Version=9.12.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
       <HintPath>..\packages\Sendgrid.9.12.0\lib\net452\SendGrid.dll</HintPath>
     </Reference>
-    <Reference Include="Spire.Common, Version=10.3.8.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spire.XLS.10.3.8\lib\net46\Spire.Common.dll</HintPath>
+    <Reference Include="Spire.Common, Version=2.1.4.6040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.XLS.9.1.0\lib\net46\Spire.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Spire.License, Version=1.3.8.46, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spire.XLS.10.3.8\lib\net46\Spire.License.dll</HintPath>
+    <Reference Include="Spire.License, Version=1.3.7.46, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.XLS.9.1.0\lib\net46\Spire.License.dll</HintPath>
     </Reference>
-    <Reference Include="Spire.Pdf, Version=6.3.11.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spire.XLS.10.3.8\lib\net46\Spire.Pdf.dll</HintPath>
+    <Reference Include="Spire.Pdf, Version=5.1.0.2046, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.XLS.9.1.0\lib\net46\Spire.Pdf.dll</HintPath>
     </Reference>
-    <Reference Include="Spire.XLS, Version=10.3.8.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
-      <HintPath>..\packages\Spire.XLS.10.3.8\lib\net46\Spire.XLS.dll</HintPath>
+    <Reference Include="Spire.XLS, Version=9.1.4.6043, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Spire.XLS.9.1.0\lib\net46\Spire.XLS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -232,6 +236,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
+    <Content Include="wwwroot\css\admin.css" />
+    <Content Include="wwwroot\css\bootstrap.css" />
     <Content Include="wwwroot\css\create_edit.css" />
     <Content Include="wwwroot\css\daterangepicker.css" />
     <Content Include="wwwroot\css\Dummy.css" />
@@ -244,6 +250,7 @@
     <Content Include="wwwroot\css\pace.min.css" />
     <Content Include="wwwroot\css\practice_set.css" />
     <Content Include="wwwroot\css\Register.css" />
+    <Content Include="wwwroot\css\responsive-ui.css" />
     <Content Include="wwwroot\css\select2.min.css" />
     <Content Include="wwwroot\css\site.css" />
     <Content Include="wwwroot\css\site.min.css" />
@@ -454,6 +461,7 @@
     <Content Include="wwwroot\js\moment.min.js" />
     <Content Include="wwwroot\js\Package.js" />
     <Content Include="wwwroot\js\Package.min.js" />
+    <Content Include="wwwroot\js\responsive-ui.js" />
     <Content Include="wwwroot\js\Spin.js" />
     <Content Include="wwwroot\js\Student.js" />
     <Content Include="wwwroot\js\SubTest.js" />

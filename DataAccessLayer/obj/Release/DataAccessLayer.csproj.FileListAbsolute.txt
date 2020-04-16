@@ -55,3 +55,41 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataA
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+F:\Live Projects\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+F:\Live Projects\DataAccessLayer\bin\Release\DataAccessLayer.dll
+F:\Live Projects\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+F:\Live Projects\DataAccessLayer\bin\Release\MySql.Data.dll
+F:\Live Projects\DataAccessLayer\bin\Release\Newtonsoft.Json.dll
+F:\Live Projects\DataAccessLayer\bin\Release\SendGrid.dll
+F:\Live Projects\DataAccessLayer\bin\Release\System.Net.Http.dll
+F:\Live Projects\DataAccessLayer\bin\Release\System.Security.Cryptography.Algorithms.dll
+F:\Live Projects\DataAccessLayer\bin\Release\System.Security.Cryptography.Encoding.dll
+F:\Live Projects\DataAccessLayer\bin\Release\System.Security.Cryptography.Primitives.dll
+F:\Live Projects\DataAccessLayer\bin\Release\System.Security.Cryptography.X509Certificates.dll
+F:\Live Projects\DataAccessLayer\bin\Release\MySql.Data.xml
+F:\Live Projects\DataAccessLayer\bin\Release\Newtonsoft.Json.xml
+F:\Live Projects\DataAccessLayer\bin\Release\SendGrid.pdb
+F:\Live Projects\DataAccessLayer\bin\Release\SendGrid.xml
+F:\Live Projects\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CoreCompileInputs.cache
+F:\Live Projects\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
+F:\Live Projects\DataAccessLayer\obj\Release\DataAccessLayer.dll
+F:\Live Projects\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\DataAccessLayer.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\DataAccessLayer.pdb
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\MySql.Data.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\Newtonsoft.Json.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\SendGrid.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\System.Net.Http.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\System.Security.Cryptography.Algorithms.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\System.Security.Cryptography.Encoding.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\System.Security.Cryptography.Primitives.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\System.Security.Cryptography.X509Certificates.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\MySql.Data.xml
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\Newtonsoft.Json.xml
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\SendGrid.pdb
+F:\Live Projects\Adhyapann\DataAccessLayer\bin\Release\SendGrid.xml
+F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CoreCompileInputs.cache
+F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
+F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.dll
+F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.pdb

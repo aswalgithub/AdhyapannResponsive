@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using MySql.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
-
-
 
 namespace DataAccessLayer
 {
@@ -36,15 +33,15 @@ namespace DataAccessLayer
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
                 // add parameters and their values
-                cmd.Parameters.Add("@Package_Name", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = package.Package_Name;
-                //cmd.Parameters.Add("@Package_URL", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = package.Package_URL;
-                cmd.Parameters.Add("@Package_Code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = package.Package_Code;
-                cmd.Parameters.Add("@Package_Password", MySql.Data.MySqlClient.MySqlDbType.VarChar, 50).Value = package.Package_Password;
-                cmd.Parameters.Add("@Shared", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = package.Shared;
-                cmd.Parameters.Add("@Price", MySql.Data.MySqlClient.MySqlDbType.VarChar, 10).Value = package.Price;
-                cmd.Parameters.Add("@Email_Result_ToUser", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = package.Email_Result_ToUser;
-                cmd.Parameters.Add("@AssociatedTests", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = package.AssociatedTests;
-                cmd.Parameters.Add("@Package_ClassGroup", MySql.Data.MySqlClient.MySqlDbType.VarChar, 10).Value = package.Package_ClassGroup;
+                cmd.Parameters.Add("@Package_Name", MySqlDbType.VarChar, 255).Value = package.Package_Name;
+                //cmd.Parameters.Add("@Package_URL", MySqlDbType.VarChar, 255).Value = package.Package_URL;
+                cmd.Parameters.Add("@Package_Code", MySqlDbType.VarChar, 100).Value = package.Package_Code;
+                cmd.Parameters.Add("@Package_Password", MySqlDbType.VarChar, 50).Value = package.Package_Password;
+                cmd.Parameters.Add("@Shared", MySqlDbType.Bit).Value = package.Shared;
+                cmd.Parameters.Add("@Price", MySqlDbType.VarChar, 10).Value = package.Price;
+                cmd.Parameters.Add("@Email_Result_ToUser", MySqlDbType.Bit).Value = package.Email_Result_ToUser;
+                cmd.Parameters.Add("@AssociatedTests", MySqlDbType.VarChar, 100).Value = package.AssociatedTests;
+                cmd.Parameters.Add("@Package_ClassGroup", MySqlDbType.VarChar, 10).Value = package.Package_ClassGroup;
 
                 // open connection, execute command and close connection
                 cn.Open();
@@ -74,18 +71,18 @@ namespace DataAccessLayer
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
                 // add parameters and their values
-                cmd.Parameters.Add("@Name", MySql.Data.MySqlClient.MySqlDbType.VarChar, 200).Value = student.Name;
-                //cmd.Parameters.Add("@Package_URL", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = package.Package_URL;
-                cmd.Parameters.Add("@School_Name", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = student.School_Name;
-                cmd.Parameters.Add("@Gender", MySql.Data.MySqlClient.MySqlDbType.VarChar, 50).Value = student.Gender == "Male" ? "M" : "F";
-                cmd.Parameters.Add("@Email_ID", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = student.Email_ID;
-                cmd.Parameters.Add("@Class", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = student.Class;            
-                cmd.Parameters.Add("@DOB", MySql.Data.MySqlClient.MySqlDbType.VarChar, 12).Value = student.DOB;
+                cmd.Parameters.Add("@Name", MySqlDbType.VarChar, 200).Value = student.Name;
+                //cmd.Parameters.Add("@Package_URL", MySqlDbType.VarChar, 255).Value = package.Package_URL;
+                cmd.Parameters.Add("@School_Name", MySqlDbType.VarChar, 255).Value = student.School_Name;
+                cmd.Parameters.Add("@Gender", MySqlDbType.VarChar, 50).Value = student.Gender == "Male" ? "M" : "F";
+                cmd.Parameters.Add("@Email_ID", MySqlDbType.VarChar, 100).Value = student.Email_ID;
+                cmd.Parameters.Add("@Class", MySqlDbType.VarChar, 100).Value = student.Class;            
+                cmd.Parameters.Add("@DOB", MySqlDbType.VarChar, 12).Value = student.DOB;
                
-                cmd.Parameters.Add("@Reference_Code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = uniquevalue;
-                cmd.Parameters.Add("@Test_Date", MySql.Data.MySqlClient.MySqlDbType.DateTime).Value = DateTime.Now; 
-                cmd.Parameters.Add("@Package_ID", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = student.Package_ID;
-                cmd.Parameters.Add("@Package_Name", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = student.Package_Name;
+                cmd.Parameters.Add("@Reference_Code", MySqlDbType.VarChar, 255).Value = uniquevalue;
+                cmd.Parameters.Add("@Test_Date", MySqlDbType.DateTime).Value = DateTime.Now; 
+                cmd.Parameters.Add("@Package_ID", MySqlDbType.UInt32).Value = student.Package_ID;
+                cmd.Parameters.Add("@Package_Name", MySqlDbType.VarChar, 255).Value = student.Package_Name;
 
 
                 // open connection, execute command and close connection
@@ -116,7 +113,7 @@ namespace DataAccessLayer
             {
                 // add parameters and their values
 
-                cmd.Parameters.Add("@Reference_Code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = reference_code;
+                cmd.Parameters.Add("@Reference_Code", MySqlDbType.VarChar, 255).Value = reference_code;
 
 
                 // open connection, execute command and close connection
@@ -174,16 +171,16 @@ namespace DataAccessLayer
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
                 // add parameters and their values
-                cmd.Parameters.Add("@Package_Name", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = package.Package_Name;
-                //cmd.Parameters.Add("@Package_URL", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = package.Package_URL;
-                cmd.Parameters.Add("@Package_Code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = package.Package_Code;
-                cmd.Parameters.Add("@Package_Password", MySql.Data.MySqlClient.MySqlDbType.VarChar, 50).Value = package.Package_Password;
-                cmd.Parameters.Add("@Shared", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = package.Shared;
-                cmd.Parameters.Add("@Price", MySql.Data.MySqlClient.MySqlDbType.VarChar, 10).Value = package.Price;
-                cmd.Parameters.Add("@Email_Result_ToUser", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = package.Email_Result_ToUser;
-                cmd.Parameters.Add("@AssociatedTests", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = package.AssociatedTests;
-                cmd.Parameters.Add("@Package_ID", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = package.Package_ID;
-                cmd.Parameters.Add("@Package_ClassGroup", MySql.Data.MySqlClient.MySqlDbType.VarChar, 10).Value = package.Package_ClassGroup;
+                cmd.Parameters.Add("@Package_Name", MySqlDbType.VarChar, 255).Value = package.Package_Name;
+                //cmd.Parameters.Add("@Package_URL", MySqlDbType.VarChar, 255).Value = package.Package_URL;
+                cmd.Parameters.Add("@Package_Code", MySqlDbType.VarChar, 100).Value = package.Package_Code;
+                cmd.Parameters.Add("@Package_Password", MySqlDbType.VarChar, 50).Value = package.Package_Password;
+                cmd.Parameters.Add("@Shared", MySqlDbType.Bit).Value = package.Shared;
+                cmd.Parameters.Add("@Price", MySqlDbType.VarChar, 10).Value = package.Price;
+                cmd.Parameters.Add("@Email_Result_ToUser", MySqlDbType.Bit).Value = package.Email_Result_ToUser;
+                cmd.Parameters.Add("@AssociatedTests", MySqlDbType.VarChar, 100).Value = package.AssociatedTests;
+                cmd.Parameters.Add("@Package_ID", MySqlDbType.UInt32).Value = package.Package_ID;
+                cmd.Parameters.Add("@Package_ClassGroup", MySqlDbType.VarChar, 10).Value = package.Package_ClassGroup;
 
                 // open connection, execute command and close connection
                 cn.Open();
@@ -207,8 +204,8 @@ namespace DataAccessLayer
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
                 // add parameters and their values
-                cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = id;
-                //cmd.Parameters.Add("@Package_URL", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = package.Package_URL;
+                cmd.Parameters.Add("@id", MySqlDbType.UInt32).Value = id;
+                //cmd.Parameters.Add("@Package_URL", MySqlDbType.VarChar, 255).Value = package.Package_URL;
 
 
                 // open connection, execute command and close connection
@@ -217,8 +214,6 @@ namespace DataAccessLayer
                 cn.Close();
             }
         }
-
-
 
         public void UpdatePackage(int Package_ID, string Package_Name, string Package_URL, string Package_Code, string Package_Password, bool Shared, string Price, bool Email_Result_ToUser, string AssociatedTests)
         {
@@ -236,14 +231,14 @@ namespace DataAccessLayer
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
                 // add parameters and their values
-                cmd.Parameters.Add("@Package_Name", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = Package_Name;
-                cmd.Parameters.Add("@Package_Code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = Package_Code;
-                cmd.Parameters.Add("@Package_Password", MySql.Data.MySqlClient.MySqlDbType.VarChar, 50).Value = Package_Password;
-                cmd.Parameters.Add("@Shared", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = Shared;
-                cmd.Parameters.Add("@Price", MySql.Data.MySqlClient.MySqlDbType.VarChar, 10).Value = Price;
-                cmd.Parameters.Add("@Email_Result_ToUser", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = Email_Result_ToUser;
-                cmd.Parameters.Add("@AssociatedTests", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = AssociatedTests;
-                cmd.Parameters.Add("@PackageID", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Package_ID;
+                cmd.Parameters.Add("@Package_Name", MySqlDbType.VarChar, 255).Value = Package_Name;
+                cmd.Parameters.Add("@Package_Code", MySqlDbType.VarChar, 100).Value = Package_Code;
+                cmd.Parameters.Add("@Package_Password", MySqlDbType.VarChar, 50).Value = Package_Password;
+                cmd.Parameters.Add("@Shared", MySqlDbType.Bit).Value = Shared;
+                cmd.Parameters.Add("@Price", MySqlDbType.VarChar, 10).Value = Price;
+                cmd.Parameters.Add("@Email_Result_ToUser", MySqlDbType.Bit).Value = Email_Result_ToUser;
+                cmd.Parameters.Add("@AssociatedTests", MySqlDbType.VarChar, 100).Value = AssociatedTests;
+                cmd.Parameters.Add("@PackageID", MySqlDbType.UInt32).Value = Package_ID;
 
                 // open connection, execute command and close connection
                 cn.Open();
@@ -251,7 +246,6 @@ namespace DataAccessLayer
                 cn.Close();
             }
         }
-
 
         public List<Package> GetPackageDetails()
         {
@@ -310,7 +304,7 @@ namespace DataAccessLayer
                 using (MySqlCommand cmd = new MySqlCommand(query, cn))
                 {
                     // open connection, execute command and close connection
-                    cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = package_ID;
+                    cmd.Parameters.Add("@id", MySqlDbType.UInt32).Value = package_ID;
                     cn.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -404,7 +398,6 @@ namespace DataAccessLayer
             return lstTest;
         }
 
-
         public DataTable SearchPackage(int Package_ID, string Package_Name, string Package_URL, string Package_Code, string Package_Password, bool Shared, string Price, bool Email_Result_ToUser, string AssociatedTests)
         {
             //string ConnectionString = @"Data source=DESKTOP-28M703K\SQLEXPRESS; Database=Adhyapann; Integrated Security=SSPI;";
@@ -449,7 +442,7 @@ namespace DataAccessLayer
                 using (MySqlCommand cmd = new MySqlCommand(query, cn))
                 {
                     // open connection, execute command and close connection
-                    cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = subtest_ID;
+                    cmd.Parameters.Add("@id", MySqlDbType.UInt32).Value = subtest_ID;
                     cn.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -493,7 +486,7 @@ namespace DataAccessLayer
                 using (MySqlCommand cmd = new MySqlCommand(query, cn))
                 {
                     // open connection, execute command and close connection
-                    cmd.Parameters.Add("@id", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = subtest_ID;
+                    cmd.Parameters.Add("@id", MySqlDbType.UInt32).Value = subtest_ID;
                     cn.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -536,7 +529,7 @@ namespace DataAccessLayer
                 using (MySqlCommand cmd = new MySqlCommand(query, cn))
                 {
                     // open connection, execute command and close connection
-                    cmd.Parameters.Add("@Category", MySql.Data.MySqlClient.MySqlDbType.VarChar, 100).Value = category;
+                    cmd.Parameters.Add("@Category", MySqlDbType.VarChar, 100).Value = category;
                     cn.Open();
                     MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -573,9 +566,9 @@ namespace DataAccessLayer
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
                 // add parameters and their values
-                cmd.Parameters.Add("@score", MySql.Data.MySqlClient.MySqlDbType.UInt32, 255).Value = score;
-                cmd.Parameters.Add("@Completed", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = true;
-                cmd.Parameters.Add("@reference_code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = reference_code;
+                cmd.Parameters.Add("@score", MySqlDbType.UInt32, 255).Value = score;
+                cmd.Parameters.Add("@Completed", MySqlDbType.Bit).Value = true;
+                cmd.Parameters.Add("@reference_code", MySqlDbType.VarChar, 255).Value = reference_code;
 
                 // open connection, execute command and close connection
                 cn.Open();
@@ -600,20 +593,20 @@ namespace DataAccessLayer
             using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
                 // add parameters and their values
-                cmd.Parameters.Add("@ER_Self_Blame", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_Self_Blame;
-                cmd.Parameters.Add("@ER_Acceptance", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_Acceptance;
-                cmd.Parameters.Add("@ER_Rumination", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_Rumination;
-                cmd.Parameters.Add("@ER_PositiveRefocusing", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_PositiveRefocusing;
-                cmd.Parameters.Add("@ER_RefocusonPlanning", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_RefocusonPlanning;
-                cmd.Parameters.Add("@ER_PositiveReappraisal", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_PositiveReappraisal;
-                cmd.Parameters.Add("@ER_PuttingintoPerspective", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_PuttingintoPerspective;
-                cmd.Parameters.Add("@ER_Catastrophizing", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_Catastrophizing;
-                cmd.Parameters.Add("@ER_Other_blame", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = ER_Other_blame;
+                cmd.Parameters.Add("@ER_Self_Blame", MySqlDbType.UInt32).Value = ER_Self_Blame;
+                cmd.Parameters.Add("@ER_Acceptance", MySqlDbType.UInt32).Value = ER_Acceptance;
+                cmd.Parameters.Add("@ER_Rumination", MySqlDbType.UInt32).Value = ER_Rumination;
+                cmd.Parameters.Add("@ER_PositiveRefocusing", MySqlDbType.UInt32).Value = ER_PositiveRefocusing;
+                cmd.Parameters.Add("@ER_RefocusonPlanning", MySqlDbType.UInt32).Value = ER_RefocusonPlanning;
+                cmd.Parameters.Add("@ER_PositiveReappraisal", MySqlDbType.UInt32).Value = ER_PositiveReappraisal;
+                cmd.Parameters.Add("@ER_PuttingintoPerspective", MySqlDbType.UInt32).Value = ER_PuttingintoPerspective;
+                cmd.Parameters.Add("@ER_Catastrophizing", MySqlDbType.UInt32).Value = ER_Catastrophizing;
+                cmd.Parameters.Add("@ER_Other_blame", MySqlDbType.UInt32).Value = ER_Other_blame;
 
-                cmd.Parameters.Add("@reference_code", MySql.Data.MySqlClient.MySqlDbType.VarChar, 255).Value = reference_code;
-                cmd.Parameters.Add("@Date_Completed", MySql.Data.MySqlClient.MySqlDbType.DateTime).Value = DateTime.Now;
-                cmd.Parameters.Add("@Completed", MySql.Data.MySqlClient.MySqlDbType.Bit).Value =true;
-                cmd.Parameters.Add("@ER_Completed", MySql.Data.MySqlClient.MySqlDbType.Bit).Value = true;
+                cmd.Parameters.Add("@reference_code", MySqlDbType.VarChar, 255).Value = reference_code;
+                cmd.Parameters.Add("@Date_Completed", MySqlDbType.DateTime).Value = DateTime.Now;
+                cmd.Parameters.Add("@Completed", MySqlDbType.Bit).Value =true;
+                cmd.Parameters.Add("@ER_Completed", MySqlDbType.Bit).Value = true;
 
                 // open connection, execute command and close connection
                 cn.Open();
@@ -873,25 +866,25 @@ namespace DataAccessLayer
                     using (MySqlCommand cmd = new MySqlCommand(query, cn))
                     {
                         // open connection, execute command and close connection
-                        cmd.Parameters.Add("@Verbal_INF", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Verbal_INF;
-                        cmd.Parameters.Add("@Verbal_COM", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Verbal_COM;
-                        cmd.Parameters.Add("@Verbal_ARI", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Verbal_ARI;
-                        cmd.Parameters.Add("@Verbal_SIM", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Verbal_SIM;
-                        cmd.Parameters.Add("@Verbal_VOC", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Verbal_VOC;
-                        cmd.Parameters.Add("@Performance_DS", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Performance_DS;
-                        cmd.Parameters.Add("@Performance_PC", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Performance_PC;
-                        cmd.Parameters.Add("@Performance_SPA", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Performance_SPA;
-                        cmd.Parameters.Add("@Performance_PA", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Performance_PA;
-                        cmd.Parameters.Add("@Performance_OA", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = Performance_OA;
-                        cmd.Parameters.Add("@verbal_total_score", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = verbal_total_score;
-                        cmd.Parameters.Add("@verbal_IQ", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = verbal_IQ;
-                        cmd.Parameters.Add("@verbal_percentile", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = verbal_percentile;
-                        cmd.Parameters.Add("@performance_total_score", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = performance_total_score;
-                        cmd.Parameters.Add("@performabce_IQ", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = performabce_IQ;
-                        cmd.Parameters.Add("@performance_percentile", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = performance_percentile;
-                        cmd.Parameters.Add("@total_score", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = total_score;
-                        cmd.Parameters.Add("@total_IQ", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = total_IQ;
-                        cmd.Parameters.Add("@total_percentile", MySql.Data.MySqlClient.MySqlDbType.UInt32).Value = total_percentile;
+                        cmd.Parameters.Add("@Verbal_INF", MySqlDbType.UInt32).Value = Verbal_INF;
+                        cmd.Parameters.Add("@Verbal_COM", MySqlDbType.UInt32).Value = Verbal_COM;
+                        cmd.Parameters.Add("@Verbal_ARI", MySqlDbType.UInt32).Value = Verbal_ARI;
+                        cmd.Parameters.Add("@Verbal_SIM", MySqlDbType.UInt32).Value = Verbal_SIM;
+                        cmd.Parameters.Add("@Verbal_VOC", MySqlDbType.UInt32).Value = Verbal_VOC;
+                        cmd.Parameters.Add("@Performance_DS", MySqlDbType.UInt32).Value = Performance_DS;
+                        cmd.Parameters.Add("@Performance_PC", MySqlDbType.UInt32).Value = Performance_PC;
+                        cmd.Parameters.Add("@Performance_SPA", MySqlDbType.UInt32).Value = Performance_SPA;
+                        cmd.Parameters.Add("@Performance_PA", MySqlDbType.UInt32).Value = Performance_PA;
+                        cmd.Parameters.Add("@Performance_OA", MySqlDbType.UInt32).Value = Performance_OA;
+                        cmd.Parameters.Add("@verbal_total_score", MySqlDbType.UInt32).Value = verbal_total_score;
+                        cmd.Parameters.Add("@verbal_IQ", MySqlDbType.UInt32).Value = verbal_IQ;
+                        cmd.Parameters.Add("@verbal_percentile", MySqlDbType.UInt32).Value = verbal_percentile;
+                        cmd.Parameters.Add("@performance_total_score", MySqlDbType.UInt32).Value = performance_total_score;
+                        cmd.Parameters.Add("@performabce_IQ", MySqlDbType.UInt32).Value = performabce_IQ;
+                        cmd.Parameters.Add("@performance_percentile", MySqlDbType.UInt32).Value = performance_percentile;
+                        cmd.Parameters.Add("@total_score", MySqlDbType.UInt32).Value = total_score;
+                        cmd.Parameters.Add("@total_IQ", MySqlDbType.UInt32).Value = total_IQ;
+                        cmd.Parameters.Add("@total_percentile", MySqlDbType.UInt32).Value = total_percentile;
 
                         cmd.Parameters.AddWithValue("@ref_code", ref_code.ToString());
                         cn.Open();

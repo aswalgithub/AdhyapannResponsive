@@ -1,26 +1,20 @@
-﻿using System;
+﻿using Adhyapann_Project.Models;
+using DataAccessLayer;
+using GemBox.Spreadsheet;
+using GemBox.Spreadsheet.Charts;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using Adhyapann_Project.Models;
-using DataAccessLayer;
-using System.Text;
-using GemBox.Spreadsheet;
-using GemBox.Spreadsheet.Charts;
-using GemBox.Document;
-using Spire.Xls;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-using System.IO;
-using System.Runtime.InteropServices;
 using FreeLimitReachedAction = GemBox.Spreadsheet.FreeLimitReachedAction;
-using System.Configuration;
-using Microsoft.Office.Interop.Excel;
 
 
 namespace Adhyapann_Project.Controllers
-{   
+{
     public class TestController : Controller
     {
         public AdhyapanDB adhyapanDB = new AdhyapanDB();

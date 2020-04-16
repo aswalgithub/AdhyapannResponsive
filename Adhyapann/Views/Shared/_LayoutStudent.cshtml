@@ -8,7 +8,7 @@
     <title>@ViewData["Title"] - Adhyapan_Project</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />*@
         <link rel="stylesheet" href="~/wwwroot/css/site.css" />
         <link rel="stylesheet" href="~/wwwroot/css/login.css" />
         <link rel="stylesheet" href="~/wwwroot/css/style.css" />
@@ -22,8 +22,8 @@
         <link rel="stylesheet" href="~/wwwroot/css/site.min.css" asp-append-version="true" />
     </environment>
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
         @*<script src="~/wwwroot/js/site.js" asp-append-version="true"></script>*@
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -33,7 +33,7 @@
         </script>
     </environment>
 </head>
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show " style="padding-top:50px;">
 
     @*<partial name="_CookieConsentPartial" />*@
 
@@ -41,11 +41,9 @@
     @RenderBody()
     <hr />
     <footer>
-        <p>&copy; https://www.adhyapann.in</p>
+        <p>&copy; @DateTime.Now.Year <a target="_blank" href="https://www.adhyapann.in">https://www.adhyapann.in</a></p>
     </footer>
     @*</div>*@
-
-
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"

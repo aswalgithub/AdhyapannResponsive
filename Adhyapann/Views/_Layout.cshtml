@@ -8,7 +8,7 @@
     <title>@ViewData["Title"] - Adhyapan_Project</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link href="~/wwwroot/css/bootstrap.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/wwwroot/css/site.css" />
         <link rel="stylesheet" href="~/wwwroot/css/login.css" />
         <link rel="stylesheet" href="~/wwwroot/css/style.css" />
@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="~/wwwroot/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show" ">
     @*<nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -55,13 +55,13 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - Adhyapan_Project</p>
+            <p>&copy; @DateTime.Now.Year <a target="_blank" href="https://www.adhyapann.in">https://www.adhyapann.in</a> - Adhyapan_Project</p>
         </footer>
     @*</div>*@
 
     <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        @*<script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>*@
         @*<script src="~/wwwroot/js/site.js" asp-append-version="true"></script>*@
     </environment>
     <environment exclude="Development">

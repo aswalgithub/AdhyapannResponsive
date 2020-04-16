@@ -51,8 +51,9 @@
                     <form id="frmRegister" class="" method="POST" action="~/Student/SaveStudentDetails">
                         <input type="hidden" id="Package_ID" name="Package_ID" value="@Model.Package_ID">
                         <input type="hidden" id="Package_Name" name="Package_Name" value="@Model.Package_Name">
+                        <br />
                         <fieldset><legend>Student Information</legend></fieldset>
-                        <div class="container"  style="margin:auto">
+                        <div class="container" style="margin:auto">
 
 
                             <div class="form-group">
@@ -65,7 +66,7 @@
                             </div>
                             <div class="form-group">
 
-                                <select name="Gender" id="Gender" style="margin:10px !important" required>
+                                <select name="Gender" id="Gender" style="margin:10px !important; padding:10px;" required>
                                     <option value="" disabled="disabled" selected="selected">GENDER</option>
                                     <option>Male</option>
                                     <option>Female</option>
@@ -88,7 +89,7 @@
                             </div>
                             <div class="form-group">
 
-                                <select name="Class" id="Class" style="margin:10px !important" required>
+                                <select name="Class" id="Class" style="margin:10px !important; padding:10px;" required>
                                     <option value="" disabled="disabled" selected="selected">CLASS</option>
                                     <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>1</option>
                                     <option @Html.Raw(Model.Package_ClassGroup == "CLASS 8-12" ? "hidden='hidden'" : "")>2</option>
@@ -102,9 +103,6 @@
                                     <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>10</option>
                                     <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>11</option>
                                     <option @Html.Raw(Model.Package_ClassGroup == "CLASS 1-7" ? "hidden='hidden'" : "")>12</option>
-
-
-
                                 </select>
                             </div>
                             <p align="center">
@@ -116,15 +114,10 @@
 
                         <fieldset><legend>Enter the details to resume Test</legend></fieldset>
                         <div class="container" style="margin:auto;">
-
-
                             @*<h2 class="title" style="text-align:left ;font-size:20px">Enter the details to resume the Test</h2>*@
                             <div class="form-group">
                                 <input class="input--style-1" type="text" placeholder="REFERENCE ID" name="referenceID" id="referenceID" required pattern=".*\S+.*" title="This field is required" autofocus>
                             </div>
-
-
-
 
                             <div class="form-group">
                                 <input class="input--style-1" type="password" data-type="password" placeholder="PASSWORD" name="Password_resume" id="password1_resume" required pattern=".*\S+.*" title="This field is required">
@@ -133,8 +126,6 @@
                             </div>
                             <p id="validate-status"></p>
 
-
-
                             <p align="center">
                             <p align="center">
                                 <button class="btn btn--radius btn--green" id="btnResumeTest" name="initiateTest" type="button" style="text-align:center;margin:5px">Resume Test</button>
@@ -142,15 +133,8 @@
                             </p>
                         </div>
 
-
-
-
-
-
                     </form>
-
                 </div>
-
 
             </div>
         </div>
@@ -158,15 +142,22 @@
 
 
     <!-- Jquery JS-->
-    <script src="~/wwwroot/js/jquery.min.js"></script>
+    @*<script src="~/wwwroot/js/jquery.min.js"></script>*@
     <!-- Vendor JS-->
-    <script src="~/wwwroot/js/select2.min.js"></script>
+    @*<script src="~/wwwroot/js/select2.min.js"></script>*@
     <script src="~/wwwroot/js/moment.min.js"></script>
     <script src="~/wwwroot/js/daterangepicker.js"></script>
 
     <!-- Main JS-->
     <script src="~/wwwroot/js/global.js"></script>
     <script src="~/wwwroot/js/Student.js"></script>
+    <script src="~/wwwroot/js/responsive-ui.js"></script>
+
+    <script type="text/javascript">
+        var setting1 = window.matchMedia("(max-width: 414px)")
+        ApplyRegisterPageSettings(setting1);
+        setting1.addListener(ApplyRegisterPageSettings)
+    </script>
 
 </body>
 

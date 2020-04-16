@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="~/wwwroot/css/main.css" />
 
     <title>Adhyapaan Phychometric Tests | Adhyapaan Phychometric Tests</title>
-
-
     <meta name="description" content="Adhyapaan Phychometric Tests | Adhyapaan Phychometric Tests" />
 
     <script type="text/javascript">
@@ -19,14 +17,8 @@
         window.onunload = function () { null };
     </script>
 
-
 </head>
-
-
 <body>
-
-
-
 
     @*<div style="text-align:right">
 
@@ -49,46 +41,32 @@
 
         </div>*@
 
-
-
-
     <main id="app" class="content" aria-label="Content">
-        
-            <h1 class="heading--xxl u-mt1" style="text-align:center;margin-top:-4rem!important;margin-bottom:1rem!important; color:black" >
 
-                Adhyapann Aptitude Testing, Career counselling<br />
-                and Career Mapping
+        <h1 class="heading--xxl u-mt1" style="text-align:center;margin-top:-4rem!important;margin-bottom:1rem!important; color:black">
 
-            </h1>
+            Adhyapann Aptitude Testing, Career counselling<br />
+            and Career Mapping
 
+        </h1>
 
-
-        <section class="c-hero c-hero--test" style="background-image: url(/wwwroot/images/Brain.jpg); background-size: 50% 100%; background-position: left;height:280px!important  ">
+        <section id="homeSection" class="c-hero c-hero--test" style="background-image: url(/wwwroot/images/Brain.jpg); background-size: 50% 100%; background-position: left;height:280px!important  ">
             <div class="btn-holder" style="color:white !important; font-size:12px !important;text-align:right">
                 <a href="@Url.Action("Index", "Auth")" target="_blank">
                     <input style="text-align:center;  border:1px dashed #ccc; background-color:#57b846;" type="button" value="Login as Admin" name="Next" id="btnNext" />
-                    
-
                 </a>
-
             </div>
-
-
-
-
-
-
             @*<div class="c-hero__image u-flex-1">
 
 
 
 
-                                <img src="~/wwwroot/images/AdhyapanSkillHub.png"
-                                     alt="
-            Adhyapaan Physchometric Tests
-            " class="eager" width="206" height="169">
+                                    <img src="~/wwwroot/images/AdhyapanSkillHub.png"
+                                         alt="
+                Adhyapaan Physchometric Tests
+                " class="eager" width="206" height="169">
 
-                            </div>*@
+                                </div>*@
 
 
         </section>
@@ -100,43 +78,42 @@
                 {
                     if (@package.Shared == true)
                     {
-                        <li class="c-programme-card" style=" position: relative; min-height: 1px;padding-right: 15px; padding-left: 15px;margin-left: 8.33333333%">
+                        <li class="c-programme-card" style=" position: relative; min-height: 1px;padding-right: 15px; padding-left: 15px;margin-left: 0.33333333%">
                             <div class="boxRegister" style="text-align:center;background-color:#3f1f09;color:whitesmoke">
                                 <div class="text-holder" style="margin-bottom: 10px;">
                                     <!--<span class="btn-icon" style="padding-bottom: 20px;">
-                                    <img src="temp/resume.png" alt="psychometric for personal use">
-                                </span>-->
+                                        <img src="temp/resume.png" alt="psychometric for personal use">
+                                    </span>-->
 
-                                    <h2 style="padding-top: 10px;font-size: 1.2em;background-color:brown;color:whitesmoke"><span>Age Group- @package.Package_Code</span></h2>
+                                    <h2 style="padding-top:5%; height:58px; font-size: 1.2em;background-color:brown;color:whitesmoke"><span>Age Group- @package.Package_Code</span></h2>
 
                                 </div>
                                 <div class="text-holder" style="margin-bottom: 10px;">
                                     <!--<span class="btn-icon" style="padding-bottom: 20px;">
-                                    <img src="temp/resume.png" alt="psychometric for personal use">
-                                </span>-->
+                                        <img src="temp/resume.png" alt="psychometric for personal use">
+                                    </span>-->
                                     <h2 style="padding-top: 10px;font-size: 1.0em"><span>1.EMOTIONAL REGULATION</span></h2>
                                     <h2 style="padding-top: 10px;font-size: 1.0em"><span>2.PERFORMANCE APTITUDE IQ</span></h2>
                                     <h2 style="padding-top: 10px;font-size: 1.0em"><span>3.VERBAL APTITUDE IQ</span></h2>
 
                                 </div>
-                                <div class="btn-holder">
+                                <div class="btn-holder start-test-css">
                                     <a href="@Url.Action("Register", "Student",new { packageID = @package.Package_ID })" class="btn btn-buy btn-primary btn-lg btn-block">Take Test</a>
                                 </div>
                             </div>
                         </li>
                     }
-
                 }
-
+                
             </ul>
         </section>
     </main>
-
-
-
-
-
-
+    <script src="~/wwwroot/js/responsive-ui.js"></script>
+    <script type="text/javascript">
+        var setting1 = window.matchMedia("(max-width: 414px)")
+        ApplyHomePageSettings(setting1);       
+        setting1.addListener(ApplyHomePageSettings)
+    </script>
 
 </body>
 

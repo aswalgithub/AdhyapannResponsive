@@ -217,7 +217,7 @@ namespace Adhyapan_Project.Controllers
 
                 new PackageCategory() { Package_ClassGroup_ID = "2", Package_ClassGroup = "CLASS 8-12" }
             };
-           
+
             ViewBag.PackageGroup = new SelectList(packageGroup, "Package_ClassGroup", "Package_ClassGroup", packages.lstPackages[0].Package_ClassGroup);
 
             ViewBag.Shared = new SelectList(boolOptionShared, "Shared_ID", "Shared_Name", packages.lstPackages[0].Shared == false ? 2 : 1);

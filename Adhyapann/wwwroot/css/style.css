@@ -16402,3 +16402,10 @@ body {
   background-position: right calc(0.375em + 0.1875rem) center;
 }
 /*# sourceMappingURL=style.css.map */
+
+footer {
+    text-align: center;
+}
+.input--style-1 {
+    padding-left: 4px;
+}
