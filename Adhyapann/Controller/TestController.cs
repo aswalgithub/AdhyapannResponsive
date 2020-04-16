@@ -48,12 +48,14 @@ namespace Adhyapann_Project.Controllers
                 {
                     emails.Add(new EmailAddress(studentTestInfo.Email_ID));
                     emails.Add(new EmailAddress("info@adhyapann.co.in"));
+                    emails.Add(new EmailAddress("bhavna@adhyapann.co.in"));
 
                 }
                 else
                 {
 
                     emails.Add(new EmailAddress("info@adhyapann.co.in"));
+                    emails.Add(new EmailAddress("bhavna@adhyapann.co.in"));
                 }
                 //var apiKey = "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";
 

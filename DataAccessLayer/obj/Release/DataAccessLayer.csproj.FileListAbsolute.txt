@@ -55,6 +55,7 @@ C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataA
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.dll
 C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+<<<<<<< HEAD
 F:\Live Projects\DataAccessLayer\bin\Release\DataAccessLayer.dll.config
 F:\Live Projects\DataAccessLayer\bin\Release\DataAccessLayer.dll
 F:\Live Projects\DataAccessLayer\bin\Release\DataAccessLayer.pdb
@@ -93,3 +94,6 @@ F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.Co
 F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csproj.CopyComplete
 F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.dll
 F:\Live Projects\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.pdb
+=======
+C:\AdhyapannReworked13Jan_Responsive\Adhyapann\DataAccessLayer\obj\Release\DataAccessLayer.csprojAssemblyReference.cache
+>>>>>>> 3e178d532e34009d670e13409d2faadd2df24804
