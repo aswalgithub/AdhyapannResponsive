@@ -326,7 +326,7 @@ div.inner-footer{border-top:2px solid #eee;padding:10px;background-color:#f9f9f9
 .hover_bkgr_fricc_confirmation > div{background-color:#fff;box-shadow:10px 10px 60px #555;display:inline-block;height:auto;max-width:551px;min-height:100px;vertical-align:middle;width:60%;position:relative;border-radius:8px;padding:15px 5%}
 .hover_bkgr_fricc{background:rgba(0,0,0,.4);cursor:pointer;display:none;height:100%;position:fixed;text-align:center;top:0;width:100%;z-index:10000}
 .hover_bkgr_fricc .helper{display:inline-block;height:100%;vertical-align:middle}
-.hover_bkgr_fricc > div{background-color:#fff;box-shadow:10px 10px 60px #555;display:inline-block;height:auto;max-width:551px;min-height:100px;vertical-align:middle;width:60%;position:relative;border-radius:8px;padding:15px 5%}
+.hover_bkgr_fricc > div{background-color:#fff;box-shadow:10px 10px 60px #555;display:inline-block;height:auto;max-width:551px;min-height:100px;vertical-align:middle;width:84%;position:relative;border-radius:8px;padding:12px 4%; margin-top:50px;}
 .popupCloseButton{background-color:#fff;border:3px solid #999;border-radius:50px;cursor:pointer;display:inline-block;font-family:arial;font-weight:700;position:absolute;top:-20px;right:-20px;font-size:25px;line-height:30px;width:30px;height:30px;text-align:center}
 .popupCloseButton:hover{background-color:#ccc}
 .popupCloseButtonConfirmation{background-color:#fff;border:3px solid #999;border-radius:50px;cursor:pointer;display:inline-block;font-family:arial;font-weight:700;position:absolute;top:-20px;right:-20px;font-size:25px;line-height:30px;width:30px;height:30px;text-align:center}

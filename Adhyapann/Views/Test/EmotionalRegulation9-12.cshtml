@@ -25,6 +25,16 @@
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
     <script src="~/wwwroot/js/Test.js" type="text/javascript"></script>
     <link href="~/wwwroot/css/responsive-ui.css" type="text/css" rel="stylesheet" media="screen" />
+    <style type="text/css">
+        .bix-tbl-container td {
+            display: inline-block;
+        }
+
+        .bix-tbl-container {
+            width: 90%;
+        }
+        
+    </style>
 </head>
 
 <body>
@@ -43,8 +53,6 @@
             <div>
                 @*<div id="divHeader" class="pagehead" style="text-align:center"><h1>Emotional Regulation Test (9th -12th Class )</h1></div>*@
                 <section class="c-hero c-hero--test">
-
-
                     <div id="divHeader" class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
 
 
@@ -60,7 +68,6 @@
 
                             </h2>
 
-
                             @*<div class="c-hero__description">
                                     <p>
                                         Welcome to Adhyapaan Physchometric Test platform. The test we have designed is a simple test to measure Emotional Regulation and various aspects on one’s Aptitude, which helps in identifying the areas of strength and weakness for an individual.
@@ -68,9 +75,7 @@
                                 </div>*@
                         </div>
 
-
                     </div>
-
                 </section>
                 <div id="divUserDetails" style="margin-left:0px;margin-right:0px;">
                     <fieldset class="adhypan-fieldset">
@@ -85,13 +90,12 @@
                                 <div class="col-md-6">Reference Code: @Model.Reference_Code</div>
                             </div>
                         </div>
-                    </fieldset>                    
+                    </fieldset>
                 </div>
-                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; Top:20px; right:80px; width:auto; background-color:#5eac1a; color:white; ">
+                <div id="divFloatTimer" align="center" class="timer-responsive-css">
                     Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
                 </div>
                 <div>
-
 
                     <div class="breadcrumb">
                         @*<a href="/">Home</a> &raquo;
@@ -108,56 +112,52 @@
                         <script type="text/javascript" charset="utf-8">
 
                             function StartTestButtonClickHandler(thisObj) {
-                        /* 4 Lines - Firefox Combatability */
-                        //$('#divResult').html('');
-                        var _timerHandler = 0;
-                        $('#hdnTimer').val($('#hdnInitialTimer').val());
+                                /* 4 Lines - Firefox Combatability */
+                                //$('#divResult').html('');
+                                var _timerHandler = 0;
+                                $('#hdnTimer').val($('#hdnInitialTimer').val());
 
-                        $('#divInitiator').remove();
+                                $('#divInitiator').remove();
 
-                        $('#divTabContent').show();
-                        //$('#idTimerSpan').show();
-                        $('#divFloatTimer').show();
+                                $('#divTabContent').show();
+                                //$('#idTimerSpan').show();
+                                $('#divFloatTimer').show();
 
-                        _timerHandler = setInterval(function () {
+                                _timerHandler = setInterval(function () {
 
-                            var valueTimer = $('#hdnTimer').val();
+                                    var valueTimer = $('#hdnTimer').val();
 
-                            if (valueTimer > 0) {
-                                valueTimer = valueTimer - 1;
+                                    if (valueTimer > 0) {
+                                        valueTimer = valueTimer - 1;
 
-                                hours = (valueTimer / 3600).toString().split('.')[0];
-                                mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
-                                secs = ((valueTimer % 3600) % 60).toString();
+                                        hours = (valueTimer / 3600).toString().split('.')[0];
+                                        mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
+                                        secs = ((valueTimer % 3600) % 60).toString();
 
-                                if (hours.length == 1) hours = '0' + hours;
-                                if (mins.length == 1) mins = '0' + mins;
-                                if (secs.length == 1) secs = '0' + secs;
+                                        if (hours.length == 1) hours = '0' + hours;
+                                        if (mins.length == 1) mins = '0' + mins;
+                                        if (secs.length == 1) secs = '0' + secs;
 
-                                $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
-                                $('#hdnTimer').val(valueTimer);
+                                        $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
+                                        $('#hdnTimer').val(valueTimer);
 
-                                document.title = $('#idTimerLCD').text();
-                                $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                                        document.title = $('#idTimerLCD').text();
+                                        $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                                    }
+                                    else {
+
+                                        clearInterval(_timerHandler);
+                                        $("#frmEmotionalRegulationSenior").submit();
+
+                                    }
+
+
+                                }, 1000);
+
+
                             }
-                            else {
-
-                                clearInterval(_timerHandler);
-                                $("#frmEmotionalRegulationSenior").submit();
-
-                            }
-
-
-                        }, 1000);
-                     
-
-                    }
-
-
-                           
 
                         </script>
-
 
                         <a class="trigger_popup_fricc mx-green">Click here for Instruction</a>
 
@@ -182,11 +182,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-
-
                                         </table>
-
-
                                     </div>
 
                                 </div>
@@ -196,109 +192,73 @@
                             <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
                             <div id="divTabContent" style="width:100%; text-align: center;background-image: url(/wwwroot/images/Apptpuzzle.jpg);" class="mydivs">
 
-
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="firstrowquestions">
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
-                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
+                                                <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0" width="100%">
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">1.I feel that I am the one to blame for it</td>
-
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER1"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER1"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER1"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER1"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER1"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER1"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER1"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER1"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER1"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER1"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
-
-
                                         </tr>
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">2. I think that I have to accept that this has happened</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER2"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER2"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER2"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER2"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER2"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER2"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER2"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER2"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER2"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER2"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
-
-
                                         </tr>
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">3. I often think about how I feel about what I have experienced</td>
-
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER3"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER3"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER3"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER3"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER3"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER3"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER3"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER3"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER3"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER3"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -308,7 +268,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="secondrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -316,33 +276,23 @@
 
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">4. I think of nicer things than what I have experienced</td>
-
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER4"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER4"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER4"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER4"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER4"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER4"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER4"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER4"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER4"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER4"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
-
 
                                         </tr>
 
@@ -353,64 +303,44 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">5. I think of what I can do best</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER5"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER5"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER5"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER5"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER5"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER5"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER5"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER5"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER5"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER5"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
-
-
                                         </tr>
 
                                         <tr width="100%">
                                             <td width="100%">
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">6. I think I can learn something from the situation</td>
-
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER6"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER6"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER6"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER6"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER6"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER6"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER6"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER6"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER6"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER6"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -421,7 +351,7 @@
                                 </div>
 
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="thirdrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -430,28 +360,21 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">7. I think that it all could have been much worse</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER7"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER7">A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER7"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER7"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER7"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER7"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER7"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER7"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER7"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER7"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -465,28 +388,21 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">8. I often think that what I have experienced is much worse than what others have experienced</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER8"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER8"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER8"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER8"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER8"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER8"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER8"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER8"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER8"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER8"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -500,28 +416,21 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">9. I feel that others are to blame for it</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER9"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER9"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER9"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER9"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER9"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER9"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER9"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER9"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER9"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER9"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -531,8 +440,7 @@
                                     </table>
                                 </div>
 
-
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fourthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="fourthrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -541,32 +449,23 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">10. I feel that I am the one who is responsible for what has happened</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER10"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER10"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER10"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER10"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER10"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER10"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER10"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER10"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER10"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER10"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
-
 
                                         </tr>
                                         <tr width="100%">
@@ -576,28 +475,20 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">11. I think that I have to accept the situation</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER11"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER11"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER11"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER11">B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER11"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER11"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER11"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER11"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER11"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER11"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -611,28 +502,21 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">12. I am preoccupied with what I think and feel about what I have experienced</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER12"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER12"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER12"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER12"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER12"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER12"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER12"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER12"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER12"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER12"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -642,7 +526,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="fifthrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -651,28 +535,21 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">13. I think of pleasant things that have nothing to do with it</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER13"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER13"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER13"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER13"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER13"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER13"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER13"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER13"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER13"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER13"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -694,20 +571,15 @@
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER14"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER14"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER14"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER14"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER14"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER14"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER14"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER14"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER14"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER14"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -729,20 +601,15 @@
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER15"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER15"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER15"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER15"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER15"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER15"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER15"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER15"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER15"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER15"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -753,7 +620,7 @@
                                 </div>
 
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="sixthrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -769,21 +636,16 @@
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER16"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                   <tr>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER16"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER16"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER16"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER16"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER16"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER16"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER16"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER16"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER16"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -803,24 +665,19 @@
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER17"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER17"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER17"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER17"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER17"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER17"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER17"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER17"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER17"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER17"> E. Almost Always</td>
                                                     </tr>
+
+                                                    
                                                 </table>
                                             </td>
 
@@ -838,24 +695,18 @@
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
+                                                     <tr>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER18"> A. Almost never</td>
 
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER18"> B. Sometimes</td>
 
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER18"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER18"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER18"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER18"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER18"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
-
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER18"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
-
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER18"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER18"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
 
@@ -865,7 +716,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="seventhrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -882,20 +733,15 @@
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER19"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER19"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER19"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER19"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER19"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER19"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER19"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER19"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER19"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER19"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -915,23 +761,18 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
+                                                     <tr>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER20"> A. Almost never</td>
 
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER20"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER20"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER20"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER20"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER20"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER20"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER20"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
-
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER20"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER20"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
 
@@ -945,29 +786,22 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">21. I want to understand why I feel the way I do about what I have experienced</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER21"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER21"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER21"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER21"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER21"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER21"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER21"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER21"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER21"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER21"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
 
@@ -977,7 +811,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eigthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="eigthrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -992,23 +826,18 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER22"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER22"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER22"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER22"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER22"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER22"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER22"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER22"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER22"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER22"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
 
@@ -1026,24 +855,18 @@
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER23"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER23"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER23"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER23"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER23"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER23"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER23"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER23"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER23"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER23"> E. Almost Always</td>
                                                     </tr>
+                                                   
                                                 </table>
                                             </td>
 
@@ -1061,33 +884,26 @@
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER24"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER24"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER24"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER24"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER24"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER24"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER24"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER24"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER24"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER24"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
-
 
                                         </tr>
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="ninthrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1096,28 +912,21 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">25. I think that it hasn’t been too bad compared to other things</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER25"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                   <tr>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER25"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER25"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER25"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER25"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER25"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER25"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER25"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER25"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER25"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -1132,29 +941,21 @@
                                                     <tr>
                                                         <td class="jq-qno-142" valign="top" align="left">26. I often think that what I have experienced is the worst that can happen to a person</td>
 
-
-
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER26"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER26"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER26"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER26"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER26"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER26"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER26"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER26"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER26"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER26"> E. Almost Always</td>
                                                     </tr>
+                                                   
                                                 </table>
                                             </td>
 
@@ -1174,23 +975,18 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER27"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER27"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER27"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER27"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER27"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER27"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER27"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER27"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER27"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER27"> E. Almost Always</td>
                                                     </tr>
+                                                  
                                                 </table>
                                             </td>
 
@@ -1199,7 +995,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="tenthrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1214,23 +1010,18 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER28"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER28"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER28"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER28"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER28"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER28"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER28"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER28"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER28"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER28"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
 
@@ -1249,23 +1040,18 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER29"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER29"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER29"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER29"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER29"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER29"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER29"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER29"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER29"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER29"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
 
@@ -1284,24 +1070,18 @@
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER30"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER30"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER30"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER30"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER30"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER30"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER30"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER30"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER30"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER30"> E. Almost Always</td>
                                                     </tr>
+                                                   
                                                 </table>
                                             </td>
 
@@ -1310,7 +1090,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="eleventhrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1327,20 +1107,15 @@
 
 
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER31"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER31"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER31"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER31"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER31"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER31"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER31"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER31"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER31"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER31"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -1360,23 +1135,18 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
+                                                <tr>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER32"> A. Almost never</td>
 
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER32"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER32"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER32"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER32"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER32"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER32"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER32"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
-
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER32"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER32"> E. Almost Always</td>
                                                     </tr>
+                                                    
                                                 </table>
                                             </td>
 
@@ -1393,21 +1163,16 @@
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
 
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER33"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                   <tr>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER33"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER33"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER33"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER33"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER33"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER33"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER33"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER33"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER33"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -1416,7 +1181,7 @@
                                     </table>
                                 </div>
 
-                                <div class="bix-tbl-container bix-div-direction title-bar" id="twelvthrowquestions" style="display: inline-block;width:800px; background-color: darkgrey;  border: 15px;  padding: 15px;  margin: 20px;">
+                                <div class="bix-tbl-container bix-div-direction title-bar adhyapan-test-css" id="twelvthrowquestions" >
                                     <table width="100%">
                                         <tr width="100%">
                                             <td width="100%">
@@ -1429,22 +1194,16 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
+                                                   <tr>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER34"> A. Almost never</td>
 
-                                                    <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER34"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER34"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER34"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER34"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER34"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER34"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER34"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
-
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER34"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER34"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -1461,24 +1220,18 @@
                                                     </tr>
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
-
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER35"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER35"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER35"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER35"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER35"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER35"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER35"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER35"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER35"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER35"> E. Almost Always</td>
                                                     </tr>
+
                                                 </table>
                                             </td>
                                         </tr>
@@ -1493,22 +1246,16 @@
                                                 </table>
                                                 <table class="bix-tbl-container" cellspacing="0" cellpadding="0" border="0">
 
-
                                                     <tr>
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER36"></td>
-                                                        <td class="bix-td-option" width="20%">A. Almost never</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="1" name="SeniorER36"> A. Almost never</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER36"></td>
-                                                        <td class="bix-td-option" width="20%">B. Sometimes</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%"><input type="radio" class="result-option cls_142" value="2" name="SeniorER36"> B. Sometimes</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="3" name="SeniorER36"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_C_142">C. Regularly</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_C_142"><input type="radio" class="result-option cls_142" value="3" name="SeniorER36"> C. Regularly</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="4" name="SeniorER36"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">D. Often</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="4" name="SeniorER36"> D. Often</td>
 
-                                                        <td nowrap="nowrap" class="bix-td-option bix-td-radio" width="1%"><input type="radio" class="result-option cls_142" value="5" name="SeniorER36"></td>
-                                                        <td class="bix-td-option" width="20%" id="tdOptionDt_D_142">E. Almost Always</td>
+                                                        <td class="bix-td-option bix-td-option-responsive" width="20%" id="tdOptionDt_D_142"><input type="radio" class="result-option cls_142" value="5" name="SeniorER36"> E. Almost Always</td>
                                                     </tr>
                                                 </table>
                                             </td>
@@ -1529,11 +1276,8 @@
                         </form>
                     </div>
 
-
-
                 </div>
-                <!--[if IE]></div><![endif]-->
-
+                
             </div>
 
         </div>

@@ -526,6 +526,7 @@
     <Content Include="Views\Test\InstDigitalSymbol.cshtml" />
     <Content Include="Views\Test\InstEmotionalRegulation9to12.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">

@@ -835,38 +835,49 @@
     .text-center {
         text-align: center !important
     }
-       
 }
+
 .adhypan-fieldset {
-        border: 2px solid #000;
-        font: bold;
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        border-radius: 8px;
-        background-color: #fff;
-        width: 98%;
-        font-weight: 700;
-        margin-left: 4px
-    }
+    border: 2px solid #000;
+    font: bold;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 98%;
+    font-weight: 700;
+    margin-left: 4px
+}
 
-    .btn-next-prev-custom {
-        height: 30px;
-        font-size: 16px;
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        border: 2px solid #000;
-        background-color: #57b846;
-        color: #fff;
-        width: 58px;
-        height: 2.5rem
-    }
+.btn-next-prev-custom {
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 2px solid #000;
+    background-color: #57b846;
+    color: #fff;
+    width: 58px;
+    height: 2.5rem
+}
 
-    .adhyapan-test-css {
-        display: inline-block;
-        width: 90%;
-        background-color: darkgray;
-        border: 15px;
-        padding: 15px;
-        margin: 20px
+.adhyapan-test-css {
+    display: inline-block;
+    width: 90%;
+    background-color: darkgray;
+    border: 15px;
+    padding: 15px;
+    margin: 20px
+}
+
+@media (max-width:400px) {
+    .bix-td-option-responsive {
+        width: 70%;
     }
+    #divStartTestInstruction{max-height:78%; overflow:auto;}
+}
+
+.timer-responsive-css{
+    display:none; padding:10px; position:fixed; z-index:3000000; Top:50px; right:10px; width:auto; background-color:#5eac1a; color:white;
+}

@@ -30,28 +30,20 @@
 <body>
 
     <div>
-
-        <!--[if IE]><div class="inner-page-ie"><![endif]-->
         <div>
 
             <div>
                 @*<div id="divHeader" class="pagehead" style="text-align:center"><h1>PERFORMANCE APTITUDE - PICTURE ARRANGEMENT</h1></div>*@
                 <section class="c-hero c-hero--test">
 
-
                     <div id="divHeader" class="c-hero-test l-article l-container l-grid l-grid-2 l-grid-nogap u-flex-align-s">
                         <div class="c-hero__intro u-flex-1 js-package" data-slug="top-aptitude-tests">
                             <h1 class="heading--xxl u-mt1">
-
                                 PERFORMANCE APTITUDE TEST
-
                             </h1>
                             <h2 class="heading--xxl u-mt1">
-
                                 PICTURE ARRANGEMENT (Total Questions: 21, Timeline: 7 Minutes)
-
                             </h2>
-
 
                             @*<div class="c-hero__description">
                                     <p>
@@ -78,7 +70,7 @@
                         </div>
                     </fieldset>
                 </div>
-                <div id="divFloatTimer" align="center" style="display:none; padding:10px; position:fixed; z-index:3000000; Top:20px; right:80px; width:auto; background-color:#5eac1a; color:white; ">
+                <div id="divFloatTimer" align="center" class="timer-responsive-css">
                     Time Left: <span id="idFloatTimerLCD" style="font-weight:bold"></span>
                 </div>
                 <div class="breadcrumb">
@@ -96,56 +88,52 @@
                     <script type="text/javascript" charset="utf-8">
 
                         function StartTestButtonClickHandler(thisObj) {
-                        /* 4 Lines - Firefox Combatability */
-                        //$('#divResult').html('');
-                        var _timerHandler = 0;
-                        $('#hdnTimer').val($('#hdnInitialTimer').val());
+                            /* 4 Lines - Firefox Combatability */
+                            //$('#divResult').html('');
+                            var _timerHandler = 0;
+                            $('#hdnTimer').val($('#hdnInitialTimer').val());
 
-                        $('#divInitiator').remove();
+                            $('#divInitiator').remove();
 
-                        $('#divTabContent').show();
-                        //$('#idTimerSpan').show();
-                        $('#divFloatTimer').show();
+                            $('#divTabContent').show();
+                            //$('#idTimerSpan').show();
+                            $('#divFloatTimer').show();
 
-                        _timerHandler = setInterval(function () {
+                            _timerHandler = setInterval(function () {
 
-                            var valueTimer = $('#hdnTimer').val();
+                                var valueTimer = $('#hdnTimer').val();
 
-                            if (valueTimer > 0) {
-                                valueTimer = valueTimer - 1;
+                                if (valueTimer > 0) {
+                                    valueTimer = valueTimer - 1;
 
-                                hours = (valueTimer / 3600).toString().split('.')[0];
-                                mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
-                                secs = ((valueTimer % 3600) % 60).toString();
+                                    hours = (valueTimer / 3600).toString().split('.')[0];
+                                    mins = ((valueTimer % 3600) / 60).toString().split('.')[0];
+                                    secs = ((valueTimer % 3600) % 60).toString();
 
-                                if (hours.length == 1) hours = '0' + hours;
-                                if (mins.length == 1) mins = '0' + mins;
-                                if (secs.length == 1) secs = '0' + secs;
+                                    if (hours.length == 1) hours = '0' + hours;
+                                    if (mins.length == 1) mins = '0' + mins;
+                                    if (secs.length == 1) secs = '0' + secs;
 
-                                $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
-                                $('#hdnTimer').val(valueTimer);
+                                    $('#idTimerLCD').text(hours + ':' + mins + ':' + secs);
+                                    $('#hdnTimer').val(valueTimer);
 
-                                document.title = $('#idTimerLCD').text();
-                                $('#idFloatTimerLCD').text($('#idTimerLCD').text());
-                            }
-                            else {
+                                    document.title = $('#idTimerLCD').text();
+                                    $('#idFloatTimerLCD').text($('#idTimerLCD').text());
+                                }
+                                else {
 
-                                clearInterval(_timerHandler);
-                                $("#frmPictureArrangement").submit();
+                                    clearInterval(_timerHandler);
+                                    $("#frmPictureArrangement").submit();
 
-                            }
-
-
-                        }, 1000);
-                     
-
-                    }
+                                }
 
 
+                            }, 1000);
 
+
+                        }
 
                     </script>
-
 
                     <a class="trigger_popup_fricc mx-green">Click here for Instruction</a>
 
@@ -171,10 +159,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-
                                             <td class="img-PA-pic-completion" valign="middle">
-                                                <img src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrange00.png" style="width:400px" />
-
+                                                <img src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrange00.png" style="width:100%" />
                                             </td>
                                         </tr>
                                         <tr>
@@ -249,13 +235,8 @@
                                                 </div>
                                             </td>
                                         </tr>
-
                                     </table>
-
-
-
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -263,7 +244,7 @@
                         <input style="display:none;" name="Reference_Code" value=@Model.Reference_Code />
                         <div id="divTabContent" style="width:100%; text-align: center;background-image: url(/wwwroot/images/Apptpuzzle.jpg);" class="mydivs">
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 20px;  margin: 15px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="firstrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 20px;  margin: 15px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -272,7 +253,7 @@
                                                     <td class="bix-td-qno jq-qno-142" rowspan="2" valign="top" align="left">1.</td>
 
                                                     <td valign="middle">
-                                                        <img style="height:400px; width:100%;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ1.png" />
+                                                        <img style=" width:100%;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ1.png" />
                                                     </td>
                                                 </tr>
                                             </table>
@@ -306,7 +287,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="secondrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -317,7 +298,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ2.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ2.png" />
 
                                                     </td>
 
@@ -354,7 +335,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="thirdrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -365,7 +346,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ3.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ3.png" />
 
                                                     </td>
 
@@ -397,12 +378,11 @@
                                             </table>
                                         </td>
 
-
                                     </tr>
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="fouthrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fouthrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -413,7 +393,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ4.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ4.png" />
 
                                                     </td>
 
@@ -445,12 +425,11 @@
                                             </table>
                                         </td>
 
-
                                     </tr>
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fifthrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -461,7 +440,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ5.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ5.png" />
 
                                                     </td>
 
@@ -493,12 +472,11 @@
                                             </table>
                                         </td>
 
-
                                     </tr>
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="sixthrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -509,7 +487,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ6.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ6.png" />
 
                                                     </td>
 
@@ -547,7 +525,7 @@
                             </div>
 
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="seventhrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -558,7 +536,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ7.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ7.png" />
 
                                                     </td>
 
@@ -595,7 +573,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="eighthrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -606,7 +584,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ8.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ8.png" />
 
                                                     </td>
 
@@ -643,7 +621,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="ninthrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -654,7 +632,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ9.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ9.png" />
 
                                                     </td>
 
@@ -691,7 +669,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="tenthrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -702,7 +680,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ10.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ10.png" />
 
                                                     </td>
 
@@ -739,7 +717,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="eleventhrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -750,7 +728,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ11.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ11.png" />
 
                                                     </td>
 
@@ -788,7 +766,7 @@
                             </div>
 
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="twelverowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="twelverowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -799,7 +777,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ12.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ12.png" />
 
                                                     </td>
 
@@ -836,7 +814,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="thirteenrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -847,7 +825,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ13.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ13.png" />
 
                                                     </td>
 
@@ -884,7 +862,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fourteenrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -895,7 +873,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ14.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ14.png" />
 
                                                     </td>
 
@@ -932,7 +910,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="fifteenrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="fifteenrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -943,7 +921,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ15.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ15.png" />
 
                                                     </td>
 
@@ -981,7 +959,7 @@
                             </div>
 
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="sixteenrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="sixteenrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -992,7 +970,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ16.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ16.png" />
 
                                                     </td>
 
@@ -1030,7 +1008,7 @@
                             </div>
 
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="seventeenrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="seventeenrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -1041,7 +1019,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ17.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ17.png" />
 
                                                     </td>
 
@@ -1079,7 +1057,7 @@
                             </div>
 
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="eightteenrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="eightteenrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -1090,7 +1068,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ18.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ18.png" />
 
                                                     </td>
 
@@ -1127,7 +1105,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="nineteenrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="nineteenrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -1138,7 +1116,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ19.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ19.png" />
 
                                                     </td>
 
@@ -1175,7 +1153,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="twentyrowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="twentyrowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -1186,7 +1164,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ20.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ20.png" />
 
                                                     </td>
 
@@ -1224,7 +1202,7 @@
                                 </table>
                             </div>
 
-                            <div class="bix-tbl-container bix-div-direction title-bar" id="twentyonerowquestions" style="display: inline-block;width:1200px; background-color: darkgrey;  border: 15px;  padding: 50px;  margin: 20px;">
+                            <div class="bix-tbl-container bix-div-direction title-bar" id="twentyonerowquestions" style="display: inline-block;width:91%; background-color: darkgrey;  border: 15px;  padding: 12px;  margin: 20px;">
                                 <table width="100%">
                                     <tr width="100%">
                                         <td width="100%">
@@ -1235,7 +1213,7 @@
 
 
                                                     <td valign="middle">
-                                                        <img style="height:400px;" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ21.png" />
+                                                        <img style="width:100%" src="~/wwwroot/images/PA-PictureArrangement/PA-PictureArrangeQ21.png" />
 
                                                     </td>
 

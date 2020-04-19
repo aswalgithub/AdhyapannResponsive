@@ -25,7 +25,6 @@
 <style class="cp-pen-styles">
 
 
-
     * {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -438,6 +437,32 @@
             content: none;
         }
     }
+
+
+
+    .custom-ul-responsive {
+        padding-left: 0px;
+        float: left;
+        list-style: none;
+    }
+
+    .open > .dropdown-menu {
+        display: block;
+        width: 200px;
+    }
+
+    .custom-li-responsive {
+        text-align: left !important;
+        text-decoration: underline;
+        font-size: 15px;
+        line-height: 30px;
+        height: 24px;
+        margin-bottom: 10px !important;
+    }
+
+    .nav-link {
+        color: grey !important
+    }
 </style>
 
 <html lang="en">
@@ -450,26 +475,41 @@
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
     </script>
-
 </head>
 <body>
 
     <header class="app-header navbar admin-nav-bar">
-        <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <ul class="nav navbar-nav d-md-down-none ">
-            <li class="nav-item px-3 nav-item nav-link active">
-                <a class="nav-link" href="/admin/index">Home</a>
-            </li>
-            <li class="nav-item px-3">
-                <a class="nav-link" href="/admin/create">Create Package</a>
+        <ul style="padding-left:0;">
+            <li class="nav-item dropdown " style="display:block;">
+                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="navbar-toggler-icon"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class="custom-ul-responsive ">
+                        <li class="nav-item custom-li-responsive">
+                            <a class="nav-link" href="/admin/index">Home</a>
+                        </li>
+                        <li class="nav-item custom-li-responsive">
+                            <a class="nav-link" href="/admin/create">Create Package</a>
+                        </li>
+                    </ul>
+                </div>
             </li>
         </ul>
+
+        @*<button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav navbar-nav d-md-down-none ">
+                <li class="nav-item px-3 nav-item nav-link active">
+                    <a class="nav-link" href="/admin/index">Home</a>
+                </li>
+                <li class="nav-item px-3">
+                    <a class="nav-link" href="/admin/create">Create Package</a>
+                </li>
+            </ul>*@
+
         <ul class="nav navbar-nav ml-auto">
 
             @*<li class="nav-item d-md-down-none">
@@ -586,6 +626,6 @@
     jQuery(window).click(function () {
         ApplyScreenwiseResolution();
     });
-    
+
 </script>
 @*</div>*@
